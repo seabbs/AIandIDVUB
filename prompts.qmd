@@ -104,6 +104,14 @@ Reminder, you can use a workflow and subagents, and do structure, research
 and content all in parallel, and cross review.
 :::
 
+::: {.prompt}
+You should have an invite to the repo for pushing.
+:::
+
+::: {.prompt}
+Can push to main and iterate.
+:::
+
 ::::
 
 ## How it was built

@@ -11,3 +11,7 @@ as the steering section.
 
 > remidhner you can use qa owrkfhow ahdn subagents and do i.e structure
 > research and content all in parallel and cross review
+
+> You should have an inviote to the repo for pushing
+
+> can pusyh to main and iterate
