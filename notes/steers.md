@@ -15,3 +15,5 @@ as the steering section.
 > You should have an inviote to the repo for pushing
 
 > can pusyh to main and iterate
+
+> reminder to iteralively update the rmeote repo

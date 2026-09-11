@@ -112,6 +112,10 @@ You should have an invite to the repo for pushing.
 Can push to main and iterate.
 :::
 
+::: {.prompt}
+Reminder to iteratively update the remote repo.
+:::
+
 ::::
 
 ## How it was built
