@@ -14,6 +14,7 @@ Sam Abbott
 :::
 
 [Slides](slides.qmd){.btn .btn-primary}
+[Workshop page][simid]{.btn .btn-outline-primary}
 [How I am LLM][howillm]{.btn .btn-outline-primary}
 [epinowcast community][forum]{.btn .btn-outline-primary}
 [EpiNow2][epinow2]{.btn .btn-outline-primary}
@@ -33,11 +34,12 @@ The organisers' request, as the abstract.
   the public, or fellow scientists, including building widely used R
   packages for the modelling community, could be the material.
 - About 30 minutes.
-- Karolien Poels speaks before on risk communication and uncertainty, and
-  Andres Algaba after, on the same title from the AI side.
 :::
 
 ## Around it
+
+Karolien Poels speaks before, on risk communication and uncertainty.
+Andres Algaba speaks after, under the same title.
 
 - [Infectious disease modelling in the age of AI](../keynote/index.qmd).
   The morning keynote.
@@ -89,3 +91,4 @@ The organisers' request, as the abstract.
 [epiaware]: https://epiaware.org
 [howillm]: https://samabbott.co.uk/how-I-llm
 [juliacon-prompts]: https://samabbott.co.uk/JuliaCon2026/prompts.html
+[simid]: https://www.simid.be/events/workshop2026/

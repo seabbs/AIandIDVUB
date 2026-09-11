@@ -26,7 +26,7 @@ Communication* is on **Monday 14 September 2026** in the **Learning
 Theatre, VUB campus Etterbeek** (ground floor of the LIC Learning &
 Innovation Center ULB-VUB, Pleinlaan 2, 1050 Brussels).
 Times are Europe/Brussels.
-The event is free.
+The event is free, and the [workshop page][simid] has the programme.
 
 ::: {.grid .talk-row}
 ::: {.g-col-12 .g-col-lg-3}
@@ -95,7 +95,7 @@ disease modelling group.
 
 ::: {.hero}
 
-[My conference bio]{.bio-label}
+[My JuliaCon 2026 bio]{.bio-label}
 
 ::: {.bot-aside}
 🤖 The following was drafted by [**\@seabbs-bot**](https://github.com/seabbs-bot),
@@ -121,9 +121,9 @@ advisory bodies.*
 were used by upwards of 30 public health agencies around the world.*
 *I have continued to work in this area with a focus on improving tools and
 methods used both in research and in public health practice.*
-*Most of the code I now ship is written by coding agents and reviewed by me,
-and I am trying to work out what that means for how models get built, checked
-and shared.*
+*I have recently transitioned to Julia for my work and am exploring how to
+propagate Julia based tools to the users of our current tooling and to the
+wider infectious disease modelling community.*
 :::
 
 :::
@@ -174,6 +174,7 @@ and shared.*
 :::
 :::
 
+[simid]: https://www.simid.be/events/workshop2026/
 [bvd]: https://epiforecasts.io/BVDOutbreakSize/stable/
 [bvd-repo]: https://github.com/epiforecasts/BVDOutbreakSize
 [andv]: https://epiforecasts.io/andv-linelist-analysis/

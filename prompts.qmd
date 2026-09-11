@@ -67,7 +67,7 @@ Then maybe 10 minutes on opportunities for other AI models: UDEs, PINNs,
 neural flows for fitting (nfidd had a little on both of these, but high
 level), foundation models for outbreaks and infectious disease forecasting
 spinning out of current foundation time series models, agentic model
-composition, Google's forecasting success with FluSight.
+composition, i.e. Google's forecasting success with FluSight?
 :::
 
 ### The communication lecture

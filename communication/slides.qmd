@@ -23,7 +23,7 @@ format:
 - Three audiences in 2020. Government, the public, other scientists
 - Software is communication
 - With AI. What I use it for, and how I make that visible
-- Under AI. Trust, provenance, and prose that all sounds the same
+- Under AI. Trust, provenance, and prose that sounds the same
 - What I would like us to agree on
 :::
 ::: {.column width="32%"}

@@ -14,6 +14,7 @@ Sam Abbott
 :::
 
 [Slides](slides.qmd){.btn .btn-primary}
+[Workshop page][simid]{.btn .btn-outline-primary}
 [BVDOutbreakSize][bvd]{.btn .btn-outline-primary}
 [How I am LLM][howillm]{.btn .btn-outline-primary}
 [epiaware.org/approaches][approaches]{.btn .btn-outline-primary}
@@ -99,3 +100,4 @@ The organisers' request, as the abstract.
 [approaches]: https://epiaware.org/approaches/
 [epiaware]: https://epiaware.org
 [juliacon]: https://samabbott.co.uk/JuliaCon2026
+[simid]: https://www.simid.be/events/workshop2026/

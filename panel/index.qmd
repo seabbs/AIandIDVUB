@@ -9,8 +9,12 @@ page-layout: full
 
 ::: {.session-meta}
 Combining Infectious Disease Modelling and AI · Monday 14 September 2026,
-15:20–16:15 (Europe/Brussels) · Learning Theatre, VUB campus Etterbeek
+15:20–16:15 (Europe/Brussels) · Learning Theatre, VUB campus Etterbeek ·
+Sam Abbott, Andres Algaba, Karolien Poels and Marie-Cécile Dupas, moderated
+by Philippe Beutels
 :::
+
+[Workshop page][simid]{.btn .btn-outline-primary}
 
 :::: {.talk-body}
 ::: {.talk-main}
@@ -21,9 +25,6 @@ Combining Infectious Disease Modelling and AI · Monday 14 September 2026,
 - Join the panel discussion at the end of the day alongside the other
   speakers.
 - Moderated by Philippe Beutels of UAntwerp.
-- Panellists: Sam Abbott (LSHTM), Andres Algaba (VUB), Karolien Poels (UA),
-  and Marie-Cécile Dupas (ULB, UH).
-- Closing remarks follow at 16:15.
 :::
 
 There are no slides.
@@ -43,3 +44,5 @@ likely to draw on.
 
 :::
 ::::
+
+[simid]: https://www.simid.be/events/workshop2026/
