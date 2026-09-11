@@ -11,18 +11,14 @@
 - A named person behind every number
 :::
 ::: {.column width="60%"}
-::: {layout-ncol=2}
-![](../figures/comms-shot-juliacon-prompts.png){fig-alt="The JuliaCon 2026 prompts page"}
-
-![](../figures/comms-shot-seabbs-bot.png){fig-alt="The seabbs-bot GitHub profile"}
-
-![](../figures/comms-shot-spimo-statement.png){fig-alt="A SPI-M-O consensus statement on GOV.UK"}
-
-![](../figures/comms-shot-covid-issue-171.png){fig-alt="A dashboard issue answered by a named author"}
-:::
+![](../figures/comms-shot-recap.png){height="700px" fig-align="center"
+fig-alt="Four earlier screenshots in a grid. The JuliaCon 2026 prompts page,
+the seabbs-bot GitHub profile, a SPI-M-O consensus statement on GOV.UK and
+a dashboard issue answered by a named author"}
 
 ::: {.attribution}
-Screenshots 2026-09-11, sources on the earlier slides
+Screenshots 2026-09-11, sources on the earlier slides, grid from
+`scripts/comms-crop.py`
 :::
 :::
 ::::

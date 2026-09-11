@@ -6,13 +6,13 @@
 ::: {.column width="40%"}
 - $R_t$, the reproduction number over time. How many people each case
   goes on to infect
-- Weekly $R_t$, short-term forecasts and ad hoc reports to SPI-M-O, the
-  UK government's modelling advisory group, and through it to SAGE, the
-  scientific advisory group in an emergency
+- Weekly $R_t$, forecasts and ad hoc reports to SPI-M-O, the UK
+  government's modelling advisory group
+- SPI-M-O reported to SAGE, the scientific advisory group for emergencies
 - What the public saw was a consensus statement on GOV.UK. No team named
 
 > We don't know whether any of this gave any policy maker any useful
-> information that helped them make better decisions.
+> information that helped them make better decisions...
 :::
 ::: {.column width="60%"}
 ![](../figures/comms-shot-spimo-statement.png){width="88%"
@@ -33,10 +33,9 @@ Abbott and Funk, 2022-03-25
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Each group sent its own estimate, with its own model and its own
-  interval
-- One range went out, agreed by the group
-- The shared view survives. The detail behind each estimate does not
+- Each group used its own data sources and its own model
+- Evidence from several models was considered, discussed and combined
+- What went out was a range. The detail behind each estimate did not
 
 > If results are presented individually this can get lost and it
 > incentivises being first out (and maybe therefore cutting corners).
@@ -48,7 +47,10 @@ fig-alt="GOV.UK: latest R range for England, 1.0 to 1.2, no point estimate"}
 
 ::: {.attribution}
 [The R value and growth rate](https://www.gov.uk/guidance/the-r-value-and-growth-rate),
-GOV.UK, via `hpru-ppie-kickoff/figures/uk-rt-dashboard.png` ·
+GOV.UK, via `hpru-ppie-kickoff/figures/uk-rt-dashboard.png`, process
+from the same page, "Different modelling groups use different data
+sources" and "Evidence from several models is considered, discussed,
+combined", read 2026-09-12 ·
 quote from
 [Data, Models, and Modellers during a Global Pandemic](https://samabbott.co.uk/posts/2023-01-04-iisa-data-models-and-modellers-during-a-global-pandemic/),
 Abbott, 2023-01-04
@@ -68,8 +70,10 @@ Abbott, 2023-01-04
 - 20,000 of those page views were for the methods page
 :::
 ::: {.column width="60%"}
-![](../figures/comms-shot-covid-uk.png){width="100%"
-fig-alt="UK page of the epiforecasts dashboard, national summary"}
+![](../figures/comms-shot-covid-uk-panels.png){height="760px"
+fig-align="center"
+fig-alt="UK page of the epiforecasts dashboard, cases by report date,
+cases by infection date and the reproduction number"}
 
 ::: {.attribution}
 [epiforecasts.io/covid, United Kingdom](https://epiforecasts.io/covid/posts/national/united-kingdom/),
@@ -93,8 +97,8 @@ screenshot 2026-09-11, estimates frozen 2022-03-26 · counts from
   catch-up as an outbreak
 - What I wrote down afterwards. Be as open as possible. State the
   limitations first. No point estimates
-- I did not talk to the press. No training, no time, and it is someone
-  else's speciality
+- I left the press to people whose speciality it is. No training, no
+  time
 :::
 ::: {.column width="60%"}
 ![](../figures/comms-shot-covid-issue-171.png){width="100%"
@@ -117,24 +121,19 @@ screenshot 2026-09-11 · quote from
 ::: {.column width="40%"}
 - Forecast hubs. Each team submits weekly and the hub combines them into
   an ensemble
-- We submitted to the US, European and German and Polish hubs
-- The ensemble beat most single models in most countries
-- It also missed the turns the teams missed
+- The European hub ensemble beat 83% of teams' case forecasts and 91% of
+  death forecasts on relative WIS, the weighted interval score
 
-> Your forecast becomes part of another product, the forecast ensemble.
-> However, they can be very hard to learn from.
+> However, they can be very hard to learn from, and though we have really
+> tried to learn more about how to forecast it has been difficult.
 :::
 ::: {.column width="60%"}
-![](../figures/comms-hub-ensemble-good.png){height="400px"
+![](../figures/comms-hub-ensemble-good.png){height="640px"
 fig-align="center"
 fig-alt="Relative WIS by country, ensemble marked as an asterisk"}
 
-![](../figures/comms-hub-ensemble-less-good.png){height="330px"
-fig-align="center"
-fig-alt="Ensemble forecasts for Germany missing the Delta and Omicron turns"}
-
 ::: {.attribution}
-Figures 4 and 2 of
+Figure 4 and the 83% and 91% from
 [Sherratt et al. (2023)](https://doi.org/10.7554/eLife.81916), eLife,
 CC-BY 4.0, via `hpru-ppie-kickoff/figures/` · quote from
 [Evaluating an epidemiologically motivated surrogate model](https://samabbott.co.uk/posts/2022-10-13-surrogate-ensemble-forecast/),

@@ -4,7 +4,7 @@
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Three edits from my own decks, from the git history
+- Three edits from one of my own decks, from the git history
 - The default edit is deletion
 - Andres Algaba speaks next on detecting it and on citation bias
 :::
@@ -84,14 +84,13 @@ GitHub search API, same day
 
 :::: {.columns}
 ::: {.column width="40%"}
-- The onset curve exists only as a picture in the PDF. A script reads
-  counts from pixel colour and axis ticks
-- SitRep 081. JPEG compression left the ticks a pixel tall. The script
-  found about 10 of 19 and read 1,411 cases against a printed 3,066
-- SitRep 087. The y-axis grid moved from steps of 20 to 25. Every count
-  came out 25% high and nothing looked wrong
-- It was caught because counts for dates already reported changed. A
-  reporting triangle says they should not
+- A script reads counts off a PDF chart
+- SitRep 081. Ticks a pixel tall. It read 1,411 cases against a printed
+  3,066
+- SitRep 087. Grid steps of 25, the script assumed 20. Every count about
+  20% low and nothing looked wrong
+- Caught because counts for dates already reported changed. They should
+  not
 :::
 ::: {.column width="60%"}
 ![](../figures/comms-digitiser.png){width="100%"
@@ -116,7 +115,7 @@ SitReps 081 and 087, read 2026-09-11
 - Who can do this work at all is narrowing. Agents make that worse
 
 ::: {.attribution}
-[How I am LLM](https://samabbott.co.uk/how-I-llm), 2026-08-10 ·
+[How I am LLM](https://samabbott.co.uk/how-I-llm), 2026-07-30 ·
 [JuliaCon 2026 roadmap deck](https://samabbott.co.uk/JuliaCon2026/roadmap/slides.html),
 governance slide
 :::

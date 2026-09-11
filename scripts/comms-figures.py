@@ -144,14 +144,7 @@ def digitiser():
             arrowprops={"arrowstyle": "-", "color": colour},
         )
     axes[0].set_ylabel("Cases per day")
-    fig.suptitle(
-        "Same pixels, two answers. Caught by the reporting triangle, "
-        "not by eye",
-        fontsize=16,
-        color=GREY,
-        y=0.02,
-    )
-    fig.tight_layout(rect=(0, 0.06, 1, 1))
+    fig.tight_layout()
     fig.savefig(OUT / "comms-digitiser.png", bbox_inches="tight")
     plt.close(fig)
 

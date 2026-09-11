@@ -41,8 +41,8 @@ updated 2026-01-30 ·
 - The limitations sat on a methods page that 20,000 of 1.2 million page
   views reached
 
-> This can cause issues if the limitations of the method are poorly
-> communicated.
+> Of course this can cause issues if the limitations of the method are
+> poorly communicated.
 :::
 ::: {.column width="60%"}
 ![](../figures/comms-pipeline.png){width="100%"
@@ -62,8 +62,7 @@ Schematic, this talk · quote and counts from
 :::: {.columns}
 ::: {.column width="40%"}
 - [epinowcast](https://www.epinowcast.org/). Over 50 researchers and
-  public health practitioners, a forum, a monthly seminar since May 2023,
-  a contribution ladder
+  public health analysts
 - 31 seminars from May 2023 to May 2026
 - By 2026 my own verdict was that in many cases the package is too complex
   for anyone else to use
@@ -72,7 +71,8 @@ Schematic, this talk · quote and counts from
 > models alone.
 :::
 ::: {.column width="60%"}
-![](../figures/comms-shot-epinowcast-forum.png){width="100%"
+![](../figures/comms-shot-epinowcast-forum.png){height="620px"
+fig-align="center"
 fig-alt="The epinowcast community forum front page with recent topics"}
 
 ::: {.attribution}
@@ -93,8 +93,7 @@ quote from
 :::: {.columns}
 ::: {.column width="40%"}
 - [scoringutils](https://epiforecasts.io/scoringutils/) scores
-  probabilistic forecasts. WIS, the weighted interval score, is the hubs'
-  headline measure
+  probabilistic forecasts. WIS is the hubs' headline measure
 - Raw scores are not comparable when teams miss weeks
 - Pairwise comparison on the overlapping forecasts gives a relative skill
   each team can read
