@@ -1,0 +1,77 @@
+# Where AI might plug in
+
+## A neural network as a component?
+
+:::: {.columns}
+::: {.column width="40%"}
+- The `rt` slot holds a prior model for $R_t$. Today that is an AR
+  process. It could hold a network
+- A universal differential equation puts the network on the residual
+  dynamics, the mechanism we cannot write down
+- Philipps et al.: the network "consistently hindered parameter
+  identifiability", and fitted mechanistic parameters "did not match
+  the published values"
+- No neural network code in any EpiAware package. Maybe nothing doing
+  there at the moment
+- What would you put in the slot?
+
+::: {.attribution}
+Philipps, Schmid and Hasenauer (2025), npj Systems Biology and
+Applications,
+[PMC12398592](https://pmc.ncbi.nlm.nih.gov/articles/PMC12398592/) ·
+Rackauckas et al. (2020),
+[arXiv:2001.04385](https://arxiv.org/abs/2001.04385) ·
+Grep of the EpiAware organisation for Lux and Flux, 2026-09-11
+:::
+:::
+::: {.column width="60%"}
+![](../figures/exchange-nn-component.png){width="100%"
+fig-alt="Three boxes in a row: an infection model, Renewal with an
+empty rt slot, an observation model of LatentDelay, Ascertainment and
+NegativeBinomialError, and cases. Two candidates point at the same slot:
+an AR process, labelled today, and a small neural network of
+covariates, labelled a question, with a swap arrow between them."}
+
+::: {.attribution}
+Drawn for this talk, `scripts/exchange-nn-component.py`, after the
+parts on
+[epiaware.org/approaches/composable-turing-models](https://epiaware.org/approaches/composable-turing-models.html)
+:::
+:::
+::::
+
+## Agents building and checking the parts
+
+:::: {.columns}
+::: {.column width="44%"}
+- [BVDOutbreakSize][bvd]. Bundibugyo virus disease, DRC, 2026. A
+  replication of the McCabe et al. report of 18 May, in a few hours the
+  next day. Refit on every push since, 145 releases by 9 September
+- The situation reports are French PDFs. Agents read them, two blind
+  readers each. 333 of 425 pull requests, the unit of proposed change
+  on GitHub, came from my bot account
+- SitRep 087: the chart's y axis changed from steps of 20 to 25. Caught
+  only because it broke the reporting-triangle invariant
+- What would convince you a part an agent built is right?
+
+::: {.attribution}
+[github.com/epiforecasts/BVDOutbreakSize][bvd], `README.md` and
+`data/README.md:77-111` · Release and pull request counts from the
+GitHub API, 2026-09-11
+:::
+:::
+::: {.column width="56%"}
+![](../figures/exchange-bvd-outbreak-streams.png){width="100%"
+fig-alt="Posterior densities for the cumulative size of the outbreak,
+one per data stream and one joint, with the confirmed-case stream far
+to the right of the others."}
+
+::: {.attribution}
+Outbreak size estimated by each data stream, then jointly. June 2026
+fit; the live report is at
+[epiforecasts.io/BVDOutbreakSize/stable](https://epiforecasts.io/BVDOutbreakSize/stable/)
+:::
+:::
+::::
+
+[bvd]: https://github.com/epiforecasts/BVDOutbreakSize

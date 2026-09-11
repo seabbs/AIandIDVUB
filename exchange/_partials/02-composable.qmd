@@ -1,0 +1,283 @@
+# Composable infectious disease modelling
+
+## Timely, rigorous, and collaborative evidence
+
+:::: {.columns}
+::: {.column width="45%"}
+- Current approaches struggle to be timely, rigorous, and collaborative
+  all at once
+- Multi-model efforts synthesise expertise by combining forecasts from
+  multiple teams
+- Can improve predictive accuracy but teams rarely collaborate on model
+  components
+- Common components would enable attribution of differences to
+  assumptions rather than implementation
+
+::: {.attribution}
+Cramer et al. (2022),
+[doi:10.1038/s41597-022-01517-w](https://doi.org/10.1038/s41597-022-01517-w)
+:::
+:::
+::: {.column width="55%"}
+![](../figures/exchange-composable-whitty.png){width="100%"
+fig-alt="Whitty 2015 editorial on academic papers and health policy"}
+
+::: {.attribution}
+Whitty (2015),
+[doi:10.1186/s12916-015-0544-8](https://doi.org/10.1186/s12916-015-0544-8)
+:::
+:::
+::::
+
+## Analysing data and processes separately
+
+:::: {.columns}
+::: {.column width="42%"}
+- ONS COVID-19 Infection Survey: 4M+ swabs, 150K households, £500M+,
+  April 2020 to March 2023
+- External modellers accessed only summarised prevalence, not underlying
+  observations
+- Prevalence to incidence to $R_t$
+- Uncertainty from earlier estimates approximated at each step
+- Modelling assumptions inherited without the ability to evaluate their
+  impact
+:::
+::: {.column width="58%"}
+![](../figures/exchange-composable-ons-cascade.jpg){width="94%"
+fig-align="center"
+fig-alt="Four panels of the survey chain fitted as one model"}
+
+::: {.attribution}
+Prevalence (A), incidence (B), antibody prevalence (C) and $R_t$ (D)
+fitted together as one model. Abbott and Funk (2022),
+[doi:10.1101/2022.03.29.22273101](https://doi.org/10.1101/2022.03.29.22273101).
+Survey figures from the paper's introduction
+:::
+:::
+::::
+
+## Analysing all data and processes together
+
+:::: {.columns}
+::: {.column width="45%"}
+- Lison et al. found biases at each step: lack of epidemic phase in date
+  imputation and count model assumptions in nowcasting led to biased
+  $R_t$
+- Joint modelling of all steps together avoided these cascading biases
+- But models are difficult to develop within policy-relevant timelines
+- Require expertise across multiple domains and careful specification of
+  component interactions
+
+::: {.attribution}
+Lison et al. (2024),
+[doi:10.1371/journal.pcbi.1012021](https://doi.org/10.1371/journal.pcbi.1012021)
+:::
+:::
+::: {.column width="55%"}
+![](../figures/exchange-composable-lison.png){width="100%"
+fig-alt="Title of the Lison et al. 2024 paper"}
+:::
+::::
+
+## What is composable modelling?
+
+:::: {.columns}
+::: {.column width="40%"}
+Components can be reused across contexts and combined in different
+configurations whilst maintaining statistical rigour.
+:::
+::: {.column width="60%"}
+![](../figures/exchange-composable-structure.png){height="700px"
+fig-align="center"
+fig-alt="Four applications drawn as graphs over a band of shared parts"}
+
+::: {.attribution}
+Four illustrative applications, not implementations. The incubation
+period model appears in all four, the latent infection model in three,
+and the band beneath is what those shared components are themselves
+made of. Figure 1 of Abbott et al., *Composable probabilistic models
+can lower barriers to rigorous infectious disease modelling*, in CDC
+clearance
+:::
+:::
+::::
+
+## What we want from any approach
+
+:::: {.columns}
+::: {.column width="40%"}
+- **Uncertainty and inference.** Joint and staged inference that avoids
+  the cascading biases, and automatic differentiation for fitting
+- **Model structure.** Components separated by process type, and models
+  nested inside models
+- **Interoperability.** Standardised interfaces between components, and
+  with other scientific computing ecosystems (e.g. ODEs, spatial models,
+  machine learning)
+
+::: {.callout-warning}
+These design considerations were developed by the authors and have not
+yet received broader community input.
+:::
+:::
+::: {.column width="60%"}
+![](../figures/exchange-composable-requirements.png){width="100%"
+fig-alt="Table 1 of the paper, requirements against motivating problems"}
+
+::: {.attribution}
+Table 1 of the paper pairs each requirement with the problem that
+motivates it, under six themes. All twelve are at
+[epiaware.org/approaches](https://epiaware.org/approaches/)
+:::
+:::
+::::
+
+## Two approaches, and they interoperate
+
+:::: {.columns}
+::: {.column width="50%"}
+- **Composable Turing models.** A library of parts over
+  [`Turing.jl`][lk-turingjl]. Transmission, latent process and
+  observation are separate objects that nest into one model
+- **Composed distributions.** Model the relationships between events
+  with [`Distributions.jl`][lk-distributionsjl]. Those relationships
+  form an event tree
+- Both work with the same underlying packages, and they can be combined
+  in a single analysis
+
+::: {.attribution}
+Wording from [epiaware.org/approaches](https://epiaware.org/approaches/),
+read 2026-09-11
+:::
+:::
+::: {.column width="50%"}
+![](../figures/sam-abbott.jpg){width="21%" fig-alt="Sam Abbott"}
+![](../figures/exchange-samuel-brand.jpg){width="21%"
+fig-alt="Samuel Brand"}
+![](../figures/seabbs-bot.jpg){width="21%" fig-alt="seabbs-bot"}
+
+::: {.attribution}
+The people behind the two approaches, photos from GitHub, read
+2026-08-13 ·
+[github.com/EpiAware/ComposableTuringIDModels.jl][ctim] ·
+[github.com/EpiAware/ComposedDistributions.jl][cd]
+:::
+:::
+::::
+
+## [`ComposableTuringIDModels.jl`][ctim]
+
+:::: {.columns}
+::: {.column width="56%"}
+```julia
+using ComposableTuringIDModels, Distributions, Turing
+
+# renewal infections with an autoregressive log R_t prior
+renewal = Renewal(;
+    generation_time = Gamma(1.4, 1 / 0.38),
+    rt = AR(; ϵ_t = HierarchicalNormal(std = HalfNormal(0.1))),
+    initialisation = Normal(log(1.0), 1.0))
+# observation layers: delay, ascertainment, negative binomial
+obs = LatentDelay(
+    Ascertainment(NegativeBinomialError(),
+                  Intercept(Normal(log(0.4), 0.1))),
+    truncated(Normal(5.0, 2.0), 0.0, Inf))
+model = IDModel(renewal, obs)
+chain = sample(as_turing_model(model, cases, length(cases)),
+               NUTS(), MCMCThreads(), 1000, 4)
+```
+
+::: {.attribution}
+`renewal_model.jl` from
+[epiaware.org/approaches/composable-turing-models](https://epiaware.org/approaches/composable-turing-models.html),
+read 2026-09-11, autodiff arguments and blank lines dropped to fit
+:::
+:::
+::: {.column width="44%"}
+- Three kinds of part. An infection model, an observation model, and
+  prior models nested in the slots of both
+- Parts carry their own priors
+- A model definition does not know about the data. One definition
+  simulates and fits
+- Changing an assumption means swapping one part for another
+:::
+::::
+
+## [`ComposedDistributions.jl`][cd]
+
+:::: {.columns}
+::: {.column width="56%"}
+```julia
+using ComposedDistributions, Distributions
+
+tree = @uncertain compose((
+    clinical = sequential(
+        :onset_admit => Gamma(Normal(1.2, 0.2), 3.0),
+        :admit_resolve => resolve(
+            :death => (Gamma(2.0, 3.5), 0.3),
+            :discharge => (Gamma(1.0, 8.0), 0.7))),
+    surveillance = sequential(
+        :onset_notif => Gamma(0.7, 20.0),
+        :notif_compete => compete(
+            :confirmed => Gamma(2.0, 1.0),
+            :lost => Gamma(5.0, 0.5)))))
+
+case = rand(tree)      # draw a synthetic case
+logpdf(tree, case)     # or score an observed one
+```
+
+::: {.attribution}
+`composed_delays.jl` from
+[epiaware.org/approaches/composed-distributions](https://epiaware.org/approaches/composed-distributions.html),
+read 2026-09-11, inspection calls dropped to fit
+:::
+:::
+::: {.column width="44%"}
+- Write the epidemiology as distributions. The probabilistic programming
+  language becomes optional
+- A case's event history is a tree. `sequential` chains delays,
+  `resolve` picks an outcome with a probability, `compete` races two
+- The whole tree is itself a distribution. It slots in wherever a delay
+  is needed inside a larger model
+- Parameter uncertainty is an ordinary leaf
+:::
+::::
+
+## Real-time nowcasting (`EpiNow2`)
+
+:::: {.columns}
+::: {.column width="40%"}
+- Reuses ARIMA(2,1,1) from the paper's first case study, swapping the
+  Poisson observation model for `negbin`
+- `broadcast_weekly` wraps ARIMA to produce piecewise constant weekly
+  $R_t$ values
+- `ascertainment_dayofweek` adds day-of-week reporting effects via
+  softmax transformation
+- Two `LatentDelay` wrappers compose incubation and reporting delays
+  sequentially by nesting structs
+
+::: {.callout-important}
+No new components needed and took ~ 3 hours
+:::
+
+::: {.attribution}
+Figures 2 and 4 of the paper. One configuration of `EpiNow2`
+replicated, not a benchmark. Abbott et al. (2020),
+[doi:10.12688/wellcomeopenres.16006.2](https://doi.org/10.12688/wellcomeopenres.16006.2).
+Daily COVID-19 cases from Italy, February to June 2020
+:::
+:::
+::: {.column width="60%"}
+![](../figures/exchange-composable-epinow2-model.png){height="260px"
+fig-align="center"
+fig-alt="The EpiNow2 configuration drawn as a graph of components"}
+
+![](../figures/exchange-composable-epinow2-results.png){height="560px"
+fig-align="center"
+fig-alt="Six panels: prior checks on each part, then the joint fit"}
+:::
+::::
+
+[ctim]: https://github.com/EpiAware/ComposableTuringIDModels.jl
+[cd]: https://github.com/EpiAware/ComposedDistributions.jl
+[lk-turingjl]: https://turinglang.org/
+[lk-distributionsjl]: https://juliastats.org/Distributions.jl/stable/

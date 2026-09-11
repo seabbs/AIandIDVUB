@@ -80,12 +80,12 @@ Moderated by Philippe Beutels.
 ::: {.talk-card}
 [15 Sep, 09:45–10:15]{.talk-time}
 
-### [Research exchange at the VUB AI Lab](exchange/index.qmd)
+### [Composable infectious disease modelling, and where AI might plug in](exchange/index.qmd)
 
-[Background, research group, and current work]{.talk-sub}
+[Research exchange, VUB AI group and SIMID]{.talk-sub}
 
-A morning of short talks from the VUB AI group and the UHasselt and
-UAntwerp SIMID group, at the AI Experience Centre.
+Composable models, recent delays work, and the workflow, at a morning of
+short talks at the AI Experience Centre.
 
 [Page](exchange/index.qmd){.btn .btn-sm .btn-outline-primary}
 [Slides](exchange/slides.qmd){.btn .btn-sm .btn-outline-primary}

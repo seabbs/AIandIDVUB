@@ -1,5 +1,0 @@
-# epinowcast and EpiAware
-
-<!--
-Proposed slides. See notes/proposal.md.
--->

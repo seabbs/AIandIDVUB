@@ -1,5 +1,0 @@
-# Composable models, and a live outbreak
-
-<!--
-Proposed slides. See notes/proposal.md.
--->

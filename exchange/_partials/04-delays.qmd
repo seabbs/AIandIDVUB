@@ -1,0 +1,226 @@
+# Recent delays work
+
+## An epidemiological delay
+
+:::: {.columns}
+::: {.column width="40%"}
+- The time between two events in one case. Infection to symptom onset
+  is the incubation period
+- We want the whole distribution over days across a population, not a
+  mean
+- Nowcasts, forecasts and transmission models take one as an input and
+  do not re-estimate it
+
+::: {.attribution}
+Diagram from the JuliaCon 2026 delays talk,
+[samabbott.co.uk/JuliaCon2026/delays](https://samabbott.co.uk/JuliaCon2026/delays/)
+:::
+:::
+::: {.column width="60%"}
+![](../figures/exchange-delays-natural-history.png){width="100%"
+fig-alt="A time axis with four marked events, infection, symptom
+onset, hospitalisation and death. Three double-headed arrows above the
+axis span pairs of them: the incubation period from infection to
+onset, onset to hospitalisation, and onset to death. The last two
+share a start, so the intervals overlap."}
+:::
+::::
+
+## Both events are recorded to the day
+
+:::: {.columns}
+::: {.column width="40%"}
+- The primary event falls somewhere in a window $[0, w_P]$. Mix the
+  delay over where in the window it sat, a convolution on the CDF
+- The secondary event is recorded to the day as well, so the
+  probability of a daily bin is a difference of that CDF
+- In the past this was often written as a double integral, which is
+  typically more complicated to evaluate
+:::
+::: {.column width="60%"}
+![](../figures/exchange-delays-double-censoring.png){width="100%"
+fig-alt="A timeline. The primary event sits in a blue window of width
+w_P, the secondary event in a red window of width w_S, the delay T = S
+minus P spans them, and a dashed observation cutoff C sits to the
+right with longer delays not yet seen beyond it."}
+
+$$
+F_{\mathrm{PEC}}(t) = \int_{0}^{w_P} g(\tau)\, F(t - \tau)\, d\tau,
+\qquad
+\Pr\!\big(T \in [n, n + w_S]\big)
+  = F_{\mathrm{PEC}}(n + w_S) - F_{\mathrm{PEC}}(n)
+$$
+
+::: {.attribution}
+Diagram from the JuliaCon 2026 delays talk · maths after
+[primarycensored](https://primarycensored.epinowcast.org/)
+:::
+:::
+::::
+
+## Short delays are over-represented early in an epidemic
+
+:::: {.columns}
+::: {.column width="38%"}
+- A pair enters the data only if the secondary event happened before
+  the cutoff $C$
+- Condition on being observed, so divide by the CDF at the horizon
+- Move the cutoff and watch the mean of what you can see
+
+$$
+L^{\mathrm{RT}}
+  = \frac{F_{\mathrm{PEC}}(n + w_S) - F_{\mathrm{PEC}}(n)}
+         {F_{\mathrm{PEC}}(C - P)}
+$$
+
+::: {.attribution}
+`LogNormal(1.6, 0.6)`, mean 5.9 days, with every primary event at day
+zero and the cutoff on the slider. Continuous delays, so the numbers
+differ slightly from the daily-window figure on the next slide
+:::
+:::
+::: {.column width="62%"}
+```{ojs}
+//| echo: false
+viewof cutoff = Inputs.range([1, 30], {
+  value: 7, step: 1, label: "cutoff C, days"
+})
+
+mu = 1.6
+sigma = 0.6
+pdf = (t) => t <= 0 ? 0 :
+  Math.exp(-((Math.log(t) - mu) ** 2) / (2 * sigma ** 2)) /
+  (t * sigma * Math.sqrt(2 * Math.PI))
+grid = Array.from({length: 601}, (_, i) => i * 0.05)
+step = 0.05
+cdfC = grid.filter((t) => t <= cutoff)
+  .reduce((s, t) => s + pdf(t) * step, 0)
+seenMean = grid.filter((t) => t <= cutoff)
+  .reduce((s, t) => s + t * pdf(t) * step, 0) / cdfC
+trueMean = Math.exp(mu + sigma ** 2 / 2)
+rows = grid.flatMap((t) => [
+  {t, density: pdf(t), which: "true delay distribution"},
+  {t, density: t <= cutoff ? pdf(t) / cdfC : 0,
+   which: `seen by day ${cutoff}`}
+])
+
+Plot.plot({
+  width: 1000, height: 560, marginLeft: 70, marginBottom: 60,
+  marginTop: 40, style: {fontSize: "20px"},
+  x: {label: "delay (days)", domain: [0, 30], labelAnchor: "center",
+    labelOffset: 50},
+  y: {label: "density", labelAnchor: "top", labelOffset: 30,
+    ticks: 5},
+  color: {legend: true, domain: ["true delay distribution",
+    `seen by day ${cutoff}`], range: ["#4a5899", "#b5432f"]},
+  marks: [
+    Plot.areaY(rows, {x: "t", y: "density", fill: "which",
+      fillOpacity: 0.25}),
+    Plot.line(rows, {x: "t", y: "density", stroke: "which",
+      strokeWidth: 3}),
+    Plot.ruleX([trueMean], {stroke: "#4a5899", strokeDasharray: "6,4"}),
+    Plot.ruleX([seenMean], {stroke: "#b5432f", strokeDasharray: "6,4"}),
+    Plot.text([{x: trueMean, y: 0.30,
+      label: `true mean ${trueMean.toFixed(1)}`}],
+      {x: "x", y: "y", text: "label", fill: "#4a5899", dx: 8,
+       textAnchor: "start"}),
+    Plot.text([{x: seenMean, y: 0.36,
+      label: `mean seen ${seenMean.toFixed(1)}`}],
+      {x: "x", y: "y", text: "label", fill: "#b5432f", dx: 8,
+       textAnchor: "start"})
+  ]
+})
+```
+:::
+::::
+
+## A mean of 3.9 days instead of 5.9 {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="34%"}
+- At a cutoff seven days after the primary events, and 5.3 days at
+  fourteen
+
+::: {.attribution}
+`LogNormal(1.6, 0.6)` with daily windows, computed with
+`CensoredDistributions.jl` v0.2.22 for the JuliaCon 2026 delays talk,
+its `scripts/delays-right-truncation.jl`. Static fallback for the
+slider on the previous slide
+:::
+:::
+::: {.column width="66%"}
+![](../figures/exchange-delays-right-truncation.png){width="100%"
+fig-alt="Two panels. On the left, the delay distribution seen by day 7
+and by day 14 sits well to the left of the true distribution. On the
+right, the mean estimated delay rises from under 2 days towards the
+true mean of 5.9 days as the cutoff moves away from now, passing 3.9
+days at a cutoff of 7 and 5.3 days at a cutoff of 14."}
+:::
+::::
+
+## Three packages, one likelihood
+
+:::: {.columns}
+::: {.column width="52%"}
+```julia
+using CensoredDistributions, Distributions, Turing
+
+@model function delay_model(values, weights)
+    α ~ truncated(Normal(1, 2), 0, Inf)
+    θ ~ truncated(Normal(1, 2), 0, Inf)
+    d = double_interval_censored(
+        Gamma(α, θ); upper = 15, interval = 1
+    )
+    values ~ weight(d, weights)
+end
+
+chain = sample(delay_model(values, weights),
+               NUTS(), MCMCThreads(), 1000, 2)
+```
+
+::: {.attribution}
+Model from `CensoredDistributions.jl/README.md:67-81`, run against
+v0.2.22 for the JuliaCon 2026 delays talk ·
+[CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl) ·
+[primarycensored](https://primarycensored.epinowcast.org/) ·
+[epidist](https://epidist.epinowcast.org/)
+:::
+:::
+::: {.column width="48%"}
+- [`primarycensored`][lk-primarycensored], R. `d`, `p`, `q` and `r`
+  prefixes, so it reads like `dgamma`. Closed forms for gamma,
+  lognormal and Weibull against a uniform primary, numerical otherwise
+- [`epidist`][lk-epidist], R. The same likelihood through `brms`, so
+  delays vary by district, by age and by wave
+- [`CensoredDistributions.jl`][lk-censoreddistributionsjl]. Each
+  adjustment is a wrapper on a `Distributions.jl` object. The stack is
+  still a distribution, so Turing takes it as it is
+- The NEJM correspondence on Bundibugyo virus disease used `epidist`
+
+::: {.attribution}
+NEJM correspondence (2026),
+[doi:10.1056/NEJMc2608070](https://www.nejm.org/doi/full/10.1056/NEJMc2608070)
+:::
+:::
+::::
+
+## Less clear where AI plugs in here
+
+- A learned delay distribution? A network as a leaf would still need a
+  CDF, because censoring and truncation are written on the CDF
+- Amortised inference? Train once on simulations, then read a posterior
+  off a new line list in seconds. Jang et al.: more simulations cannot
+  resolve non-identifiability that comes from the simulator
+- Reading the line list out of a PDF is where agents already help
+- In my view neither of the first two is close. Tell me if you disagree
+
+::: {.attribution}
+Jang, Candan and Chowell (2026), PLoS Computational Biology,
+[PMC13252848](https://pmc.ncbi.nlm.nih.gov/articles/PMC13252848/) ·
+Radev et al. (2021), OutbreakFlow,
+[doi:10.1371/journal.pcbi.1009472](https://doi.org/10.1371/journal.pcbi.1009472)
+:::
+
+[lk-censoreddistributionsjl]: https://github.com/EpiAware/CensoredDistributions.jl
+[lk-epidist]: https://epidist.epinowcast.org/
+[lk-primarycensored]: https://primarycensored.epinowcast.org/

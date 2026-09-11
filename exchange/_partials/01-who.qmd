@@ -1,5 +1,37 @@
-# Who I am
+## Who I am and what the group does
 
-<!--
-Proposed slides. See notes/proposal.md.
--->
+:::: {.columns}
+::: {.column width="62%"}
+- Real-time outbreak analysis. $R_t$, the number of new infections per
+  infected person, estimated as an outbreak happens
+- Delays and nowcasting. Nowcasting is estimating what has already
+  happened but has not yet been reported
+- Evaluation. Scoring forecasts so that teams can be compared
+- Tools. `EpiNow2`, `epinowcast`, `scoringutils`, `primarycensored`,
+  `epidist`, and the `EpiAware` Julia ecosystem
+:::
+::: {.column width="38%"}
+![](../figures/sam-abbott.jpg){width="36%" fig-align="center"
+fig-alt="Sam Abbott"}
+
+::: {.attribution}
+Sam Abbott, London School of Hygiene & Tropical Medicine ·
+[github.com/epiforecasts](https://github.com/epiforecasts) ·
+[epinowcast.org](https://www.epinowcast.org) ·
+[epiaware.org](https://epiaware.org)
+:::
+:::
+::::
+
+![](../figures/exchange-timeline.png){width="70%" fig-align="center"
+fig-alt="A timeline from 1760 to 2026. Small grey ticks for Bernoulli,
+Ross, Kermack and McKendrick, foot and mouth and H1N1, then a grey dot
+for Ebola in West Africa in 2014 labelled watching, and teal dots for
+COVID-19 in 2020 labelled doing it, mpox in 2022 labelled nowcasting,
+and Ebola disease caused by Bundibugyo virus in the DRC in 2026 labelled
+live."}
+
+::: {.attribution}
+Diagram from the keynote the day before, `scripts/keynote-timeline.py`,
+dates in `notes/research-history.md`
+:::

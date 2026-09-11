@@ -1,5 +1,5 @@
 ---
-title: "Background, research group, and current work"
+title: "Composable infectious disease modelling, and where AI might plug in"
 subtitle: "Research exchange, VUB AI Lab"
 author: "Sam Abbott"
 institute: "London School of Hygiene & Tropical Medicine"
@@ -21,12 +21,14 @@ format:
 
 :::: {.columns}
 ::: {.column width="68%"}
-- Who I am
-- What the group works on
-- epinowcast and EpiAware
-- Composable models, and a live outbreak
-- Working with agents
-- Where we might work together
+- Who I am and what the group does
+- Composable infectious disease modelling. The gap, what composable
+  means, two approaches, one replication
+- Where AI might plug in. A network as a component, agents building
+  and checking the parts
+- Recent delays work. `primarycensored`, `epidist`,
+  `CensoredDistributions.jl`
+- The workflow, and where AI sits
 :::
 ::: {.column width="32%"}
 ![](../figures/qr-exchange.png){width="58%"}
@@ -42,23 +44,27 @@ Tuesday 15 September 2026, 09:45.
 
 {{< include _partials/01-who.qmd >}}
 
-{{< include _partials/02-group.qmd >}}
+{{< include _partials/02-composable.qmd >}}
 
-{{< include _partials/03-ecosystems.qmd >}}
+{{< include _partials/03-ai.qmd >}}
 
-{{< include _partials/04-composable.qmd >}}
+{{< include _partials/04-delays.qmd >}}
 
-{{< include _partials/05-agents.qmd >}}
-
-{{< include _partials/06-together.qmd >}}
+{{< include _partials/05-workflow.qmd >}}
 
 ## Thank you
 
 :::: {.columns}
 ::: {.column width="62%"}
-- [epinowcast.org](https://www.epinowcast.org)
-- [epiaware.org](https://epiaware.org)
-- [BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize)
+- [epiaware.org/approaches](https://epiaware.org/approaches/).
+  The design considerations and the two approaches
+- [ComposableTuringIDModels.jl][ctim] and
+  [ComposedDistributions.jl][cd]
+- [primarycensored](https://primarycensored.epinowcast.org/),
+  [epidist](https://epidist.epinowcast.org/) and
+  [CensoredDistributions.jl][cdist]
+- [BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize).
+  The live DRC outbreak model
 - [The prompts that wrote these decks][prompts]
 :::
 ::: {.column width="38%"}
@@ -78,3 +84,6 @@ Sam Abbott, LSHTM ·
 
 [exchange-talk]: https://samabbott.co.uk/AIandIDVUB/exchange/
 [prompts]: https://samabbott.co.uk/AIandIDVUB/prompts.html
+[ctim]: https://github.com/EpiAware/ComposableTuringIDModels.jl
+[cd]: https://github.com/EpiAware/ComposedDistributions.jl
+[cdist]: https://github.com/EpiAware/CensoredDistributions.jl

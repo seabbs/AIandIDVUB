@@ -1,9 +1,11 @@
 ---
 title: "Research exchange at the VUB AI Lab"
-subtitle: "Background, research group, and current work"
+subtitle: "Composable infectious disease modelling, and where AI might plug in"
 description: >-
-  A half day exchange between the VUB AI Lab and the UHasselt and UAntwerp
-  infectious disease modelling group, the day after the workshop.
+  Composable EpiAware modelling, recent delays work, and where AI sits in
+  the workflow. A half day exchange between the VUB AI Lab and the UHasselt
+  and UAntwerp infectious disease modelling group, the day after the
+  workshop.
 page-layout: full
 ---
 
@@ -66,7 +68,13 @@ The organisers' request, as the abstract.
   A live joint model of the 2026 DRC outbreak of Ebola disease caused by
   Bundibugyo virus.
 - [What we want from an approach][approaches].
-  The design considerations behind composable modelling.
+  The design considerations behind composable modelling, and the two
+  approaches.
+- [ComposableTuringIDModels.jl][ctim] and
+  [ComposedDistributions.jl][cd].
+- [primarycensored][pc], [epidist][epidist] and
+  [CensoredDistributions.jl][cdist].
+  Delay estimation with censoring and truncation.
 - [A workflow for infectious disease modelling][workflow].
 - [How I am LLM][howillm].
 
@@ -81,3 +89,8 @@ The organisers' request, as the abstract.
 [approaches]: https://epiaware.org/approaches/
 [workflow]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
 [howillm]: https://samabbott.co.uk/how-I-llm
+[ctim]: https://github.com/EpiAware/ComposableTuringIDModels.jl
+[cd]: https://github.com/EpiAware/ComposedDistributions.jl
+[pc]: https://primarycensored.epinowcast.org/
+[epidist]: https://epidist.epinowcast.org/
+[cdist]: https://github.com/EpiAware/CensoredDistributions.jl
