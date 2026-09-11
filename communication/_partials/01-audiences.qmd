@@ -1,10 +1,12 @@
 # Three audiences in 2020
 
 <!--
-Proposed slides, about 8 minutes. See notes/proposal.md.
-- Government. Weekly Rt estimates to SPI-M-O. What the consensus process
-  did to uncertainty.
-- The public. The dashboard, who used it, what they did with it.
-- Other scientists. EpiNow2, and what shipping a package tells people.
-One artefact per audience.
+Proposed slides, about 8 minutes. See notes/proposal.md section 2A.
+- Government. Weekly Rt to SPI-M-O and SAGE. Consensus statements.
+- What the consensus process did. Joint statements, lost detail.
+- The public. The dashboard. 500,000 users, 20,000 read the methods.
+- What went wrong. "Nonsensical estimates." No point estimates.
+- Other scientists. Hubs. "Very hard to learn from."
+- Where it mattered. The UK, where we knew the data.
+One artefact per slide.
 -->

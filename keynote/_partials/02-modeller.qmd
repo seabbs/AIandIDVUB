@@ -1,9 +1,10 @@
 # What a modeller does during an outbreak
 
 <!--
-Proposed slides, about 4 minutes. See notes/proposal.md.
-- Data in, delays, Rt, forecasts, scenarios. One schematic.
-- What keeps going wrong: biased delays, chained models, slow to adapt,
-  nothing reusable. The workflow schematic.
-Sets up Abrams and Libin's methods overview without doing it for them.
+Proposed slides, about 3 minutes. See notes/proposal.md section 1B.
+- The loop. Data, delays, infections and Rt, forecasts, decision, new data.
+  Say what a renewal process is in one line.
+- What keeps going wrong. Biased delays, chained models, everything
+  bespoke. "We sometimes published nonsensical estimates."
+Hands to Abrams and Libin.
 -->

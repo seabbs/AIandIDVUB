@@ -1,10 +1,12 @@
 # Ten years of outbreaks
 
 <!--
-Proposed slides, about 6 minutes. See notes/proposal.md.
-- 2014, Ebola in West Africa. Watching others do real-time forecasting.
-- 2020, COVID-19. What we did: Rt, the dashboard, SPI-M, EpiNow2.
-- 2022, mpox. Delays and the serial interval.
-- 2026, Ebola disease caused by Bundibugyo virus in the DRC. Live now.
-One figure per outbreak. Sam's own work marked apart from others'.
+Proposed slides, about 7 minutes. See notes/proposal.md section 1A.
+- A timeline strip, 2014 to 2026, deep history as small ticks.
+- 2014, watching. CDC 1.4 million versus 21,000. Camacho and Funk.
+- 2020, doing it. Rt daily for thousands of locations. SPI-M-O.
+- What came out of it. EpiNow2, epinowcast, scoringutils, the hubs.
+- 2022, mpox. Delays, the serial interval, nowcasting for UKHSA.
+- 2026, live. Bundibugyo virus disease in the DRC. Bridge to agents.
+One figure per slide. Sam's own work marked apart from others'.
 -->

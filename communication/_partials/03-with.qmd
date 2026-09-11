@@ -1,10 +1,10 @@
 # With AI
 
 <!--
-Proposed slides, about 7 minutes. See notes/proposal.md.
-- What I use agents for: drafting, translating sitreps, review, these
-  slides.
-- Making it visible: the bot account, co-author lines, the prompts page,
-  the bio joke.
-- What the audience for a model gains, and what it loses.
+Proposed slides, about 7 minutes. See notes/proposal.md section 2C.
+- What I use it for. "I wrote the argument and almost none of the words."
+- Making it visible. Bot account, disclosure line, prompts page, the bio.
+- The steering is the work. Fifty-three steers.
+- Checking what it wrote. 114 claims, 67 changed.
+- Ten times the throughput at ten times the review load is not a win.
 -->

@@ -23,8 +23,8 @@ format:
 - Ten years of outbreaks, from West Africa to the DRC
 - What a modeller does during an outbreak, and what keeps going wrong
 - Agents. How I work now, and a live outbreak built with them
-- The other AI. Universal differential equations, neural flows,
-  foundation models
+- The other AI. Learning mechanism, fitting the unfittable,
+  forecasting without one
 - Where does AI fit?
 :::
 ::: {.column width="32%"}

@@ -1,6 +1,9 @@
 # What I would like us to agree on
 
 <!--
-Proposed slides, about 3 minutes. See notes/proposal.md.
-- Three or four concrete asks, phrased as questions to the room.
+Proposed slides, about 3 minutes. See notes/proposal.md section 2E.
+- Publish prompts and steers with the code. Disclose agent authorship.
+  Joint statements and hubs matter more. A named person behind every
+  number.
+- The question for the panel.
 -->

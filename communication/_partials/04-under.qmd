@@ -1,9 +1,10 @@
 # Under AI
 
 <!--
-Proposed slides, about 7 minutes. See notes/proposal.md.
-- Everything sounds the same. The LLM-isms I cut, with examples.
-- Trust and provenance. git log as the record of who did what.
+Proposed slides, about 7 minutes. See notes/proposal.md section 2D.
+- Everything sounds the same. Three before and after pairs. Kobak 2025.
 - The reader has one too. Summaries of summaries.
-- Review load, and who is accountable.
+- Provenance. "The named authors are responsible for that oversight."
+- Confident, plausible, wrong. The digitiser, from the reader's side.
+- Who gets to do this. "I am part of the problem."
 -->

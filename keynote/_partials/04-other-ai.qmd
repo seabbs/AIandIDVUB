@@ -1,11 +1,10 @@
 # The other AI
 
 <!--
-Proposed slides, about 6 minutes, high level. See notes/proposal.md.
-- Universal differential equations and PINNs. Learn the part of the
-  mechanism you do not know.
-- Neural and normalising flows. Fit models you could not fit before.
-- Foundation models for forecasting. Google in FluSight.
-- Agentic model composition.
-One picture each, one line on what I would want to see.
+Proposed slides, about 5 minutes. See notes/proposal.md section 1D.
+- A map. Kraemer et al. 2025 taxonomy, with the room's RL and agents on it.
+- Learn the part of the mechanism you do not know. UDEs and PINNs.
+- Fit models you could not fit. Flows and simulation-based inference.
+- Forecast without a mechanism. Time series foundation models zero-shot.
+One picture each, one caveat each, sourced.
 -->

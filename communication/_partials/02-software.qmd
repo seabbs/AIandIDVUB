@@ -1,8 +1,9 @@
 # Software is communication
 
 <!--
-Proposed slides, about 5 minutes. See notes/proposal.md.
-- Defaults are advice. EpiNow2 defaults as policy.
-- epinowcast: forum, seminar, code of conduct. Community as the channel.
-- scoringutils and the hubs. Evaluation as communication between teams.
+Proposed slides, about 5 minutes. See notes/proposal.md section 2B.
+- Defaults are advice. EpiNow2, CDC, Ottawa, the Philippines.
+- The limits travel less well than the method.
+- Community as the channel. epinowcast forum, seminars, ladder.
+- Evaluation as communication. scoringutils, pairwise comparison.
 -->

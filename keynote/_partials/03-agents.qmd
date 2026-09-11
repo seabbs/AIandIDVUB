@@ -1,11 +1,11 @@
 # Agents
 
 <!--
-Proposed slides, about 8 minutes. See notes/proposal.md.
-- What I mean by agentic AI. One slide, no jargon.
-- How I work now. Most code written by an agent, reviewed by me.
-- BVDOutbreakSize. Replication in hours, French PDF sitreps, daily
-  updates, what was hard to check.
-- What it changes: who writes the code, review, composability.
-- What it does not change: the model is still a model.
+Proposed slides, about 8 minutes. See notes/proposal.md section 1C.
+- What I mean by an agent. Not an RL policy, not a chatbot. One schematic.
+- How I work now. Bot PRs per month, rebuilt with September counts.
+- A live outbreak built this way. Sitrep page beside streams posterior.
+- What was hard to check. SitRep 081 and 087. Confident, plausible, wrong.
+- What changes. Review is the bottleneck. Google SAI as the evaluated case.
+- What does not change. Agents did not choose the model. Who pays.
 -->
