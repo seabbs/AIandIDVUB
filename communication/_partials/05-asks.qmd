@@ -1,9 +1,35 @@
 # What I would like us to agree on
 
-<!--
-Proposed slides, about 3 minutes. See notes/proposal.md section 2E.
-- Publish prompts and steers with the code. Disclose agent authorship.
-  Joint statements and hubs matter more. A named person behind every
-  number.
-- The question for the panel.
--->
+## Four things
+
+:::: {.columns}
+::: {.column width="40%"}
+- Publish the prompts and the steers with the code
+- Disclose agent authorship the way we disclose funding
+- Joint statements and hubs, when writing is cheap and anyone can be
+  first out
+- A named person behind every number
+:::
+::: {.column width="60%"}
+::: {layout-ncol=2}
+![](../figures/comms-shot-juliacon-prompts.png){fig-alt="The JuliaCon 2026 prompts page"}
+
+![](../figures/comms-shot-seabbs-bot.png){fig-alt="The seabbs-bot GitHub profile"}
+
+![](../figures/comms-shot-spimo-statement.png){fig-alt="A SPI-M-O consensus statement on GOV.UK"}
+
+![](../figures/comms-shot-covid-issue-171.png){fig-alt="A dashboard issue answered by a named author"}
+:::
+
+::: {.attribution}
+Screenshots 2026-09-11, sources on the earlier slides
+:::
+:::
+::::
+
+## For the panel
+
+::: {.send-help}
+When the writer and the reader both have a language model,
+what is the person for?
+:::

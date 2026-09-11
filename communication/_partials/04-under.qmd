@@ -1,10 +1,122 @@
 # Under AI
 
-<!--
-Proposed slides, about 7 minutes. See notes/proposal.md section 2D.
-- Everything sounds the same. Three before and after pairs. Kobak 2025.
-- The reader has one too. Summaries of summaries.
-- Provenance. "The named authors are responsible for that oversight."
-- Confident, plausible, wrong. The digitiser, from the reader's side.
-- Who gets to do this. "I am part of the problem."
--->
+## Prose that sounds the same
+
+:::: {.columns}
+::: {.column width="40%"}
+- Three edits from my own decks, from the git history
+- The default edit is deletion
+- Andres Algaba speaks next on detecting it and on citation bias
+:::
+::: {.column width="60%"}
+**The bolted-on clause**
+
+[Observation is often missing not at random: which pairs we see depends
+on the very timing we are trying to estimate]{style="color: #8a8f98"}
+
+::: {.fragment}
+[Observation is often missing not at random]{style="color: #1f6f8b"}
+:::
+
+**The moral**
+
+[This is where the survival-analysis and modelling views most need each
+other.]{style="color: #8a8f98"}
+
+::: {.fragment}
+[*Deleted. The column now holds only the attribution.*]{style="color: #1f6f8b"}
+:::
+
+**The point-stamp**
+
+[The point is to drop the parametric-shape assumption while keeping the
+censoring and truncation handling honest.]{style="color: #8a8f98"}
+
+::: {.fragment}
+[It drops the parametric-shape assumption while still handling the
+censoring and truncation.]{style="color: #1f6f8b"}
+:::
+
+::: {.attribution}
+[seabbs/how-to-serial-interval](https://github.com/seabbs/how-to-serial-interval)
+commits `4897ba8`, `a865fe2` and `bdd0a34` ·
+[Kobak et al. (2025)](https://doi.org/10.1126/sciadv.adt3813), Science
+Advances, at least 13.5% of 2024 PubMed abstracts LLM-processed
+:::
+:::
+::::
+
+## Provenance
+
+:::: {.columns}
+::: {.column width="40%"}
+- The live Bundibugyo virus disease model. 497 commits, 333 of 425 pull
+  requests from the bot account
+- Four named authors. Who is accountable for a number an agent produced?
+
+> The model code and analysis were drafted by a language model, then
+> reviewed and revised under human oversight.
+> The named authors are responsible for that oversight.
+:::
+::: {.column width="60%"}
+```
+$ git log --format='%an' | sort | uniq -c | sort -rn
+ 238 Sam Abbott (bot)
+ 144 seabbs-bot
+  50 dependabot[bot]
+  40 Sam Abbott
+  11 Sam
+   7 Sebastian Funk - robot edition
+   3 Sebastian Funk
+   3 Claude
+   1 Samuel Brand
+```
+
+::: {.attribution}
+[epiforecasts/BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize)
+README and local clone, 2026-09-11 · pull request counts from the
+GitHub search API, same day
+:::
+:::
+::::
+
+## Confident, plausible, wrong
+
+:::: {.columns}
+::: {.column width="40%"}
+- The onset curve exists only as a picture in the PDF. A script reads
+  counts from pixel colour and axis ticks
+- SitRep 081. JPEG compression left the ticks a pixel tall. The script
+  found about 10 of 19 and read 1,411 cases against a printed 3,066
+- SitRep 087. The y-axis grid moved from steps of 20 to 25. Every count
+  came out 25% high and nothing looked wrong
+- It was caught because counts for dates already reported changed. A
+  reporting triangle says they should not
+:::
+::: {.column width="60%"}
+![](../figures/comms-digitiser.png){width="100%"
+fig-alt="Same bars read on a 20-step and a 25-step axis, 70 versus 87"}
+
+::: {.attribution}
+Schematic, this talk. Bars are illustrative · record in
+[BVDOutbreakSize `data/README.md`](https://github.com/epiforecasts/BVDOutbreakSize/blob/main/data/README.md),
+SitReps 081 and 087, read 2026-09-11
+:::
+:::
+::::
+
+## Who gets to do this
+
+> The people modelling outbreaks where outbreaks happen are the least
+> likely to have paid access.
+> I do not have a defence for this.
+> I am part of the problem.
+
+- £200 a month, from my own pocket. My institution does not cover it
+- Who can do this work at all is narrowing. Agents make that worse
+
+::: {.attribution}
+[How I am LLM](https://samabbott.co.uk/how-I-llm), 2026-08-10 ·
+[JuliaCon 2026 roadmap deck](https://samabbott.co.uk/JuliaCon2026/roadmap/slides.html),
+governance slide
+:::

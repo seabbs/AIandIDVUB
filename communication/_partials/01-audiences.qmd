@@ -1,12 +1,155 @@
 # Three audiences in 2020
 
-<!--
-Proposed slides, about 8 minutes. See notes/proposal.md section 2A.
-- Government. Weekly Rt to SPI-M-O and SAGE. Consensus statements.
-- What the consensus process did. Joint statements, lost detail.
-- The public. The dashboard. 500,000 users, 20,000 read the methods.
-- What went wrong. "Nonsensical estimates." No point estimates.
-- Other scientists. Hubs. "Very hard to learn from."
-- Where it mattered. The UK, where we knew the data.
-One artefact per slide.
--->
+## Government
+
+:::: {.columns}
+::: {.column width="40%"}
+- $R_t$, the reproduction number over time. How many people each case
+  goes on to infect
+- Weekly $R_t$, short-term forecasts and ad hoc reports to SPI-M-O, the
+  UK government's modelling advisory group, and through it to SAGE, the
+  scientific advisory group in an emergency
+- What the public saw was a consensus statement on GOV.UK. No team named
+
+> We don't know whether any of this gave any policy maker any useful
+> information that helped them make better decisions.
+:::
+::: {.column width="60%"}
+![](../figures/comms-shot-spimo-statement.png){width="88%"
+fig-align="center"
+fig-alt="GOV.UK page: SPI-M-O consensus statement, 17 September 2020"}
+
+::: {.attribution}
+[SPI-M-O consensus statement, 17 September 2020](https://www.gov.uk/government/publications/spi-m-o-consensus-statement-on-covid-19-17-september-2020),
+GOV.UK, screenshot 2026-09-11 ·
+quote from
+[Reflections on two years estimating effective reproduction numbers](https://samabbott.co.uk/posts/2022-03-25-rt-reflections/),
+Abbott and Funk, 2022-03-25
+:::
+:::
+::::
+
+## What the consensus process did
+
+:::: {.columns}
+::: {.column width="40%"}
+- Each group sent its own estimate, with its own model and its own
+  interval
+- One range went out, agreed by the group
+- The shared view survives. The detail behind each estimate does not
+
+> If results are presented individually this can get lost and it
+> incentivises being first out (and maybe therefore cutting corners).
+:::
+::: {.column width="60%"}
+![](../figures/comms-uk-rt-dashboard.png){height="700px"
+fig-align="center"
+fig-alt="GOV.UK: latest R range for England, 1.0 to 1.2, no point estimate"}
+
+::: {.attribution}
+[The R value and growth rate](https://www.gov.uk/guidance/the-r-value-and-growth-rate),
+GOV.UK, via `hpru-ppie-kickoff/figures/uk-rt-dashboard.png` ·
+quote from
+[Data, Models, and Modellers during a Global Pandemic](https://samabbott.co.uk/posts/2023-01-04-iisa-data-models-and-modellers-during-a-global-pandemic/),
+Abbott, 2023-01-04
+:::
+:::
+::::
+
+## The public
+
+:::: {.columns}
+::: {.column width="40%"}
+- [epiforecasts.io/covid](https://epiforecasts.io/covid/), April 2020 to
+  March 2022
+- Daily $R_t$ and nowcasts for several thousand locations. A nowcast is an
+  estimate of what has already happened but not yet been reported
+- Just over 500,000 unique users and 1.2 million page views by March 2022
+- 20,000 of those page views were for the methods page
+:::
+::: {.column width="60%"}
+![](../figures/comms-shot-covid-uk.png){width="100%"
+fig-alt="UK page of the epiforecasts dashboard, national summary"}
+
+::: {.attribution}
+[epiforecasts.io/covid, United Kingdom](https://epiforecasts.io/covid/posts/national/united-kingdom/),
+screenshot 2026-09-11, estimates frozen 2022-03-26 · counts from
+[Reflections on two years estimating effective reproduction numbers](https://samabbott.co.uk/posts/2022-03-25-rt-reflections/),
+2022-03-25
+:::
+:::
+::::
+
+## {background-iframe="https://epiforecasts.io/covid/posts/national/united-kingdom/" background-interactive="true"}
+
+## What went wrong
+
+:::: {.columns}
+::: {.column width="40%"}
+> Because we did not have the capacity to manually inspect the data and
+> estimates on a daily basis we sometimes published nonsensical estimates.
+
+- Wisconsin reported on a Sunday for the first time. The model read the
+  catch-up as an outbreak
+- What I wrote down afterwards. Be as open as possible. State the
+  limitations first. No point estimates
+- I did not talk to the press. No training, no time, and it is someone
+  else's speciality
+:::
+::: {.column width="60%"}
+![](../figures/comms-shot-covid-issue-171.png){width="100%"
+fig-alt="GitHub issue: Your Wisconsin data looks horribly flawed"}
+
+::: {.attribution}
+[epiforecasts/covid#171](https://github.com/epiforecasts/covid/issues/171),
+screenshot 2026-09-11 · quote from
+[Reflections on two years estimating effective reproduction numbers](https://samabbott.co.uk/posts/2022-03-25-rt-reflections/),
+2022-03-25 · the rules from
+[Data, Models, and Modellers during a Global Pandemic](https://samabbott.co.uk/posts/2023-01-04-iisa-data-models-and-modellers-during-a-global-pandemic/),
+2023-01-04
+:::
+:::
+::::
+
+## Other scientists
+
+:::: {.columns}
+::: {.column width="40%"}
+- Forecast hubs. Each team submits weekly and the hub combines them into
+  an ensemble
+- We submitted to the US, European and German and Polish hubs
+- The ensemble beat most single models in most countries
+- It also missed the turns the teams missed
+
+> Your forecast becomes part of another product, the forecast ensemble.
+> However, they can be very hard to learn from.
+:::
+::: {.column width="60%"}
+![](../figures/comms-hub-ensemble-good.png){height="400px"
+fig-align="center"
+fig-alt="Relative WIS by country, ensemble marked as an asterisk"}
+
+![](../figures/comms-hub-ensemble-less-good.png){height="330px"
+fig-align="center"
+fig-alt="Ensemble forecasts for Germany missing the Delta and Omicron turns"}
+
+::: {.attribution}
+Figures 4 and 2 of
+[Sherratt et al. (2023)](https://doi.org/10.7554/eLife.81916), eLife,
+CC-BY 4.0, via `hpru-ppie-kickoff/figures/` · quote from
+[Evaluating an epidemiologically motivated surrogate model](https://samabbott.co.uk/posts/2022-10-13-surrogate-ensemble-forecast/),
+Abbott, 2022-10-13
+:::
+:::
+::::
+
+## Where it mattered
+
+> Probably our most useful contributions from this work were in the UK
+> where we knew the data and its limitations particularly well and
+> interacted directly and frequently with policy makers.
+
+::: {.attribution}
+[Reflections on two years estimating effective reproduction numbers](https://samabbott.co.uk/posts/2022-03-25-rt-reflections/),
+Abbott and Funk, 2022-03-25
+:::

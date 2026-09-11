@@ -1,9 +1,115 @@
 # Software is communication
 
-<!--
-Proposed slides, about 5 minutes. See notes/proposal.md section 2B.
-- Defaults are advice. EpiNow2, CDC, Ottawa, the Philippines.
-- The limits travel less well than the method.
-- Community as the channel. epinowcast forum, seminars, ladder.
-- Evaluation as communication. scoringutils, pairwise comparison.
--->
+## Defaults are advice
+
+:::: {.columns}
+::: {.column width="40%"}
+- [EpiNow2](https://epiforecasts.io/EpiNow2/) has been on CRAN since
+  1 September 2020
+- CDC used it for nowcasts and $R_t$
+- Every argument a user leaves alone is a decision they inherited from
+  us. The generation time, the delays, the prior on $R_t$, the sampler
+:::
+::: {.column width="60%"}
+```r
+estimates <- epinow(
+  data = reported_cases,
+  generation_time = gt_opts(example_generation_time),
+  delays = delay_opts(example_incubation_period + reporting_delay),
+  rt = rt_opts(prior = LogNormal(mean = 2, sd = 0.2)),
+  stan = stan_opts(cores = 4)
+)
+```
+
+::: {.attribution}
+[EpiNow2 vignette](https://epiforecasts.io/EpiNow2/articles/EpiNow2.html) ·
+[CRAN archive](https://cran.r-project.org/src/contrib/Archive/EpiNow2/),
+1.1.0 dated 2020-09-01 ·
+[CDC CFA, Behind the model: nowcasting](https://www.cdc.gov/cfa-behind-the-model/php/data-research/nowcasting.html),
+updated 2026-01-30 ·
+[MMWR 73(46), 2024-11-21](https://www.cdc.gov/mmwr/volumes/73/wr/mm7346a3.htm)
+:::
+:::
+::::
+
+## The limits travel less well than the method
+
+:::: {.columns}
+::: {.column width="40%"}
+- The estimates went out as CSV files on GitHub
+- They were used in publications by people who did not interact with us
+- The limitations sat on a methods page that 20,000 of 1.2 million page
+  views reached
+
+> This can cause issues if the limitations of the method are poorly
+> communicated.
+:::
+::: {.column width="60%"}
+![](../figures/comms-pipeline.png){width="100%"
+fig-alt="Model, estimates and other papers in a row; limitations fade"}
+
+::: {.attribution}
+Schematic, this talk · quote and counts from
+[Reflections on two years estimating effective reproduction numbers](https://samabbott.co.uk/posts/2022-03-25-rt-reflections/),
+2022-03-25 ·
+[epiforecasts/covid-rt-estimates](https://github.com/epiforecasts/covid-rt-estimates)
+:::
+:::
+::::
+
+## Community as the channel
+
+:::: {.columns}
+::: {.column width="40%"}
+- [epinowcast](https://www.epinowcast.org/). Over 50 researchers and
+  public health practitioners, a forum, a monthly seminar since May 2023,
+  a contribution ladder
+- 31 seminars from May 2023 to May 2026
+- By 2026 my own verdict was that in many cases the package is too complex
+  for anyone else to use
+
+> Trying to build a community of practice as community >> methods or
+> models alone.
+:::
+::: {.column width="60%"}
+![](../figures/comms-shot-epinowcast-forum.png){width="100%"
+fig-alt="The epinowcast community forum front page with recent topics"}
+
+::: {.attribution}
+[community.epinowcast.org](https://community.epinowcast.org/), screenshot
+2026-09-11 · seminar count from
+[epinowcast.org/seminars](https://www.epinowcast.org/seminars.html) ·
+community size from the composable workflow grant co-applicant text ·
+quote from
+[Data, Models, and Modellers during a Global Pandemic](https://samabbott.co.uk/posts/2023-01-04-iisa-data-models-and-modellers-during-a-global-pandemic/),
+2023-01-04 · 2026 verdict from the
+[JuliaCon 2026 roadmap deck](https://samabbott.co.uk/JuliaCon2026/roadmap/slides.html)
+:::
+:::
+::::
+
+## Evaluation as communication
+
+:::: {.columns}
+::: {.column width="40%"}
+- [scoringutils](https://epiforecasts.io/scoringutils/) scores
+  probabilistic forecasts. WIS, the weighted interval score, is the hubs'
+  headline measure
+- Raw scores are not comparable when teams miss weeks
+- Pairwise comparison on the overlapping forecasts gives a relative skill
+  each team can read
+- UKHSA, the UK Health Security Agency, asked us for guidance on
+  evaluation
+:::
+::: {.column width="60%"}
+![](../figures/comms-pairwise-illustration.png){width="100%"
+fig-alt="Three models compared in pairs to give a relative skill score"}
+
+::: {.attribution}
+Figure from the
+[scoringutils manuscript](https://github.com/epiforecasts/scoringutils/tree/main/inst/manuscript),
+Bosse et al., `man/figures/pairwise-illustration.png` · UKHSA request
+recorded in the `bmbr-guidance-grant` project notes
+:::
+:::
+::::

@@ -1,10 +1,120 @@
 # With AI
 
-<!--
-Proposed slides, about 7 minutes. See notes/proposal.md section 2C.
-- What I use it for. "I wrote the argument and almost none of the words."
-- Making it visible. Bot account, disclosure line, prompts page, the bio.
-- The steering is the work. Fifty-three steers.
-- Checking what it wrote. 114 claims, 67 changed.
-- Ten times the throughput at ten times the review load is not a win.
--->
+## What I use it for
+
+:::: {.columns}
+::: {.column width="40%"}
+- Drafting and review, of code and of text
+- Reading French situation reports as PDFs and digitising their charts
+- These slides. I wrote the brief and the corrections. An agent wrote
+  the words and drew the figures
+- The brief for this lecture is on the right
+:::
+::: {.column width="60%"}
+> For communication, really not sure.
+> Can you mine my recent work and give a proposal?
+
+> In recent talks, look at the git history to see how I have pruned and
+> refined language and style to make it my own, and follow that.
+> Be wary of overly dense text on slides.
+> We like schematics, pictures and sparse clean slides.
+
+::: {.attribution}
+[The prompts page for this site](https://samabbott.co.uk/AIandIDVUB/prompts.html),
+spelling cleaned up, judgements unchanged
+:::
+:::
+::::
+
+## Making it visible
+
+:::: {.columns}
+::: {.column width="40%"}
+- Agent work goes out from a bot account, a second GitHub login, so
+  `git log` says who did what
+- A disclosure line in the README of the Bundibugyo outbreak analysis
+- A prompts page with the brief and the steers
+- My conference bio was drafted by the bot, "who has a very suspiciously
+  high opinion of me, so take it with a pinch of salt"
+:::
+::: {.column width="60%"}
+![](../figures/comms-shot-seabbs-bot.png){width="100%"
+fig-alt="GitHub profile of seabbs-bot, Sam Abbott (bot), robot avatar"}
+
+::: {.attribution}
+[github.com/seabbs-bot](https://github.com/seabbs-bot), created
+2026-01-23, screenshot 2026-09-11 · bio line from the
+[JuliaCon 2026 home page](https://samabbott.co.uk/JuliaCon2026/)
+:::
+:::
+::::
+
+## The steering is the work
+
+:::: {.columns}
+::: {.column width="40%"}
+- The JuliaCon 2026 site. One brief, then 130 steers by 14 August 2026
+- Mid-build the prompts page counted fifty-three. The number more than
+  doubled before the talks
+- The first prompt got it most of the way, and wrong in the ways that
+  mattered
+- Each steer was a judgement I could make and the agent could not
+:::
+::: {.column width="60%"}
+![](../figures/comms-shot-juliacon-steers.png){width="100%"
+fig-alt="The steers section of the JuliaCon 2026 prompts page"}
+
+::: {.attribution}
+[samabbott.co.uk/JuliaCon2026/prompts.html](https://samabbott.co.uk/JuliaCon2026/prompts.html),
+screenshot 2026-09-11 · 130 counted from `notes/steers.md` in
+[seabbs/JuliaCon2026](https://github.com/seabbs/JuliaCon2026), last
+commit 2026-08-14 · fifty-three from the page text
+:::
+:::
+::::
+
+## Checking what it wrote
+
+:::: {.columns}
+::: {.column width="40%"}
+- A second agent workflow pulled 114 claims out of one deck and tested
+  each against git and the GitHub API
+- 67 needed changing
+- "530 pull requests" was GitHub's latest issue number. The count was 353
+- 712 of 1,371 merged bot pull requests carried no review, so "reviewed by
+  me" became "about half"
+:::
+::: {.column width="60%"}
+![](../figures/comms-claims.png){width="100%"
+fig-alt="A single bar of 114 claims, 67 marked changed and 47 marked stood"}
+
+::: {.attribution}
+[seabbs/how-I-llm](https://github.com/seabbs/how-I-llm) commits
+`8c7e834` and `1fceb9a`, read 2026-09-11
+:::
+:::
+::::
+
+## Ten times the throughput
+
+:::: {.columns}
+::: {.column width="40%"}
+- A pull request is a proposed change that someone has to read before it
+  lands
+- 2,144 from the bot account by 11 September 2026. 85.5% merged
+- 11.9% closed unmerged, about half of those superseded rather than
+  rejected
+- My time moved from writing to checking. Ten times the output needs ten
+  times the reading
+:::
+::: {.column width="60%"}
+![](../figures/comms-bot-prs-by-month.png){width="100%"
+fig-alt="seabbs-bot pull requests per month in 2026, peak 744 in July"}
+
+::: {.attribution}
+GitHub search API `total_count` by month, run 2026-09-11, script
+`scripts/comms-figures.py` · superseded share from
+[seabbs/how-I-llm](https://github.com/seabbs/how-I-llm) commit `8c7e834`
+:::
+:::
+::::
