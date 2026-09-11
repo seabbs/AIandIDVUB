@@ -1,10 +1,154 @@
 # What a modeller does during an outbreak
 
-<!--
-Proposed slides, about 3 minutes. See notes/proposal.md section 1B.
-- The loop. Data, delays, infections and Rt, forecasts, decision, new data.
-  Say what a renewal process is in one line.
-- What keeps going wrong. Biased delays, chained models, everything
-  bespoke. "We sometimes published nonsensical estimates."
-Hands to Abrams and Libin.
--->
+## The loop
+
+:::: {.columns}
+::: {.column width="40%"}
+- Counts arrive by report date. The infections happened days or weeks
+  earlier
+- Estimate the delays first, then unpick them from the counts to get
+  infections and $R_t$
+- A renewal process: today's infections are $R_t$ times a weighted sum
+  of recent infections, weighted by the generation interval. Run it
+  backwards to estimate, forwards to forecast
+- Someone decides. Then next week's data arrive
+:::
+::: {.column width="60%"}
+![](../figures/keynote-loop.png){width="100%"
+fig-alt="Four teal boxes in a row, data arrive, delays, infections and
+Rt, forecasts and scenarios, joined by arrows, with a red box labelled a
+decision below and a red return arrow labelled new data, next week
+running back to the first box."}
+
+::: {.attribution}
+Diagram this talk, `scripts/keynote-schematics.py`, after
+[A workflow for infectious disease modelling][wf], Abbott et al.
+:::
+:::
+::::
+
+## A renewal process, by hand
+
+:::: {.columns}
+::: {.column width="40%"}
+- $I_t = R_t \sum_s I_{t-s}\, g_s$
+- $g_s$ is the generation interval (GI), the delay from one infection
+  to the next
+- Above one, growth. Below one, decline. The generation interval sets
+  how fast
+- Move the sliders
+:::
+::: {.column width="60%"}
+```{ojs}
+//| echo: false
+viewof R = Inputs.range([0.5, 2.0], {
+  value: 1.3, step: 0.05, label: "R"
+})
+viewof gmean = Inputs.range([2, 12], {
+  value: 5, step: 0.5, label: "Mean GI, days"
+})
+```
+
+```{ojs}
+//| echo: false
+renewal = {
+  const days = 60, k = 4, theta = gmean / k;
+  const g = Array.from({length: 24}, (_, i) => {
+    const s = i + 1;
+    return Math.pow(s, k - 1) * Math.exp(-s / theta);
+  });
+  const gsum = g.reduce((a, b) => a + b, 0);
+  const gn = g.map((v) => v / gsum);
+  const inf = new Array(days).fill(0);
+  for (let t = 0; t < 5; t++) inf[t] = 10;
+  for (let t = 5; t < days; t++) {
+    let s = 0;
+    for (let j = 0; j < gn.length && t - 1 - j >= 0; j++) {
+      s += inf[t - 1 - j] * gn[j];
+    }
+    inf[t] = R * s;
+  }
+  return inf.map((y, t) => ({day: t, infections: y}));
+}
+Plot.plot({
+  width: 1000,
+  height: 460,
+  marginLeft: 70,
+  style: {fontSize: "18px"},
+  y: {type: "log", label: "Infections per day", grid: true},
+  x: {label: "Day"},
+  marks: [
+    Plot.ruleY([10], {stroke: "#8a8f98", strokeDasharray: "4 4"}),
+    Plot.line(renewal, {
+      x: "day", y: "infections", stroke: "#1f6f8b", strokeWidth: 3.5
+    })
+  ]
+})
+```
+
+::: {.attribution}
+Constant $R$, a gamma-shaped generation interval with shape 4, ten
+infections a day seeded for five days. Interactive this talk.
+:::
+:::
+::::
+
+## A renewal process, by hand {visibility="hidden"}
+
+:::: {.columns}
+::: {.column width="40%"}
+- $I_t = R_t \sum_s I_{t-s}\, g_s$
+- $g_s$ is the generation interval (GI), the delay from one infection
+  to the next
+- Above one, growth. Below one, decline. The generation interval sets
+  how fast
+:::
+::: {.column width="60%"}
+![](../figures/keynote-renewal.png){width="100%"
+fig-alt="Left, a bar chart of a generation interval peaking at four
+days. Right, infections per day on a log scale for R of 0.8, 1.0 and
+1.3, falling, flat and rising."}
+
+::: {.attribution}
+Static fallback for the slider above, `scripts/keynote-schematics.py`.
+Shown only if the room has no network: swap `visibility` between the two
+slides.
+:::
+:::
+::::
+
+## What keeps going wrong
+
+:::: {.columns}
+::: {.column width="40%"}
+- Delays estimated during growth are too short. The long ones have not
+  happened yet
+- Chained models pass on a point estimate. The interval at the end is
+  too narrow
+- Bespoke code for each outbreak. Slow to adapt when the data change
+- "We sometimes published nonsensical estimates"
+
+::: {.callout-note}
+Half of the 105 Belgian COVID-19 models reviewed by Bagaforo et al.
+2026 had no behaviour component.
+:::
+:::
+::: {.column width="60%"}
+![](../figures/keynote-chain.png){width="100%"
+fig-alt="Three boxes, delay distribution, Rt and forecast, each holding
+a bell curve, joined by red arrows labelled the mean that carry a single
+tick mark. Below, a narrow teal bell labelled reported sits inside a
+wider grey bell labelled should carry."}
+
+::: {.attribution}
+Quote from the 25 March 2022 post at [samabbott.co.uk][rt-post]
+· Bagaforo, Dupas, Abrams, Dellicour and Hens 2026, Archives of Public
+Health,
+[doi:10.1186/s13690-026-01959-3](https://doi.org/10.1186/s13690-026-01959-3)
+· diagram this talk, `scripts/keynote-schematics.py`
+:::
+:::
+::::
+
+[wf]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
+[rt-post]: https://samabbott.co.uk/posts/2022-03-25-rt-reflections/

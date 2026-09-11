@@ -1,11 +1,199 @@
 # Agents
 
-<!--
-Proposed slides, about 8 minutes. See notes/proposal.md section 1C.
-- What I mean by an agent. Not an RL policy, not a chatbot. One schematic.
-- How I work now. Bot PRs per month, rebuilt with September counts.
-- A live outbreak built this way. Sitrep page beside streams posterior.
-- What was hard to check. SitRep 081 and 087. Confident, plausible, wrong.
-- What changes. Review is the bottleneck. Google SAI as the evaluated case.
-- What does not change. Agents did not choose the model. Who pays.
--->
+## What I mean by an agent
+
+:::: {.columns}
+::: {.column width="40%"}
+- A language model with tools. It reads files, writes code, runs it,
+  and loops until a check passes
+- Then it opens a pull request, a proposed change to the code that a
+  person reviews before it is merged
+- Not an RL policy. Not a chatbot
+- I write the task and what counts as right. I read what comes back
+:::
+::: {.column width="60%"}
+![](../figures/keynote-agent.png){width="100%"
+fig-alt="A red box on the left, you, the task and what counts as right,
+sends a prompt into a loop of four boxes: read the files and the docs,
+write or change code, run it with tests lint and render, check passed.
+No returns to the top of the loop. Yes leads to a red box on the right,
+you, read the pull request, merge or send it back."}
+
+::: {.attribution}
+Diagram this talk, `scripts/keynote-schematics.py`
+:::
+:::
+::::
+
+## How I work now
+
+:::: {.columns}
+::: {.column width="40%"}
+- An agent writes most of the code I ship. About half of it gets a
+  review from me
+- The agents push from a bot account, `seabbs-bot`, a second GitHub
+  login, so the history says who wrote what
+- The job is now specifying and checking, with little typing
+- 2144 pull requests since January. 85.5% merged, 11.9% closed
+  without merging
+:::
+::: {.column width="60%"}
+![](../figures/keynote-bot-prs.png){width="100%"
+fig-alt="Bar chart of seabbs-bot pull requests opened per month in
+2026: 17, 92, 78, 61, 124, 531, 744, 399, and 98 for September to the
+11th shown in grey. Footer: 2,144 total, 85.5% merged, 11.9% closed
+unmerged."}
+
+::: {.attribution}
+GitHub search API `total_count` per month, run 11 September 2026;
+`seabbs-bot` created 23 January 2026 · review share: 712 of 1371 merged
+bot pull requests carried no review, counted for the
+[how I LLM](https://samabbott.co.uk/how-I-llm) deck, August 2026
+· `scripts/keynote-counts.py`
+:::
+:::
+::::
+
+## A live outbreak built this way
+
+:::: {.columns}
+::: {.column width="40%"}
+- McCabe et al. published an outbreak size estimate on 18 May.
+  A replication in a few hours the next day
+- Refit on every push. 145 releases since 20 May
+- The situation reports are French PDFs. Agents read them, two blind
+  reads per report
+- 333 of 425 pull requests by the bot. Four named authors
+:::
+::: {.column width="60%"}
+<iframe src="https://epiforecasts.io/BVDOutbreakSize/stable/"
+  width="100%" height="780" title="BVDOutbreakSize live report"
+  style="border: 1px solid #d5d8de;"></iframe>
+
+::: {.attribution}
+[BVDOutbreakSize][bvd], live · repository created 2026-05-19 with 33
+commits that day · 145 releases, `results-43` on 2026-05-20 to
+`results-1699` on 2026-09-09 · pull request counts from the GitHub
+search API, 11 September 2026 · two blind readers per vintage,
+`data/README.md` in that repository · McCabe et al., Imperial College
+London, 18 May 2026, [doi:10.25560/130007](https://doi.org/10.25560/130007)
+:::
+:::
+::::
+
+## A live outbreak built this way {visibility="hidden"}
+
+:::: {.columns}
+::: {.column width="40%"}
+- McCabe et al. published an outbreak size estimate on 18 May.
+  A replication in a few hours the next day
+- Refit on every push. 145 releases since 20 May
+- The situation reports are French PDFs. Agents read them, two blind
+  reads per report
+- 333 of 425 pull requests by the bot. Four named authors
+:::
+::: {.column width="60%"}
+![](../figures/keynote-bvd-rt-sep.png){width="100%"
+fig-alt="Estimated reproduction number over the established outbreak
+from late March to 6 September 2026, purple credible ribbons falling
+from about two in May to about one from August, with a dashed red line
+at the first situation report on 18 May."}
+
+::: {.attribution}
+Static fallback for the live report above, from release `results-1699`,
+9 September 2026, data to 6 September. Shown only if the room has no
+network: swap `visibility` between the two slides.
+:::
+:::
+::::
+
+## What was hard to check
+
+:::: {.columns}
+::: {.column width="40%"}
+- The onset curve exists only as a picture in the PDF. A digitiser
+  reads counts off the pixels
+- SitRep 081: JPEG compression left the axis ticks one pixel tall.
+  The read came out 54% under the printed total
+- SitRep 087: the y-axis grid moved from steps of 20 to 25. Caught
+  only because counts on twelve-week-old dates fell. Old counts cannot
+  fall
+- Wrong answers look like right ones. Nothing crashes
+:::
+::: {.column width="60%"}
+![](../figures/keynote-onset-vintages.png){width="100%"
+fig-alt="Step lines of confirmed cases by week of symptom onset as read
+from situation reports of 12 July, 26 July, 9 August, 23 August and
+6 September 2026, rising from near zero in May to about 400 a week in
+August, with the reads for the same week differing by up to a few tens
+of cases between reports."}
+
+::: {.attribution}
+`data/README.md` in [BVDOutbreakSize][bvd-repo], SitRep 081 and 087
+notes · figure from `data/onset_curve_scanned.csv`, read 11 September
+2026, `scripts/keynote-onset-vintages.py`; each read sits a few percent
+under the total printed on the figure
+:::
+:::
+::::
+
+## What changes
+
+:::: {.columns}
+::: {.column width="40%"}
+- The bottleneck is how fast I can tell whether something is right
+- Components with their own checks give the agent something to test
+  against
+- Google's entry to the CDC influenza, COVID-19 and RSV hubs in 2025/26
+  was an LLM-guided tree search that writes forecasting code. It topped
+  all three, prospectively
+- The earlier retrospective gain, 11% over the CDC ensemble, is put
+  down to data revision leakage by Bracher and Funk
+:::
+::: {.column width="60%"}
+![](../figures/keynote-sai-loop.png){width="100%"
+fig-alt="Five boxes in a row, propose a forecasting model, write the
+code, fit and forecast, score against held-out weeks, keep the best and
+rewrite the rest, with a return arrow labelled a tree of candidate
+models, many rounds."}
+
+::: {.attribution}
+Martinson, Brenner, Plomecka, Williams, Reich and Shamsi 2026,
+[arXiv:2605.16238](https://arxiv.org/abs/2605.16238)
+· Bracher and Funk 2026,
+[arXiv:2608.05883](https://arxiv.org/html/2608.05883)
+· team folders `Google_SAI-*` in the FluSight, COVID-19 and RSV hubs
+· diagram this talk, `scripts/keynote-schematics.py`
+:::
+:::
+::::
+
+## What does not change
+
+:::: {.columns}
+::: {.column width="40%"}
+- Agents built the apparatus. Data ingest, the fitting pipeline,
+  tests, the docs site, releases
+- Choosing the model, deciding what the lower bound meant, and judging
+  whether the ascertainment assumption held stayed with the authors
+- "Who can do this work at all is narrowing. Agents make that worse"
+- "I do not have a defence for this. I am part of the problem"
+:::
+::: {.column width="60%"}
+![](../figures/keynote-bvd-authorship.png){width="100%"
+fig-alt="A single stacked bar of 497 BVDOutbreakSize commits: 392 from
+agent bot identities in teal, 50 from Dependabot in grey, 55 by hand in
+red."}
+
+::: {.attribution}
+`git log` of the local clone, 11 September 2026, `scripts/keynote-counts.py`
+· first quote from the JuliaCon 2026 roadmap deck,
+[samabbott.co.uk/JuliaCon2026](https://samabbott.co.uk/JuliaCon2026)
+· second from [how I LLM](https://samabbott.co.uk/how-I-llm), on paid
+access to models
+:::
+:::
+::::
+
+[bvd]: https://epiforecasts.io/BVDOutbreakSize/stable/
+[bvd-repo]: https://github.com/epiforecasts/BVDOutbreakSize

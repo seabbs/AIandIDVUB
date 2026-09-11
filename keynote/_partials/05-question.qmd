@@ -1,8 +1,38 @@
 # Where does AI fit?
 
-<!--
-Proposed slides, about 2 minutes. See notes/proposal.md section 1E.
-- My guess, marked as a guess. Agents build and check. Mechanism stays
-  the object. People keep the question.
-- The question for the room, which becomes the panel question.
--->
+## My guess
+
+:::: {.columns}
+::: {.column width="40%"}
+- Agents build and check
+- The mechanism stays the object
+- People keep the question, the judgement of fitness for use, and the
+  trust of the people who act on the numbers
+- The lines I have drawn between the columns have moved since I drew
+  them
+:::
+::: {.column width="60%"}
+![](../figures/keynote-who.png){width="100%"
+fig-alt="Three boxes side by side. Agents, build and check: data
+ingest, pipelines, tests, docs, releases, reading French PDFs. The
+mechanism, stays the object: infections, delays, Rt, ascertainment, the
+thing being estimated. People, keep: the question, fitness for use, the
+trust of those who act on the numbers."}
+
+::: {.attribution}
+A guess. The moving line is from [how I LLM](https://samabbott.co.uk/how-I-llm),
+where a claim that agents could not do long-horizon work lasted about six
+months · diagram this talk, `scripts/keynote-schematics.py`
+:::
+:::
+::::
+
+## For the panel {.center}
+
+::: {style="font-size: 1.5em; margin-top: 0.8em;"}
+What is ours, rather than not yet automated?
+:::
+
+::: {style="font-size: 1.1em; margin-top: 1.2em; color: #4a5899;"}
+Tell me what you think agents cannot do.
+:::

@@ -1,12 +1,201 @@
 # Ten years of outbreaks
 
-<!--
-Proposed slides, about 7 minutes. See notes/proposal.md section 1A.
-- A timeline strip, 2014 to 2026, deep history as small ticks.
-- 2014, watching. CDC 1.4 million versus 21,000. Camacho and Funk.
-- 2020, doing it. Rt daily for thousands of locations. SPI-M-O.
-- What came out of it. EpiNow2, epinowcast, scoringutils, the hubs.
-- 2022, mpox. Delays, the serial interval, nowcasting for UKHSA.
-- 2026, live. Bundibugyo virus disease in the DRC. Bridge to agents.
-One figure per slide. Sam's own work marked apart from others'.
--->
+## Two and a half centuries of models, then ten years of outbreaks
+
+![](../figures/keynote-timeline.png){width="92%" fig-align="center"
+fig-alt="A timeline. A compressed left segment carries small grey ticks
+for Bernoulli 1760, Ross 1911, Kermack and McKendrick 1927, foot and
+mouth 2001 and H1N1 2009. An expanded right segment carries four large
+dots: Ebola in West Africa 2014 in grey, labelled watching; COVID-19
+2020, mpox 2022 and Ebola disease caused by Bundibugyo virus in the DRC
+2026 in teal, labelled doing it, nowcasting and live."}
+
+::: {.attribution}
+Bernoulli 1760 after Dietz and Heesterbeek 2002,
+[doi:10.1016/S0025-5564(02)00122-0](https://doi.org/10.1016/S0025-5564(02)00122-0)
+· Ross 1911, *The Prevention of Malaria*, 2nd edition
+· Kermack and McKendrick 1927,
+[doi:10.1098/rspa.1927.0118](https://doi.org/10.1098/rspa.1927.0118)
+· foot and mouth 2001, Ferguson, Donnelly and Anderson,
+[doi:10.1126/science.1061020](https://doi.org/10.1126/science.1061020)
+· H1N1 2009, Fraser et al.,
+[doi:10.1126/science.1176062](https://doi.org/10.1126/science.1176062)
+· WHO notified of Ebola in Guinea 23 March 2014
+· mpox PHEIC 23 July 2022, WHO
+· BVD PHEIC 17 May 2026, [WHO DON602][don602]
+· diagram this talk, `scripts/keynote-timeline.py`
+:::
+
+## 2014. Watching
+
+:::: {.columns}
+::: {.column width="40%"}
+- CDC projected 1.4 million cases in Liberia and Sierra Leone by
+  20 January 2015 without further intervention
+- About 21,000 had occurred by mid January
+- Camacho, Funk and colleagues estimated $R$, the number of new
+  infections per infected person, by district in Sierra Leone as it
+  happened
+- Real-time modelling had arrived. Its overreach was public
+:::
+::: {.column width="60%"}
+![](../figures/keynote-funk2019-forecasts-panel.png){width="100%"
+fig-alt="Weekly Ebola incidence in Western Area, Sierra Leone, from
+September 2014 to February 2015 as a thick black line, with one-week-ahead
+forecasts as dots joined by a thin line and grey credible bands, peaking
+near 350 cases a week in December 2014."}
+
+::: {.attribution}
+Meltzer et al., MMWR, September 2014,
+[cdc.gov/mmwr su6303a1](https://www.cdc.gov/mmwr/preview/mmwrhtml/su6303a1.htm)
+· CDC's account of the 21,000, MMWR 2016,
+[su6503a12](https://www.cdc.gov/mmwr/volumes/65/su/su6503a12.htm)
+· Camacho et al., PLOS Currents Outbreaks, 10 February 2015
+· Figure: panel B of Fig 2, Funk et al. 2019, PLOS Comput Biol,
+[doi:10.1371/journal.pcbi.1006785](https://doi.org/10.1371/journal.pcbi.1006785),
+CC-BY 4.0, downloaded 11 September 2026 and cropped
+:::
+:::
+::::
+
+## 2020. Doing it
+
+:::: {.columns}
+::: {.column width="40%"}
+- $R_t$, the reproduction number over time, estimated daily for
+  several thousand locations
+- A public dashboard from spring 2020 to March 2022
+- Weekly estimates and forecasts to SPI-M-O, the modelling group that
+  advised the UK government
+- "At least 80% but on time"
+:::
+::: {.column width="60%"}
+![](../figures/keynote-example-rt.png){height="720px"
+fig-align="center"
+fig-alt="Six panels of estimated reproduction number over time for
+Australia, France, Germany, South Korea, the United Kingdom and Vietnam,
+each a green ribbon around a dashed line at one, with an orange widening
+ribbon for the most recent days where the estimate is still uncertain."}
+
+::: {.attribution}
+Abbott et al. 2020, Wellcome Open Research,
+[doi:10.12688/wellcomeopenres.16006.1](https://doi.org/10.12688/wellcomeopenres.16006.1)
+· [epiforecasts.io/covid](https://epiforecasts.io/covid/), repository
+created 21 March 2020, last global estimates 31 March 2022
+· figure and "several thousand locations" from the 25 March 2022 post
+at [samabbott.co.uk][rt-post], copied from
+`seabbs.github.io/_posts/2022-03-25-rt-reflections/example-rt.png`
+· "at least 80% but on time" from the 4 January 2023 post at
+[samabbott.co.uk][iisa-post]
+:::
+:::
+::::
+
+## What came out of it
+
+:::: {.columns}
+::: {.column width="40%"}
+- `EpiNow2` for $R_t$, `epinowcast` for nowcasting, `scoringutils` for
+  evaluation, and the forecast hubs
+- Nowcasting: estimating what has already happened but has not yet
+  been reported
+- Used by public health agencies, including CDC
+- "In many cases the package is too complex for anyone else to use"
+:::
+::: {.column width="60%"}
+![](../figures/keynote-packages.png){width="100%"
+fig-alt="A horizontal timeline from 2020 to 2026 with lollipops for
+scoringutils, EpiNow and the Rt dashboard, EpiNow2, the European
+COVID-19 Forecast Hub, epinowcast, epidist, EpiAware.jl,
+primarycensored, baselinenowcast and BVDOutbreakSize, each at its first
+commit or repository creation month."}
+
+::: {.attribution}
+First commits from the local clones, repository creation dates from the
+GitHub API, 11 September 2026
+· CDC, *Behind the Model: Nowcasting*, updated 30 January 2026,
+[cdc.gov](https://www.cdc.gov/cfa-behind-the-model/php/data-research/nowcasting.html)
+· MMWR 73(46), 21 November 2024,
+[cdc.gov/mmwr mm7346a3](https://www.cdc.gov/mmwr/volumes/73/wr/mm7346a3.htm)
+· quote from the JuliaCon 2026 roadmap deck,
+[samabbott.co.uk/JuliaCon2026](https://samabbott.co.uk/JuliaCon2026)
+· diagram this talk, `scripts/keynote-timeline.py`
+:::
+:::
+::::
+
+## 2022. mpox
+
+:::: {.columns}
+::: {.column width="40%"}
+- Cases by symptom onset arrive late. The most recent days look like
+  a fall
+- Nowcasting for UKHSA, the UK Health Security Agency, with Overton and
+  colleagues
+- Ward et al. estimated the incubation period and serial interval from
+  UK contact tracing. We wrote the editorial that ran beside it
+:::
+::: {.column width="60%"}
+![](../figures/keynote-overton2023-historical.png){width="100%"
+fig-alt="Two panels of daily mpox cases in England by symptom onset. Red
+dots are the counts known on the nowcast date, blue dots the counts
+eventually reported, a dashed black line the nowcast median and a grey
+band its interval. The red dots fall to zero in the most recent days
+while the nowcast and the later data do not."}
+
+::: {.attribution}
+Figure: Fig 7 of Overton, Abbott et al. 2023, *Nowcasting the 2022 mpox
+outbreak in England*, PLOS Comput Biol,
+[doi:10.1371/journal.pcbi.1011463](https://doi.org/10.1371/journal.pcbi.1011463),
+CC-BY 4.0, downloaded 11 September 2026
+· Ward et al. 2022, BMJ,
+[doi:10.1136/bmj-2022-073153](https://doi.org/10.1136/bmj-2022-073153)
+· Freeman, Abbott and Kurpiel 2022, BMJ editorial,
+[doi:10.1136/bmj.o2504](https://doi.org/10.1136/bmj.o2504)
+:::
+:::
+::::
+
+## 2026. Live
+
+:::: {.columns}
+::: {.column width="40%"}
+- Ebola disease caused by Bundibugyo virus, DRC. Declared 15 May,
+  a PHEIC on 17 May
+- 6757 confirmed cases and 3267 deaths by 7 September
+- Most infections are never confirmed. A model fitted jointly to the
+  situation-report streams puts infections to 6 September between
+  9,700 and 19,200
+- The situation reports are PDFs, in French, most days
+:::
+::: {.column width="60%"}
+![](../figures/keynote-bvd-sitrep.png){height="330px" fig-align="center"
+fig-alt="A situation report page from the DRC national public health
+institute, in French, with cumulative confirmed cases, deaths, isolation
+occupancy, recoveries and suspected cases in boxes."}
+
+![](../figures/keynote-bvd-infections-sep-panel.png){width="100%"
+fig-alt="Left, modelled cumulative infections over time from February to
+September 2026 as widening blue credible bands reaching about twelve
+thousand. Right, the posterior density of cumulative infections at the
+6 September cut-off, peaking near twelve thousand with a long right
+tail."}
+
+::: {.attribution}
+[WHO DON617][don617], 10 September 2026, data to 7 September
+· dates from [WHO DON602][don602]
+· model figure from [BVDOutbreakSize][bvd] release `results-1699`,
+9 September 2026, data to SitRep 115 of 6 September; 90% interval
+9749 to 19236 from its analysis page, cropped to the top row
+· situation report page from [insp.cd][insp], copied from
+`JuliaCon2026/figures/bvd-insp-sitreps.png`
+:::
+:::
+::::
+
+[don602]: https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON602
+[don617]: https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON617
+[bvd]: https://epiforecasts.io/BVDOutbreakSize/stable/
+[insp]: https://insp.cd/ebola-17eme-epidemie/
+[rt-post]: https://samabbott.co.uk/posts/2022-03-25-rt-reflections/
+[iisa-post]: https://samabbott.co.uk/posts/2023-01-04-iisa-data-models-and-modellers-during-a-global-pandemic/
