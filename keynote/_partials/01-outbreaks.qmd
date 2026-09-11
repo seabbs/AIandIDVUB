@@ -1,0 +1,10 @@
+# Ten years of outbreaks
+
+<!--
+Proposed slides, about 6 minutes. See notes/proposal.md.
+- 2014, Ebola in West Africa. Watching others do real-time forecasting.
+- 2020, COVID-19. What we did: Rt, the dashboard, SPI-M, EpiNow2.
+- 2022, mpox. Delays and the serial interval.
+- 2026, Ebola disease caused by Bundibugyo virus in the DRC. Live now.
+One figure per outbreak. Sam's own work marked apart from others'.
+-->

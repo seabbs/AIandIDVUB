@@ -1,0 +1,45 @@
+---
+title: "Where do we go next? AI, communication, collaboration"
+subtitle: "Panel discussion"
+description: >-
+  The closing panel of the workshop, with Andres Algaba, Karolien Poels and
+  Marie-Cécile Dupas, moderated by Philippe Beutels.
+page-layout: full
+---
+
+::: {.session-meta}
+Combining Infectious Disease Modelling and AI · Monday 14 September 2026,
+15:20–16:15 (Europe/Brussels) · Learning Theatre, VUB campus Etterbeek
+:::
+
+:::: {.talk-body}
+::: {.talk-main}
+
+## The brief
+
+::: {.abstract}
+- Join the panel discussion at the end of the day alongside the other
+  speakers.
+- Moderated by Philippe Beutels of UAntwerp.
+- Panellists: Sam Abbott (LSHTM), Andres Algaba (VUB), Karolien Poels (UA),
+  and Marie-Cécile Dupas (ULB, UH).
+- Closing remarks follow at 16:15.
+:::
+
+There are no slides.
+The talk pages for the [keynote](../keynote/index.qmd) and the
+[communication lecture](../communication/index.qmd) carry the material I am
+likely to draw on.
+
+:::
+
+::: {.talk-side}
+
+## Resources
+
+- [Infectious disease modelling in the age of AI](../keynote/index.qmd).
+- [Science communication with and under AI](../communication/index.qmd).
+- [Research exchange at the VUB AI Lab](../exchange/index.qmd).
+
+:::
+::::

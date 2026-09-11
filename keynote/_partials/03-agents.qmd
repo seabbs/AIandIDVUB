@@ -1,0 +1,11 @@
+# Agents
+
+<!--
+Proposed slides, about 8 minutes. See notes/proposal.md.
+- What I mean by agentic AI. One slide, no jargon.
+- How I work now. Most code written by an agent, reviewed by me.
+- BVDOutbreakSize. Replication in hours, French PDF sitreps, daily
+  updates, what was hard to check.
+- What it changes: who writes the code, review, composability.
+- What it does not change: the model is still a model.
+-->

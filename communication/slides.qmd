@@ -1,0 +1,76 @@
+---
+title: "Science communication with and under AI"
+author: "Sam Abbott"
+institute: "London School of Hygiene & Tropical Medicine"
+date: 2026-09-14
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: default
+    slide-number: true
+    embed-resources: true
+    width: 1920
+    height: 1080
+    center: true
+    css: ../style.css
+    link-external-newwindow: true
+---
+
+## Talk plan
+
+:::: {.columns}
+::: {.column width="68%"}
+- Three audiences in 2020. Government, the public, other scientists
+- Software is communication
+- With AI. What I use it for, and how I make that visible
+- Under AI. Trust, provenance, and prose that all sounds the same
+- What I would like us to agree on
+:::
+::: {.column width="32%"}
+![](../figures/qr-communication.png){width="58%"}
+
+::: {.attribution}
+[samabbott.co.uk/AIandIDVUB/communication][comms-talk]
+
+Combining Infectious Disease Modelling and AI, VUB, Brussels,
+Monday 14 September 2026, 13:40.
+:::
+:::
+::::
+
+{{< include _partials/01-audiences.qmd >}}
+
+{{< include _partials/02-software.qmd >}}
+
+{{< include _partials/03-with.qmd >}}
+
+{{< include _partials/04-under.qmd >}}
+
+{{< include _partials/05-asks.qmd >}}
+
+## Thank you
+
+:::: {.columns}
+::: {.column width="62%"}
+- [How I am LLM](https://samabbott.co.uk/how-I-llm)
+- [epinowcast community forum](https://community.epinowcast.org/)
+- [EpiNow2](https://epiforecasts.io/EpiNow2/)
+- [The prompts that wrote these decks][prompts]
+:::
+::: {.column width="38%"}
+![](../figures/qr-communication.png){width="62%" fig-align="center"
+fig-alt="QR code to the talk page"}
+
+::: {.attribution}
+[samabbott.co.uk/AIandIDVUB/communication][comms-talk]
+
+Sam Abbott, LSHTM ·
+[epinowcast.org](https://www.epinowcast.org) ·
+[epiaware.org](https://epiaware.org) ·
+[github.com/seabbs](https://github.com/seabbs)
+:::
+:::
+::::
+
+[comms-talk]: https://samabbott.co.uk/AIandIDVUB/communication/
+[prompts]: https://samabbott.co.uk/AIandIDVUB/prompts.html

@@ -1,0 +1,5 @@
+# What the group works on
+
+<!--
+Proposed slides. See notes/proposal.md.
+-->

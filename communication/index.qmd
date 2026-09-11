@@ -1,0 +1,91 @@
+---
+title: "Science communication with and under AI"
+subtitle: "Lecture"
+description: >-
+  Government, the public and other scientists during COVID-19, software as
+  communication, and what changes when both sides have a language model.
+page-layout: full
+---
+
+::: {.session-meta}
+Combining Infectious Disease Modelling and AI · Monday 14 September 2026,
+13:40–14:10 (Europe/Brussels) · Learning Theatre, VUB campus Etterbeek ·
+Sam Abbott
+:::
+
+[Slides](slides.qmd){.btn .btn-primary}
+[How I am LLM][howillm]{.btn .btn-outline-primary}
+[epinowcast community][forum]{.btn .btn-outline-primary}
+[EpiNow2][epinow2]{.btn .btn-outline-primary}
+
+:::: {.talk-body}
+::: {.talk-main}
+
+## The brief
+
+The organisers' request, as the abstract.
+
+::: {.abstract}
+- A more communication-focused lecture in the afternoon, tentatively
+  titled *Science Communication with and under AI*.
+- A starting point only, to make my own.
+- My experience during COVID-19, whether working with government bodies,
+  the public, or fellow scientists, including building widely used R
+  packages for the modelling community, could be the material.
+- About 30 minutes.
+- Karolien Poels speaks before on risk communication and uncertainty, and
+  Andres Algaba after, on the same title from the AI side.
+:::
+
+## Around it
+
+- [Infectious disease modelling in the age of AI](../keynote/index.qmd).
+  The morning keynote.
+  09:00–09:30.
+- [Where do we go next?](../panel/index.qmd).
+  The closing panel.
+  15:20–16:15.
+
+:::
+
+::: {.talk-side}
+
+## Resources
+
+### The pandemic
+
+- [The epiforecasts COVID-19 dashboard][covid].
+  Daily $R_t$ estimates and forecasts, 2020 to 2022.
+- [EpiNow2][epinow2].
+  The package behind them, used by public health agencies.
+- [scoringutils][scoringutils].
+  Forecast evaluation, used by the forecast hubs.
+
+### Communities
+
+- [epinowcast][epinowcast].
+  Packages, a [community forum][forum], and a seminar series.
+- [EpiAware][epiaware].
+  The Julia organisation, and its
+  [contributing guide](https://epiaware.org/contributing/).
+
+### With and under AI
+
+- [How I am LLM][howillm].
+  What coding agents do and do not do in a research workflow, with the
+  prompt on the last slide.
+- [The JuliaCon 2026 prompts page][juliacon-prompts].
+  Publishing the brief and the steers behind a set of talks.
+- [The prompts page for this site](../prompts.qmd).
+
+:::
+::::
+
+[covid]: https://epiforecasts.io/covid/
+[epinow2]: https://epiforecasts.io/EpiNow2/
+[scoringutils]: https://epiforecasts.io/scoringutils/
+[epinowcast]: https://www.epinowcast.org/
+[forum]: https://community.epinowcast.org/
+[epiaware]: https://epiaware.org
+[howillm]: https://samabbott.co.uk/how-I-llm
+[juliacon-prompts]: https://samabbott.co.uk/JuliaCon2026/prompts.html

@@ -1,0 +1,5 @@
+# Working with agents
+
+<!--
+Proposed slides. See notes/proposal.md.
+-->

@@ -1,0 +1,9 @@
+# What a modeller does during an outbreak
+
+<!--
+Proposed slides, about 4 minutes. See notes/proposal.md.
+- Data in, delays, Rt, forecasts, scenarios. One schematic.
+- What keeps going wrong: biased delays, chained models, slow to adapt,
+  nothing reusable. The workflow schematic.
+Sets up Abrams and Libin's methods overview without doing it for them.
+-->

@@ -1,0 +1,75 @@
+project:
+  type: website
+  output-dir: _site
+  # The social card is only referenced by absolute URL below, so Quarto does
+  # not see it as a resource and would not copy it into the site.
+  resources:
+    - "figures/og-card.png"
+  render:
+    - "*.qmd"
+    - "keynote/*.qmd"
+    - "communication/*.qmd"
+    - "panel/*.qmd"
+    - "exchange/*.qmd"
+
+website:
+  title: "Modelling and AI, Brussels 2026"
+  description: |
+    Two talks, a panel, and a research exchange on infectious disease
+    modelling and AI, VUB, Brussels, 14 and 15 September 2026, Sam Abbott.
+  site-url: "https://samabbott.co.uk/AIandIDVUB"
+  repo-url: "https://github.com/seabbs/AIandIDVUB"
+  favicon: figures/sam.jpg
+  # Off because the index is dominated by slide fragments, which drop the
+  # reader into the middle of a deck. seabbs.github.io does the same.
+  search: false
+  open-graph:
+    image: "https://samabbott.co.uk/AIandIDVUB/figures/og-card.png"
+    image-width: 1200
+    image-height: 630
+    image-alt: >-
+      Combining infectious disease modelling and AI, VUB Brussels, 14
+      September 2026. Two talks and a panel by Sam Abbott.
+  twitter-card:
+    creator: "@seabbs"
+    card-style: summary_large_image
+    image: "https://samabbott.co.uk/AIandIDVUB/figures/og-card.png"
+    image-width: 1200
+    image-height: 630
+    image-alt: >-
+      Combining infectious disease modelling and AI, VUB Brussels, 14
+      September 2026. Two talks and a panel by Sam Abbott.
+  navbar:
+    title: "Modelling and AI, Brussels 2026"
+    left:
+      - text: "About"
+        href: index.qmd
+      - text: "Keynote"
+        href: keynote/index.qmd
+      - text: "Communication"
+        href: communication/index.qmd
+      - text: "Panel"
+        href: panel/index.qmd
+      - text: "Exchange"
+        href: exchange/index.qmd
+      - text: "Prompts"
+        href: prompts.qmd
+    right:
+      - text: "samabbott.co.uk"
+        href: https://samabbott.co.uk
+      - icon: github
+        href: https://github.com/seabbs/AIandIDVUB
+  page-footer:
+    left: "Sam Abbott, London School of Hygiene & Tropical Medicine"
+    right: "[Source](https://github.com/seabbs/AIandIDVUB)"
+
+format:
+  html:
+    theme: cosmo
+    css: site.css
+    toc: false
+    link-external-newwindow: true
+    include-in-header:
+      text: |
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

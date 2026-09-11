@@ -1,0 +1,101 @@
+---
+title: "Infectious disease modelling in the age of AI"
+subtitle: "Opening keynote"
+description: >-
+  Ten years of outbreaks, what agents change about how models get built, a
+  short tour of the other AI, and an open question.
+page-layout: full
+---
+
+::: {.session-meta}
+Combining Infectious Disease Modelling and AI · Monday 14 September 2026,
+09:00–09:30 (Europe/Brussels) · Learning Theatre, VUB campus Etterbeek ·
+Sam Abbott
+:::
+
+[Slides](slides.qmd){.btn .btn-primary}
+[BVDOutbreakSize][bvd]{.btn .btn-outline-primary}
+[How I am LLM][howillm]{.btn .btn-outline-primary}
+[epiaware.org/approaches][approaches]{.btn .btn-outline-primary}
+
+:::: {.talk-body}
+::: {.talk-main}
+
+## The brief
+
+The organisers' request, as the abstract.
+
+::: {.abstract}
+- Open the workshop with the morning keynote.
+- A tentative title, *Infectious Disease Modelling in the Age of AI*, with
+  the exact content left to me as long as it fits the workshop theme.
+- One idea. Given my work on composable, probabilistic modelling
+  frameworks, bridging renewal-process approaches like EpiNow2 with more
+  flexible, ML-friendly components, open with some history of infectious
+  disease modelling, a few practical examples from my own experience, and
+  use that to lead into an open question on how AI fits into this space
+  going forward.
+- 20 to 30 minutes.
+- The audience is a mix of infectious disease and AI researchers, some with
+  little to no modelling background.
+- Steven Abrams and Pieter Libin speak straight after, giving an overview of
+  different methods, followed by three case studies, so this talk sets the
+  stage for that.
+:::
+
+## Later the same day
+
+- [Science communication with and under AI](../communication/index.qmd).
+  The afternoon lecture.
+  13:40–14:10.
+- [Where do we go next?](../panel/index.qmd).
+  The closing panel.
+  15:20–16:15.
+- [Research exchange at the VUB AI Lab](../exchange/index.qmd).
+  The following day.
+
+:::
+
+::: {.talk-side}
+
+## Resources
+
+### Outbreaks
+
+- [BVDOutbreakSize][bvd].
+  A live joint model of the 2026 DRC outbreak of Ebola disease caused by
+  Bundibugyo virus, built largely with coding agents.
+  [Source][bvd-repo].
+- [The epiforecasts COVID-19 dashboard][covid].
+  Daily $R_t$ estimates and forecasts, 2020 to 2022.
+- [EpiNow2][epinow2].
+  The real-time $R_t$ tool from the pandemic.
+
+### Agents
+
+- [How I am LLM][howillm].
+  What coding agents do and do not do in a research workflow.
+- [A workflow for infectious disease modelling][workflow].
+  The workflow the agents are asked to follow.
+
+### Composable modelling
+
+- [What we want from an approach][approaches].
+  The design considerations, and the two approaches we are taking.
+- [EpiAware][epiaware].
+  The Julia organisation building it.
+- [JuliaCon 2026][juliacon].
+  Three talks on composable modelling in Julia, August 2026.
+
+:::
+::::
+
+[bvd]: https://epiforecasts.io/BVDOutbreakSize/stable/
+[bvd-repo]: https://github.com/epiforecasts/BVDOutbreakSize
+[covid]: https://epiforecasts.io/covid/
+[epinow2]: https://epiforecasts.io/EpiNow2/
+[howillm]: https://samabbott.co.uk/how-I-llm
+[workflow]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
+[approaches]: https://epiaware.org/approaches/
+[epiaware]: https://epiaware.org
+[juliacon]: https://samabbott.co.uk/JuliaCon2026

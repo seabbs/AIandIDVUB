@@ -1,0 +1,38 @@
+version: "3"
+
+tasks:
+  default:
+    desc: Render the site and all slide decks
+    cmds:
+      - quarto render
+
+  preview:
+    desc: Preview the site with live reload
+    cmds:
+      - quarto preview
+
+  qr:
+    desc: Regenerate the QR codes for each talk page
+    cmds:
+      - ./figures/make_qr.sh
+
+  check:
+    desc: Validate the Quarto project
+    cmds:
+      - quarto check
+
+  lint:
+    desc: Check line lengths and trailing whitespace in source files
+    cmds:
+      - ./scripts/lint.sh
+
+  shot:
+    desc: Screenshot the rendered pages for layout review
+    cmds:
+      - ./scripts/shot.py _shots 1440 index.html prompts.html
+      - ./scripts/shot.py _shots 390 index.html
+
+  card:
+    desc: Regenerate the social sharing card
+    cmds:
+      - ./scripts/make-og-card.py

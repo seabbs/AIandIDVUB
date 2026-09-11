@@ -1,0 +1,9 @@
+# Under AI
+
+<!--
+Proposed slides, about 7 minutes. See notes/proposal.md.
+- Everything sounds the same. The LLM-isms I cut, with examples.
+- Trust and provenance. git log as the record of who did what.
+- The reader has one too. Summaries of summaries.
+- Review load, and who is accountable.
+-->

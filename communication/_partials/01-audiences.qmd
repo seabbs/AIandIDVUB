@@ -1,0 +1,10 @@
+# Three audiences in 2020
+
+<!--
+Proposed slides, about 8 minutes. See notes/proposal.md.
+- Government. Weekly Rt estimates to SPI-M-O. What the consensus process
+  did to uncertainty.
+- The public. The dashboard, who used it, what they did with it.
+- Other scientists. EpiNow2, and what shipping a package tells people.
+One artefact per audience.
+-->

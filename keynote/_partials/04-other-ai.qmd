@@ -1,0 +1,11 @@
+# The other AI
+
+<!--
+Proposed slides, about 6 minutes, high level. See notes/proposal.md.
+- Universal differential equations and PINNs. Learn the part of the
+  mechanism you do not know.
+- Neural and normalising flows. Fit models you could not fit before.
+- Foundation models for forecasting. Google in FluSight.
+- Agentic model composition.
+One picture each, one line on what I would want to see.
+-->

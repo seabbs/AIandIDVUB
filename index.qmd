@@ -1,0 +1,195 @@
+---
+title: "Modelling and AI, Brussels 2026"
+subtitle: >-
+  Two talks, a panel, and a research exchange on infectious disease
+  modelling and AI
+description-meta: >-
+  Sam Abbott's talks at the VUB workshop Combining Infectious Disease
+  Modelling and AI, Brussels, 14 September 2026, with slides and resources.
+page-layout: full
+---
+
+::: {.idstrip}
+![](figures/sam.jpg){.idstrip-img fig-alt="Sam Abbott"}
+
+**Sam Abbott** ·
+[samabbott.co.uk](https://samabbott.co.uk) ·
+[github.com/seabbs](https://github.com/seabbs) ·
+[epinowcast.org](https://www.epinowcast.org) ·
+[epiaware.org](https://epiaware.org)
+:::
+
+## The day {.section-tight}
+
+The workshop *Combining Infectious Disease Modelling and AI: Methods and
+Communication* is on **Monday 14 September 2026** in the **Learning
+Theatre, VUB campus Etterbeek** (ground floor of the LIC Learning &
+Innovation Center ULB-VUB, Pleinlaan 2, 1050 Brussels).
+Times are Europe/Brussels.
+The event is free.
+
+::: {.grid .talk-row}
+::: {.g-col-12 .g-col-lg-3}
+::: {.talk-card}
+[09:00–09:30]{.talk-time}
+
+### [Infectious disease modelling in the age of AI](keynote/index.qmd)
+
+[Opening keynote]{.talk-sub}
+
+Ten years of outbreaks, what agents change about how models get built, a
+short tour of the other AI, and an open question.
+
+[Page](keynote/index.qmd){.btn .btn-sm .btn-outline-primary}
+[Slides](keynote/slides.qmd){.btn .btn-sm .btn-outline-primary}
+:::
+:::
+
+::: {.g-col-12 .g-col-lg-3}
+::: {.talk-card}
+[13:40–14:10]{.talk-time}
+
+### [Science communication with and under AI](communication/index.qmd)
+
+[Lecture]{.talk-sub}
+
+Government, the public and other scientists during COVID-19, software as
+communication, and what changes when both sides have a language model.
+
+[Page](communication/index.qmd){.btn .btn-sm .btn-outline-primary}
+[Slides](communication/slides.qmd){.btn .btn-sm .btn-outline-primary}
+:::
+:::
+
+::: {.g-col-12 .g-col-lg-3}
+::: {.talk-card}
+[15:20–16:15]{.talk-time}
+
+### [Where do we go next? AI, communication, collaboration](panel/index.qmd)
+
+[Panel discussion]{.talk-sub}
+
+With Andres Algaba, Karolien Poels and Marie-Cécile Dupas.
+Moderated by Philippe Beutels.
+
+[Page](panel/index.qmd){.btn .btn-sm .btn-outline-primary}
+:::
+:::
+
+::: {.g-col-12 .g-col-lg-3}
+::: {.talk-card}
+[15 Sep, half day]{.talk-time}
+
+### [Research exchange at the VUB AI Lab](exchange/index.qmd)
+
+[Background, research group, and current work]{.talk-sub}
+
+Hosted by Pieter Libin's AI Lab, with the UHasselt and UAntwerp infectious
+disease modelling group.
+
+[Page](exchange/index.qmd){.btn .btn-sm .btn-outline-primary}
+[Slides](exchange/slides.qmd){.btn .btn-sm .btn-outline-primary}
+:::
+:::
+:::
+
+::: {.hero}
+
+[My conference bio]{.bio-label}
+
+::: {.bot-aside}
+🤖 The following was drafted by [**\@seabbs-bot**](https://github.com/seabbs-bot),
+who has a very suspiciously high opinion of me, so take it with a pinch of
+salt.
+:::
+
+::: {.bio}
+*I am an Assistant Professor at the London School of Hygiene & Tropical
+Medicine.*
+*I did my PhD in the optimal usage of the BCG vaccine, transitioning to work on
+real-time modelling of infectious disease outbreaks on the 3rd of January
+2020.*
+*Four days later, I switched to work on what was then known as 2019-NCoV.*
+*I did early work on the size and scale of the initial outbreak, tracking
+transmissions in different countries, and exploring the potential role of
+different interventions.*
+*Throughout the pandemic, I ran a dashboard that was used by over a million
+people.*
+*I also provided estimates, forecasts, and analyses weekly to the UK government
+advisory bodies.*
+*I developed the tools and methods we used into open source software and these
+were used by upwards of 30 public health agencies around the world.*
+*I have continued to work in this area with a focus on improving tools and
+methods used both in research and in public health practice.*
+*Most of the code I now ship is written by coding agents and reviewed by me,
+and I am trying to work out what that means for how models get built, checked
+and shared.*
+:::
+
+:::
+
+## Other recent work you might like {.section-tight}
+
+::: {.grid .links-row}
+::: {.g-col-12 .g-col-md-4}
+### Outbreaks
+
+- [BVDOutbreakSize][bvd].
+  A live joint model of the 2026 DRC outbreak of Ebola disease caused by
+  Bundibugyo virus, building on the Imperial (McCabe et al.) report.
+  [Source][bvd-repo].
+- [Andes virus line list analysis][andv].
+  Joint estimation of the incubation period, transmission timing and
+  $R_t$ for the Epuyén hantavirus outbreak.
+- [The epiforecasts COVID-19 dashboard][covid].
+  Daily $R_t$ estimates and forecasts, 2020 to 2022.
+:::
+
+::: {.g-col-12 .g-col-md-4}
+### Software
+
+- [EpiNow2][epinow2].
+  Real-time $R_t$ estimation, used by public health agencies.
+- [epinowcast][epinowcast].
+  Nowcasting and delay estimation, with a [community forum][forum] and
+  seminar series.
+- [scoringutils][scoringutils].
+  Forecast evaluation, used by the forecast hubs.
+- [EpiAware][epiaware].
+  Composable infectious disease modelling in Julia.
+:::
+
+::: {.g-col-12 .g-col-md-4}
+### Papers and talks
+
+- [How I am LLM][howillm].
+  What coding agents do and do not do in a research workflow.
+- [A workflow for infectious disease modelling][workflow].
+  How we think models should be built and checked.
+- [What we want from an approach][approaches].
+  The design considerations behind composable modelling.
+- [JuliaCon 2026][juliacon].
+  Three talks on composable modelling in Julia.
+- [My Google Scholar][scholar].
+:::
+:::
+
+[bvd]: https://epiforecasts.io/BVDOutbreakSize/stable/
+[bvd-repo]: https://github.com/epiforecasts/BVDOutbreakSize
+[andv]: https://epiforecasts.io/andv-linelist-analysis/
+[covid]: https://epiforecasts.io/covid/
+[epinow2]: https://epiforecasts.io/EpiNow2/
+[epinowcast]: https://www.epinowcast.org/
+[forum]: https://community.epinowcast.org/
+[scoringutils]: https://epiforecasts.io/scoringutils/
+[epiaware]: https://epiaware.org
+[howillm]: https://samabbott.co.uk/how-I-llm
+[workflow]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
+[approaches]: https://epiaware.org/approaches/
+[juliacon]: https://samabbott.co.uk/JuliaCon2026
+[scholar]: https://scholar.google.com/citations?user=GqZm90IAAAAJ&hl=en
+
+::: {.made-note}
+The [prompts page](prompts.qmd) has the brief I wrote for this site and the
+steers that followed.
+:::

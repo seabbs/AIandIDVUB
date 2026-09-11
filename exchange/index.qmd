@@ -1,0 +1,81 @@
+---
+title: "Research exchange at the VUB AI Lab"
+subtitle: "Background, research group, and current work"
+description: >-
+  A half day exchange between the VUB AI Lab and the UHasselt and UAntwerp
+  infectious disease modelling group, the day after the workshop.
+page-layout: full
+---
+
+::: {.session-meta}
+Tuesday 15 September 2026, half day (Europe/Brussels) · VUB AI Lab,
+hosted by Pieter Libin · Sam Abbott
+:::
+
+[Slides](slides.qmd){.btn .btn-primary}
+[epinowcast][epinowcast]{.btn .btn-outline-primary}
+[EpiAware][epiaware]{.btn .btn-outline-primary}
+[Google Scholar][scholar]{.btn .btn-outline-primary}
+
+:::: {.talk-body}
+::: {.talk-main}
+
+## The brief
+
+The organisers' request, as the abstract.
+
+::: {.abstract}
+- A research exchange the day after the workshop, 15 September, hosted by
+  Pieter Libin's AI Lab at VUB.
+- Selected members of the VUB AI group and the UHasselt and UAntwerp
+  infectious disease modelling group share their work.
+- I talk about my background, research group, and current work.
+- Roughly half a day in total.
+:::
+
+## The day before
+
+- [Infectious disease modelling in the age of AI](../keynote/index.qmd).
+  The opening keynote.
+- [Science communication with and under AI](../communication/index.qmd).
+  The afternoon lecture.
+- [Where do we go next?](../panel/index.qmd).
+  The closing panel.
+
+:::
+
+::: {.talk-side}
+
+## Resources
+
+### The group
+
+- [epiforecasts][epiforecasts].
+  The group's GitHub organisation.
+- [epinowcast][epinowcast].
+  Nowcasting and delay estimation, with a community forum and seminar
+  series.
+- [EpiAware][epiaware].
+  Composable infectious disease modelling in Julia.
+
+### Current work
+
+- [BVDOutbreakSize][bvd].
+  A live joint model of the 2026 DRC outbreak of Ebola disease caused by
+  Bundibugyo virus.
+- [What we want from an approach][approaches].
+  The design considerations behind composable modelling.
+- [A workflow for infectious disease modelling][workflow].
+- [How I am LLM][howillm].
+
+:::
+::::
+
+[epiforecasts]: https://github.com/epiforecasts
+[epinowcast]: https://www.epinowcast.org/
+[epiaware]: https://epiaware.org
+[scholar]: https://scholar.google.com/citations?user=GqZm90IAAAAJ&hl=en
+[bvd]: https://epiforecasts.io/BVDOutbreakSize/stable/
+[approaches]: https://epiaware.org/approaches/
+[workflow]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
+[howillm]: https://samabbott.co.uk/how-I-llm
