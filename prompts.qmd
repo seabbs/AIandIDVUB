@@ -116,6 +116,24 @@ Can push to main and iterate.
 Reminder to iteratively update the remote repo.
 :::
 
+::: {.prompt}
+Can you get agents to start drafting the content and cross review it against
+my spec please.
+The Google point was about LLM-guided tree search.
+Note the need for pictures and interactives.
+:::
+
+::: {.prompt}
+For the exchange I might like 20 minutes on composable EpiAware modelling and
+potential links to AI approaches as they might think of them, using
+composition, UDEs, PINNs, maybe nothing doing there at the moment.
+Ten on recent delays work and epidist, where the AI cross links are less
+clear.
+Maybe five on the workflow and where AI sits.
+Not sure.
+Review and come up with a first version after cross review.
+:::
+
 ::::
 
 ## How it was built

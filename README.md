@@ -16,7 +16,7 @@ Rendered: [samabbott.co.uk/AIandIDVUB](https://samabbott.co.uk/AIandIDVUB)
 | 14 Sep, 09:00–09:30 | Keynote: Infectious disease modelling in the age of AI | `keynote/` |
 | 14 Sep, 13:40–14:10 | Lecture: Science communication with and under AI | `communication/` |
 | 14 Sep, 15:20–16:15 | Panel: Where do we go next? AI, communication, collaboration | `panel/` |
-| 15 Sep, half day | Research exchange at the VUB AI Lab | `exchange/` |
+| 15 Sep, 09:45–10:15 | Research exchange with the VUB AI group and SIMID | `exchange/` |
 
 ## Building
 

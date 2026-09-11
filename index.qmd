@@ -78,14 +78,14 @@ Moderated by Philippe Beutels.
 
 ::: {.g-col-12 .g-col-lg-3}
 ::: {.talk-card}
-[15 Sep, half day]{.talk-time}
+[15 Sep, 09:45–10:15]{.talk-time}
 
 ### [Research exchange at the VUB AI Lab](exchange/index.qmd)
 
 [Background, research group, and current work]{.talk-sub}
 
-Hosted by Pieter Libin's AI Lab, with the UHasselt and UAntwerp infectious
-disease modelling group.
+A morning of short talks from the VUB AI group and the UHasselt and
+UAntwerp SIMID group, at the AI Experience Centre.
 
 [Page](exchange/index.qmd){.btn .btn-sm .btn-outline-primary}
 [Slides](exchange/slides.qmd){.btn .btn-sm .btn-outline-primary}

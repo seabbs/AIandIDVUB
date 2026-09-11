@@ -8,8 +8,9 @@ page-layout: full
 ---
 
 ::: {.session-meta}
-Tuesday 15 September 2026, half day (Europe/Brussels) · VUB AI Lab,
-hosted by Pieter Libin · Sam Abbott
+Research exchange, VUB AI group and UH-UA SIMID group · Tuesday 15
+September 2026, 09:45–10:15 (Europe/Brussels) · AI Experience Centre,
+Pleinlaan 9, 1050 Elsene · hybrid · Sam Abbott
 :::
 
 [Slides](slides.qmd){.btn .btn-primary}
@@ -30,7 +31,8 @@ The organisers' request, as the abstract.
 - Selected members of the VUB AI group and the UHasselt and UAntwerp
   infectious disease modelling group share their work.
 - I talk about my background, research group, and current work.
-- Roughly half a day in total.
+- Roughly half a day in total, with seven talks from 09:00 to 12:00.
+- Each speaker presents for 20 to 25 minutes, with questions after.
 :::
 
 ## The day before

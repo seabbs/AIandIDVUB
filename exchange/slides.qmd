@@ -34,7 +34,8 @@ format:
 ::: {.attribution}
 [samabbott.co.uk/AIandIDVUB/exchange][exchange-talk]
 
-Research exchange, VUB AI Lab, Brussels, Tuesday 15 September 2026.
+Research exchange, AI Experience Centre, Pleinlaan 9, Brussels,
+Tuesday 15 September 2026, 09:45.
 :::
 :::
 ::::

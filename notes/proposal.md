@@ -303,29 +303,15 @@ Sources: `research-communication.md` throughout.
 
 ## 3. Research exchange, 15 September
 
-Half a day shared with the VUB AI Lab and SIMID, so probably 30 to 40
-minutes with discussion.
-Informal, mostly reused slides.
-
-- Who I am. The timeline strip from the keynote.
-- What the group works on. Real-time outbreak analysis, delays and
-  nowcasting, forecast evaluation, tooling.
-  Name the people.
-- epinowcast and EpiAware. R and Julia, community and org.
-- Composable models. The approaches page and the two approaches, with
-  the three replications.
-- The live outbreak. Reuse keynote slides 11 and 12 with more detail on
-  the model.
-- Working with agents. Reuse the tooling slides from how I LLM, facts
-  only, rephrased.
-- Where we might work together.
-  RL for control needs transmission models with honest uncertainty; a
-  composable component could be the environment.
-  Agents that build simulators; who checks them.
-  Fairness in allocation needs the same delays and ascertainment we
-  model.
-  Evaluation of learned policies against hub-style prospective tests,
-  which the RL scoping review says is missing.
+Now a 30 minute slot at 09:45, 20 to 25 minutes of talking, at the AI
+Experience Centre, Pleinlaan 9, hybrid.
+Programme in `exchange-programme.md`.
+His steer was 20 minutes on composable EpiAware modelling and links to AI
+approaches (composition, UDEs, PINNs, "maybe nothing doing there at the
+moment"), ten on recent delays work and epidist, five on the workflow and
+where AI sits.
+That is 35 minutes, so `spec-exchange.md` builds for 22: composable 12,
+delays 6, workflow and AI 4.
 
 ## 4. Panel: likely questions and his lines
 
