@@ -1,0 +1,8 @@
+/* The two code slides carry the epiaware.org examples in full, 20 lines
+   each. Lift the height cap so nothing is clipped at 1920 by 1080. */
+.reveal .slides section pre,
+.reveal .slides section pre code,
+.reveal .slides section div.sourceCode {
+  max-height: none !important;
+  overflow: visible !important;
+}

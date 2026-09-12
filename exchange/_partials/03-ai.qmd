@@ -3,28 +3,28 @@
 ## A neural network as a component?
 
 :::: {.columns}
-::: {.column width="40%"}
-- The `rt` slot holds a prior model for $R_t$. Today that is an AR
-  process. It could hold a network
-- A universal differential equation puts the network on the residual
-  dynamics, the mechanism we cannot write down
+::: {.column width="44%"}
+- Universal differential equations and physics-informed neural networks
+  pair a network with a mechanistic model
 - Philipps et al.: the network "consistently hindered parameter
-  identifiability", and fitted mechanistic parameters "did not match
-  the published values"
+  identifiability"
 - No neural network code in any EpiAware package. Maybe nothing doing
   there at the moment
-- What would you put in the slot?
+- Reinforcement learning and bandits on individual-based simulators.
+  Could a composable component be the environment?
 
 ::: {.attribution}
+Rackauckas et al. (2020),
+[arXiv:2001.04385](https://arxiv.org/abs/2001.04385) ·
+Millevoi, Pasetto and Ferronato (2024), PLoS Computational Biology,
+[PMC11407682](https://pmc.ncbi.nlm.nih.gov/articles/PMC11407682/) ·
 Philipps, Schmid and Hasenauer (2025), npj Systems Biology and
 Applications,
 [PMC12398592](https://pmc.ncbi.nlm.nih.gov/articles/PMC12398592/) ·
-Rackauckas et al. (2020),
-[arXiv:2001.04385](https://arxiv.org/abs/2001.04385) ·
 Grep of the EpiAware organisation for Lux and Flux, 2026-09-11
 :::
 :::
-::: {.column width="60%"}
+::: {.column width="56%"}
 ![](../figures/exchange-nn-component.png){width="100%"
 fig-alt="Three boxes in a row: an infection model, Renewal with an
 empty rt slot, an observation model of LatentDelay, Ascertainment and
@@ -43,24 +43,25 @@ parts on
 ## Agents building and checking the parts
 
 :::: {.columns}
-::: {.column width="44%"}
-- [BVDOutbreakSize][bvd]. Bundibugyo virus disease, DRC, 2026. A
-  replication of the McCabe et al. report of 18 May, in a few hours the
-  next day. Refit on every push since, 145 releases by 9 September
-- The situation reports are French PDFs. Agents read them, two blind
-  readers each. 333 of 425 pull requests, the unit of proposed change
-  on GitHub, came from my bot account
-- SitRep 087: the chart's y axis changed from steps of 20 to 25. Caught
-  only because it broke the reporting-triangle invariant
-- What would convince you a part an agent built is right?
+::: {.column width="56%"}
+- [BVDOutbreakSize][bvd]. Bundibugyo virus disease, DRC. McCabe et al.
+  replicated the day after their report
+- 333 of 425 pull requests, the unit of change on GitHub, came from my
+  bot account
+- Agents read the French PDF situation reports. Two blind reads per
+  vintage of the onset chart
+- SitRep 087 changed the y axis steps from 20 to 25. Caught only by the
+  reporting-triangle invariant
+- Could agents build and check the simulators you learn against?
 
 ::: {.attribution}
 [github.com/epiforecasts/BVDOutbreakSize][bvd], `README.md` and
-`data/README.md:77-111` · Release and pull request counts from the
+`data/README.md:77-111`, SitReps 104 to 114 · McCabe et al. report of
+18 May 2026, repository created 19 May · Pull request count from the
 GitHub API, 2026-09-11
 :::
 :::
-::: {.column width="56%"}
+::: {.column width="44%"}
 ![](../figures/exchange-bvd-outbreak-streams.png){width="100%"
 fig-alt="Posterior densities for the cumulative size of the outbreak,
 one per data stream and one joint, with the confirmed-case stream far

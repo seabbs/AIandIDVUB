@@ -16,12 +16,9 @@ feedback arrows running backwards from later steps to earlier ones."}
 ## Where AI sits
 
 :::: {.columns}
-::: {.column width="38%"}
-- On [BVDOutbreakSize][bvd] agents wrote the data ingest, the fitting
-  pipeline, the tests, the docs, the releases and the sensitivity
-  analyses
-- They did not pick the model, say what the genetic lower bound meant,
-  or judge whether the ascertainment assumption held
+::: {.column width="40%"}
+- On [BVDOutbreakSize][bvd] agents wrote the code. The judgements
+  stayed with people
 - They do best with something to check against. A simulation with known
   parameters, an analytic case, another group's estimate
 - Each line I have drawn between the two columns has moved within
@@ -32,20 +29,21 @@ feedback arrows running backwards from later steps to earlier ones."}
 [github.com/epiforecasts/BVDOutbreakSize][bvd], `README.md`
 :::
 :::
-::: {.column width="62%"}
+::: {.column width="60%"}
 ![](../figures/exchange-workflow-split.png){width="100%"
-fig-alt="The nine workflow stages as a strip. Above, in brick: choosing
-the question at stage 1, which model at stage 2, what the genetic lower
-bound means at stage 4, whether ascertainment holds at stage 8, which
-streams to trust at stage 9. Below, in teal: reading French PDF sitreps
-at stage 3, digitising the onset curve at stage 4, fitting pipeline,
-releases and docs at stage 7, tests and recovery checks at stage 8,
-sensitivity analyses and figures at stage 9."}
+fig-alt="The nine workflow stages as a column of numbered boxes. To
+the left, in brick, what stayed with people: choosing the question at
+stage 1, which model at stage 2, what the genetic lower bound means at
+stage 4, whether ascertainment holds at stage 8, which streams to trust
+at stage 9. To the right, in teal, what agents did: reading French PDF
+sitreps at stage 3, digitising the onset curve at stage 4, fitting
+pipeline, releases and docs at stage 7, tests and recovery checks at
+stage 8, sensitivity analyses and figures at stage 9."}
 
 ::: {.attribution}
 Drawn for this talk, `scripts/exchange-workflow-split.py`. Stage names
-from the workflow paper; the placement of the labels is my reading of
-the [BVDOutbreakSize][bvd] README and data notes
+from the workflow paper, labels from the [BVDOutbreakSize][bvd]
+`README.md` and `data/README.md`
 :::
 :::
 ::::

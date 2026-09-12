@@ -33,7 +33,8 @@ The organisers' request, as the abstract.
 - Selected members of the VUB AI group and the UHasselt and UAntwerp
   infectious disease modelling group share their work.
 - I talk about my background, research group, and current work.
-- Roughly half a day in total, with seven talks from 09:00 to 12:00.
+- Roughly half a day in total, with five talks and two introductions
+  from 09:00 to 12:00.
 - Each speaker presents for 20 to 25 minutes, with questions after.
 :::
 

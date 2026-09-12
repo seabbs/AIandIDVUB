@@ -29,7 +29,7 @@ Whitty (2015),
 :::
 ::::
 
-## Analysing data and processes separately
+## Analysing data and processes separately, or all together
 
 :::: {.columns}
 ::: {.column width="42%"}
@@ -37,10 +37,14 @@ Whitty (2015),
   April 2020 to March 2023
 - External modellers accessed only summarised prevalence, not underlying
   observations
-- Prevalence to incidence to $R_t$
-- Uncertainty from earlier estimates approximated at each step
-- Modelling assumptions inherited without the ability to evaluate their
-  impact
+- Lison et al. found biases at each step. Joint modelling of all steps
+  together avoided these cascading biases
+- But models are difficult to develop within policy-relevant timelines
+
+::: {.attribution}
+Lison et al. (2024),
+[doi:10.1371/journal.pcbi.1012021](https://doi.org/10.1371/journal.pcbi.1012021)
+:::
 :::
 ::: {.column width="58%"}
 ![](../figures/exchange-composable-ons-cascade.jpg){width="94%"
@@ -53,29 +57,6 @@ fitted together as one model. Abbott and Funk (2022),
 [doi:10.1101/2022.03.29.22273101](https://doi.org/10.1101/2022.03.29.22273101).
 Survey figures from the paper's introduction
 :::
-:::
-::::
-
-## Analysing all data and processes together
-
-:::: {.columns}
-::: {.column width="45%"}
-- Lison et al. found biases at each step: lack of epidemic phase in date
-  imputation and count model assumptions in nowcasting led to biased
-  $R_t$
-- Joint modelling of all steps together avoided these cascading biases
-- But models are difficult to develop within policy-relevant timelines
-- Require expertise across multiple domains and careful specification of
-  component interactions
-
-::: {.attribution}
-Lison et al. (2024),
-[doi:10.1371/journal.pcbi.1012021](https://doi.org/10.1371/journal.pcbi.1012021)
-:::
-:::
-::: {.column width="55%"}
-![](../figures/exchange-composable-lison.png){width="100%"
-fig-alt="Title of the Lison et al. 2024 paper"}
 :::
 ::::
 
@@ -131,39 +112,6 @@ motivates it, under six themes. All twelve are at
 :::
 ::::
 
-## Two approaches, and they interoperate
-
-:::: {.columns}
-::: {.column width="50%"}
-- **Composable Turing models.** A library of parts over
-  [`Turing.jl`][lk-turingjl]. Transmission, latent process and
-  observation are separate objects that nest into one model
-- **Composed distributions.** Model the relationships between events
-  with [`Distributions.jl`][lk-distributionsjl]. Those relationships
-  form an event tree
-- Both work with the same underlying packages, and they can be combined
-  in a single analysis
-
-::: {.attribution}
-Wording from [epiaware.org/approaches](https://epiaware.org/approaches/),
-read 2026-09-11
-:::
-:::
-::: {.column width="50%"}
-![](../figures/sam-abbott.jpg){width="21%" fig-alt="Sam Abbott"}
-![](../figures/exchange-samuel-brand.jpg){width="21%"
-fig-alt="Samuel Brand"}
-![](../figures/seabbs-bot.jpg){width="21%" fig-alt="seabbs-bot"}
-
-::: {.attribution}
-The people behind the two approaches, photos from GitHub, read
-2026-08-13 ·
-[github.com/EpiAware/ComposableTuringIDModels.jl][ctim] ·
-[github.com/EpiAware/ComposedDistributions.jl][cd]
-:::
-:::
-::::
-
 ## [`ComposableTuringIDModels.jl`][ctim]
 
 :::: {.columns}
@@ -171,34 +119,51 @@ The people behind the two approaches, photos from GitHub, read
 ```julia
 using ComposableTuringIDModels, Distributions, Turing
 
-# renewal infections with an autoregressive log R_t prior
+# Renewal infections with an autoregressive log-R_t prior
 renewal = Renewal(;
     generation_time = Gamma(1.4, 1 / 0.38),
     rt = AR(; ϵ_t = HierarchicalNormal(std = HalfNormal(0.1))),
     initialisation = Normal(log(1.0), 1.0))
-# observation layers: delay, ascertainment, negative binomial
+
+# Observation layers: delay → ascertainment → negative-binomial noise
 obs = LatentDelay(
-    Ascertainment(NegativeBinomialError(),
-                  Intercept(Normal(log(0.4), 0.1))),
+    Ascertainment(
+        NegativeBinomialError(),
+        Intercept(Normal(log(0.4), 0.1))),
     truncated(Normal(5.0, 2.0), 0.0, Inf))
+
 model = IDModel(renewal, obs)
+
+# Fit to case data with Turing's NUTS
 chain = sample(as_turing_model(model, cases, length(cases)),
-               NUTS(), MCMCThreads(), 1000, 4)
+    NUTS(0.95), MCMCThreads(), 100, 2)
 ```
 
 ::: {.attribution}
 `renewal_model.jl` from
 [epiaware.org/approaches/composable-turing-models](https://epiaware.org/approaches/composable-turing-models.html),
-read 2026-09-11, autodiff arguments and blank lines dropped to fit
+read 2026-09-12. Changes: `Mooncake` dropped from the `using` line, the
+`using ADTypes` line, the `adtype` argument and "(Mooncake AD)" dropped,
+and the `sample` call reflowed from three lines to two
 :::
 :::
 ::: {.column width="44%"}
+- A library of parts over [`Turing.jl`][lk-turingjl]
 - Three kinds of part. An infection model, an observation model, and
   prior models nested in the slots of both
 - Parts carry their own priors
 - A model definition does not know about the data. One definition
   simulates and fits
-- Changing an assumption means swapping one part for another
+- Adding a new application means defining only the novel parts
+
+![](../figures/sam-abbott.jpg){width="21%" fig-alt="Sam Abbott"}
+![](../figures/exchange-samuel-brand.jpg){width="21%"
+fig-alt="Samuel Brand"}
+
+::: {.attribution}
+Photos from GitHub, read 2026-08-13 ·
+[github.com/EpiAware/ComposableTuringIDModels.jl][ctim]
+:::
 :::
 ::::
 
@@ -209,6 +174,8 @@ read 2026-09-11, autodiff arguments and blank lines dropped to fit
 ```julia
 using ComposedDistributions, Distributions
 
+# BDBV-inspired delay tree: parallel pathways
+# with sequential, resolve, and compete nested together
 tree = @uncertain compose((
     clinical = sequential(
         :onset_admit => Gamma(Normal(1.2, 0.2), 3.0),
@@ -219,33 +186,43 @@ tree = @uncertain compose((
         :onset_notif => Gamma(0.7, 20.0),
         :notif_compete => compete(
             :confirmed => Gamma(2.0, 1.0),
-            :lost => Gamma(5.0, 0.5)))))
+            :lost => Gamma(5.0, 0.5))),
+))
 
-case = rand(tree)      # draw a synthetic case
-logpdf(tree, case)     # or score an observed one
+# Draw a synthetic case, or evaluate a real one's likelihood
+case = rand(tree)
+logpdf(tree, case)
 ```
 
 ::: {.attribution}
 `composed_delays.jl` from
 [epiaware.org/approaches/composed-distributions](https://epiaware.org/approaches/composed-distributions.html),
-read 2026-09-11, inspection calls dropped to fit
+read 2026-09-12. The three inspection calls and their comment dropped
 :::
 :::
 ::: {.column width="44%"}
-- Write the epidemiology as distributions. The probabilistic programming
-  language becomes optional
+- Write the epidemiology as [`Distributions.jl`][lk-distributionsjl]
+  distributions. The probabilistic programming language becomes optional
 - A case's event history is a tree. `sequential` chains delays,
   `resolve` picks an outcome with a probability, `compete` races two
 - The whole tree is itself a distribution. It slots in wherever a delay
   is needed inside a larger model
 - Parameter uncertainty is an ordinary leaf
+
+![](../figures/sam-abbott.jpg){width="21%" fig-alt="Sam Abbott"}
+![](../figures/seabbs-bot.jpg){width="21%" fig-alt="seabbs-bot"}
+
+::: {.attribution}
+Photos from GitHub, read 2026-08-13 ·
+[github.com/EpiAware/ComposedDistributions.jl][cd]
+:::
 :::
 ::::
 
 ## Real-time nowcasting (`EpiNow2`)
 
 :::: {.columns}
-::: {.column width="40%"}
+::: {.column width="48%"}
 - Reuses ARIMA(2,1,1) from the paper's first case study, swapping the
   Poisson observation model for `negbin`
 - `broadcast_weekly` wraps ARIMA to produce piecewise constant weekly
@@ -266,12 +243,12 @@ replicated, not a benchmark. Abbott et al. (2020),
 Daily COVID-19 cases from Italy, February to June 2020
 :::
 :::
-::: {.column width="60%"}
-![](../figures/exchange-composable-epinow2-model.png){height="260px"
+::: {.column width="52%"}
+![](../figures/exchange-composable-epinow2-model.png){height="240px"
 fig-align="center"
 fig-alt="The EpiNow2 configuration drawn as a graph of components"}
 
-![](../figures/exchange-composable-epinow2-results.png){height="560px"
+![](../figures/exchange-composable-epinow2-results.png){height="520px"
 fig-align="center"
 fig-alt="Six panels: prior checks on each part, then the joint fit"}
 :::

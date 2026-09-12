@@ -23,7 +23,7 @@ Sam Abbott, London School of Hygiene & Tropical Medicine ·
 :::
 ::::
 
-![](../figures/exchange-timeline.png){width="70%" fig-align="center"
+![](../figures/exchange-timeline.png){width="55%" fig-align="center"
 fig-alt="A timeline from 1760 to 2026. Small grey ticks for Bernoulli,
 Ross, Kermack and McKendrick, foot and mouth and H1N1, then a grey dot
 for Ebola in West Africa in 2014 labelled watching, and teal dots for
@@ -32,6 +32,5 @@ and Ebola disease caused by Bundibugyo virus in the DRC in 2026 labelled
 live."}
 
 ::: {.attribution}
-Diagram from the keynote the day before, `scripts/keynote-timeline.py`,
-dates in `notes/research-history.md`
+`scripts/keynote-timeline.py`, dates in `notes/research-history.md`
 :::

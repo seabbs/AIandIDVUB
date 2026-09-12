@@ -26,16 +26,18 @@ share a start, so the intervals overlap."}
 :::
 ::::
 
+# Unfortunately, biases
+
 ## Both events are recorded to the day
 
 :::: {.columns}
 ::: {.column width="40%"}
-- The primary event falls somewhere in a window $[0, w_P]$. Mix the
-  delay over where in the window it sat, a convolution on the CDF
-- The secondary event is recorded to the day as well, so the
-  probability of a daily bin is a difference of that CDF
-- In the past this was often written as a double integral, which is
-  typically more complicated to evaluate
+- The primary event falls somewhere in a window $[0, w_P]$
+- Mix the delay over where in the window it sat, a convolution on the
+  CDF
+- The secondary event is recorded to the day as well
+- The probability of a daily bin is a difference of the
+  primary-censored CDF
 :::
 ::: {.column width="60%"}
 ![](../figures/exchange-delays-double-censoring.png){width="100%"
@@ -45,8 +47,10 @@ minus P spans them, and a dashed observation cutoff C sits to the
 right with longer delays not yet seen beyond it."}
 
 $$
-F_{\mathrm{PEC}}(t) = \int_{0}^{w_P} g(\tau)\, F(t - \tau)\, d\tau,
-\qquad
+F_{\mathrm{PEC}}(t) = \int_{0}^{w_P} g(\tau)\, F(t - \tau)\, d\tau
+$$
+
+$$
 \Pr\!\big(T \in [n, n + w_S]\big)
   = F_{\mathrm{PEC}}(n + w_S) - F_{\mathrm{PEC}}(n)
 $$
@@ -58,6 +62,11 @@ Diagram from the JuliaCon 2026 delays talk · maths after
 :::
 ::::
 
+::: {.callout-note}
+In the past this was often written as a double integral, which is
+typically more complicated to evaluate.
+:::
+
 ## Short delays are over-represented early in an epidemic
 
 :::: {.columns}
@@ -65,7 +74,8 @@ Diagram from the JuliaCon 2026 delays talk · maths after
 - A pair enters the data only if the secondary event happened before
   the cutoff $C$
 - Condition on being observed, so divide by the CDF at the horizon
-- Move the cutoff and watch the mean of what you can see
+- Move the cutoff and watch the mean of what you can see. Continuous
+  `LogNormal(1.6, 0.6)` delays, every primary event at day zero
 
 $$
 L^{\mathrm{RT}}
@@ -74,9 +84,8 @@ L^{\mathrm{RT}}
 $$
 
 ::: {.attribution}
-`LogNormal(1.6, 0.6)`, mean 5.9 days, with every primary event at day
-zero and the cutoff on the slider. Continuous delays, so the numbers
-differ slightly from the daily-window figure on the next slide
+`LogNormal(1.6, 0.6)` as in the JuliaCon 2026 delays talk,
+[samabbott.co.uk/JuliaCon2026/delays](https://samabbott.co.uk/JuliaCon2026/delays/)
 :::
 :::
 ::: {.column width="62%"}
@@ -144,8 +153,7 @@ Plot.plot({
 ::: {.attribution}
 `LogNormal(1.6, 0.6)` with daily windows, computed with
 `CensoredDistributions.jl` v0.2.22 for the JuliaCon 2026 delays talk,
-its `scripts/delays-right-truncation.jl`. Static fallback for the
-slider on the previous slide
+its `scripts/delays-right-truncation.jl`
 :::
 :::
 ::: {.column width="66%"}
@@ -188,14 +196,15 @@ v0.2.22 for the JuliaCon 2026 delays talk ·
 :::
 ::: {.column width="48%"}
 - [`primarycensored`][lk-primarycensored], R. `d`, `p`, `q` and `r`
-  prefixes, so it reads like `dgamma`. Closed forms for gamma,
-  lognormal and Weibull against a uniform primary, numerical otherwise
-- [`epidist`][lk-epidist], R. The same likelihood through `brms`, so
-  delays vary by district, by age and by wave
+  prefixes, so it reads like `dgamma`
+- [`epidist`][lk-epidist], R. The same likelihood through `brms`.
+  Delays vary by district, by age and by wave
 - [`CensoredDistributions.jl`][lk-censoreddistributionsjl]. Each
   adjustment is a wrapper on a `Distributions.jl` object. The stack is
   still a distribution, so Turing takes it as it is
 - The NEJM correspondence on Bundibugyo virus disease used `epidist`
+- Less clear where AI plugs in here. A learned delay distribution?
+  Amortised inference trained on your simulators?
 
 ::: {.attribution}
 NEJM correspondence (2026),
@@ -203,23 +212,6 @@ NEJM correspondence (2026),
 :::
 :::
 ::::
-
-## Less clear where AI plugs in here
-
-- A learned delay distribution? A network as a leaf would still need a
-  CDF, because censoring and truncation are written on the CDF
-- Amortised inference? Train once on simulations, then read a posterior
-  off a new line list in seconds. Jang et al.: more simulations cannot
-  resolve non-identifiability that comes from the simulator
-- Reading the line list out of a PDF is where agents already help
-- In my view neither of the first two is close. Tell me if you disagree
-
-::: {.attribution}
-Jang, Candan and Chowell (2026), PLoS Computational Biology,
-[PMC13252848](https://pmc.ncbi.nlm.nih.gov/articles/PMC13252848/) ·
-Radev et al. (2021), OutbreakFlow,
-[doi:10.1371/journal.pcbi.1009472](https://doi.org/10.1371/journal.pcbi.1009472)
-:::
 
 [lk-censoreddistributionsjl]: https://github.com/EpiAware/CensoredDistributions.jl
 [lk-epidist]: https://epidist.epinowcast.org/

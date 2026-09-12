@@ -13,7 +13,7 @@ format:
     width: 1920
     height: 1080
     center: true
-    css: ../style.css
+    css: [../style.css, exchange.css]
     link-external-newwindow: true
 ---
 
