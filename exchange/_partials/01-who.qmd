@@ -44,14 +44,11 @@ live."}
 - 2020 to 2022, weekly $R_t$ estimates and forecasts to SPI-M-O, the
   UK's modelling advisory group
 
-![](../figures/exchange-sebastian-funk.jpg){width="22%"
-fig-alt="Sebastian Funk"}
-
 ::: {.attribution}
 [github.com/epiforecasts](https://github.com/epiforecasts) ·
-[Sebastian Funk](https://github.com/sbfnk) · Hub repository created
-13 January 2021, GitHub API · SPI-M-O from
-`composable-grant/coapplicant_details/sam.qmd:89`
+[Sebastian Funk](https://github.com/sbfnk), pictured on the next
+slide · Hub repository created 13 January 2021, GitHub API · SPI-M-O
+from `composable-grant/coapplicant_details/sam.qmd:89`
 :::
 :::
 ::: {.column width="54%"}

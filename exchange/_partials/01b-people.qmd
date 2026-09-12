@@ -1,0 +1,50 @@
+## Who I work with, at LSHTM and epiforecasts
+
+- Six of these eight are `EpiNow2` co-authors. Two more built
+  `scoringutils`
+- epiforecasts and CMMID overlap for me. Shared code, shared reviews
+
+![](../figures/exchange-people-grid-a.jpg){width="82%" fig-align="center"
+fig-alt="Eight epiforecasts and CMMID collaborators: Sebastian Funk,
+James Azam, Nikos Bosse, Kath Sherratt, Hugo Gruson, Joe Hickson,
+Michael DeWitt and Hamada Badr."}
+
+::: {.attribution}
+`EpiNow2` and `scoringutils` authorship,
+`notes/research-collaborators.md` group (a) · photos from GitHub
+:::
+
+## Who I work with, in the epinowcast community
+
+- Adrian Lison and Adam Howes are second only to me on `epinowcast`
+  and `epidist`
+- `primarycensored` and `baselinenowcast` are joint work. Thomas
+  Ward, UKHSA, co-authored the paper
+
+![](../figures/exchange-people-grid-b.jpg){width="82%" fig-align="center"
+fig-alt="Eight epinowcast community collaborators: Adrian Lison,
+Kaitlyn Johnson, Adam Howes, Carl Pearson, Kelly Charniga, Sang Woo
+Park, Tim Taylor and Thomas Ward, the last four shown as initials
+tiles."}
+
+::: {.attribution}
+Commit counts and paper authorship,
+`notes/research-collaborators.md` group (b) · photos from GitHub
+:::
+
+## Who I work with, on the Julia side
+
+- Five of these eight co-authored the composable modelling paper
+  with me
+- Samuel Brand, Damon Bayer and Joseph Lemaitre also built
+  `CensoredDistributions.jl`
+
+![](../figures/exchange-people-grid-c.jpg){width="82%" fig-align="center"
+fig-alt="Eight EpiAware and Julia-side collaborators: Samuel Brand,
+Hong Ge, Sandra Montes-Olivas, Simon Frost, Anne Cori, Damon Bayer,
+Joseph Lemaitre and Jason Asher, four shown as initials tiles."}
+
+::: {.attribution}
+Composable modelling paper authorship and `CensoredDistributions.jl`,
+`notes/research-collaborators.md` group (c) · photos from GitHub
+:::
