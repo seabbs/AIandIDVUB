@@ -1,34 +1,5 @@
 # Composable infectious disease modelling
 
-## Timely, rigorous, and collaborative evidence
-
-:::: {.columns}
-::: {.column width="45%"}
-- Current approaches struggle to be timely, rigorous, and collaborative
-  all at once
-- Multi-model efforts synthesise expertise by combining forecasts from
-  multiple teams
-- Can improve predictive accuracy but teams rarely collaborate on model
-  components
-- Common components would enable attribution of differences to
-  assumptions rather than implementation
-
-::: {.attribution}
-Cramer et al. (2022),
-[doi:10.1038/s41597-022-01517-w](https://doi.org/10.1038/s41597-022-01517-w)
-:::
-:::
-::: {.column width="55%"}
-![](../figures/exchange-composable-whitty.png){width="100%"
-fig-alt="Whitty 2015 editorial on academic papers and health policy"}
-
-::: {.attribution}
-Whitty (2015),
-[doi:10.1186/s12916-015-0544-8](https://doi.org/10.1186/s12916-015-0544-8)
-:::
-:::
-::::
-
 ## Analysing data and processes separately, or all together
 
 :::: {.columns}
@@ -113,9 +84,7 @@ chain = sample(as_turing_model(model, cases, length(cases)),
 ::: {.attribution}
 `renewal_model.jl` from
 [epiaware.org/approaches/composable-turing-models](https://epiaware.org/approaches/composable-turing-models.html),
-read 2026-09-12. Changes: `Mooncake` dropped from the `using` line, the
-`using ADTypes` line, the `adtype` argument and "(Mooncake AD)" dropped,
-and the `sample` call reflowed from three lines to two
+read 2026-09-12, with the Mooncake and ADTypes lines dropped
 :::
 :::
 ::: {.column width="44%"}
@@ -168,7 +137,7 @@ logpdf(tree, case)
 ::: {.attribution}
 `composed_delays.jl` from
 [epiaware.org/approaches/composed-distributions](https://epiaware.org/approaches/composed-distributions.html),
-read 2026-09-12. The three inspection calls and their comment dropped
+read 2026-09-12, with the three inspection calls dropped
 :::
 :::
 ::: {.column width="44%"}

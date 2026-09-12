@@ -4,7 +4,10 @@
 Three parts in a row, as on epiaware.org/approaches/composable-turing-models:
 a prior model for R_t, an infection model, and an observation model. The
 prior slot is drawn twice, once holding an AR process and once holding a
-neural network, with a swap arrow between them.
+neural network, with a swap arrow between them. A third candidate sits
+under the observation model: a network that maps the same latent
+infections to several data streams at once, in the manner of a
+physics-informed network, with the renewal process as the physics.
 
 Output: figures/exchange-nn-component.png
 """
@@ -103,6 +106,21 @@ def main():
             color=GREY)
     ax.text(12.18, 3.35, r"$y_t$", ha="center", va="bottom", fontsize=14,
             color=GREY)
+
+    # A third candidate: one network from the latent infections to
+    # several data streams at once, physics-informed, the renewal
+    # process being the physics.
+    box(ax, 8.6, 0.15, 4.2, 1.75, "observation model, a question",
+        "network($I_t$) → several streams", BRICK, fill="#fbf1ef")
+    network(ax, 9.9, 1.0, BRICK)
+    for i, stream in enumerate(("cases", "deaths", "wastewater")):
+        y = 1.42 - i * 0.4
+        arrow(ax, 10.45, y, 11.1, y, BRICK, lw=1.2)
+        ax.text(11.15, y, stream, ha="left", va="center", fontsize=10.5,
+                color="#222222")
+    arrow(ax, 9.4, 2.1, 9.4, 1.9, GREY, style="<|-|>", lw=1.4)
+    ax.text(9.15, 2.0, "swap", ha="right", va="center", fontsize=12,
+            color=GREY, style="italic")
 
     # Two candidates for the prior slot.
     box(ax, 0.4, 3.6, 3.8, 2.2, "prior model for $R_t$, today",

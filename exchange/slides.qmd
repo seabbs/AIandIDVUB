@@ -21,15 +21,15 @@ format:
 
 :::: {.columns}
 ::: {.column width="68%"}
-- Who I am, epiforecasts and the epinowcast community, and who else
-  works on this with me
+- Who I am, what I work on, and who I work with
 - Composable infectious disease modelling. The gap, what composable
   means, two approaches, one replication
-- Where AI might plug in. A network as a component, agents building
-  and checking the parts
+- Where AI might plug in. A network as a component, renewal as a
+  layer, an outbreak foundation model
+- Agentic modelling workflows. The workflow, where the agents sat on
+  the DRC model, search over models
 - Recent delays work. `primarycensored`, `epidist`,
   `CensoredDistributions.jl`
-- The workflow, and where AI sits
 :::
 ::: {.column width="32%"}
 ![](../figures/qr-exchange.png){width="58%"}
@@ -51,9 +51,9 @@ Tuesday 15 September 2026, 09:45.
 
 {{< include _partials/03-ai.qmd >}}
 
-{{< include _partials/04-delays.qmd >}}
+{{< include _partials/04-agentic.qmd >}}
 
-{{< include _partials/05-workflow.qmd >}}
+{{< include _partials/05-delays.qmd >}}
 
 ## Thank you
 

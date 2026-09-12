@@ -1,0 +1,121 @@
+# Agentic modelling workflows
+
+## Being able to follow a workflow
+
+![](../figures/exchange-workflow-schematic.png){width="86%"
+fig-align="center"
+fig-alt="A nine step workflow for infectious disease modelling, from
+research questions through process and observation DAGs, modularisation,
+inference choices, implementation, validation and data integration, with
+feedback arrows running backwards from later steps to earlier ones."}
+
+::: {.attribution}
+[A workflow for infectious disease modelling][wf], Abbott et al.
+:::
+
+## Where the agents sat on the DRC model
+
+:::: {.columns}
+::: {.column width="40%"}
+- On [BVDOutbreakSize][bvd] agents wrote the code. The judgements
+  stayed with people
+- They do best with something to check against. A simulation with known
+  parameters, an analytic case, another group's estimate
+- 333 of 425 pull requests, the unit of change on GitHub, came from my
+  bot account
+
+::: {.attribution}
+[github.com/epiforecasts/BVDOutbreakSize][bvd], `README.md` · pull
+request count from the GitHub API, 2026-09-11
+:::
+:::
+::: {.column width="60%"}
+![](../figures/exchange-workflow-split.png){width="100%"
+fig-alt="The nine workflow stages as a column of numbered boxes. To
+the left, in brick, what stayed with people: choosing the question at
+stage 1, which model at stage 2, what the genetic lower bound means at
+stage 4, whether ascertainment holds at stage 8, which streams to trust
+at stage 9. To the right, in teal, what agents did: reading French PDF
+sitreps at stage 3, digitising the onset curve at stage 4, fitting
+pipeline, releases and docs at stage 7, tests and recovery checks at
+stage 8, sensitivity analyses and figures at stage 9."}
+
+::: {.attribution}
+Drawn for this talk, `scripts/exchange-workflow-split.py`, from the
+[BVDOutbreakSize][bvd] `README.md` and `data/README.md`
+:::
+:::
+::::
+
+## Agents building and checking the parts
+
+:::: {.columns}
+::: {.column width="56%"}
+- Bundibugyo virus disease, DRC. McCabe et al. replicated the day after
+  their report, then a joint model across suspected, confirmed, deaths,
+  exports and bed occupancy
+- Agents read the French PDF situation reports. Two blind reads per
+  vintage of the onset chart
+- SitRep 087 changed the y axis steps from 20 to 25. Caught only by the
+  reporting-triangle invariant
+- Could agents build and check the simulators you learn against?
+
+::: {.attribution}
+[BVDOutbreakSize][bvd] `README.md` and `data/README.md`, SitReps 104 to
+114 · McCabe et al. report of 18 May 2026
+:::
+:::
+::: {.column width="44%"}
+![](../figures/exchange-bvd-outbreak-streams.png){width="100%"
+fig-alt="Posterior densities for the cumulative size of the outbreak,
+one per data stream and one joint, with the confirmed-case stream far
+to the right of the others."}
+
+::: {.attribution}
+Outbreak size by data stream, then jointly. June 2026 fit; the live
+report is at
+[epiforecasts.io/BVDOutbreakSize/stable](https://epiforecasts.io/BVDOutbreakSize/stable/)
+:::
+:::
+::::
+
+## Agents that search over models
+
+:::: {.columns}
+::: {.column width="40%"}
+- Google's 2025/26 entry to the CDC hubs was an LLM-guided tree search
+  over forecasting models. It topped influenza, COVID-19 and RSV,
+  prospectively
+- Bracher and Funk put the earlier 11% retrospective gain down to data
+  revision leakage
+- On the DRC model the search was by hand. Agents wrote each variant
+  and the sensitivity analyses. We chose what to keep
+- With composable parts the nodes are component swaps, and each part
+  brings its own checks
+
+::: {.attribution}
+Martinson, Brenner, Plomecka, Williams, Reich and Shamsi 2026,
+[arXiv:2605.16238](https://arxiv.org/abs/2605.16238) · Bracher and Funk
+2026, [arXiv:2608.05883](https://arxiv.org/html/2608.05883) ·
+[BVDOutbreakSize][bvd] `README.md`
+:::
+:::
+::: {.column width="60%"}
+![](../figures/exchange-tree-search.png){width="100%"
+fig-alt="A tree. The root is a task, forecast admissions, scored on
+held-out weeks. Four proposed models below it: ARIMA and a GAM in grey,
+dropped, and two renewal models in teal, kept. Under the kept ones four
+more variants, adding a reporting delay, a spline, day of week effects
+and a wastewater stream, with the spline dropped. Arrows from the
+survivors lead to a red box, an ensemble of the survivors is what gets
+submitted. Side labels read propose, write the code, fit, score, expand
+the best, many rounds."}
+
+::: {.attribution}
+Drawn for this talk, `scripts/exchange-schematics.py`
+:::
+:::
+::::
+
+[wf]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
+[bvd]: https://github.com/epiforecasts/BVDOutbreakSize

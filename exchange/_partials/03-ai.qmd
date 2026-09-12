@@ -3,74 +3,109 @@
 ## A neural network as a component?
 
 :::: {.columns}
-::: {.column width="44%"}
-- Universal differential equations and physics-informed neural networks
-  pair a network with a mechanistic model
-- Philipps et al.: the network "consistently hindered parameter
-  identifiability"
-- No neural network code in any EpiAware package. Maybe nothing doing
-  there at the moment
-- Reinforcement learning and bandits on individual-based simulators.
-  Could a composable component be the environment?
+::: {.column width="42%"}
+- Universal differential equations and physics-informed networks pair
+  a network with a mechanistic model. Here the renewal process is the
+  mechanism
+- A network in the $R_t$ slot learns what the AR process cannot say.
+  Behaviour, season, policy
+- A network on the observation side fits several data streams from the
+  same latent infections
+- No neural network code in any EpiAware package yet
 
 ::: {.attribution}
-Rackauckas et al. (2020),
+Rackauckas et al. 2020,
 [arXiv:2001.04385](https://arxiv.org/abs/2001.04385) ·
-Millevoi, Pasetto and Ferronato (2024), PLoS Computational Biology,
-[PMC11407682](https://pmc.ncbi.nlm.nih.gov/articles/PMC11407682/) ·
-Philipps, Schmid and Hasenauer (2025), npj Systems Biology and
-Applications,
-[PMC12398592](https://pmc.ncbi.nlm.nih.gov/articles/PMC12398592/) ·
-Grep of the EpiAware organisation for Lux and Flux, 2026-09-11
+Millevoi, Pasetto and Ferronato 2024, PLoS Comput Biol ·
+Philipps, Schmid and Hasenauer 2025, npj Syst Biol Appl ·
+grep of the EpiAware organisation for Lux and Flux, 2026-09-11
 :::
 :::
-::: {.column width="56%"}
+::: {.column width="58%"}
 ![](../figures/exchange-nn-component.png){width="100%"
 fig-alt="Three boxes in a row: an infection model, Renewal with an
 empty rt slot, an observation model of LatentDelay, Ascertainment and
-NegativeBinomialError, and cases. Two candidates point at the same slot:
+NegativeBinomialError, and cases. Two candidates point at the R_t slot:
 an AR process, labelled today, and a small neural network of
-covariates, labelled a question, with a swap arrow between them."}
+covariates, labelled a question, with a swap arrow between them. Under
+the observation model a third candidate, a network from the latent
+infections to cases, deaths and wastewater at once."}
 
 ::: {.attribution}
 Drawn for this talk, `scripts/exchange-nn-component.py`, after the
 parts on
-[epiaware.org/approaches/composable-turing-models](https://epiaware.org/approaches/composable-turing-models.html)
+[epiaware.org/approaches](https://epiaware.org/approaches/composable-turing-models.html)
 :::
 :::
 ::::
 
-## Agents building and checking the parts
+## Renewal as a neural network layer
 
 :::: {.columns}
-::: {.column width="56%"}
-- [BVDOutbreakSize][bvd]. Bundibugyo virus disease, DRC. McCabe et al.
-  replicated the day after their report
-- 333 of 425 pull requests, the unit of change on GitHub, came from my
-  bot account
-- Agents read the French PDF situation reports. Two blind reads per
-  vintage of the onset chart
-- SitRep 087 changed the y axis steps from 20 to 25. Caught only by the
-  reporting-triangle invariant
-- Could agents build and check the simulators you learn against?
+::: {.column width="40%"}
+- Flux and Lux build models by stacking layers. The renewal equation is
+  a convolution. A convolution is a layer
+- Delays, ascertainment and the likelihood are layers too. The stack is
+  composable by construction, inside the deep learning toolchain
+- Pervez et al. write mechanistic models this way
+- Priors and Hamiltonian Monte Carlo on one side, gradient training on
+  the other. The same layers
 
 ::: {.attribution}
-[github.com/epiforecasts/BVDOutbreakSize][bvd], `README.md` and
-`data/README.md:77-111`, SitReps 104 to 114 · McCabe et al. report of
-18 May 2026, repository created 19 May · Pull request count from the
-GitHub API, 2026-09-11
+Pervez, Locatello and Gavves 2024,
+[arXiv:2402.13077](https://arxiv.org/abs/2402.13077) · Innes 2018,
+[Flux.jl](https://fluxml.ai/) · the 2026 Wellcome Discovery application
 :::
 :::
-::: {.column width="44%"}
-![](../figures/exchange-bvd-outbreak-streams.png){width="100%"
-fig-alt="Posterior densities for the cumulative size of the outbreak,
-one per data stream and one joint, with the confirmed-case stream far
-to the right of the others."}
+::: {.column width="60%"}
+![](../figures/exchange-renewal-layer.png){width="100%"
+fig-alt="On the left the renewal equation, I_t equals R_t times the sum
+over s of I_{t minus s} g_s, described as a convolution with a fixed
+kernel scaled by R_t. On the right a stack of six layers: inputs, an R_t
+layer marked learned, then a renewal layer, a delay layer and an
+ascertainment layer marked fixed by the epidemiology, then a negative
+binomial likelihood on cases."}
 
 ::: {.attribution}
-Outbreak size estimated by each data stream, then jointly. June 2026
-fit; the live report is at
-[epiforecasts.io/BVDOutbreakSize/stable](https://epiforecasts.io/BVDOutbreakSize/stable/)
+Drawn for this talk, `scripts/exchange-schematics.py`
+:::
+:::
+::::
+
+## An outbreak-specific foundation model
+
+:::: {.columns}
+::: {.column width="40%"}
+- Time series foundation models forecast well a few weeks out on sparse
+  data. Less well at peaks and turning points
+- CAPE pretrains on simulated compartmental epidemics. A model of
+  outbreaks, but of the final curves
+- Outbreak data change after the fact. On the DRC model the daily
+  suspected stream stopped on 6 August, and in May INSP reclassified
+  suspected cases
+- A model pretrained on data as it was seen at the time, vintage by
+  vintage. A project I would like to be part of
+
+::: {.attribution}
+Kalahasti et al. 2025, medRxiv · Wang, Li and Perra 2026, medRxiv ·
+Jafari et al. 2026, [arXiv:2606.19560](https://arxiv.org/abs/2606.19560)
+· Liu et al. 2026, CAPE, KDD · PNAS 2026,
+[doi:10.1073/pnas.2526192123](https://doi.org/10.1073/pnas.2526192123) ·
+[BVDOutbreakSize][bvd] `README.md`
+:::
+:::
+::: {.column width="60%"}
+![](../figures/exchange-foundation-outbreak.png){width="100%"
+fig-alt="Left, the same outbreak curve as it looked in May, July and
+September, each vintage lower and shorter than the next, with a dashed
+line where the case definition changed, and below it bars showing data
+streams that start and stop. Middle, an arrow labelled every vintage,
+every stream, with its date, into a box labelled an outbreak foundation
+model pretrained on outbreaks as they were seen at the time. Right, a
+nowcast and forecast fan on the latest vintage."}
+
+::: {.attribution}
+Drawn for this talk, `scripts/exchange-schematics.py`
 :::
 :::
 ::::

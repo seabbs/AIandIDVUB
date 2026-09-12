@@ -1,50 +1,61 @@
-## Who I work with, at LSHTM and epiforecasts
+# Who I work with
 
-- Six of these eight are `EpiNow2` co-authors. Two more built
-  `scoringutils`
-- epiforecasts and CMMID overlap for me. Shared code, shared reviews
+## Real-time tools and the hubs
+
+- Six of these eight are `EpiNow2` co-authors. Nikos Bosse wrote
+  `scoringutils`, the forecast scoring package. Hugo Gruson and James
+  Azam contribute to it
+- Sebastian Funk and Kath Sherratt are co-authors on the live DRC model.
+  Katelyn Gostic is at CDC
 
 ![](../figures/exchange-people-grid-a.jpg){width="82%" fig-align="center"
-fig-alt="Eight epiforecasts and CMMID collaborators: Sebastian Funk,
-James Azam, Nikos Bosse, Kath Sherratt, Hugo Gruson, Joe Hickson,
-Michael DeWitt and Hamada Badr."}
+fig-alt="Eight collaborators on real-time tools and hubs: Sebastian Funk,
+James Azam, Nikos Bosse, Kath Sherratt, Hugo Gruson, Joe Hickson, Hamada
+Badr and Katelyn Gostic."}
 
 ::: {.attribution}
-`EpiNow2` and `scoringutils` authorship,
-`notes/research-collaborators.md` group (a) · photos from GitHub
+`EpiNow2` and `scoringutils` authorship, [BVDOutbreakSize][bvd]
+`README.md` · photos from GitHub
 :::
 
-## Who I work with, in the epinowcast community
+## Delays and nowcasting
 
 - Adrian Lison and Adam Howes are second only to me on `epinowcast`
-  and `epidist`
-- `primarycensored` and `baselinenowcast` are joint work. Thomas
-  Ward, UKHSA, co-authored the paper
+  and `epidist`. Kaitlyn Johnson built `baselinenowcast`
+- `primarycensored` is joint work. Thomas Ward, UKHSA, and Christopher
+  Overton co-authored the paper. Overton was first author on the UKHSA
+  mpox nowcasting
 
 ![](../figures/exchange-people-grid-b.jpg){width="82%" fig-align="center"
-fig-alt="Eight epinowcast community collaborators: Adrian Lison,
-Kaitlyn Johnson, Adam Howes, Carl Pearson, Kelly Charniga, Sang Woo
-Park, Tim Taylor and Thomas Ward, the last four shown as initials
+fig-alt="Eight collaborators on delays and nowcasting: Adrian Lison,
+Kaitlyn Johnson, Adam Howes, Carl Pearson, Kelly Charniga, Sang Woo Park,
+Thomas Ward and Christopher Overton, the last four shown as initials
 tiles."}
 
 ::: {.attribution}
-Commit counts and paper authorship,
-`notes/research-collaborators.md` group (b) · photos from GitHub
+Commit counts and paper authorship, `notes/research-collaborators.md` ·
+Overton et al. 2023, PLoS Comput Biol · photos from GitHub
 :::
 
-## Who I work with, on the Julia side
+## The Julia composable work
 
-- Five of these eight co-authored the composable modelling paper
-  with me
-- Samuel Brand, Damon Bayer and Joseph Lemaitre also built
-  `CensoredDistributions.jl`
+- Top row. EpiAware, and the composable paper. Samuel Brand, Damon
+  Bayer and Joseph Lemaitre built `CensoredDistributions.jl` with me.
+  Hong Ge leads `Turing.jl`
+- Bottom row. JuliaBayes, formed April 2026, building the tools around
+  `Turing.jl`. Chains, regression models, a Bayesian workflow package
 
-![](../figures/exchange-people-grid-c.jpg){width="82%" fig-align="center"
-fig-alt="Eight EpiAware and Julia-side collaborators: Samuel Brand,
-Hong Ge, Sandra Montes-Olivas, Simon Frost, Anne Cori, Damon Bayer,
-Joseph Lemaitre and Jason Asher, four shown as initials tiles."}
+![](../figures/exchange-people-grid-c.jpg){width="86%" fig-align="center"
+fig-alt="Twelve collaborators on the Julia work in two rows. Top: Samuel
+Brand, Damon Bayer, Michael DeWitt, Joseph Lemaitre, Hong Ge and Sandra
+Montes-Olivas. Bottom: Penelope Yong, Peter Thestrup Waade, Guillaume
+Dalle, Ryan Senne, Simon Steiger and Jessica Cox. Three shown as initials
+tiles."}
 
 ::: {.attribution}
-Composable modelling paper authorship and `CensoredDistributions.jl`,
-`notes/research-collaborators.md` group (c) · photos from GitHub
+EpiAware and JuliaBayes membership from the GitHub API, 2026-09-12 ·
+`CensoredDistributions.jl` `Project.toml` · composable paper author
+list · photos from GitHub
 :::
+
+[bvd]: https://github.com/epiforecasts/BVDOutbreakSize

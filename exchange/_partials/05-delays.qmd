@@ -202,14 +202,8 @@ v0.2.22 for the JuliaCon 2026 delays talk ·
 - [`CensoredDistributions.jl`][lk-censoreddistributionsjl]. Each
   adjustment is a wrapper on a `Distributions.jl` object. The stack is
   still a distribution, so Turing takes it as it is
-- The NEJM correspondence on Bundibugyo virus disease used `epidist`
 - Less clear where AI plugs in here. A learned delay distribution?
   Amortised inference trained on your simulators?
-
-::: {.attribution}
-NEJM correspondence (2026),
-[doi:10.1056/NEJMc2608070](https://www.nejm.org/doi/full/10.1056/NEJMc2608070)
-:::
 :::
 ::::
 

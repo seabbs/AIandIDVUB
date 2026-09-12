@@ -9,7 +9,8 @@ logins=(
   sbfnk jamesmbaazam nikosbosse kathsherratt Bisaloo joeHickson medewitt
   hsbadr
   adrian-lison kaitejohnson athowes pearsonca kcharniga parksw3 TimTaylor
-  SamuelBrand1 damonbayer jcblemai jasonasher
+  SamuelBrand1 damonbayer jcblemai kgostic
+  penelopeysm PTWaade gdalle rsenne simonsteiger BJMCox nsiccha yebai
 )
 
 for login in "${logins[@]}"; do

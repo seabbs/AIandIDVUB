@@ -2,11 +2,19 @@
 """Build one collaborator-grid image per group for
 exchange/_partials/01b-people.qmd.
 
-Each entry is (name, photo_path_or_None, ring_colour). Photos are cropped
-to a circle at equal size; people with no confirmed real photo get a
-plain colour tile carrying their initials instead. Output is 1600px wide,
-white background, in the site palette (teal #1f6f8b, slate #4a5899,
-brick #b5432f, greys).
+Each entry is (name, photo_path_or_None). Photos are cropped to a circle
+at equal size; people with no confirmed real photo get a plain colour
+tile carrying their initials instead. Output is 1600px wide, white
+background, in the site palette (teal #1f6f8b, slate #4a5899, brick
+#b5432f, greys).
+
+Groups follow the work, not the institution. Sources: the GitHub API
+for JuliaBayes and EpiAware membership (12 September 2026), package
+DESCRIPTION and Project.toml author fields, and paper author lists, all
+recorded in notes/research-collaborators.md and notes/r2-exchange-report.md.
+
+Run with:
+    uv run --with pillow scripts/exchange-people-grid.py
 """
 
 from pathlib import Path
@@ -23,12 +31,8 @@ GREY_TILE = (150, 156, 163)
 WHITE = (255, 255, 255)
 
 FONT_BOLD = "/System/Library/Fonts/Supplemental/Arial Bold.ttf"
-FONT_REG = "/System/Library/Fonts/Supplemental/Arial.ttf"
 
 CANVAS_W = 1600
-COLS = 4
-CIRCLE_D = 260
-MARGIN = 60
 COL_GAP = 40
 ROW_GAP = 30
 NAME_H = 70
@@ -90,36 +94,36 @@ def wrap_name(name, font, draw, max_w):
     return lines[:2]
 
 
-def build_grid(people, ring_colour, out_path):
+def build_grid(people, ring_colour, out_path, cols=4, circle=260,
+               name_size=30):
     """people: list of (name, photo_path_or_None)."""
-    rows = -(-len(people) // COLS)
-    col_w = CIRCLE_D + COL_GAP
-    canvas_h = TOP_PAD + rows * (CIRCLE_D + 12 + NAME_H) + \
+    rows = -(-len(people) // cols)
+    canvas_h = TOP_PAD + rows * (circle + 12 + NAME_H) + \
         (rows - 1) * ROW_GAP + BOTTOM_PAD
-    total_cols_w = COLS * CIRCLE_D + (COLS - 1) * COL_GAP
+    total_cols_w = cols * circle + (cols - 1) * COL_GAP
     x0 = (CANVAS_W - total_cols_w) // 2
 
     canvas = Image.new("RGB", (CANVAS_W, canvas_h), WHITE)
     draw = ImageDraw.Draw(canvas)
-    name_font = ImageFont.truetype(FONT_BOLD, 30)
+    name_font = ImageFont.truetype(FONT_BOLD, name_size)
 
     for i, (name, photo) in enumerate(people):
-        col, row = i % COLS, i // COLS
-        x = x0 + col * (CIRCLE_D + COL_GAP)
-        y = TOP_PAD + row * (CIRCLE_D + 12 + NAME_H + ROW_GAP)
+        col, row = i % cols, i // cols
+        x = x0 + col * (circle + COL_GAP)
+        y = TOP_PAD + row * (circle + 12 + NAME_H + ROW_GAP)
         if photo is not None:
-            tile = circular_crop(photo, CIRCLE_D, ring_colour)
+            tile = circular_crop(photo, circle, ring_colour)
         else:
-            tile = initials_tile(name, CIRCLE_D, GREY_TILE)
+            tile = initials_tile(name, circle, GREY_TILE)
         canvas.paste(tile, (x, y), tile)
-        lines = wrap_name(name, name_font, draw, CIRCLE_D + 20)
-        ty = y + CIRCLE_D + 14
+        lines = wrap_name(name, name_font, draw, circle + 20)
+        ty = y + circle + 14
         for line in lines:
             bbox = draw.textbbox((0, 0), line, font=name_font)
             tw = bbox[2] - bbox[0]
-            draw.text((x + (CIRCLE_D - tw) / 2 - bbox[0], ty), line,
+            draw.text((x + (circle - tw) / 2 - bbox[0], ty), line,
                       fill=GREY_TEXT, font=name_font)
-            ty += 36
+            ty += int(name_size * 1.2)
 
     canvas.save(out_path, quality=92)
     print(f"wrote {out_path} ({canvas.width}x{canvas.height})")
@@ -129,17 +133,21 @@ def p(login):
     return FIGURES / f"exchange-people-{login}.jpg"
 
 
+# Real-time tools and hubs: EpiNow2 and scoringutils authors.
 GROUP_A = [
-    ("Sebastian Funk", FIGURES / "exchange-people-sbfnk.jpg"),
+    ("Sebastian Funk", p("sbfnk")),
     ("James Azam", p("jamesmbaazam")),
     ("Nikos Bosse", p("nikosbosse")),
     ("Kath Sherratt", p("kathsherratt")),
     ("Hugo Gruson", p("bisaloo")),
     ("Joe Hickson", p("joehickson")),
-    ("Michael DeWitt", p("medewitt")),
     ("Hamada Badr", p("hsbadr")),
+    ("Katelyn Gostic", p("kgostic")),
 ]
 
+# Delays and nowcasting: epinowcast, epidist, primarycensored and
+# baselinenowcast. Tiles where the GitHub avatar is not a photo or there
+# is no login on record.
 GROUP_B = [
     ("Adrian Lison", p("adrian-lison")),
     ("Kaitlyn Johnson", p("kaitejohnson")),
@@ -147,23 +155,31 @@ GROUP_B = [
     ("Carl Pearson", p("pearsonca")),
     ("Kelly Charniga", None),
     ("Sang Woo Park", None),
-    ("Tim Taylor", None),
     ("Thomas Ward", None),
+    ("Christopher Overton", None),
 ]
 
+# The Julia composable work. First row EpiAware members, the Turing.jl
+# lead and the composable paper; second row JuliaBayes members. Jessica
+# Cox and Penelope Yong have non-photo avatars, so tiles.
 GROUP_C = [
     ("Samuel Brand", p("samuelbrand1")),
+    ("Damon Bayer", p("damonbayer")),
+    ("Michael DeWitt", p("medewitt")),
+    ("Joseph Lemaitre", p("jcblemai")),
     ("Hong Ge", p("hong-ge")),
     ("Sandra Montes-Olivas", None),
-    ("Simon Frost", None),
-    ("Anne Cori", None),
-    ("Damon Bayer", p("damonbayer")),
-    ("Joseph Lemaitre", p("jcblemai")),
-    ("Jason Asher", p("jasonasher")),
+    ("Penelope Yong", None),
+    ("Peter Thestrup Waade", p("ptwaade")),
+    ("Guillaume Dalle", p("gdalle")),
+    ("Ryan Senne", p("rsenne")),
+    ("Simon Steiger", p("simonsteiger")),
+    ("Jessica Cox", None),
 ]
 
 
 if __name__ == "__main__":
     build_grid(GROUP_A, TEAL, FIGURES / "exchange-people-grid-a.jpg")
     build_grid(GROUP_B, SLATE, FIGURES / "exchange-people-grid-b.jpg")
-    build_grid(GROUP_C, BRICK, FIGURES / "exchange-people-grid-c.jpg")
+    build_grid(GROUP_C, BRICK, FIGURES / "exchange-people-grid-c.jpg",
+               cols=6, circle=215, name_size=26)
