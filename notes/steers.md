@@ -45,3 +45,6 @@ as the steering section.
 > seminare (loose formum users clara and fanny organising seminaer)
 > epiforecats led by seb funk which I am associated with not clear cross
 > over is i.e realtime modell and evaluating it. CMMID ...
+
+> make sure wherr it makes sense to heavily mine past presentations of
+> mine for imagews complete slides and sectiohns that make sense

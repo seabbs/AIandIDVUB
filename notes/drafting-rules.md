@@ -71,3 +71,34 @@ He asked for pictures, schematics and interactives, and sparse text.
 - When done, write `notes/draft-<deck>-report.md`: what you built, slide
   count, every number with its source, figures made or copied, what you
   were unsure about, and anything in the spec you could not do.
+
+## Mine his past decks first
+
+His steer, 12 September: "where it makes sense, heavily mine past
+presentations of mine for images, complete slides and sections that make
+sense".
+
+Before drawing a figure or writing a slide, look for one he has already
+given. Lift whole slides and whole sections where they fit, keeping his
+wording, and copy the figures with your deck's prefix. Record the source
+deck and file in the attribution. Past decks, in rough order of usefulness:
+
+- `/Users/lshsa2/code/seabbs/JuliaCon2026/{roadmap,delays,composable}/_partials/`
+  and `figures/` (August 2026, corrected by him line by line)
+- `/Users/lshsa2/code/seabbs/how-to-serial-interval/_partials/` and
+  `figures/` (June 2026, delays, censoring, composition)
+- `/Users/lshsa2/code/EpiAware/ComposableProbabilisticIDModels/presentations/`
+  (the 40 minute composable talk and shorter cuts) and `../figures/`
+- `/Users/lshsa2/code/seabbs/BVDOutbreakSize/slides/` (the 10 June 2026
+  WHO collaboratory talk on the live outbreak)
+- `/Users/lshsa2/code/seabbs/hpru-ppie-kickoff/` (public involvement,
+  ensembles, forecasting for the public)
+- `/Users/lshsa2/code/nfidd/{nfidd,sismid,sismid-forecasting,sismid-nowcasting}/sessions/slides/`
+  (teaching: forecasting, nowcasting, delays, Rt, evaluation; check the
+  author of each deck, several are Nick Reich's or others')
+- `/Users/lshsa2/code/seabbs/fellowships/decks/` (recent decks on his
+  research programme)
+- `/Users/lshsa2/code/archive/composable-grant/slides/`
+- `/Users/lshsa2/code/seabbs/how-I-llm/_partials/` (facts and figures
+  only; the phrasing is not his)
+- `/Users/lshsa2/code/epinowcast/GuideToSTLTReportingDelays/meeting/`

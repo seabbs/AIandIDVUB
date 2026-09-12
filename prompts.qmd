@@ -143,6 +143,11 @@ Funk which I am associated with, where the cross-over is real-time
 modelling and evaluating it, and CMMID.
 :::
 
+::: {.prompt}
+Make sure, where it makes sense, to heavily mine past presentations of
+mine for images, complete slides and sections that make sense.
+:::
+
 ::::
 
 ## How it was built
