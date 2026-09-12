@@ -44,9 +44,13 @@ live."}
 - 2020 to 2022, weekly $R_t$ estimates and forecasts to SPI-M-O, the
   UK's modelling advisory group
 
+![](../figures/exchange-sebastian-funk.jpg){width="22%"
+fig-alt="Sebastian Funk"}
+
 ::: {.attribution}
-[github.com/epiforecasts](https://github.com/epiforecasts) · Hub
-repository created 13 January 2021, GitHub API · SPI-M-O from
+[github.com/epiforecasts](https://github.com/epiforecasts) ·
+[Sebastian Funk](https://github.com/sbfnk) · Hub repository created
+13 January 2021, GitHub API · SPI-M-O from
 `composable-grant/coapplicant_details/sam.qmd:89`
 :::
 :::
@@ -96,13 +100,15 @@ to 2026-08-11 from [cranlogs](https://cranlogs.r-pkg.org/), retrieved
 - 🐋 Every project I have worked on has ended up with one person doing
   most of it. Here the whale is me and a subscription
 
+![](../figures/exchange-fanny-bergstrom.jpg){width="16%"
+fig-alt="Fanny Bergström"}
+
 ::: {.attribution}
-Wording from `roadmap/_partials/04-r.qmd:22-23` and the whale from
-`11-governance.qmd:7-9`, JuliaCon 2026 roadmap · 50 from
-`composable-workflow-grant/.../abbott.md:127` · 31 entries at
+Wording from the JuliaCon 2026 roadmap deck · 50 from grant text,
+`abbott.md:127` · 31 entries at
 [epinowcast.org/seminars](https://www.epinowcast.org/seminars), read
-2026-09-11 · Organisers from `epinowcast.github.io/seminars.qmd` at
-`20be2ff` · IISA post, 2023
+2026-09-11 · organisers from `seminars.qmd` at `20be2ff` · photo from
+[github.com/fannybergstrom](https://github.com/fannybergstrom)
 :::
 :::
 ::::
