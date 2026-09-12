@@ -4,18 +4,32 @@
 
 :::: {.columns}
 ::: {.column width="40%"}
+- I was travelling for summer schools, teaching and workshops, so decided
+  to have a go with agents
 - Drafting and review, of code and of text
 - Reading French situation reports as PDFs and digitising their charts
 - These slides. The brief and the corrections are mine. The text and
   the figures are the agent's
-- The brief for this lecture is on the right
-:::
-::: {.column width="60%"}
+
 > For communication, really not sure.
 > Can you mine my recent work and give a proposal?
+:::
+::: {.column width="60%"}
+![](../figures/comms-bvd-insp-sitreps.png){height="620px"
+fig-align="center"
+fig-alt="A situation report page from the DRC national public health
+institute, in French, with cumulative confirmed cases, deaths, isolation
+occupancy, recoveries and suspected cases in boxes"}
 
 ::: {.attribution}
-[The prompts page for this site](https://samabbott.co.uk/AIandIDVUB/prompts.html),
+Situation report from [insp.cd](https://insp.cd/ebola-17eme-epidemie/),
+as shown in the
+[WHO collaboratory talk, 10 June 2026](https://epiforecasts.io/slides/bdbv_collaboratory_20260610.html),
+`BVDOutbreakSize/slides/figures/insp_sitreps.png` · first bullet from
+the
+[JuliaCon 2026 roadmap deck](https://samabbott.co.uk/JuliaCon2026/roadmap/slides.html),
+`roadmap/_partials/05-what-it-takes.qmd` · quote from
+[the prompts page for this site](https://samabbott.co.uk/AIandIDVUB/prompts.html),
 spelling cleaned up, judgements unchanged
 :::
 :::
@@ -27,7 +41,8 @@ spelling cleaned up, judgements unchanged
 ::: {.column width="40%"}
 - Agent work goes out from a bot account, a second GitHub login, so
   `git log` tells you who did most of it
-- A disclosure line in the README of the Bundibugyo outbreak analysis
+- A disclosure line in the Bundibugyo analysis README and on the
+  limitations slide of the WHO call about it
 - A prompts page with the brief and the steers
 - My conference bio was drafted by the bot, "who has a very suspiciously
   high opinion of me, so take it with a pinch of salt"
@@ -39,8 +54,11 @@ fig-alt="GitHub profile of seabbs-bot, Sam Abbott (bot), robot avatar"}
 
 ::: {.attribution}
 [github.com/seabbs-bot](https://github.com/seabbs-bot), created
-2026-01-23, screenshot 2026-09-11 · bio line from the
-[JuliaCon 2026 home page](https://samabbott.co.uk/JuliaCon2026/)
+2026-01-23, screenshot 2026-09-11 · "model and analysis drafted with an
+LLM under human oversight", limitations slide of the
+[WHO collaboratory talk, 10 June 2026](https://epiforecasts.io/slides/bdbv_collaboratory_20260610.html),
+`BVDOutbreakSize/slides/bdbv_collaboratory_20260610.qmd` · bio line
+from the [JuliaCon 2026 home page](https://samabbott.co.uk/JuliaCon2026/)
 :::
 :::
 ::::
@@ -108,8 +126,9 @@ fig-alt="A single bar of 114 claims, 67 marked changed and 47 marked stood"}
 fig-alt="seabbs-bot pull requests per month in 2026, peak 744 in July"}
 
 ::: {.attribution}
-GitHub search API `total_count` by month, run 2026-09-11, script
-`scripts/comms-figures.py` · superseded share from
+The JuliaCon 2026 roadmap figure `figures/bot-prs-by-month.png`,
+extended to September. GitHub search API `total_count` by month, run
+2026-09-11, script `scripts/comms-figures.py` · superseded share from
 [seabbs/how-I-llm](https://github.com/seabbs/how-I-llm) commit `8c7e834`
 :::
 :::

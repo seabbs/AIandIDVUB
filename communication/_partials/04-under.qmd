@@ -53,6 +53,8 @@ Advances, at least 13.5% of 2024 PubMed abstracts LLM-processed
 - The live Bundibugyo virus disease model. 497 commits, 333 of 425 pull
   requests from the bot account
 - Four named authors. Who is accountable for a number an agent produced?
+- The people I build for need to be able to trust it, and to see who is
+  behind it
 
 > The model code and analysis were drafted by a language model, then
 > reviewed and revised under human oversight.
@@ -75,7 +77,9 @@ $ git log --format='%an' | sort | uniq -c | sort -rn
 ::: {.attribution}
 [epiforecasts/BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize)
 README and local clone, 2026-09-11 · pull request counts from the
-GitHub search API, same day
+GitHub search API, same day · users line from the
+[JuliaCon 2026 roadmap deck](https://samabbott.co.uk/JuliaCon2026/roadmap/slides.html),
+`roadmap/_partials/11-governance.qmd`
 :::
 :::
 ::::
@@ -111,11 +115,15 @@ SitReps 081 and 087, read 2026-09-11
 > I do not have a defence for this.
 > I am part of the problem.
 
-- £200 a month, from my own pocket. My institution does not cover it
-- Who can do this work at all is narrowing. Agents make that worse
+- 🐋 Every project I have worked on has ended up with one person doing most
+  of it
+- Here the whale is me and a subscription. £200 a month, from my own
+  pocket. My institution does not cover it
+- 🌍 Who can do this work at all is narrowing. Agents make that worse
 
 ::: {.attribution}
-[How I am LLM](https://samabbott.co.uk/how-I-llm), 2026-07-30 ·
+[How I am LLM](https://samabbott.co.uk/how-I-llm), 2026-07-30 · whale
+bullets from the
 [JuliaCon 2026 roadmap deck](https://samabbott.co.uk/JuliaCon2026/roadmap/slides.html),
-governance slide
+`roadmap/_partials/11-governance.qmd`
 :::

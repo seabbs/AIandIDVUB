@@ -36,8 +36,11 @@ updated 2026-01-30 ·
 
 :::: {.columns}
 ::: {.column width="40%"}
-- The estimates went out as CSV files on GitHub
-- They were used in publications by people who did not interact with us
+- The estimates went out as CSV files on GitHub. People who did not
+  interact with us used them in publications
+- All of them are used by public health departments, including CDC,
+  UKHSA, RKI, ECDC and WHO
+- In many cases the package is too complex for anyone else to use
 - The limitations sat on a methods page that 20,000 of 1.2 million page
   views reached
 
@@ -45,11 +48,21 @@ updated 2026-01-30 ·
 > poorly communicated.
 :::
 ::: {.column width="60%"}
-![](../figures/comms-pipeline.png){width="100%"
-fig-alt="Model, estimates and other papers in a row; limitations fade"}
+| Package | Since | Stars | CRAN |
+|---|---|---:|---:|
+| `EpiNow2` | 2020 | 141 | 58,073 |
+| `epinowcast` | 2021 | 67 | not on CRAN |
+| `epidist` | 2023 | 16 | not on CRAN |
+| `primarycensored` | 2024 | 9 | 11,294 |
+| `baselinenowcast` | 2025 | 10 | 1,678 |
 
 ::: {.attribution}
-Schematic, this talk · quote and counts from
+Table and the two package bullets from the
+[JuliaCon 2026 roadmap deck](https://samabbott.co.uk/JuliaCon2026/roadmap/slides.html),
+`roadmap/_partials/04-r.qmd`. Stars and creation dates from the GitHub
+API, downloads are CRAN totals to 2026-08-11 from
+[cranlogs](https://cranlogs.r-pkg.org/), retrieved 2026-08-12, and
+`baselinenowcast` 2026-08-13 · quote and counts from
 [Reflections on two years estimating effective reproduction numbers](https://samabbott.co.uk/posts/2022-03-25-rt-reflections/),
 2022-03-25 ·
 [epiforecasts/covid-rt-estimates](https://github.com/epiforecasts/covid-rt-estimates)
@@ -60,30 +73,39 @@ Schematic, this talk · quote and counts from
 ## Community as the channel
 
 :::: {.columns}
-::: {.column width="40%"}
+::: {.column width="58%"}
 - [epinowcast](https://www.epinowcast.org/). Over 50 researchers and
-  public health analysts
-- 31 seminars from May 2023 to May 2026
-- By 2026 my own verdict was that in many cases the package is too complex
-  for anyone else to use
+  public health analysts, 31 seminars from May 2023 to May 2026
+- [EpiAware](https://epiaware.org), its Julia successor. Nobody from
+  outside the team has committed since February
+- So the other party on an issue is usually one of my robots. Answering
+  a robot is dispiriting
+- Do 🤖 shut down collaboration?
 
 > Trying to build a community of practice as community >> methods or
 > models alone.
 :::
-::: {.column width="60%"}
-![](../figures/comms-shot-epinowcast-forum.png){height="620px"
-fig-align="center"
-fig-alt="The epinowcast community forum front page with recent topics"}
+::: {.column width="42%"}
+::: {.emoji-crowd}
+🤖 🤖 🤖 🤖 🤖 🤖\
+🤖 🤖 🤖 🤖 🤖 🤖\
+🤖 🤖 [🧑‍💻 👩‍💻]{.humans} 🤖 🤖\
+🤖 🤖 🤖 [🧑‍🔬]{.humans} 🤖 🤖\
+🤖 🤖 🤖 🤖 🤖 🤖\
+🤖 🤖 🤖 🤖 🤖 🤖
+:::
 
 ::: {.attribution}
-[community.epinowcast.org](https://community.epinowcast.org/), screenshot
-2026-09-11 · seminar count from
+Crowd and the robot bullets from the
+[JuliaCon 2026 roadmap deck](https://samabbott.co.uk/JuliaCon2026/roadmap/slides.html),
+`roadmap/_partials/10-community.qmd`, most recent outside commit
+2026-02-03 from `git log` on `main`, checked 2026-08-12 ·
+seminar count from
 [epinowcast.org/seminars](https://www.epinowcast.org/seminars.html) ·
 community size from the composable workflow grant co-applicant text ·
 quote from
 [Data, Models, and Modellers during a Global Pandemic](https://samabbott.co.uk/posts/2023-01-04-iisa-data-models-and-modellers-during-a-global-pandemic/),
-2023-01-04 · 2026 verdict from the
-[JuliaCon 2026 roadmap deck](https://samabbott.co.uk/JuliaCon2026/roadmap/slides.html)
+2023-01-04
 :::
 :::
 ::::

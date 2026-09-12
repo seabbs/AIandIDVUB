@@ -22,19 +22,41 @@ Sam Abbott
 :::: {.talk-body}
 ::: {.talk-main}
 
-## The brief
-
-The organisers' request, as the abstract.
+## Abstract
 
 ::: {.abstract}
-- A more communication-focused lecture in the afternoon, tentatively
-  titled *Science Communication with and under AI*.
-- A starting point only, to make my own.
-- My experience during COVID-19, whether working with government bodies,
-  the public, or fellow scientists, including building widely used R
-  packages for the modelling community, could be the material.
-- About 30 minutes.
+During COVID-19 I communicated model outputs to three audiences.
+Government, through weekly estimates and reports to the UK's scientific
+advisory groups and the consensus statements they produced.
+The public, through a dashboard of reproduction number estimates that ran
+from 2020 to 2022 and sometimes published estimates that made no sense.
+Other scientists, through forecast hubs, where a forecast becomes part of
+an ensemble and can be hard to learn from.
+I say what worked for each and what I would do differently.
+
+The software we built was a fourth channel.
+A package default is a decision the user inherits, and the limits of a
+method travel less well than the method.
+The epinowcast community and our forecast evaluation tools were attempts to
+communicate through software and the people around it.
+
+The second half asks what changes when both the writer and the reader have
+a language model.
+I describe how I use coding agents, how I make that visible with a bot
+account and a published prompt log, and what checking their output has
+taught me.
+Under AI, prose starts to sound the same and it gets harder to say who is
+accountable for a number.
+The failure mode is confident, plausible, wrong.
+I end with what I would like us to agree on.
 :::
+
+The organisers asked for a communication-focused lecture of about 30
+minutes, tentatively titled *Science Communication with and under AI*, as
+a starting point to make my own.
+They suggested my experience during COVID-19 with government bodies, the
+public and fellow scientists, including building widely used R packages for
+the modelling community, as the material.
 
 ## Around it
 
