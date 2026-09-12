@@ -19,13 +19,21 @@ by Philippe Beutels
 :::: {.talk-body}
 ::: {.talk-main}
 
-## The brief
+## The panel
 
 ::: {.abstract}
-- Join the panel discussion at the end of the day alongside the other
-  speakers.
-- Moderated by Philippe Beutels of UAntwerp.
+The closing panel asks where modelling and AI go next, and how
+communication and collaboration fit in.
+I bring the two talks from earlier in the day.
+What coding agents have and have not changed in how I build outbreak
+models, and what communicating model outputs during COVID-19 taught me.
+My guess, offered as a guess, is that agents build and check, while people
+keep the question, the judgement of fitness for use, and the trust of
+those who act on the numbers.
 :::
+
+The organisers asked me to join the panel at the end of the day alongside
+the other speakers, moderated by Philippe Beutels of UAntwerp.
 
 There are no slides.
 The talk pages for the [keynote](../keynote/index.qmd) and the

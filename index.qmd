@@ -84,8 +84,8 @@ Moderated by Philippe Beutels.
 
 [Research exchange, VUB AI group and SIMID]{.talk-sub}
 
-Composable models, recent delays work, and the workflow, at a morning of
-short talks at the AI Experience Centre.
+My group and its communities, then composable models, recent delays work
+and the workflow, at a morning of short talks at the AI Experience Centre.
 
 [Page](exchange/index.qmd){.btn .btn-sm .btn-outline-primary}
 [Slides](exchange/slides.qmd){.btn .btn-sm .btn-outline-primary}

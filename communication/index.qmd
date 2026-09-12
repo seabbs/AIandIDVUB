@@ -35,8 +35,8 @@ an ensemble and can be hard to learn from.
 I say what worked for each and what I would do differently.
 
 The software we built was a fourth channel.
-A package default is a decision the user inherits, and the limits of a
-method travel less well than the method.
+A package default is a decision the user inherits.
+The limits of a method travel less well than the method.
 The epinowcast community and our forecast evaluation tools were attempts to
 communicate through software and the people around it.
 

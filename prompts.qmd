@@ -22,9 +22,10 @@ before it put its prompt on a slide.
 
 ## The brief
 
-This is my opening prompt, cleaned up for spelling and sentence boundaries and
-grouped under headings.
-The judgements are unchanged.
+This is my opening prompt, rewritten as plain prose and grouped under
+headings.
+The spelling and grammar are corrected and the sentences are complete.
+The judgements are unchanged and nothing has been added.
 The verbatim version, typos and all, is
 [in the repo][orig].
 It began with the workshop programme and the organisers' request, which are
@@ -35,117 +36,150 @@ on the talk pages.
 ### The site
 
 ::: {.prompt}
-I am a bit confused as to what to put.
-In the first instance I want you to use agents to create a folder in seabbs
-like I did for JuliaCon 2026, AIandIDVUB, with the same structure.
-I want the slides with their titles and QR codes and so on in place, but not
-at this stage content.
-Then I will make a matching GitHub repo and give access that you can push to.
-I think we can have the abstract be what the ask was, in bullets.
+I am not yet sure what to put in these talks.
+To begin, use agents to create a folder in seabbs called AIandIDVUB, with
+the same structure as the one I made for JuliaCon 2026.
+Put the slide decks in place with their titles and QR codes, but leave the
+content for now.
+I will then make a matching GitHub repository and give you access to push
+to it.
+I think the abstract for each talk can be the organisers' request, as
+bullets.
 :::
 
 ### The research
 
 ::: {.prompt}
-Can you use agents to search my recent work for related work?
-I am a bit confused if they mean agentic AI, deep learning, UDEs, or what, to
-be honest.
+Use agents to search my recent work for anything related.
+I am unsure whether the organisers mean agentic AI, deep learning,
+universal differential equations, or something else.
 :::
 
 ### The keynote
 
 ::: {.prompt}
-Before I looked back at what they were talking about I was thinking of
-giving a few sections in the first talk.
-The first being a 10 minute intro to outbreak infectious disease modelling
-over the last 10 years or so that I have been in the field: Ebola in West
-Africa, awareness of and work done by others, then COVID, mpox, and the
-current Ebola outbreak.
-Then 10 minutes on agentic AI, how I LLM, which I have some stuff on, but
-also what it means for modelling.
-Then maybe 10 minutes on opportunities for other AI models: UDEs, PINNs,
-neural flows for fitting (nfidd had a little on both of these, but high
-level), foundation models for outbreaks and infectious disease forecasting
-spinning out of current foundation time series models, agentic model
-composition, i.e. Google's forecasting success with FluSight?
+Before I looked back at what the workshop covers, I had planned the first
+talk in a few sections.
+The first would be a ten minute introduction to outbreak modelling over the
+ten years or so I have been in the field.
+It would cover Ebola in West Africa, which I was aware of and others worked
+on, then COVID-19, mpox and the current Ebola outbreak.
+The second would be ten minutes on agentic AI.
+I have material on this from how I LLM, but I also want to ask what it
+means for modelling.
+The third might be ten minutes on the opportunities in other AI models.
+Universal differential equations, physics-informed neural networks and
+neural flows for fitting, on which the nfidd course had a little, at a high
+level.
+Perhaps foundation models for outbreaks and infectious disease forecasting,
+spun out of the current time series foundation models.
+Perhaps agentic model composition, such as Google's forecasting success at
+FluSight.
 :::
 
 ### The communication lecture
 
 ::: {.prompt}
-For communication, really not sure.
-Can you mine my recent work and give a proposal?
+For the communication lecture I am not sure what to do.
+Mine my recent work and give me a proposal.
 :::
 
 ### How it should look
 
 ::: {.prompt}
-In recent talks, look at the git history to see how I have pruned and
-refined language and style to make it my own, and follow that.
-Be wary of overly dense text on slides.
-We like schematics, pictures and sparse clean slides.
+Look at the git history of my recent talks to see how I have pruned and
+refined the language and style to make them my own, and follow that.
+Be wary of dense text on slides.
+We like schematics, pictures and sparse, clean slides.
 :::
 
 ## The steers
 
-Follow-up instructions during the build, verbatim apart from spelling.
+Follow-up instructions during the build, in order, rewritten in the same
+way.
+The two entries in square brackets are notes on what I forwarded rather
+than things I said.
 The running version is
 [in the repo](https://github.com/seabbs/AIandIDVUB/blob/main/notes/steers.md).
 
 :::: {.steers}
 
 ::: {.prompt}
-We can have the prompt log we did for JuliaCon, cleaned up in the same way,
-rather than directly as given here.
+Present the prompt log as we did for JuliaCon, cleaned up in the same way,
+rather than as given here.
 :::
 
 ::: {.prompt}
-Reminder, you can use a workflow and subagents, and do structure, research
-and content all in parallel, and cross review.
+A reminder that you can use a workflow and subagents.
+Structure, research and content can run in parallel, with cross review.
 :::
 
 ::: {.prompt}
-You should have an invite to the repo for pushing.
+You should now have an invitation to the repository for pushing.
 :::
 
 ::: {.prompt}
-Can push to main and iterate.
+You can push to main and iterate.
 :::
 
 ::: {.prompt}
-Reminder to iteratively update the remote repo.
+A reminder to update the remote repository as you go.
 :::
 
 ::: {.prompt}
-Can you get agents to start drafting the content and cross review it against
-my spec please.
+Please have agents start drafting the content and cross review it against
+my specification.
 The Google point was about LLM-guided tree search.
-Note the need for pictures and interactives.
+Note the need for pictures, interactives and the like.
 :::
 
 ::: {.prompt}
-For the exchange I might like 20 minutes on composable EpiAware modelling and
-potential links to AI approaches as they might think of them, using
-composition, UDEs, PINNs, maybe nothing doing there at the moment.
-Ten on recent delays work and epidist, where the AI cross links are less
-clear.
-Maybe five on the workflow and where AI sits.
-Not sure.
-Review and come up with a first version after cross review.
+[Forwarded the organiser's practical email for the research exchange on 15
+September, having asked whether there was a theme for the day.]
 :::
 
 ::: {.prompt}
-The organiser says there is no theme for the exchange, just an
-introduction of my work and group.
-So day two needs a bit on my epinowcast org and seminar (a loose forum,
-users, Clara and Fanny organising the seminar), epiforecasts led by Seb
-Funk which I am associated with, where the cross-over is real-time
-modelling and evaluating it, and CMMID.
+For the exchange I might like 20 minutes on composable EpiAware modelling
+and its potential links to AI approaches as this group might think of
+them, such as composition, universal differential equations and
+physics-informed neural networks.
+There may be nothing doing there at the moment.
+Then ten minutes on the recent delays work and epidist, where the AI cross
+links are less clear.
+Then perhaps five minutes on the workflow and where AI sits.
+I am not sure.
+Review this and come up with a first version after cross review.
 :::
 
 ::: {.prompt}
-Make sure, where it makes sense, to heavily mine past presentations of
-mine for images, complete slides and sections that make sense.
+[The organiser replied that there is no theme for the exchange, just an
+introduction of my work and group.]
+:::
+
+::: {.prompt}
+So I think the second day needs a bit on my epinowcast organisation and its
+seminar, a loose forum with users, and Clara and Fanny organising the
+seminar.
+Also epiforecasts, led by Seb Funk, which I am associated with.
+The cross-over is not clear-cut, but it is real-time modelling and
+evaluating it.
+CMMID ...
+:::
+
+::: {.prompt}
+Where it makes sense, mine my past presentations heavily for images,
+complete slides and sections.
+:::
+
+::: {.prompt}
+Use an agent to make the prompts on the site a bit more formal and less
+confusing.
+Do the same for the abstracts, more formal but steered by what the
+organisers said.
+:::
+
+::: {.prompt}
+You can use less powerful agents where that makes sense for a task.
 :::
 
 ::::
@@ -168,5 +202,7 @@ their notes into
 
 The style notes were carried over from the JuliaCon 2026 build, including
 the catalogue of LLM phrasing I strip out of my own slides.
+The prompts on this page and the abstracts on the talk pages were rewritten
+by an agent, on the steer above.
 The [commit history](https://github.com/seabbs/AIandIDVUB/commits/main) is
 the record of what happened next.

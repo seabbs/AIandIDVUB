@@ -22,27 +22,46 @@ Sam Abbott
 :::: {.talk-body}
 ::: {.talk-main}
 
-## The brief
-
-The organisers' request, as the abstract.
+## Abstract
 
 ::: {.abstract}
-- Open the workshop with the morning keynote.
-- A tentative title, *Infectious Disease Modelling in the Age of AI*, with
-  the exact content left to me as long as it fits the workshop theme.
-- One idea. Given my work on composable, probabilistic modelling
-  frameworks, bridging renewal-process approaches like EpiNow2 with more
-  flexible, ML-friendly components, open with some history of infectious
-  disease modelling, a few practical examples from my own experience, and
-  use that to lead into an open question on how AI fits into this space
-  going forward.
-- 20 to 30 minutes.
-- The audience is a mix of infectious disease and AI researchers, some with
-  little to no modelling background.
-- Steven Abrams and Pieter Libin speak straight after, giving an overview of
-  different methods, followed by three case studies, so this talk sets the
-  stage for that.
+Infectious disease modelling has a long history, but the last ten years
+changed what it is asked to do during an outbreak and how fast.
+I open with that decade as I saw it.
+The 2014 Ebola epidemic in West Africa, where real-time modelling arrived
+in public view and so did its overreach.
+COVID-19, where my group produced daily reproduction number estimates for
+thousands of locations and weekly estimates for the UK government's
+advisers.
+Mpox in 2022, and the current outbreak of Ebola disease caused by
+Bundibugyo virus in the Democratic Republic of the Congo.
+Along the way I say what a modeller does during an outbreak and what keeps
+going wrong.
+
+The second part is about AI in two senses.
+Coding agents now write most of the code I ship, including a live model of
+the current outbreak.
+I describe what that changes about how models get built and checked, and
+what it does not.
+I then place the other methods, universal differential equations,
+normalising flows and time series foundation models, on a shared map
+alongside the reinforcement learning and machine learning that later
+speakers cover.
+
+I close with an open question.
+Where does AI fit in this work, and what stays with people?
 :::
+
+The organisers asked me to open the workshop with a keynote of 20 to 30
+minutes under the tentative title *Infectious Disease Modelling in the Age
+of AI*, with the content left to me.
+Their suggestion was some history of infectious disease modelling, a few
+practical examples from my own experience, and an open question on how AI
+fits into this space going forward.
+The audience is a mix of infectious disease and AI researchers, some with
+little or no modelling background.
+Steven Abrams and Pieter Libin speak straight after with an overview of
+methods, followed by three case studies.
 
 ## Later the same day
 
