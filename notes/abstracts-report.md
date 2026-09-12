@@ -1,8 +1,8 @@
 # Report: formal prompts and abstracts
 
-Done 12 September 2026 on the steer "make the prompts on the site a bit
-more formal and less confusing, and the abstracts more formal but steered
-by what they said". Nothing committed.
+Done 12 September 2026 on the steer to make the prompts more formal and less
+confusing, and the abstracts more formal but steered by what the organisers
+said. Nothing committed.
 
 ## What changed
 
@@ -10,8 +10,7 @@ by what they said". Nothing committed.
   first-person sentences, spelling and grammar fixed, one judgement per
   sentence, nothing added or dropped in substance. Two bracketed entries
   mark what Sam forwarded rather than said. The two latest steers are in.
-  The intro and "How it was built" now say an agent rewrote the prompts
-  and abstracts on his steer.
+  The intro and "How it was built" say an agent rewrote these on his steer.
 - `keynote/index.qmd`. Bulleted brief replaced by a 205 word abstract: the
   ten years of outbreaks, agents and the other AI on a shared map, the open
   question. Organisers' ask kept in prose below it.

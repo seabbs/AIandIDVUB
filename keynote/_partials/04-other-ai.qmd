@@ -8,15 +8,15 @@
   them
 - The hosts' reinforcement learning sits on two rows
 - Building and checking the model itself is not a row
-- The next three slides take one row each
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-map.png){width="100%"
 fig-alt="A table of eight tasks from Kraemer et al. 2025 with the AI
 method named for each. Scenario modelling and public health decision
 making are marked the hosts in teal. Inference of parameters, forecasting
-and understanding spread mechanisms are marked with the next slides in
-slate. A ninth red row, building and checking the model itself, is
+and understanding spread mechanisms are marked in slate with flows and
+simulation-based inference, time series foundation models, and UDEs and
+PINNs. A ninth red row, building and checking the model itself, is
 marked not in the table, coding agents."}
 
 ::: {.attribution}
@@ -34,12 +34,8 @@ infectious disease epidemics*, Nature 638, 623 to 635,
 ::: {.column width="40%"}
 - A universal differential equation keeps the compartments and
   replaces one term with a neural network
-- A physics-informed neural network fits the network to the data, with
-  the equations as a penalty
 - On epidemic data the network soaks up identifiability. The fitted
   mechanistic parameters "did not match the published values"
-- PINNs are deterministic by default and extrapolate poorly outside the
-  training window
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-ude.png){width="100%"
@@ -51,8 +47,9 @@ S to E flow."}
 Rackauckas et al. 2020, [arXiv:2001.04385](https://arxiv.org/abs/2001.04385)
 · Philipps, Schmid and Hasenauer 2025, npj Systems Biology and
 Applications, [PMC12398592](https://pmc.ncbi.nlm.nih.gov/articles/PMC12398592/)
-· Millevoi, Pasetto and Ferronato 2024, PLoS Comput Biol,
-[PMC11407682](https://pmc.ncbi.nlm.nih.gov/articles/PMC11407682/)
+· Millevoi, Pasetto and Ferronato 2024, PLoS Comput Biol, on
+physics-informed neural networks, deterministic and weak at
+extrapolation, [PMC11407682](https://pmc.ncbi.nlm.nih.gov/articles/PMC11407682/)
 · Nina Schmid, epinowcast seminar, 4 March 2026,
 [epinowcast.org](https://www.epinowcast.org/seminars/2026-03-04-nina-schmid/)
 · diagram this talk, `scripts/keynote-schematics.py`
@@ -116,7 +113,8 @@ Kalahasti et al. 2025, medRxiv,
 · Wang, Li and Perra 2026, medRxiv,
 [doi:10.64898/2026.05.11.26352889](https://www.medrxiv.org/content/10.64898/2026.05.11.26352889v1.full)
 · Jafari et al. 2026, [arXiv:2606.19560](https://arxiv.org/abs/2606.19560)
-· quote from the nfidd forecasting course,
+· quote from Nick Reich's slide in the nfidd forecasting course,
+`sismid-forecasting/sessions/slides/good-models.qmd`, July 2026,
 [nfidd.github.io](https://nfidd.github.io/)
 · diagram this talk, `scripts/keynote-schematics.py`
 :::

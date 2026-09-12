@@ -8,9 +8,8 @@
   earlier
 - Estimate the delays first, then unpick them from the counts to get
   infections and $R_t$
-- A renewal process: today's infections are $R_t$ times a weighted sum
-  of recent infections, weighted by the generation interval. Run it
-  backwards to estimate, forwards to forecast
+- A renewal process. Today's infections are $R_t$ times a weighted sum
+  of recent infections
 - Someone decides. Then next week's data arrive
 :::
 ::: {.column width="60%"}
@@ -39,44 +38,75 @@ Diagram this talk, `scripts/keynote-schematics.py`, after
 - Move the sliders
 :::
 ::: {.column width="60%"}
+<style>
+.reveal .renewal-controls form[class^="oi-"] {
+  --label-width: 260px; --input-width: 460px;
+}
+</style>
+
+::: {.renewal-controls}
 ```{ojs}
 //| echo: false
-viewof R = Inputs.range([0.5, 2.0], {
+viewof R = Inputs.range([0.5, 1.8], {
   value: 1.3, step: 0.05, label: "R"
 })
 viewof gmean = Inputs.range([2, 12], {
   value: 5, step: 0.5, label: "Mean GI, days"
 })
 ```
+:::
 
 ```{ojs}
 //| echo: false
 renewal = {
-  const days = 60, k = 4, theta = gmean / k;
-  const g = Array.from({length: 24}, (_, i) => {
+  const days = 60, k = 4, theta = gmean / k, support = 24;
+  const g = Array.from({length: support}, (_, i) => {
     const s = i + 1;
     return Math.pow(s, k - 1) * Math.exp(-s / theta);
   });
   const gsum = g.reduce((a, b) => a + b, 0);
   const gn = g.map((v) => v / gsum);
-  const inf = new Array(days).fill(0);
-  for (let t = 0; t < 5; t++) inf[t] = 10;
-  for (let t = 5; t < days; t++) {
+  // Growth rate from the Euler-Lotka equation, R * sum g_s exp(-r s) = 1,
+  // by bisection. Seeding on that exponential, ten on day 0, keeps the
+  // series a straight line on the log scale from the first day.
+  let lo = -2, hi = 2;
+  for (let i = 0; i < 80; i++) {
+    const mid = (lo + hi) / 2;
+    const f = R * gn.reduce((a, v, j) => a + v * Math.exp(-mid * (j + 1)), 0);
+    if (f > 1) lo = mid; else hi = mid;
+  }
+  const rate = (lo + hi) / 2;
+  const inf = new Array(support + days).fill(0);
+  for (let t = 0; t < support; t++) {
+    inf[t] = 10 * Math.exp(rate * (t - support + 1));
+  }
+  for (let t = support; t < inf.length; t++) {
     let s = 0;
-    for (let j = 0; j < gn.length && t - 1 - j >= 0; j++) {
-      s += inf[t - 1 - j] * gn[j];
-    }
+    for (let j = 0; j < support; j++) s += inf[t - 1 - j] * gn[j];
     inf[t] = R * s;
   }
-  return inf.map((y, t) => ({day: t, infections: y}));
+  return inf.slice(support - 1).map((y, t) => ({day: t, infections: y}));
+}
+logTicks = {
+  const ys = renewal.map((d) => d.infections);
+  const lo = Math.floor(Math.log10(Math.min(...ys) / 1.5));
+  const hi = Math.ceil(Math.log10(Math.max(...ys) * 1.5));
+  return Array.from({length: hi - lo + 1}, (_, i) => Math.pow(10, lo + i));
 }
 Plot.plot({
   width: 1000,
   height: 460,
-  marginLeft: 70,
+  marginLeft: 110,
+  marginTop: 45,
+  marginBottom: 60,
   style: {fontSize: "18px"},
-  y: {type: "log", label: "Infections per day", grid: true},
-  x: {label: "Day"},
+  y: {
+    type: "log", label: "Infections per day", grid: true,
+    domain: [logTicks[0], logTicks[logTicks.length - 1]],
+    ticks: logTicks,
+    tickFormat: (d) => d >= 1e6 ? d3.format(".1~s")(d) : d3.format(",")(d)
+  },
+  x: {label: "Day", labelAnchor: "center"},
   marks: [
     Plot.ruleY([10], {stroke: "#8a8f98", strokeDasharray: "4 4"}),
     Plot.line(renewal, {
@@ -88,10 +118,15 @@ Plot.plot({
 
 ::: {.attribution}
 Constant $R$, a gamma-shaped generation interval with shape 4, ten
-infections a day seeded for five days. Interactive this talk.
+infections on day 0 seeded on the exponential curve. Interactive this
+talk.
 :::
 :::
 ::::
+
+<!-- Static fallback for the slider, for a room with no network. Swap the
+visibility attribute between this slide and the one above, then
+re-render. Quarto drops hidden slides from the HTML. -->
 
 ## A renewal process, by hand {visibility="hidden"}
 
@@ -107,12 +142,13 @@ infections a day seeded for five days. Interactive this talk.
 ![](../figures/keynote-renewal.png){width="100%"
 fig-alt="Left, a bar chart of a generation interval peaking at four
 days. Right, infections per day on a log scale for R of 0.8, 1.0 and
-1.3, falling, flat and rising."}
+1.3, falling, flat and rising as straight lines from a common start of
+ten a day."}
 
 ::: {.attribution}
-Static fallback for the slider above, `scripts/keynote-schematics.py`.
-Shown only if the room has no network: swap `visibility` between the two
-slides.
+Constant $R$, a gamma-shaped generation interval with shape 4, ten
+infections on day 0 seeded on the exponential curve.
+`scripts/keynote-schematics.py`
 :::
 :::
 ::::
@@ -123,8 +159,6 @@ slides.
 ::: {.column width="40%"}
 - Delays estimated during growth are too short. The long ones have not
   happened yet
-- Chained models pass on a point estimate. The interval at the end is
-  too narrow
 - Bespoke code for each outbreak. Slow to adapt when the data change
 - "We sometimes published nonsensical estimates"
 
@@ -138,7 +172,9 @@ Half of the 105 Belgian COVID-19 models reviewed by Bagaforo et al.
 fig-alt="Three boxes, delay distribution, Rt and forecast, each holding
 a bell curve, joined by red arrows labelled the mean that carry a single
 tick mark. Below, a narrow teal bell labelled reported sits inside a
-wider grey bell labelled should carry."}
+wider grey bell labelled should carry, with the text each stage is fitted
+on its own, only a point estimate is passed on, the interval at the end
+is too narrow."}
 
 ::: {.attribution}
 Quote from the 25 March 2022 post at [samabbott.co.uk][rt-post]

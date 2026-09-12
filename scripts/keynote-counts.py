@@ -87,24 +87,28 @@ AUTHORS = [
 
 
 def authorship():
-    fig, ax = plt.subplots(figsize=(10, 2.9))
+    fig, ax = plt.subplots(figsize=(10, 3.3))
     total = sum(c for _, c, _ in AUTHORS)
     left = 0
-    for label, count, colour in AUTHORS:
+    for i, (label, count, colour) in enumerate(AUTHORS):
         share = round(100 * count / total)
         ax.barh(0, count, left=left, color=colour, height=0.55)
         text_colour = "white" if colour != LIGHT else INK
-        if count / total > 0.08:
+        if count / total > 0.15:
             ax.text(left + count / 2, 0, f"{label}\n{count} ({share}%)",
                     ha="center", va="center", color=text_colour,
                     fontsize=14, linespacing=1.15)
         else:
-            ax.text(left + count / 2, 0.42, f"{label}\n{count} ({share}%)",
-                    ha="center", va="bottom", color=INK, fontsize=12,
-                    linespacing=1.1)
+            # Narrow segments take turns above and below the bar so their
+            # labels do not run into each other.
+            above = (i % 2 == 0)
+            ax.text(left + count / 2, 0.38 if above else -0.38,
+                    f"{label}\n{count} ({share}%)", ha="center",
+                    va="bottom" if above else "top", color=INK,
+                    fontsize=12, linespacing=1.1)
         left += count
     ax.set_xlim(0, total)
-    ax.set_ylim(-0.6, 0.9)
+    ax.set_ylim(-1.0, 1.0)
     ax.axis("off")
     ax.set_title(f"BVDOutbreakSize: {total} commits, 19 May to 11 September",
                  fontsize=18, pad=8)

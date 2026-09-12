@@ -37,6 +37,7 @@ Nothing is committed.
 |---|---|
 | epiforecasts, figure | HPRU PPIE kick-off (Funk, Abbott, Cori, September 2025), `slides.qmd:52-56`, `figures/respicast-multi.png` copied as `exchange-respicast-multi.png` |
 | epinowcast, table and two bullets | JuliaCon 2026 roadmap, `_partials/04-r.qmd:5-25`, "Six years of trying this in R and Stan" |
+| epinowcast, the whale bullet | JuliaCon 2026 roadmap, `_partials/11-governance.qmd:7-9`, "Governance, and current whales" |
 | Whitty, ONS, "What is composable modelling?", the two code slides, EpiNow2 | JuliaCon 2026 composable `00-gap`, `01-options`, `01b-composable`, `04-case-study`; epiaware.org approaches pages (already lifted in the draft) |
 | Delay definition, censoring, truncation, fallback, Julia model | JuliaCon 2026 delays `00-delay`, `01-biases`, `05-julia` (already lifted) |
 | Workflow schematic | JuliaCon 2026 roadmap `04-r.qmd:29-39` (already lifted) |
@@ -67,3 +68,7 @@ Title, plan, three group slides, five dividers, 14 content slides, the fallback,
 - "Led by Sebastian Funk. I am part of it" and the cross-over line restate his steer; no public page says who leads epiforecasts.
 - The organiser surnames come from an unmerged branch of the epinowcast site. Merge it or drop the surnames.
 - The design considerations slide is gone; the Interoperability bullet naming machine learning went with it.
+
+## Drawn figures checked against his decks
+
+The two drawn figures stay. No past deck has a network-in-a-slot figure (the 40 minute deck mentions neural networks only in its SciML bullet), and none splits the nine workflow stages between people and agents; his workflow schematic already sits on the slide before. The collaboratory deck's `outbreak_streams.png` is the figure the agents slide already carries via the JuliaCon copy.

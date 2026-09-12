@@ -34,8 +34,7 @@ Bernoulli 1760 after Dietz and Heesterbeek 2002,
   20 January 2015 without further intervention
 - About 21,000 had occurred by mid January
 - Camacho, Funk and colleagues estimated $R$, the number of new
-  infections per infected person, by district in Sierra Leone as it
-  happened
+  infections per infected person, by district in Sierra Leone
 - Real-time modelling had arrived. Its overreach was public
 :::
 ::: {.column width="60%"}
@@ -62,20 +61,19 @@ CC-BY 4.0, downloaded 11 September 2026 and cropped
 
 :::: {.columns}
 ::: {.column width="40%"}
-- $R_t$, the reproduction number over time, estimated daily for
-  several thousand locations
+- $R_t$, the reproduction number over time, daily for several
+  thousand locations
 - A public dashboard from spring 2020 to March 2022
-- Weekly estimates and forecasts to SPI-M-O, the modelling group that
-  advised the UK government
+- Weekly estimates and forecasts to SPI-M-O, the UK government's
+  modelling advisers
 - "At least 80% but on time"
 :::
 ::: {.column width="60%"}
-![](../figures/keynote-example-rt.png){height="720px"
-fig-align="center"
-fig-alt="Six panels of estimated reproduction number over time for
-Australia, France, Germany, South Korea, the United Kingdom and Vietnam,
-each a green ribbon around a dashed line at one, with an orange widening
-ribbon for the most recent days where the estimate is still uncertain."}
+![](../figures/keynote-example-rt-panel.png){width="100%"
+fig-alt="Four panels of estimated reproduction number over time for
+Australia, France, Germany and South Korea, each a green ribbon around
+a dashed line at one, with an orange widening ribbon for the most recent
+days where the estimate is still uncertain."}
 
 ::: {.attribution}
 Abbott et al. 2020, Wellcome Open Research,
@@ -84,7 +82,11 @@ Abbott et al. 2020, Wellcome Open Research,
 created 21 March 2020, last global estimates 31 March 2022
 · figure and "several thousand locations" from the 25 March 2022 post
 at [samabbott.co.uk][rt-post], copied from
-`seabbs.github.io/_posts/2022-03-25-rt-reflections/example-rt.png`
+`seabbs.github.io/_posts/2022-03-25-rt-reflections/example-rt.png` and
+cropped to four of six panels, `scripts/keynote-crop.py`
+· SPI-M-O: grant text, `composable-grant/coapplicant_details/sam.qmd`,
+and the consensus statements on
+[GOV.UK](https://www.gov.uk/government/publications/spi-m-o-consensus-statement-on-covid-19-6-january-2021)
 · "at least 80% but on time" from the 4 January 2023 post at
 [samabbott.co.uk][iisa-post]
 :::
@@ -95,11 +97,11 @@ at [samabbott.co.uk][rt-post], copied from
 
 :::: {.columns}
 ::: {.column width="40%"}
+- Nowcasting, estimating what has already happened but has not yet
+  been reported
 - `EpiNow2` for $R_t$, `epinowcast` for nowcasting, `scoringutils` for
   evaluation, and the forecast hubs
-- Nowcasting: estimating what has already happened but has not yet
-  been reported
-- Used by public health agencies, including CDC
+- CDC used `EpiNow2` for its COVID-19 $R_t$ estimates to June 2026
 - "In many cases the package is too complex for anyone else to use"
 :::
 ::: {.column width="60%"}
@@ -117,6 +119,10 @@ GitHub API, 11 September 2026
 [cdc.gov](https://www.cdc.gov/cfa-behind-the-model/php/data-research/nowcasting.html)
 · MMWR 73(46), 21 November 2024,
 [cdc.gov/mmwr mm7346a3](https://www.cdc.gov/mmwr/volumes/73/wr/mm7346a3.htm)
+· the CDC $R_t$ estimates page no longer names EpiNow2, read
+11 September 2026; a search snippet reports a change of method for
+dates after 1 June 2026,
+[cdc.gov](https://www.cdc.gov/cfa-modeling-and-forecasting/rt-estimates/index.html)
 · quote from the JuliaCon 2026 roadmap deck,
 [samabbott.co.uk/JuliaCon2026](https://samabbott.co.uk/JuliaCon2026)
 · diagram this talk, `scripts/keynote-timeline.py`
@@ -160,20 +166,13 @@ CC-BY 4.0, downloaded 11 September 2026
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Ebola disease caused by Bundibugyo virus, DRC. Declared 15 May,
-  a PHEIC on 17 May
-- 6757 confirmed cases and 3267 deaths by 7 September
-- Most infections are never confirmed. A model fitted jointly to the
-  situation-report streams puts infections to 6 September between
-  9,700 and 19,200
-- The situation reports are PDFs, in French, most days
+- Ebola disease caused by Bundibugyo virus, DRC. Declared 15 May
+- A WHO emergency, a PHEIC, on 17 May
+- 6,757 confirmed cases and 3,267 deaths by 7 September
+- Most infections are never confirmed. A joint model estimates the
+  total
 :::
 ::: {.column width="60%"}
-![](../figures/keynote-bvd-sitrep.png){height="330px" fig-align="center"
-fig-alt="A situation report page from the DRC national public health
-institute, in French, with cumulative confirmed cases, deaths, isolation
-occupancy, recoveries and suspected cases in boxes."}
-
 ![](../figures/keynote-bvd-infections-sep-panel.png){width="100%"
 fig-alt="Left, modelled cumulative infections over time from February to
 September 2026 as widening blue credible bands reaching about twelve
@@ -184,11 +183,9 @@ tail."}
 ::: {.attribution}
 [WHO DON617][don617], 10 September 2026, data to 7 September
 · dates from [WHO DON602][don602]
-· model figure from [BVDOutbreakSize][bvd] release `results-1699`,
-9 September 2026, data to SitRep 115 of 6 September; 90% interval
-9749 to 19236 from its analysis page, cropped to the top row
-· situation report page from [insp.cd][insp], copied from
-`JuliaCon2026/figures/bvd-insp-sitreps.png`
+· figure from [BVDOutbreakSize][bvd] release `results-1699`,
+9 September 2026, data to SitRep 115 of 6 September, top row of the
+joint model estimates on its analysis page, `scripts/keynote-crop.py`
 :::
 :::
 ::::
@@ -196,6 +193,5 @@ tail."}
 [don602]: https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON602
 [don617]: https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON617
 [bvd]: https://epiforecasts.io/BVDOutbreakSize/stable/
-[insp]: https://insp.cd/ebola-17eme-epidemie/
 [rt-post]: https://samabbott.co.uk/posts/2022-03-25-rt-reflections/
 [iisa-post]: https://samabbott.co.uk/posts/2023-01-04-iisa-data-models-and-modellers-during-a-global-pandemic/

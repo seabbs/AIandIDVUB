@@ -4,12 +4,10 @@
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Agents build and check
-- The mechanism stays the object
-- People keep the question, the judgement of fitness for use, and the
-  trust of the people who act on the numbers
 - The lines I have drawn between the columns have moved since I drew
   them
+- The claim that agents could not do long-horizon work held for about
+  six months
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-who.png){width="100%"
@@ -17,12 +15,11 @@ fig-alt="Three boxes side by side. Agents, build and check: data
 ingest, pipelines, tests, docs, releases, reading French PDFs. The
 mechanism, stays the object: infections, delays, Rt, ascertainment, the
 thing being estimated. People, keep: the question, fitness for use, the
-trust of those who act on the numbers."}
+trust of whoever decides."}
 
 ::: {.attribution}
-A guess. The moving line is from [how I LLM](https://samabbott.co.uk/how-I-llm),
-where a claim that agents could not do long-horizon work lasted about six
-months · diagram this talk, `scripts/keynote-schematics.py`
+[how I LLM](https://samabbott.co.uk/how-I-llm), August 2026
+· diagram this talk, `scripts/keynote-schematics.py`
 :::
 :::
 ::::
@@ -30,9 +27,9 @@ months · diagram this talk, `scripts/keynote-schematics.py`
 ## For the panel {.center}
 
 ::: {style="font-size: 1.5em; margin-top: 0.8em;"}
-What is ours, rather than not yet automated?
+Which of this is ours, and which is only not automated yet?
 :::
 
 ::: {style="font-size: 1.1em; margin-top: 1.2em; color: #4a5899;"}
-Tell me what you think agents cannot do.
+Name something you think an agent cannot do.
 :::

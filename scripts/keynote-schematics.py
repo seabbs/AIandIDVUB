@@ -23,6 +23,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
+from matplotlib.ticker import NullFormatter
 
 TEAL = "#1f6f8b"
 SLATE = "#4a5899"
@@ -158,8 +159,8 @@ def chain():
 def agent():
     fig, ax = canvas(11, 5.0, xlim=(0, 11), ylim=(0, 5.0))
     # People at the ends.
-    box(ax, 0.2, 1.7, 2.0, 1.6, "You\n\nthe task, and\nwhat counts\nas right",
-        colour=BRICK, fill=PALE_BRICK, fs=12.5)
+    box(ax, 0.05, 1.7, 1.85, 1.6, "You\n\nthe task, and\nwhat counts\nas right",
+        colour=BRICK, fill=PALE_BRICK, fs=12)
     box(ax, 8.9, 1.7, 2.0, 1.6,
         "You\n\nread the pull\nrequest, merge\nor send it back",
         colour=BRICK, fill=PALE_BRICK, fs=12.5)
@@ -184,10 +185,10 @@ def agent():
         arrow(ax, p, q, colour=SLATE, lw=2, rad=-0.35)
     label(ax, 3.75, 3.85, "no, again", colour=SLATE, fs=11, style="italic",
           ha="right")
-    label(ax, 5.6, 2.5, "a language\nmodel, with\ntools", colour=GREY,
-          fs=11.5, style="italic")
-    arrow(ax, (2.2, 2.5), (3.05, 2.5), colour=BRICK, lw=2)
-    label(ax, 2.62, 2.78, "a prompt", colour=BRICK, fs=10.5, style="italic")
+    label(ax, 5.6, 2.5, "a language\nmodel\nwith tools", colour=GREY,
+          fs=10.5, style="italic")
+    arrow(ax, (1.9, 2.5), (3.05, 2.5), colour=BRICK, lw=2)
+    label(ax, 2.45, 2.8, "a prompt", colour=BRICK, fs=10, style="italic")
     arrow(ax, (8.15, 2.5), (8.9, 2.5), colour=TEAL, lw=2.2)
     label(ax, 8.52, 2.78, "yes", colour=TEAL, fs=11, style="italic")
     save(fig, "keynote-agent.png")
@@ -225,16 +226,17 @@ def sai_loop():
 
 ROWS = [
     ("Inference of epidemiological\nparameters",
-     "generative Bayesian and\nsurrogate models", SLATE, "flows, slide 17"),
+     "generative Bayesian and\nsurrogate models", SLATE,
+     "flows and simulation-based inference"),
     ("Epidemic forecasting\nand nowcasting",
      "time series foundation models\nand ensembles", SLATE,
-     "foundation models, slide 18"),
+     "time series foundation models"),
     ("Scenario modelling",
      "compartmental and mechanistic\nmodels, RL agent-based models",
      TEAL, "the hosts, next two talks"),
     ("Understanding disease\nspread mechanisms",
      "graph neural networks,\ngraph foundation models", SLATE,
-     "UDEs and PINNs sit near here, slide 16"),
+     "UDEs and PINNs sit near here"),
     ("Infectious disease\nsurveillance",
      "active learning,\nBayesian optimisation", None, ""),
     ("Risk prediction", "multimodal AI", None, ""),
@@ -243,7 +245,7 @@ ROWS = [
      "Markov decision processes,\nreinforcement learning", TEAL,
      "the hosts, next two talks"),
     ("Building and checking\nthe model itself", "not in the table",
-     BRICK, "coding agents, section before this"),
+     BRICK, "coding agents"),
 ]
 
 
@@ -255,7 +257,7 @@ def kraemer_map():
           weight="bold")
     label(ax, 3.7, top + 0.15, "AI method named for it", colour=GREY, fs=12,
           ha="left", weight="bold")
-    label(ax, 7.9, top + 0.15, "Where things sit today", colour=GREY, fs=12,
+    label(ax, 7.9, top + 0.15, "Where this talk puts it", colour=GREY, fs=12,
           ha="left", weight="bold")
     for i, (task, method, colour, note) in enumerate(ROWS):
         y = top - (i + 1) * rowh
@@ -317,9 +319,8 @@ def ude():
           colour=BRICK, fs=13)
     arrow(ax, (2.45, 1.75), (2.45, 2.85), colour=BRICK, lw=2)
     label(ax, 4.0, 1.05,
-          "The transmission rate is the term\nnobody can write down. "
-          "Behaviour,\nseason, policy. So learn it, and keep\n"
-          "the rest of the mechanism.",
+          "The transmission rate is the term\nyou cannot write down.\n"
+          "Behaviour, season, policy.",
           colour=INK, fs=12.5, ha="left")
     label(ax, 5.0, 4.1, "Written down: the S, E, I, R structure.  "
           "Learned: one rate.", colour=GREY, fs=12.5, style="italic")
@@ -401,18 +402,32 @@ def foundation():
 
 def renewal_curve(r, gen_mean=5.0, days=60):
     """Infections from a renewal process with constant R and a gamma-like
-    discrete generation interval with the given mean."""
+    discrete generation interval with the given mean. The seed is the
+    exponential solution of the recursion itself, ten on day 0, so the
+    series is a straight line on a log scale from the first day rather
+    than dipping while a flat seed runs out. Mirrors the ojs cell in
+    keynote/_partials/02-modeller.qmd."""
     k = 4.0
     theta = gen_mean / k
-    s = np.arange(1, 25)
+    support = 24
+    s = np.arange(1, support + 1)
     g = s ** (k - 1) * np.exp(-s / theta)
     g /= g.sum()
-    inf = np.zeros(days)
-    inf[:5] = 10
-    for t in range(5, days):
-        past = inf[max(0, t - len(g)):t][::-1]
-        inf[t] = r * np.sum(past * g[:len(past)])
-    return inf, g
+    # Growth rate from the Euler-Lotka equation R * sum g_s exp(-rate s) = 1.
+    lo, hi = -2.0, 2.0
+    for _ in range(80):
+        mid = (lo + hi) / 2
+        if r * np.sum(g * np.exp(-mid * s)) > 1:
+            lo = mid
+        else:
+            hi = mid
+    rate = (lo + hi) / 2
+    inf = np.zeros(support + days)
+    inf[:support] = 10 * np.exp(rate * (np.arange(support) - support + 1))
+    for t in range(support, support + days):
+        past = inf[t - support:t][::-1]
+        inf[t] = r * np.sum(past * g)
+    return inf[support - 1:], g
 
 
 def renewal():
@@ -432,11 +447,19 @@ def renewal():
         inf, _ = renewal_curve(r)
         ax2.plot(inf, color=colour, lw=2.4, label=f"$R$ = {r}")
     ax2.set_yscale("log")
+    ymax = max(renewal_curve(1.3)[0].max(), 10.0)
+    lo, hi = 1, 10 ** int(np.ceil(np.log10(ymax * 1.5)))
+    ax2.set_ylim(lo, hi)
+    ticks = [10 ** i for i in range(int(np.log10(lo)), int(np.log10(hi)) + 1)]
+    ax2.set_yticks(ticks)
+    ax2.set_yticklabels([f"{t:,}" for t in ticks])
+    ax2.yaxis.set_minor_formatter(NullFormatter())
+    ax2.axhline(10, color=GREY, lw=1, ls="--")
     ax2.set_title("Infections per day", fontsize=13)
     ax2.set_xlabel("day")
     ax2.legend(frameon=False, fontsize=12)
     fig.suptitle(
-        r"$I_t = R_t \sum_s I_{t-s}\, g_s$: today's infections are "
+        r"$I_t = R_t \sum_s I_{t-s}\, g_s$. Today's infections are "
         r"$R_t$ times a weighted sum of recent ones",
         fontsize=12.5, y=1.02)
     fig.tight_layout()
@@ -451,10 +474,10 @@ def who():
         ("Agents", "build and check\n\ndata ingest, pipelines,\ntests, "
          "docs, releases,\nreading French PDFs", SLATE, PALE_SLATE),
         ("The mechanism", "stays the object\n\ninfections, delays,\n"
-         "$R_t$, ascertainment.\nThe thing being estimated", TEAL,
+         "$R_t$, ascertainment.\nThe thing being\nestimated", TEAL,
          PALE_TEAL),
         ("People", "keep\n\nthe question,\nfitness for use,\nthe trust of "
-         "those who\nact on the numbers", BRICK, PALE_BRICK),
+         "whoever\ndecides", BRICK, PALE_BRICK),
     ]
     xs = [0.3, 3.55, 6.8]
     for x, (head, body, colour, fill) in zip(xs, cols):

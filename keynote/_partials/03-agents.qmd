@@ -29,13 +29,11 @@ Diagram this talk, `scripts/keynote-schematics.py`
 
 :::: {.columns}
 ::: {.column width="40%"}
-- An agent writes most of the code I ship. About half of it gets a
-  review from me
-- The agents push from a bot account, `seabbs-bot`, a second GitHub
-  login, so the history says who wrote what
-- The job is now specifying and checking, with little typing
-- 2144 pull requests since January. 85.5% merged, 11.9% closed
-  without merging
+- Most of the code I merge is agent-written. About half went in
+  unreviewed
+- Agents push from a bot account, a second GitHub login. Git shows
+  who wrote what
+- My time goes on writing the task and reading the result
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-bot-prs.png){width="100%"
@@ -46,7 +44,7 @@ unmerged."}
 
 ::: {.attribution}
 GitHub search API `total_count` per month, run 11 September 2026;
-`seabbs-bot` created 23 January 2026 · review share: 712 of 1371 merged
+`seabbs-bot` created 23 January 2026 · review share: 712 of 1,371 merged
 bot pull requests carried no review, counted for the
 [how I LLM](https://samabbott.co.uk/how-I-llm) deck, August 2026
 · `scripts/keynote-counts.py`
@@ -61,25 +59,34 @@ bot pull requests carried no review, counted for the
 - McCabe et al. published an outbreak size estimate on 18 May.
   A replication in a few hours the next day
 - Refit on every push. 145 releases since 20 May
-- The situation reports are French PDFs. Agents read them, two blind
-  reads per report
+- The situation reports are French PDFs. Agents read them. Recent
+  reports get two blind reads
 - 333 of 425 pull requests by the bot. Four named authors
 :::
 ::: {.column width="60%"}
-<iframe src="https://epiforecasts.io/BVDOutbreakSize/stable/"
-  width="100%" height="780" title="BVDOutbreakSize live report"
+<!-- data-external stops embed-resources inlining the remote page as a
+data URL. That inlining left the frame unstyled and lost the anchor. -->
+<iframe src="https://epiforecasts.io/BVDOutbreakSize/stable/summary#Headline-estimates"
+  data-external="1" width="100%" height="640"
+  title="BVDOutbreakSize live report, headline estimates"
   style="border: 1px solid #d5d8de;"></iframe>
 
 ::: {.attribution}
-[BVDOutbreakSize][bvd], live · repository created 2026-05-19 with 33
-commits that day · 145 releases, `results-43` on 2026-05-20 to
-`results-1699` on 2026-09-09 · pull request counts from the GitHub
-search API, 11 September 2026 · two blind readers per vintage,
-`data/README.md` in that repository · McCabe et al., Imperial College
-London, 18 May 2026, [doi:10.25560/130007](https://doi.org/10.25560/130007)
+[BVDOutbreakSize][bvd], live, the headline estimates on its summary
+page · repository created 2026-05-19 · 145 releases, `results-43` on
+2026-05-20 to `results-1699` on 2026-09-09 · pull request counts from the
+GitHub search API, 11 September 2026 · two blind readers recorded in
+`data/README.md` for SitReps 097 to 099, 104 to 107 and 110 to 114
+· McCabe et al.,
+Imperial College London, 18 May 2026,
+[doi:10.25560/130007](https://doi.org/10.25560/130007)
 :::
 :::
 ::::
+
+<!-- Static fallback for the live report, for a room with no network.
+Swap the visibility attribute between this slide and the one above, then
+re-render. Quarto drops hidden slides from the HTML. -->
 
 ## A live outbreak built this way {visibility="hidden"}
 
@@ -88,21 +95,30 @@ London, 18 May 2026, [doi:10.25560/130007](https://doi.org/10.25560/130007)
 - McCabe et al. published an outbreak size estimate on 18 May.
   A replication in a few hours the next day
 - Refit on every push. 145 releases since 20 May
-- The situation reports are French PDFs. Agents read them, two blind
-  reads per report
+- The situation reports are French PDFs. Agents read them. Recent
+  reports get two blind reads
 - 333 of 425 pull requests by the bot. Four named authors
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-bvd-rt-sep.png){width="100%"
 fig-alt="Estimated reproduction number over the established outbreak
 from late March to 6 September 2026, purple credible ribbons falling
-from about two in May to about one from August, with a dashed red line
-at the first situation report on 18 May."}
+from about two in May to about one from August. A dashed red line marks
+the first situation report on 18 May, a dotted red line the end of the
+modelled intervention ramp 21 days later, and a grey dashed line Rt of
+one."}
 
 ::: {.attribution}
-Static fallback for the live report above, from release `results-1699`,
-9 September 2026, data to 6 September. Shown only if the room has no
-network: swap `visibility` between the two slides.
+[BVDOutbreakSize][bvd] release `results-1699`, 9 September 2026, data to
+6 September · dashed red line at the first situation report, where the
+model lets $R_t$ change; dotted red line 21 days later, the end of the
+modelled intervention ramp; grey dashed line at $R_t$ = 1, from
+`src/plots.jl` and `RT_INTERVENTION_RAMP` in `src/constants.jl` of that
+repository · repository created 2026-05-19 · 145 releases · pull request
+counts from the GitHub search API, 11 September 2026 · two blind readers
+recorded in `data/README.md` for SitReps 097 to 099, 104 to 107 and 110
+to 114 · McCabe et al., Imperial College London, 18 May 2026,
+[doi:10.25560/130007](https://doi.org/10.25560/130007)
 :::
 :::
 ::::
@@ -116,8 +132,7 @@ network: swap `visibility` between the two slides.
 - SitRep 081: JPEG compression left the axis ticks one pixel tall.
   The read came out 54% under the printed total
 - SitRep 087: the y-axis grid moved from steps of 20 to 25. Caught
-  only because counts on twelve-week-old dates fell. Old counts cannot
-  fall
+  only because counts on twelve-week-old dates fell
 - Wrong answers look like right ones. Nothing crashes
 :::
 ::: {.column width="60%"}
@@ -141,14 +156,13 @@ under the total printed on the figure
 
 :::: {.columns}
 ::: {.column width="40%"}
-- The bottleneck is how fast I can tell whether something is right
+- Checking is now the slow step
 - Components with their own checks give the agent something to test
   against
-- Google's entry to the CDC influenza, COVID-19 and RSV hubs in 2025/26
-  was an LLM-guided tree search that writes forecasting code. It topped
-  all three, prospectively
-- The earlier retrospective gain, 11% over the CDC ensemble, is put
-  down to data revision leakage by Bracher and Funk
+- Google's 2025/26 CDC hub entry was an LLM-guided tree search. It
+  topped influenza, COVID-19 and RSV, prospectively
+- Bracher and Funk put the earlier 11% retrospective gain down to
+  data revision leakage
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-sai-loop.png){width="100%"
@@ -172,10 +186,10 @@ Martinson, Brenner, Plomecka, Williams, Reich and Shamsi 2026,
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Agents built the apparatus. Data ingest, the fitting pipeline,
-  tests, the docs site, releases
-- Choosing the model, deciding what the lower bound meant, and judging
-  whether the ascertainment assumption held stayed with the authors
+- Agents wrote the ingest, the fits, the tests and the release
+  pipeline
+- Choosing the model, reading the lower bound and judging
+  ascertainment stayed with the authors
 - "Who can do this work at all is narrowing. Agents make that worse"
 - "I do not have a defence for this. I am part of the problem"
 :::
