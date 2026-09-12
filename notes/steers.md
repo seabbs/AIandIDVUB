@@ -48,3 +48,7 @@ as the steering section.
 
 > make sure wherr it makes sense to heavily mine past presentations of
 > mine for imagews complete slides and sectiohns that make sense
+
+> use an agent to make the prmp on the site a bit more formal ess confusin
+> from me and i.e the abstracts make it a bit more formal but steered by what
+> htey saidf
