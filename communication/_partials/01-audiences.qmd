@@ -1,4 +1,4 @@
-# Three audiences in 2020
+# 2020, three audiences
 
 ## Government
 
@@ -6,25 +6,26 @@
 ::: {.column width="40%"}
 - $R_t$, the reproduction number over time. How many people each case
   goes on to infect
-- Weekly $R_t$, forecasts and ad hoc reports to SPI-M-O, the UK
-  government's modelling advisory group
-- SPI-M-O reported to SAGE, the scientific advisory group for emergencies
-- What the public saw was a consensus statement on GOV.UK. No team named
+- We sent weekly $R_t$ estimates, forecasts and ad hoc reports to
+  SPI-M-O, the UK government's modelling advisory group
+- SPI-M-O reported to SAGE, the scientific advisory group for
+  emergencies. The public saw a consensus statement
 
 > We don't know whether any of this gave any policy maker any useful
 > information that helped them make better decisions...
+>
+> *Abbott and Funk, 2022*
 :::
 ::: {.column width="60%"}
-![](../figures/comms-shot-spimo-statement.png){width="88%"
+![](../figures/comms-shot-spimo-statement.png){width="74%"
 fig-align="center"
 fig-alt="GOV.UK page: SPI-M-O consensus statement, 17 September 2020"}
 
 ::: {.attribution}
 [SPI-M-O consensus statement, 17 September 2020](https://www.gov.uk/government/publications/spi-m-o-consensus-statement-on-covid-19-17-september-2020),
-GOV.UK, screenshot 2026-09-11 ·
-quote from
+GOV.UK ·
 [Reflections on two years estimating effective reproduction numbers](https://samabbott.co.uk/posts/2022-03-25-rt-reflections/),
-Abbott and Funk, 2022-03-25
+2022
 :::
 :::
 ::::
@@ -39,6 +40,8 @@ Abbott and Funk, 2022-03-25
 
 > If results are presented individually this can get lost and it
 > incentivises being first out (and maybe therefore cutting corners).
+>
+> *Abbott, 2023*
 :::
 ::: {.column width="60%"}
 ![](../figures/comms-uk-rt-dashboard.png){height="700px"
@@ -47,44 +50,105 @@ fig-alt="GOV.UK: latest R range for England, 1.0 to 1.2, no point estimate"}
 
 ::: {.attribution}
 [The R value and growth rate](https://www.gov.uk/guidance/the-r-value-and-growth-rate),
-GOV.UK, via `hpru-ppie-kickoff/figures/uk-rt-dashboard.png`, process
-from the same page, "Different modelling groups use different data
-sources" and "Evidence from several models is considered, discussed,
-combined", read 2026-09-12 ·
-quote from
+GOV.UK ·
 [Data, Models, and Modellers during a Global Pandemic](https://samabbott.co.uk/posts/2023-01-04-iisa-data-models-and-modellers-during-a-global-pandemic/),
-Abbott, 2023-01-04
+2023
 :::
 :::
 ::::
 
-## The public
+## The public. A map, then a page for each place
 
 :::: {.columns}
 ::: {.column width="40%"}
 - [epiforecasts.io/covid](https://epiforecasts.io/covid/), April 2020 to
-  March 2022
-- Daily $R_t$ and nowcasts for several thousand locations. A nowcast is an
-  estimate of what has already happened but not yet been reported
-- Just over 500,000 unique users and 1.2 million page views by March 2022
-- 20,000 of those page views were for the methods page
+  March 2022. Daily $R_t$ and nowcasts for several thousand locations
+- A nowcast is an estimate of what has already happened but has not yet
+  been reported
+- The front page was a map. Five words, increasing to decreasing, and no
+  numbers
+- A page for each country, then for the regions inside it. Just over
+  500,000 unique users and 1.2 million page views by March 2022
 :::
 ::: {.column width="60%"}
-![](../figures/comms-shot-covid-uk-panels.png){height="760px"
-fig-align="center"
-fig-alt="UK page of the epiforecasts dashboard, cases by report date,
-cases by infection date and the reproduction number"}
+![](../figures/comms-shot-covid-map.png){width="100%"
+fig-alt="The global page of the dashboard. A world map with countries
+coloured increasing, likely increasing, stable, likely decreasing or
+decreasing, with the data date and download links above it"}
 
 ::: {.attribution}
-[epiforecasts.io/covid, United Kingdom](https://epiforecasts.io/covid/posts/national/united-kingdom/),
-screenshot 2026-09-11, estimates frozen 2022-03-26 · counts from
+[epiforecasts.io/covid, global summary](https://epiforecasts.io/covid/posts/global/),
+estimates frozen 30 March 2022, screenshot 12 September 2026 · counts
+from
 [Reflections on two years estimating effective reproduction numbers](https://samabbott.co.uk/posts/2022-03-25-rt-reflections/),
-2022-03-25
+2022
 :::
 :::
 ::::
 
-## {background-iframe="https://epiforecasts.io/covid/posts/national/united-kingdom/" background-interactive="true"}
+## The caveats sat in the captions
+
+:::: {.columns}
+::: {.column width="40%"}
+- Estimates from partial data were drawn in orange, adjusted for right
+  truncation
+- Each figure caption carried the same sentence
+- The limitations sat on a methods page that 20,000 of 1.2 million page
+  views reached
+- The limits travel less well than the method
+
+> These should be considered indicative only.
+>
+> *The figure captions, epiforecasts.io/covid*
+:::
+::: {.column width="60%"}
+![](../figures/comms-shot-covid-uk-panels.png){height="760px"
+fig-align="center"
+fig-alt="UK page of the dashboard. Cases by report date, cases by
+infection date and the reproduction number, with the most recent days in
+orange"}
+
+::: {.attribution}
+[epiforecasts.io/covid, United Kingdom](https://epiforecasts.io/covid/posts/national/united-kingdom/),
+estimates frozen 26 March 2022 · page view counts from
+[Reflections on two years estimating effective reproduction numbers](https://samabbott.co.uk/posts/2022-03-25-rt-reflections/),
+2022
+:::
+:::
+::::
+
+## Other governments used it too
+
+:::: {.columns}
+::: {.column width="40%"}
+- The estimates went out as CSV files on GitHub. Other governments used
+  them directly, or through scientists who set them beside other
+  evidence
+- Checking several thousand locations a day was beyond us
+- Could AI do that checking?
+
+> Of course this can cause issues if the limitations of the method are
+> poorly communicated.
+>
+> *Abbott and Funk, 2022*
+:::
+::: {.column width="60%"}
+![](../figures/comms-shot-covid-table.png){width="100%"
+fig-alt="The per-country table on the global page. A CSV button, then
+rows for Afghanistan, Albania and Algeria with new cases, an expected
+change in words, the reproduction number, growth rate and doubling time,
+each with a 90% interval"}
+
+::: {.attribution}
+[epiforecasts.io/covid, global summary](https://epiforecasts.io/covid/posts/global/),
+214 countries and territories, 30 March 2022 ·
+[epiforecasts/covid-rt-estimates](https://github.com/epiforecasts/covid-rt-estimates)
+·
+[Reflections on two years estimating effective reproduction numbers](https://samabbott.co.uk/posts/2022-03-25-rt-reflections/),
+2022
+:::
+:::
+::::
 
 ## What went wrong
 
@@ -92,6 +156,8 @@ screenshot 2026-09-11, estimates frozen 2022-03-26 · counts from
 ::: {.column width="40%"}
 > Because we did not have the capacity to manually inspect the data and
 > estimates on a daily basis we sometimes published nonsensical estimates.
+>
+> *Abbott and Funk, 2022*
 
 - Wisconsin reported on a Sunday for the first time. The model read the
   catch-up as an outbreak
@@ -105,27 +171,28 @@ screenshot 2026-09-11, estimates frozen 2022-03-26 · counts from
 fig-alt="GitHub issue: Your Wisconsin data looks horribly flawed"}
 
 ::: {.attribution}
-[epiforecasts/covid#171](https://github.com/epiforecasts/covid/issues/171),
-screenshot 2026-09-11 · quote from
+[epiforecasts/covid#171](https://github.com/epiforecasts/covid/issues/171)
+·
 [Reflections on two years estimating effective reproduction numbers](https://samabbott.co.uk/posts/2022-03-25-rt-reflections/),
-2022-03-25 · the rules from
+2022 · the rules from
 [Data, Models, and Modellers during a Global Pandemic](https://samabbott.co.uk/posts/2023-01-04-iisa-data-models-and-modellers-during-a-global-pandemic/),
-2023-01-04
+2023
 :::
 :::
 ::::
 
-## Other scientists
+## Collaborative forecasting hubs
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Forecast hubs. Each team submits weekly and the hub combines them into
-  an ensemble
+- Each team submits weekly and the hub combines them into an ensemble
 - The European hub ensemble beat 83% of teams' case forecasts and 91% of
   death forecasts on relative WIS, the weighted interval score
 
 > However, they can be very hard to learn from, and though we have really
 > tried to learn more about how to forecast it has been difficult.
+>
+> *Abbott, 2022*
 :::
 ::: {.column width="60%"}
 ![](../figures/comms-hub-ensemble-good.png){height="640px"
@@ -133,11 +200,10 @@ fig-align="center"
 fig-alt="Relative WIS by country, ensemble marked as an asterisk"}
 
 ::: {.attribution}
-Figure 4 and the 83% and 91% from
-[Sherratt et al. (2023)](https://doi.org/10.7554/eLife.81916), eLife,
-CC-BY 4.0, via `hpru-ppie-kickoff/figures/` · quote from
+Figure 4, [Sherratt et al. 2023](https://doi.org/10.7554/eLife.81916),
+eLife, CC-BY 4.0 ·
 [Evaluating an epidemiologically motivated surrogate model](https://samabbott.co.uk/posts/2022-10-13-surrogate-ensemble-forecast/),
-Abbott, 2022-10-13
+2022
 :::
 :::
 ::::
@@ -147,8 +213,10 @@ Abbott, 2022-10-13
 > Probably our most useful contributions from this work were in the UK
 > where we knew the data and its limitations particularly well and
 > interacted directly and frequently with policy makers.
+>
+> *Abbott and Funk, 2022*
 
 ::: {.attribution}
 [Reflections on two years estimating effective reproduction numbers](https://samabbott.co.uk/posts/2022-03-25-rt-reflections/),
-Abbott and Funk, 2022-03-25
+2022
 :::

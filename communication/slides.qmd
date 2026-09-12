@@ -20,11 +20,11 @@ format:
 
 :::: {.columns}
 ::: {.column width="68%"}
-- Three audiences in 2020. Government, the public, other scientists
-- Software is communication
-- With AI. What I use it for, and how I make that visible
-- Under AI. Trust, provenance, and prose that sounds the same
-- What I would like us to agree on
+- 2020, three audiences. Government, the public, collaborative
+  forecasting hubs
+- Software is communication. Defaults, limitations, evaluation, community
+- With AI. Making the use visible, and a reviewer that is not a person
+- Under AI. Provenance, bots talking to bots, and what LLMs say about us
 :::
 ::: {.column width="32%"}
 ![](../figures/qr-communication.png){width="58%"}
@@ -45,8 +45,6 @@ Monday 14 September 2026, 13:40.
 {{< include _partials/03-with.qmd >}}
 
 {{< include _partials/04-under.qmd >}}
-
-{{< include _partials/05-asks.qmd >}}
 
 ## Thank you
 

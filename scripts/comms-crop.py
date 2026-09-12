@@ -1,14 +1,13 @@
 #!/usr/bin/env -S uv run --with pillow --script
-"""Crop two screenshots from scripts/comms-shots.py to the part each slide
-is about, and tile four of them as the recap grid on the asks slide.
+"""Crop screenshots from scripts/comms-shots.py to the part each slide is
+about.
 
 Run with:
     ./scripts/comms-crop.py
 
-Reads figures/comms-shot-covid-uk.png and
-figures/comms-shot-juliacon-steers.png as taken on 2026-09-11 at 1440 by
-1000 CSS pixels and device scale 1.5, and writes the cropped files the
-deck uses. The full screenshots stay on disk.
+Reads figures/comms-shot-*.png as taken on 2026-09-11 and 2026-09-12 at
+1440 by 1000 CSS pixels and device scale 1.5, and writes the cropped files
+the deck uses. The full screenshots stay on disk.
 """
 
 from pathlib import Path
@@ -25,6 +24,25 @@ CROPS = [
     # workflow steers beneath it, table of contents off.
     ("comms-shot-juliacon-steers", "comms-shot-juliacon-steers-para",
      200, 120, 1600, 890),
+    # The global page: the data date lines, the map and its legend.
+    ("comms-shot-covid-global-map", "comms-shot-covid-map",
+     410, 710, 1748, 1440),
+    # The global page: the per-country table with its word categories.
+    ("comms-shot-covid-global-table", "comms-shot-covid-table",
+     410, 735, 1750, 1500),
+    # The GitHub App page: name, avatar and description.
+    ("comms-shot-review-bot-app", "comms-shot-review-bot",
+     356, 150, 1836, 690),
+    # BVDOutbreakSize issue 443: the end of sbfnk-bot's evidence and
+    # seabbs-bot's closing comment.
+    ("comms-shot-bvd-issue-443", "comms-shot-bots-443",
+     157, 324, 1528, 1172),
+    # sismid-nowcasting issue 30: the bot's request and the one-word reply.
+    ("comms-shot-sismid-issue-30", "comms-shot-sismid-30",
+     150, 300, 1535, 918),
+    # The live BVD report: the Limitations heading and first bullets.
+    ("comms-shot-bvd-limitations", "comms-shot-bvd-limits",
+     560, 735, 1620, 1500),
 ]
 
 for src, dst, *box in CROPS:
@@ -32,26 +50,3 @@ for src, dst, *box in CROPS:
     out = FIGURES / f"{dst}.png"
     im.crop(tuple(box)).save(out)
     print(out, im.crop(tuple(box)).size)
-
-# The recap grid. Each shot is scaled to TILE and laid out two by two.
-TILE = (1080, 750)
-GUTTER = 40
-RECAP = [
-    "comms-shot-juliacon-prompts",
-    "comms-shot-seabbs-bot",
-    "comms-shot-spimo-statement",
-    "comms-shot-covid-issue-171",
-]
-w, h = TILE
-grid = Image.new(
-    "RGB", (2 * w + GUTTER, 2 * h + GUTTER), "white"
-)
-for i, name in enumerate(RECAP):
-    im = Image.open(FIGURES / f"{name}.png").convert("RGB")
-    im.thumbnail(TILE, Image.LANCZOS)
-    x = (i % 2) * (w + GUTTER)
-    y = (i // 2) * (h + GUTTER)
-    grid.paste(im, (x, y))
-out = FIGURES / "comms-shot-recap.png"
-grid.save(out)
-print(out, grid.size)

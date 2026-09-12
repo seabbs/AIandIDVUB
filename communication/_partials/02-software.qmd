@@ -1,12 +1,41 @@
 # Software is communication
 
+## The package is the message
+
+:::: {.columns}
+::: {.column width="40%"}
+- The paper is read once. The package runs on data we never see, for
+  analysts we never meet
+- Users run the defaults, so the defaults are the advice
+- All of them are used by public health departments, including CDC,
+  UKHSA, RKI, ECDC and WHO
+- In some cases the package is too complex for anyone else to use
+:::
+::: {.column width="60%"}
+| Package | Since | Stars | CRAN |
+|---|---|---:|---:|
+| `EpiNow2` | 2020 | 141 | 58,073 |
+| `epinowcast` | 2021 | 67 | not on CRAN |
+| `epidist` | 2023 | 16 | not on CRAN |
+| `primarycensored` | 2024 | 9 | 11,294 |
+| `baselinenowcast` | 2025 | 10 | 1,678 |
+
+::: {.attribution}
+Table and the last two bullets from the
+[JuliaCon 2026 roadmap deck](https://samabbott.co.uk/JuliaCon2026/roadmap/slides.html),
+August 2026. Stars from the GitHub API, downloads CRAN totals from
+[cranlogs](https://cranlogs.r-pkg.org/), both to mid August 2026
+:::
+:::
+::::
+
 ## Defaults are advice
 
 :::: {.columns}
 ::: {.column width="40%"}
 - [EpiNow2](https://epiforecasts.io/EpiNow2/) has been on CRAN since
   1 September 2020
-- CDC used it for nowcasts and $R_t$
+- CDC used it for nowcasts and $R_t$ until June 2026
 - Every argument a user leaves alone is a decision they inherited from
   us. The generation time, the delays, the prior on $R_t$, the sampler
 :::
@@ -24,88 +53,40 @@ estimates <- epinow(
 ::: {.attribution}
 [EpiNow2 vignette](https://epiforecasts.io/EpiNow2/articles/EpiNow2.html) ·
 [CRAN archive](https://cran.r-project.org/src/contrib/Archive/EpiNow2/),
-1.1.0 dated 2020-09-01 ·
+1.1.0 on 1 September 2020 ·
 [CDC CFA, Behind the model: nowcasting](https://www.cdc.gov/cfa-behind-the-model/php/data-research/nowcasting.html),
-updated 2026-01-30 ·
-[MMWR 73(46), 2024-11-21](https://www.cdc.gov/mmwr/volumes/73/wr/mm7346a3.htm)
+January 2026, and the CFA $R_t$ page's switch of method for dates after
+1 June 2026
 :::
 :::
 ::::
 
-## The limits travel less well than the method
+## Limitations first
 
 :::: {.columns}
 ::: {.column width="40%"}
-- The estimates went out as CSV files on GitHub. People who did not
-  interact with us used them in publications
-- All of them are used by public health departments, including CDC,
-  UKHSA, RKI, ECDC and WHO
-- In many cases the package is too complex for anyone else to use
-- The limitations sat on a methods page that 20,000 of 1.2 million page
-  views reached
+- The live Bundibugyo report puts its limitations before the methods,
+  in bullets, most consequential first
+- The feedback we got is that this is off-putting
+- The dashboard hid its limits on a page few reached. This report leads
+  with them and people stop reading
+- How should we warn?
 
-> Of course this can cause issues if the limitations of the method are
-> poorly communicated.
+> Every estimate is a model-based extrapolation under strong assumptions,
+> not a measurement.
+>
+> *Abbott, Sherratt, Brand and Funk, 2026*
 :::
 ::: {.column width="60%"}
-| Package | Since | Stars | CRAN |
-|---|---|---:|---:|
-| `EpiNow2` | 2020 | 141 | 58,073 |
-| `epinowcast` | 2021 | 67 | not on CRAN |
-| `epidist` | 2023 | 16 | not on CRAN |
-| `primarycensored` | 2024 | 9 | 11,294 |
-| `baselinenowcast` | 2025 | 10 | 1,678 |
+![](../figures/comms-shot-bvd-limits.png){height="600px"
+fig-align="center"
+fig-alt="The Limitations section of the live BVDOutbreakSize report. A
+heading, one sentence on how they are grouped, an expand toggle, and the
+first bullets under Data and what it can support"}
 
 ::: {.attribution}
-Table and the two package bullets from the
-[JuliaCon 2026 roadmap deck](https://samabbott.co.uk/JuliaCon2026/roadmap/slides.html),
-`roadmap/_partials/04-r.qmd`. Stars and creation dates from the GitHub
-API, downloads are CRAN totals to 2026-08-11 from
-[cranlogs](https://cranlogs.r-pkg.org/), retrieved 2026-08-12, and
-`baselinenowcast` 2026-08-13 · quote and counts from
-[Reflections on two years estimating effective reproduction numbers](https://samabbott.co.uk/posts/2022-03-25-rt-reflections/),
-2022-03-25 ·
-[epiforecasts/covid-rt-estimates](https://github.com/epiforecasts/covid-rt-estimates)
-:::
-:::
-::::
-
-## Community as the channel
-
-:::: {.columns}
-::: {.column width="58%"}
-- [epinowcast](https://www.epinowcast.org/). Over 50 researchers and
-  public health analysts, 31 seminars from May 2023 to May 2026
-- [EpiAware](https://epiaware.org), its Julia successor. Nobody from
-  outside the team has committed since February
-- So the other party on an issue is usually one of my robots. Answering
-  a robot is dispiriting
-- Do 🤖 shut down collaboration?
-
-> Trying to build a community of practice as community >> methods or
-> models alone.
-:::
-::: {.column width="42%"}
-::: {.emoji-crowd}
-🤖 🤖 🤖 🤖 🤖 🤖\
-🤖 🤖 🤖 🤖 🤖 🤖\
-🤖 🤖 [🧑‍💻 👩‍💻]{.humans} 🤖 🤖\
-🤖 🤖 🤖 [🧑‍🔬]{.humans} 🤖 🤖\
-🤖 🤖 🤖 🤖 🤖 🤖\
-🤖 🤖 🤖 🤖 🤖 🤖
-:::
-
-::: {.attribution}
-Crowd and the robot bullets from the
-[JuliaCon 2026 roadmap deck](https://samabbott.co.uk/JuliaCon2026/roadmap/slides.html),
-`roadmap/_partials/10-community.qmd`, most recent outside commit
-2026-02-03 from `git log` on `main`, checked 2026-08-12 ·
-seminar count from
-[epinowcast.org/seminars](https://www.epinowcast.org/seminars.html) ·
-community size from the composable workflow grant co-applicant text ·
-quote from
-[Data, Models, and Modellers during a Global Pandemic](https://samabbott.co.uk/posts/2023-01-04-iisa-data-models-and-modellers-during-a-global-pandemic/),
-2023-01-04
+[BVDOutbreakSize analysis page](https://epiforecasts.io/BVDOutbreakSize/stable/analysis#Limitations),
+v1.18.0, screenshot 12 September 2026
 :::
 :::
 ::::
@@ -114,13 +95,15 @@ quote from
 
 :::: {.columns}
 ::: {.column width="40%"}
-- [scoringutils](https://epiforecasts.io/scoringutils/) scores
-  probabilistic forecasts. WIS is the hubs' headline measure
-- Raw scores are not comparable when teams miss weeks
-- Pairwise comparison on the overlapping forecasts gives a relative skill
-  each team can read
+- A forecast hub is an agreement. Same targets, same dates, same
+  quantiles, same score
+- Agreeing how to score is agreeing what a good forecast is. WIS is the
+  hubs' headline measure
+- [scoringutils](https://epiforecasts.io/scoringutils/) implements the
+  scores. Pairwise comparison on the overlapping forecasts gives a
+  relative skill that teams who miss weeks can still read
 - UKHSA, the UK Health Security Agency, asked us for guidance on
-  evaluation
+  evaluation. Practice still differs between agencies
 :::
 ::: {.column width="60%"}
 ![](../figures/comms-pairwise-illustration.png){width="100%"
@@ -129,8 +112,40 @@ fig-alt="Three models compared in pairs to give a relative skill score"}
 ::: {.attribution}
 Figure from the
 [scoringutils manuscript](https://github.com/epiforecasts/scoringutils/tree/main/inst/manuscript),
-Bosse et al., `man/figures/pairwise-illustration.png` · UKHSA request
-recorded in the `bmbr-guidance-grant` project notes
+Bosse et al. · UKHSA request and the relative WIS versus MAE difference
+from the `bmbr-guidance-grant` project notes
+:::
+:::
+::::
+
+## Community as the channel
+
+:::: {.columns}
+::: {.column width="40%"}
+- [epinowcast](https://www.epinowcast.org/). Over 50 researchers and
+  public health analysts, 31 seminars from May 2023 to May 2026
+- A forum, a monthly meeting with a rotating chair, release notes that
+  name everyone who reported a bug or joined a discussion
+- I am also interested in why efforts in this direction keep failing
+
+> Trying to build a community of practice as community >> methods or
+> models alone.
+>
+> *Abbott, 2023*
+:::
+::: {.column width="60%"}
+![](../figures/comms-shot-epinowcast-forum.png){height="620px"
+fig-align="center"
+fig-alt="The epinowcast community forum front page"}
+
+::: {.attribution}
+[community.epinowcast.org](https://community.epinowcast.org/) ·
+seminar count from
+[epinowcast.org/seminars](https://www.epinowcast.org/seminars.html) ·
+community size from the composable workflow grant text ·
+both quoted lines from
+[Data, Models, and Modellers during a Global Pandemic](https://samabbott.co.uk/posts/2023-01-04-iisa-data-models-and-modellers-during-a-global-pandemic/),
+2023
 :::
 :::
 ::::

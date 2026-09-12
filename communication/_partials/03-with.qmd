@@ -1,40 +1,5 @@
 # With AI
 
-## What I use it for
-
-:::: {.columns}
-::: {.column width="40%"}
-- I was travelling for summer schools, teaching and workshops, so decided
-  to have a go with agents
-- Drafting and review, of code and of text
-- Reading French situation reports as PDFs and digitising their charts
-- These slides. The brief and the corrections are mine. The text and
-  the figures are the agent's
-
-> For communication, really not sure.
-> Can you mine my recent work and give a proposal?
-:::
-::: {.column width="60%"}
-![](../figures/comms-bvd-insp-sitreps.png){height="620px"
-fig-align="center"
-fig-alt="A situation report page from the DRC national public health
-institute, in French, with cumulative confirmed cases, deaths, isolation
-occupancy, recoveries and suspected cases in boxes"}
-
-::: {.attribution}
-Situation report from [insp.cd](https://insp.cd/ebola-17eme-epidemie/),
-as shown in the
-[WHO collaboratory talk, 10 June 2026](https://epiforecasts.io/slides/bdbv_collaboratory_20260610.html),
-`BVDOutbreakSize/slides/figures/insp_sitreps.png` · first bullet from
-the
-[JuliaCon 2026 roadmap deck](https://samabbott.co.uk/JuliaCon2026/roadmap/slides.html),
-`roadmap/_partials/05-what-it-takes.qmd` · quote from
-[the prompts page for this site](https://samabbott.co.uk/AIandIDVUB/prompts.html),
-spelling cleaned up, judgements unchanged
-:::
-:::
-::::
-
 ## Making it visible
 
 :::: {.columns}
@@ -54,11 +19,11 @@ fig-alt="GitHub profile of seabbs-bot, Sam Abbott (bot), robot avatar"}
 
 ::: {.attribution}
 [github.com/seabbs-bot](https://github.com/seabbs-bot), created
-2026-01-23, screenshot 2026-09-11 · "model and analysis drafted with an
-LLM under human oversight", limitations slide of the
-[WHO collaboratory talk, 10 June 2026](https://epiforecasts.io/slides/bdbv_collaboratory_20260610.html),
-`BVDOutbreakSize/slides/bdbv_collaboratory_20260610.qmd` · bio line
-from the [JuliaCon 2026 home page](https://samabbott.co.uk/JuliaCon2026/)
+23 January 2026 · "model and analysis drafted with an LLM under human
+oversight", limitations slide of the
+[WHO collaboratory talk, 10 June 2026](https://epiforecasts.io/slides/bdbv_collaboratory_20260610.html)
+· bio line from the
+[JuliaCon 2026 home page](https://samabbott.co.uk/JuliaCon2026/)
 :::
 :::
 ::::
@@ -79,10 +44,10 @@ fig-alt="The steers section of the JuliaCon 2026 prompts page, fifty-three
 so far, and the first workflow steers"}
 
 ::: {.attribution}
-[samabbott.co.uk/JuliaCon2026/prompts.html](https://samabbott.co.uk/JuliaCon2026/prompts.html),
-screenshot 2026-09-11 · 130 counted from `notes/steers.md` in
-[seabbs/JuliaCon2026](https://github.com/seabbs/JuliaCon2026), last
-commit 2026-08-14 · fifty-three from the page text
+[samabbott.co.uk/JuliaCon2026/prompts.html](https://samabbott.co.uk/JuliaCon2026/prompts.html)
+· 130 counted from `notes/steers.md` in
+[seabbs/JuliaCon2026](https://github.com/seabbs/JuliaCon2026), August
+2026
 :::
 :::
 ::::
@@ -104,32 +69,35 @@ fig-alt="A single bar of 114 claims, 67 marked changed and 47 marked stood"}
 
 ::: {.attribution}
 [seabbs/how-I-llm](https://github.com/seabbs/how-I-llm) commits
-`8c7e834` and `1fceb9a`, read 2026-09-11
+`8c7e834` and `1fceb9a`, August 2026
 :::
 :::
 ::::
 
-## Ten times the reading
+## seabbs-review-bot
 
 :::: {.columns}
 ::: {.column width="40%"}
-- A pull request is a proposed change that someone has to read before it
-  lands
-- 2,144 from the bot account by 11 September 2026. 85.5% merged
-- 11.9% closed unmerged, about half of those superseded rather than
-  rejected
-- My time moved from writing to checking. Ten times the output needs ten
-  times the reading
+- A GitHub App. It reviews each pull request I or my bot open, and again
+  when either of us asks. A pull request is a proposed change that
+  someone reads before it lands
+- 213 pull requests reviewed since 17 August 2026. Each review ends "Not
+  a human review"
+- I fix what it gets right, say which findings I reject and why, and
+  check each against the source myself
+- It has caught real bugs. It has also been wrong from its own truncated
+  greps
 :::
 ::: {.column width="60%"}
-![](../figures/comms-bot-prs-by-month.png){width="100%"
-fig-alt="seabbs-bot pull requests per month in 2026, peak 744 in July"}
+![](../figures/comms-shot-review-bot.png){width="100%"
+fig-alt="The GitHub App page for seabbs-review-bot. A robot avatar, the
+name, and the line Automated reviews of @seabbs and @seabbs-bot work"}
 
 ::: {.attribution}
-The JuliaCon 2026 roadmap figure `figures/bot-prs-by-month.png`,
-extended to September. GitHub search API `total_count` by month, run
-2026-09-11, script `scripts/comms-figures.py` · superseded share from
-[seabbs/how-I-llm](https://github.com/seabbs/how-I-llm) commit `8c7e834`
+[github.com/apps/seabbs-review-bot](https://github.com/apps/seabbs-review-bot),
+created 17 August 2026 · count from the GitHub search API,
+`reviewed-by:app/seabbs-review-bot`, 12 September 2026 · the rules from
+my own `CLAUDE.md`, the standing instructions my agents read
 :::
 :::
 ::::
