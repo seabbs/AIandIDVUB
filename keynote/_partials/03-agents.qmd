@@ -1,27 +1,22 @@
-# Agents
+# Agentic AI and outbreak modelling
 
 ## What I mean by an agent
 
 :::: {.columns}
 ::: {.column width="40%"}
-- A language model with tools. It reads files, writes code, runs it,
-  and loops until a check passes
+- A language model with tools. It reads files, writes code, runs it, and
+  loops until a check passes
 - Then it opens a pull request, a proposed change to the code that a
   person reviews before it is merged
-- Not an RL policy. Not a chatbot
 - I write the task and what counts as right. I read what comes back
 :::
 ::: {.column width="60%"}
-![](../figures/keynote-agent.png){width="100%"
-fig-alt="A red box on the left, you, the task and what counts as right,
-sends a prompt into a loop of four boxes: read the files and the docs,
-write or change code, run it with tests lint and render, check passed.
-No returns to the top of the loop. Yes leads to a red box on the right,
-you, read the pull request, merge or send it back."}
-
-::: {.attribution}
-Diagram this talk, `scripts/keynote-schematics.py`
-:::
+![](../figures/keynote-agent-1.png){width="100%"
+fig-alt="A brick box on the left, you, the task and what counts as right,
+sends a prompt into a loop of four boxes, read the files and the docs,
+write or change code, run it, check passed. No returns to the top. Yes
+leads to a pull request and a brick box, you, read it, merge or send
+back."}
 :::
 ::::
 
@@ -29,13 +24,13 @@ Diagram this talk, `scripts/keynote-schematics.py`
 
 :::: {.columns}
 ::: {.column width="40%"}
-- I was travelling for summer schools, teaching and workshops, so
-  decided to have a go with agents
-- Most of the code I merge is agent-written. About half went in
-  unreviewed
-- Agents push from a bot account, a second GitHub login. Git shows
-  who wrote what
-- My time goes on writing the task and reading the result
+- I was travelling for summer schools, teaching and workshops, so made
+  a very focused go of working through agents
+- All code I have produced in the last six months has been agent
+  written, pushed from a bot account, a second GitHub login
+- Agents write the tasks, from a spec or from a conversation with me
+- Review at different levels. Sometimes all the code, sometimes only the
+  outcome. A little like working with students
 :::
 ::: {.column width="47%"}
 ![](../figures/keynote-bot-prs.png){width="100%"
@@ -45,14 +40,9 @@ fig-alt="Bar chart of seabbs-bot pull requests opened per month in
 unmerged."}
 
 ::: {.attribution}
-GitHub search API `total_count` per month, run 11 September 2026;
-`seabbs-bot` created 23 January 2026 · review share: 712 of 1,371 merged
-bot pull requests carried no review, counted for the
-[how I LLM](https://samabbott.co.uk/how-I-llm) deck, August 2026
-· first bullet and layout from the JuliaCon 2026 roadmap deck,
-`roadmap/_partials/05-what-it-takes.qmd`,
-[samabbott.co.uk/JuliaCon2026](https://samabbott.co.uk/JuliaCon2026)
-· `scripts/keynote-counts.py`
+GitHub search API `total_count` per month, 11 September 2026;
+`seabbs-bot` created 23 January 2026 · layout after my JuliaCon 2026
+roadmap deck, [samabbott.co.uk/JuliaCon2026][jc]
 :::
 :::
 ::: {.column width="13%"}
@@ -64,172 +54,203 @@ fig-alt="The sbfnk-bot GitHub avatar, a robot in a red scarf."}
 
 ::: {.attribution}
 [@seabbs-bot](https://github.com/seabbs-bot) and
-[@sbfnk-bot](https://github.com/sbfnk-bot), copied from
-`JuliaCon2026/figures/`
+[@sbfnk-bot](https://github.com/sbfnk-bot)
 :::
 :::
 ::::
 
-## A live outbreak built this way
+## Agents in the Bundibugyo model: the data
 
 :::: {.columns}
 ::: {.column width="40%"}
-- A replication of the McCabe et al. report of 18 May, in a few
-  hours the next day
-- Refit on every push. 145 releases since 20 May
-- The situation reports are French PDFs. Agents ingest them directly.
-  Recent reports get two blind reads
-- 333 of 425 pull requests by the bot. Four named authors
+- The situation reports are French PDFs. Agents read every stream from
+  them except confirmed cases and deaths. Those two are cross-checked
+  against the INRB-UMIE transcription
+- Recent reports get two blind reads. The script exits on an
+  undocumented disagreement
+- The onset curve exists only as a picture. A digitiser recovers counts
+  from pixel colour and axis tick geometry
+- Onsets also move between reports because reporting is late. That is a
+  nowcasting problem, and it is in the model
 :::
 ::: {.column width="60%"}
-<!-- data-external stops embed-resources inlining the remote page as a
-data URL. That inlining left the frame unstyled and lost the anchor. -->
-<iframe src="https://epiforecasts.io/BVDOutbreakSize/stable/summary#Headline-estimates"
-  data-external="1" width="100%" height="640"
-  title="BVDOutbreakSize live report, headline estimates"
-  style="border: 1px solid #d5d8de;"></iframe>
+![](../figures/keynote-bvd-sitrep087-page3.png){width="100%"
+fig-alt="Page 3 of INSP situation report 87, in French. A table of alerts
+by province, a bar chart of confirmed cases by date of symptom onset
+over 21 days, and a map of cases by health zone."}
 
 ::: {.attribution}
-[BVDOutbreakSize][bvd], live, the headline estimates on its summary
-page · repository created 2026-05-19 · 145 releases, `results-43` on
-2026-05-20 to `results-1699` on 2026-09-09 · pull request counts from the
-GitHub search API, 11 September 2026 · two blind readers recorded in
-`data/README.md` for SitReps 097 to 099, 104 to 107 and 110 to 114
-· McCabe et al.,
-Imperial College London, 18 May 2026,
-[doi:10.25560/130007](https://doi.org/10.25560/130007)
-· bullets after the JuliaCon 2026 roadmap deck,
-`roadmap/_partials/00-outbreak.qmd`
+INSP SitRep 087, 9 August 2026, page 3,
+[insp.cd](https://insp.cd/ebola-17eme-epidemie/)
+· `data/README.md` and `scripts/README.md` in [BVDOutbreakSize][bvd-repo],
+read 12 September 2026; the onset reporting triangle fit merged
+27 July 2026
 :::
 :::
 ::::
 
-<!-- Static fallback for the live report, for a room with no network.
-Swap the visibility attribute between this slide and the one above, then
-re-render. Quarto drops hidden slides from the HTML. -->
-
-## A live outbreak built this way {visibility="hidden"}
+## Agents in the Bundibugyo model: the model
 
 :::: {.columns}
 ::: {.column width="40%"}
-- A replication of the McCabe et al. report of 18 May, in a few
-  hours the next day
-- Refit on every push. 145 releases since 20 May
-- The situation reports are French PDFs. Agents ingest them directly.
-  Recent reports get two blind reads
-- 333 of 425 pull requests by the bot. Four named authors
+- Model development through issues and pull requests. 333 of 425 pull
+  requests from the bot account
+- Performance work by agents, reviewed by agents. 19 perf commits, all
+  from bot identities. One review found nothing worth shipping. One
+  halved the gradient cost with the log density bit-identical
+- Two versions of the model kept in step. The McCabe et al. analogues
+  and the joint model share submodels. Every release refits the
+  analogues against the published estimates
 :::
 ::: {.column width="60%"}
-![](../figures/keynote-bvd-rt-sep.png){width="100%"
-fig-alt="Estimated reproduction number over the established outbreak
-from late March to 6 September 2026, purple credible ribbons falling
-from about two in May to about one from August. A dashed red line marks
-the first situation report on 18 May, a dotted red line the end of the
-modelled intervention ramp 21 days later, and a grey dashed line Rt of
-one."}
+![](../figures/keynote-agent-2.png){width="100%"
+fig-alt="The agent loop again, now fed by a box where agents write the
+tasks from a spec or a conversation, with review agents sending findings
+back into the loop, me reading all the code or only the outcome, and a
+merge that refits in CI and sends new tasks back to the top."}
 
 ::: {.attribution}
-[BVDOutbreakSize][bvd] release `results-1699`, 9 September 2026, data to
-6 September · dashed red line at the first situation report, where the
-model lets $R_t$ change; dotted red line 21 days later, the end of the
-modelled intervention ramp; grey dashed line at $R_t$ = 1, from
-`src/plots.jl` and `RT_INTERVENTION_RAMP` in `src/constants.jl` of that
-repository · repository created 2026-05-19 · 145 releases · pull request
-counts from the GitHub search API, 11 September 2026 · two blind readers
-recorded in `data/README.md` for SitReps 097 to 099, 104 to 107 and 110
-to 114 · McCabe et al., Imperial College London, 18 May 2026,
-[doi:10.25560/130007](https://doi.org/10.25560/130007)
-· bullets after the JuliaCon 2026 roadmap deck,
-`roadmap/_partials/00-outbreak.qmd`
+[BVDOutbreakSize][bvd-repo]: pull request counts from the GitHub search
+API, 11 September 2026 · `git log --grep perf`, issue #444, pull request
+#656 · analysis page sections *Top-level composers* and *Imperial report
+sense check*, read 12 September 2026
 :::
 :::
 ::::
 
-## What was hard to check
+## What agents made possible
 
 :::: {.columns}
 ::: {.column width="40%"}
-- The onset curve exists only as a picture in the PDF. A digitiser
-  reads counts off the pixels
-- SitRep 081: JPEG compression left the axis ticks one pixel tall.
-  The read came out 54% under the printed total
-- SitRep 087: the y-axis grid moved from steps of 20 to 25. Caught
-  only because counts on twelve-week-old dates fell
-- Wrong answers look like right ones. Nothing crashes
+- Going wide. One posterior over the situation report streams, the
+  Uganda exports and a genomic bound
+- Checks on every rebuild. Predictive checks per stream, forecasts
+  scored against later data, the McCabe replication
+- That much debugging would not have happened by hand. The workflow is
+  what kept it reviewable
+- Agents did not choose the model or judge the ascertainment
+  assumption. Infrastructure and review were still needed
 :::
 ::: {.column width="60%"}
-![](../figures/keynote-onset-vintages.png){width="100%"
-fig-alt="Step lines of confirmed cases by week of symptom onset as read
-from situation reports of 12 July, 26 July, 9 August, 23 August and
-6 September 2026, rising from near zero in May to about 400 a week in
-August, with the reads for the same week differing by up to a few tens
-of cases between reports."}
+![](../figures/keynote-workflow-agents.png){width="100%"
+fig-alt="The six-step workflow, question, data, model, fit, check and
+report, with a tag over each. People over question; agents read and
+digitise over data; people choose, agents write over model; agents,
+every push over fit; agents run, people judge over check; agents draft,
+people sign over report."}
 
 ::: {.attribution}
-`data/README.md` in [BVDOutbreakSize][bvd-repo], SitRep 081 and 087
-notes · figure from `data/onset_curve_scanned.csv`, read 11 September
-2026, `scripts/keynote-onset-vintages.py`; each read sits a few percent
-under the total printed on the figure
+README and `docs/src/news.md` of [BVDOutbreakSize][bvd-repo], read
+12 September 2026 · [A workflow for infectious disease modelling][wf],
+Abbott et al.
 :::
 :::
 ::::
 
-## What changes
+## Digitising from figures, and what went wrong
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Checking is now the slow step
-- Components with their own checks give the agent something to test
-  against
-- Google's 2025/26 CDC hub entry was an LLM-guided tree search. It
-  topped influenza, COVID-19 and RSV, prospectively
-- Bracher and Funk put the earlier 11% retrospective gain down to
-  data revision leakage
+- SitRep 081. JPEG compression left the axis ticks one pixel tall. About
+  10 of 19 ticks found, and a total 54% under the printed one
+- SitRep 087. The y-axis grid moved from steps of 20 to 25. Caught only
+  because it broke the reporting-triangle invariant on dates that should
+  have been stable
+- SitRep 098. A losslessly encoded image read about 7% high against
+  both neighbours and was excluded
+- Every fix must reproduce every previously committed block unchanged
 :::
 ::: {.column width="60%"}
-![](../figures/keynote-sai-loop.png){width="100%"
-fig-alt="Five boxes in a row, propose a forecasting model, write the
-code, fit and forecast, score against held-out weeks, keep the best and
-rewrite the rest, with a return arrow labelled a tree of candidate
-models, many rounds."}
+![](../figures/keynote-bvd-onset-raster-087.png){width="100%"
+fig-alt="The raster image embedded in situation report 87. Confirmed
+cases by date of symptom onset from April to August 2026 as stacked bars,
+alive in light blue and died in red, a dashed red line at the first
+positive laboratory result, a y-axis in steps of 25 and a shaded band on
+the right for potentially incomplete data."}
+
+::: {.attribution}
+The embedded image from INSP SitRep 087, 9 August 2026, page 3
+· `data/README.md` in [BVDOutbreakSize][bvd-repo], notes for SitReps
+081, 087 and 098, and issue #594
+:::
+:::
+::::
+
+## Agents that search over models
+
+:::: {.columns}
+::: {.column width="40%"}
+- For the Bundibugyo model this was ad hoc. Agents proposed patches to
+  the model as issues, one branch each, and every release scored the
+  forecast against later data
+- The systematic version is a tree. An agent proposes candidate models,
+  one loop each, fit and score, keep the best, branch again
+- The score is the thing that can be gamed
+:::
+::: {.column width="60%"}
+![](../figures/keynote-agent-3.png){width="100%"
+fig-alt="A tree. The current model at the root branches into three
+candidates, add a stream, change the delay prior, and split Rt by
+province. Two are kept and branch again into three each; one child of
+each is kept in teal and the rest are grey, and the kept branches meet
+at a box reading keep the best, branch again."}
+
+::: {.attribution}
+Open `patch model` issues from `seabbs-bot` in [BVDOutbreakSize][bvd-repo],
+11 September 2026, and the forecast scoring in `src/scoring.jl`
+:::
+:::
+::::
+
+## Google SAI in the CDC hubs
+
+:::: {.columns}
+::: {.column width="40%"}
+- Martinson et al. 2026. An LLM-guided tree search that writes
+  forecasting code. An ensemble of the survivors went to the FluSight,
+  COVID-19 and RSV hubs
+- Prospective, 2025/26 season. It matched or beat the CDC hub ensembles
+  and topped the leader board for all three
+- Bracher and Funk 2026. The earlier retrospective gain of 11% came
+  from data revisions leaking into the evaluation
+- Less epidemiological knowledge than the hand-built models. The hubs,
+  the data and the review were still built by people
+:::
+::: {.column width="60%"}
+![](../figures/keynote-sai-arxiv.png){width="100%"
+fig-alt="The arXiv abstract page for Prospective multi-pathogen disease
+forecasting using autonomous LLM-guided tree search, by Martinson,
+Brenner, Plomecka, Williams, Reich and Shamsi, submitted 15 May 2026."}
 
 ::: {.attribution}
 Martinson, Brenner, Plomecka, Williams, Reich and Shamsi 2026,
-[arXiv:2605.16238](https://arxiv.org/abs/2605.16238)
-· Bracher and Funk 2026,
+[arXiv:2605.16238](https://arxiv.org/abs/2605.16238), read 12 September
+2026 · Bracher and Funk 2026,
 [arXiv:2608.05883](https://arxiv.org/html/2608.05883)
-· team folders `Google_SAI-*` in the FluSight, COVID-19 and RSV hubs
-· diagram this talk, `scripts/keynote-schematics.py`
+· team folders `Google_SAI-*` in the three hubs on GitHub
 :::
 :::
 ::::
 
-## What does not change
+## Who gets to do this
 
-:::: {.columns}
-::: {.column width="40%"}
-- Agents wrote the ingest, the fits, the tests and the release
-  pipeline
-- Choosing the model, reading the lower bound and judging
-  ascertainment stayed with the authors
-- "Who can do this work at all is narrowing. Agents make that worse"
-- "I do not have a defence for this. I am part of the problem"
+::: {style="font-size: 1.15em; margin-top: 0.4em; margin-bottom: 0.9em;"}
+The people modelling outbreaks where outbreaks happen are the least
+likely to have paid access. I do not have a defence for this. I am part
+of the problem.
 :::
-::: {.column width="60%"}
-![](../figures/keynote-bvd-authorship.png){width="100%"
-fig-alt="A single stacked bar of 497 BVDOutbreakSize commits: 392 from
-agent bot identities in teal, 50 from Dependabot in grey, 55 by hand in
-red."}
+
+- A Claude Max subscription. £200 a month, from my own pocket. My
+  institution does not cover it, and neither do most
+- Who can do this work at all is narrowing. Agents make that worse
+- Real work is now possible on small open models
 
 ::: {.attribution}
-`git log` of the local clone, 11 September 2026, `scripts/keynote-counts.py`
-· first quote from the JuliaCon 2026 roadmap deck,
-[samabbott.co.uk/JuliaCon2026](https://samabbott.co.uk/JuliaCon2026)
-· second from [how I LLM](https://samabbott.co.uk/how-I-llm), on paid
-access to models
+Sam Abbott, [how I LLM](https://samabbott.co.uk/how-I-llm), July 2026
+· second bullet from my JuliaCon 2026 roadmap deck,
+[samabbott.co.uk/JuliaCon2026][jc]
 :::
-:::
-::::
 
-[bvd]: https://epiforecasts.io/BVDOutbreakSize/stable/
 [bvd-repo]: https://github.com/epiforecasts/BVDOutbreakSize
+[jc]: https://samabbott.co.uk/JuliaCon2026
+[wf]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/

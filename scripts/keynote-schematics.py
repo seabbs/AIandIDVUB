@@ -1,20 +1,21 @@
 #!/usr/bin/env python3
-"""Box-and-arrow schematics for the keynote, drawn with matplotlib.
+"""Schematics for the keynote, drawn with matplotlib.
 
 Run with:
     uv run --with matplotlib scripts/keynote-schematics.py
 
 Writes, into figures/:
-    keynote-loop.png         what a modeller does during an outbreak
-    keynote-chain.png        chained models that lose uncertainty
-    keynote-agent.png        what I mean by an agent
-    keynote-sai-loop.png     LLM-guided tree search, Martinson et al. 2026
-    keynote-map.png          Kraemer et al. 2025, Table 1, with markers
-    keynote-ude.png          an SEIR model with one term learned
-    keynote-sbi.png          simulation-based inference with a flow
-    keynote-foundation.png   a time series foundation model, zero-shot
-    keynote-renewal.png      static fallback for the renewal slider
-    keynote-who.png          who does what, my guess
+    keynote-ebola-delays.png     the WHO Ebola Response Team estimands, 2014
+    keynote-workflow.png         how an outbreak gets modelled
+    keynote-workflow-agents.png  the same, marked with what agents did
+    keynote-map.png              Kraemer et al. 2025, Table 1, plus one row
+    keynote-seir-vs-ude.png      a semi-mechanistic SEIR beside a UDE
+    keynote-renewal-layer.png    a renewal process as a network layer
+    keynote-foundation.png       a time series foundation model, zero-shot
+    keynote-rl-loop.png          reinforcement learning for control
+    keynote-agent-1.png          an agent: the inner loop
+    keynote-agent-2.png          plus review agents and the task loop
+    keynote-agent-3.png          plus a tree of candidate models
 """
 
 import matplotlib
@@ -23,7 +24,6 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
-from matplotlib.ticker import NullFormatter
 
 TEAL = "#1f6f8b"
 SLATE = "#4a5899"
@@ -34,6 +34,8 @@ LIGHT = "#e4e6ea"
 PALE_TEAL = "#e3eef2"
 PALE_SLATE = "#e6e8f2"
 PALE_BRICK = "#f5e6e3"
+PALE = {TEAL: PALE_TEAL, SLATE: PALE_SLATE, BRICK: PALE_BRICK, GREY: "white",
+        INK: "white"}
 
 plt.rcParams.update(
     {
@@ -45,37 +47,57 @@ plt.rcParams.update(
 )
 
 
-def canvas(w=10, h=5.2, xlim=(0, 10), ylim=(0, 5.2)):
+def canvas(w=10, h=5.2, xlim=None, ylim=None):
     fig, ax = plt.subplots(figsize=(w, h))
-    ax.set_xlim(*xlim)
-    ax.set_ylim(*ylim)
+    ax.set_xlim(*(xlim or (0, w)))
+    ax.set_ylim(*(ylim or (0, h)))
     ax.axis("off")
     return fig, ax
 
 
 def box(ax, x, y, w, h, text, colour=TEAL, fill=None, fs=14, lw=2,
-        weight="normal", style="round,pad=0.02,rounding_size=0.12",
-        text_colour=None):
-    patch = FancyBboxPatch((x, y), w, h, boxstyle=style,
-                           edgecolor=colour, facecolor=fill or "white",
-                           linewidth=lw, zorder=2)
+        weight="normal", text_colour=None, ls="-"):
+    patch = FancyBboxPatch((x, y), w, h,
+                           boxstyle="round,pad=0.02,rounding_size=0.12",
+                           edgecolor=colour, facecolor=fill or PALE[colour],
+                           linewidth=lw, zorder=2, linestyle=ls)
     ax.add_patch(patch)
-    ax.text(x + w / 2, y + h / 2, text, ha="center", va="center", fontsize=fs,
-            color=text_colour or colour, fontweight=weight, zorder=3,
-            linespacing=1.15)
+    if text:
+        ax.text(x + w / 2, y + h / 2, text, ha="center", va="center",
+                fontsize=fs, color=text_colour or colour, fontweight=weight,
+                zorder=3, linespacing=1.15)
 
 
-def arrow(ax, p, q, colour=GREY, lw=2, style="-|>", rad=0.0, ls="-"):
-    a = FancyArrowPatch(p, q, arrowstyle=style, mutation_scale=18,
+def arrow(ax, p, q, colour=GREY, lw=2, style="-|>", rad=0.0, ls="-",
+          scale=18):
+    a = FancyArrowPatch(p, q, arrowstyle=style, mutation_scale=scale,
                         color=colour, linewidth=lw, zorder=1,
                         connectionstyle=f"arc3,rad={rad}", linestyle=ls)
     ax.add_patch(a)
 
 
 def label(ax, x, y, text, colour=GREY, fs=12, ha="center", va="center",
-          style="normal", weight="normal"):
+          style="normal", weight="normal", rotation=0):
     ax.text(x, y, text, ha=ha, va=va, fontsize=fs, color=colour,
-            style=style, fontweight=weight, linespacing=1.15, zorder=3)
+            style=style, fontweight=weight, linespacing=1.15, zorder=3,
+            rotation=rotation)
+
+
+def nn_glyph(ax, cx, cy, colour=BRICK, scale=1.0, layers=(3, 4, 2)):
+    xs = [cx + (i - (len(layers) - 1) / 2) * 0.45 * scale
+          for i in range(len(layers))]
+    pts = []
+    for x, n in zip(xs, layers):
+        ys = [cy + (i - (n - 1) / 2) * 0.22 * scale for i in range(n)]
+        pts.append([(x, y) for y in ys])
+    for a, b in zip(pts[:-1], pts[1:]):
+        for (x0, y0) in a:
+            for (x1, y1) in b:
+                ax.plot([x0, x1], [y0, y1], color=colour, lw=0.7, alpha=0.6,
+                        zorder=3)
+    for layer in pts:
+        for (x, y) in layer:
+            ax.scatter([x], [y], s=26 * scale, color=colour, zorder=4)
 
 
 def save(fig, name):
@@ -84,145 +106,89 @@ def save(fig, name):
     print("wrote figures/" + name)
 
 
-# 1. The loop -----------------------------------------------------------
+# 1. The WHO Ebola Response Team estimands ----------------------------------
 
-def loop():
-    fig, ax = canvas(10, 4.6, ylim=(0, 4.6))
-    steps = [
-        ("Data arrive", "cases, deaths,\ntests, by report date"),
-        ("Delays", "infection to onset,\nonset to report"),
-        ("Infections and $R_t$", "a renewal process\nruns backwards"),
-        ("Forecasts and\nscenarios", "runs forwards"),
-    ]
-    xs = [0.1, 2.65, 5.2, 7.75]
-    for x, (head, sub) in zip(xs, steps):
-        box(ax, x, 2.0, 2.25, 1.3, head, colour=TEAL, fill=PALE_TEAL, fs=13,
-            weight="bold")
-        label(ax, x + 1.125, 3.45, sub, fs=11.5, va="bottom")
-    for x0, x1 in zip(xs[:-1], xs[1:]):
-        arrow(ax, (x0 + 2.25, 2.65), (x1, 2.65), colour=TEAL, lw=2.2)
-    # The decision, and the return.
-    box(ax, 3.95, 0.15, 2.1, 0.75, "A decision", colour=BRICK,
-        fill=PALE_BRICK, fs=14, weight="bold")
-    arrow(ax, (8.875, 2.0), (8.875, 0.52), colour=BRICK, lw=2, style="-")
-    arrow(ax, (8.875, 0.52), (6.05, 0.52), colour=BRICK, lw=2)
-    arrow(ax, (3.95, 0.52), (1.225, 0.52), colour=BRICK, lw=2, style="-")
-    arrow(ax, (1.225, 0.52), (1.225, 2.0), colour=BRICK, lw=2)
-    label(ax, 2.6, 0.78, "new data, next week", colour=BRICK, fs=11.5,
-          style="italic")
-    save(fig, "keynote-loop.png")
-
-
-# 2. Chained models that lose uncertainty -------------------------------
-
-def bell(ax, cx, cy, w, h, colour, alpha=1.0, lw=2):
-    x = np.linspace(-2.6, 2.6, 120)
-    y = np.exp(-x ** 2 / 2)
-    ax.plot(cx + x * w / 5.2, cy + y * h, color=colour, lw=lw, alpha=alpha,
-            zorder=3)
-    ax.fill_between(cx + x * w / 5.2, cy, cy + y * h, color=colour,
-                    alpha=0.15 * alpha, zorder=2)
-
-
-def chain():
-    fig, ax = canvas(10, 4.6, ylim=(0, 4.6))
-    stages = ["Delay\ndistribution", "$R_t$", "Forecast"]
-    xs = [0.3, 3.8, 7.3]
-    for x, s in zip(xs, stages):
-        box(ax, x, 2.6, 2.4, 1.6, "", colour=TEAL, fill="white")
-        bell(ax, x + 1.2, 2.75, 1.8, 1.0, TEAL)
-        label(ax, x + 1.2, 4.42, s, colour=TEAL, fs=14, weight="bold",
+def ebola_delays():
+    """Means from the NEJM abstract, 23 September 2014. No shapes drawn,
+    since the abstract gives only the means."""
+    fig, ax = canvas(10.4, 3.6)
+    y = 2.1
+    events = [(0.6, "Infection"), (4.2, "Symptom onset"),
+              (8.6, "Onset of the\nnext case")]
+    ax.plot([0.6, 9.4], [y, y], color=LIGHT, lw=3, zorder=1)
+    for x, t in events:
+        ax.scatter([x], [y], s=260, color=TEAL, zorder=3)
+        label(ax, x, y + 0.45, t, colour=TEAL, fs=13.5, weight="bold",
               va="bottom")
+    arrow(ax, (0.75, y - 0.55), (4.05, y - 0.55), colour=SLATE, lw=2.2,
+          style="<|-|>")
+    label(ax, 2.4, y - 0.95, "incubation period\nmean 11.4 days", colour=SLATE,
+          fs=13, va="top")
+    arrow(ax, (4.35, y - 0.55), (8.45, y - 0.55), colour=SLATE, lw=2.2,
+          style="<|-|>")
+    label(ax, 6.4, y - 0.95, "serial interval, onset to onset\nmean 15.3 days",
+          colour=SLATE, fs=13, va="top")
+    box(ax, 8.45, 0.7, 1.85, 0.7, "case fatality 70.8%\n(69 to 73)",
+        colour=BRICK, fs=11.5)
+    label(ax, 5.0, 0.28, "4,507 probable and confirmed cases by 14 September "
+          "2014, from case investigation forms", colour=GREY, fs=11.5)
+    save(fig, "keynote-ebola-delays.png")
+
+
+# 2. How an outbreak gets modelled --------------------------------------------
+
+STEPS = [
+    ("Question", "how big, how fast,\nis it slowing"),
+    ("Data", "sitreps, line lists,\nexports, beds"),
+    ("Model", "process, observation,\ndelays inside it"),
+    ("Fit", "MCMC, autodiff,\nconvergence"),
+    ("Check", "predictive checks,\nothers' estimates"),
+    ("Report", "estimates, caveats,\na date"),
+]
+
+AGENT_TAGS = [
+    ("people", BRICK),
+    ("agents read\nand digitise", SLATE),
+    ("people choose,\nagents write", BRICK),
+    ("agents,\nevery push", SLATE),
+    ("agents run,\npeople judge", BRICK),
+    ("agents draft,\npeople sign", BRICK),
+]
+
+
+def workflow(tags=None, name="keynote-workflow.png"):
+    fig, ax = canvas(12, 4.8)
+    xs = [0.15 + i * 1.97 for i in range(6)]
+    for i, (x, (head, sub)) in enumerate(zip(xs, STEPS)):
+        box(ax, x, 2.3, 1.55, 0.95, head, colour=TEAL, fs=14, weight="bold")
+        label(ax, x + 0.775, 2.15, sub, colour=INK, fs=10.5, va="top")
+        if tags:
+            text, colour = tags[i]
+            label(ax, x + 0.775, 3.42, text, colour=colour, fs=10.5,
+                  style="italic", weight="bold", va="bottom")
     for x0, x1 in zip(xs[:-1], xs[1:]):
-        # What travels: one number.
-        arrow(ax, (x0 + 2.4, 3.4), (x1, 3.4), colour=BRICK, lw=2.2)
-        ax.plot([x0 + 2.4 + 0.55, x0 + 2.4 + 0.55], [3.25, 3.55],
-                color=BRICK, lw=3, zorder=4)
-        label(ax, x0 + 2.4 + 0.55, 3.72, "the mean", colour=BRICK, fs=11.5,
-              style="italic")
-    # Below: what the last stage should have looked like.
-    bell(ax, 8.5, 0.55, 3.0, 1.1, GREY, alpha=0.9)
-    bell(ax, 8.5, 0.55, 1.8, 1.1, TEAL)
-    ax.plot([7.0, 7.35], [0.3, 0.3], color=TEAL, lw=3)
-    label(ax, 7.45, 0.3, "reported", colour=TEAL, fs=11, ha="left")
-    ax.plot([8.45, 8.8], [0.3, 0.3], color=GREY, lw=3)
-    label(ax, 8.9, 0.3, "should carry", colour=GREY, fs=11, ha="left")
-    label(ax, 0.3, 1.2, "Each stage is fitted on its own.\n"
-          "Only a point estimate is passed on.\n"
-          "The interval at the end is too narrow.",
-          colour=INK, fs=13, ha="left")
-    save(fig, "keynote-chain.png")
+        arrow(ax, (x0 + 1.55, 2.775), (x1, 2.775), colour=TEAL, lw=2.2)
+    # Iterate: the report brings new data and a new question.
+    arrow(ax, (xs[-1] + 0.775, 1.35), (xs[-1] + 0.775, 0.75), colour=BRICK,
+          lw=2, style="-")
+    arrow(ax, (xs[-1] + 0.775, 0.75), (xs[0] + 0.775, 0.75), colour=BRICK,
+          lw=2, style="-")
+    arrow(ax, (xs[0] + 0.775, 0.75), (xs[0] + 0.775, 1.4), colour=BRICK,
+          lw=2)
+    label(ax, 6.0, 0.95, "iterate: new data tomorrow, a new question "
+          "next week, a model that failed a check", colour=BRICK, fs=12,
+          style="italic")
+    if not tags:
+        # Back arrows from Fit and Check to Model.
+        for i in (3, 4):
+            arrow(ax, (xs[i] + 0.5, 3.28), (xs[2] + 1.1, 3.28), colour=GREY,
+                  lw=1.4, rad=0.3, ls="--")
+        label(ax, 6.0, 4.35, "back to the model when a fit fails or a check "
+              "disagrees", colour=GREY, fs=10.5, style="italic")
+    save(fig, name)
 
 
-# 3. What I mean by an agent ------------------------------------------
-
-def agent():
-    fig, ax = canvas(11, 5.0, xlim=(0, 11), ylim=(0, 5.0))
-    # People at the ends.
-    box(ax, 0.05, 1.7, 1.85, 1.6, "You\n\nthe task, and\nwhat counts\nas right",
-        colour=BRICK, fill=PALE_BRICK, fs=12)
-    box(ax, 8.9, 1.7, 2.0, 1.6,
-        "You\n\nread the pull\nrequest, merge\nor send it back",
-        colour=BRICK, fill=PALE_BRICK, fs=12.5)
-    # The loop in the middle.
-    cx, cy, r = 5.6, 2.5, 1.6
-    nodes = [
-        ("Read the files\nand the docs", 90),
-        ("Write or\nchange code", 0),
-        ("Run it.\nTests, lint, render", -90),
-        ("Check passed?", 180),
-    ]
-    for text, deg in nodes:
-        t = np.deg2rad(deg)
-        x, y = cx + r * np.cos(t), cy + r * np.sin(t)
-        colour = SLATE if deg != 180 else TEAL
-        box(ax, x - 0.95, y - 0.42, 1.9, 0.84, text, colour=colour,
-            fill=PALE_SLATE if deg != 180 else PALE_TEAL, fs=11)
-    # Arrows around the loop, clockwise.
-    arcs = [((6.4, 4.05), (7.2, 2.92)), ((7.2, 2.08), (6.4, 0.95)),
-            ((4.8, 0.95), (4.0, 2.08)), ((4.0, 2.92), (4.8, 4.05))]
-    for p, q in arcs:
-        arrow(ax, p, q, colour=SLATE, lw=2, rad=-0.35)
-    label(ax, 3.75, 3.85, "no, again", colour=SLATE, fs=11, style="italic",
-          ha="right")
-    label(ax, 5.6, 2.5, "a language\nmodel\nwith tools", colour=GREY,
-          fs=10.5, style="italic")
-    arrow(ax, (1.9, 2.5), (3.05, 2.5), colour=BRICK, lw=2)
-    label(ax, 2.45, 2.8, "a prompt", colour=BRICK, fs=10, style="italic")
-    arrow(ax, (8.15, 2.5), (8.9, 2.5), colour=TEAL, lw=2.2)
-    label(ax, 8.52, 2.78, "yes", colour=TEAL, fs=11, style="italic")
-    save(fig, "keynote-agent.png")
-
-
-# 4. LLM-guided tree search ----------------------------------------------
-
-def sai_loop():
-    fig, ax = canvas(10, 4.8, ylim=(0, 4.8))
-    steps = ["Propose a\nforecasting model", "Write the code",
-             "Fit and forecast", "Score against\nheld-out weeks",
-             "Keep the best,\nrewrite the rest"]
-    xs = [0.1, 2.1, 4.1, 6.1, 8.1]
-    for x, s in zip(xs, steps):
-        colour = SLATE if "Score" not in s else TEAL
-        box(ax, x, 2.6, 1.8, 1.2, s, colour=colour,
-            fill=PALE_SLATE if colour == SLATE else PALE_TEAL, fs=11)
-    for x0, x1 in zip(xs[:-1], xs[1:]):
-        arrow(ax, (x0 + 1.8, 3.2), (x1, 3.2), colour=SLATE, lw=2)
-    arrow(ax, (9.0, 2.6), (9.0, 1.5), colour=SLATE, lw=2, style="-")
-    arrow(ax, (9.0, 1.5), (1.0, 1.5), colour=SLATE, lw=2, style="-")
-    arrow(ax, (1.0, 1.5), (1.0, 2.6), colour=SLATE, lw=2)
-    label(ax, 5.0, 1.72, "a tree of candidate models, many rounds",
-          colour=SLATE, fs=12, style="italic")
-    label(ax, 5.0, 0.75,
-          "The language model writes the code at each node.\n"
-          "An ensemble of the surviving models is what gets submitted.",
-          colour=INK, fs=12.5)
-    label(ax, 5.0, 4.3, "Propose, fit, score, keep, rewrite", colour=INK,
-          fs=15, weight="bold")
-    save(fig, "keynote-sai-loop.png")
-
-
-# 5. The Kraemer et al. map ---------------------------------------------
+# 3. The Kraemer et al. map --------------------------------------------------
 
 ROWS = [
     ("Inference of epidemiological\nparameters",
@@ -230,41 +196,37 @@ ROWS = [
      "flows and simulation-based inference"),
     ("Epidemic forecasting\nand nowcasting",
      "time series foundation models\nand ensembles", SLATE,
-     "time series foundation models"),
+     "foundation time series models"),
     ("Scenario modelling",
      "compartmental and mechanistic\nmodels, RL agent-based models",
-     TEAL, "the hosts, next two talks"),
+     SLATE, "reinforcement learning for control"),
     ("Understanding disease\nspread mechanisms",
      "graph neural networks,\ngraph foundation models", SLATE,
-     "UDEs and PINNs sit near here"),
+     "UDEs, renewal as a layer"),
     ("Infectious disease\nsurveillance",
      "active learning,\nBayesian optimisation", None, ""),
     ("Risk prediction", "multimodal AI", None, ""),
     ("Pathogen genome analysis", "protein language models", None, ""),
     ("Public health\ndecision making",
-     "Markov decision processes,\nreinforcement learning", TEAL,
-     "the hosts, next two talks"),
-    ("Building and checking\nthe model itself", "not in the table",
-     BRICK, "coding agents"),
+     "Markov decision processes,\nreinforcement learning", SLATE,
+     "reinforcement learning for control"),
+    ("Building and checking\nthe model", "not in the table",
+     BRICK, "agentic AI, the third part of this talk"),
 ]
 
 
 def kraemer_map():
-    n = len(ROWS)
-    fig, ax = canvas(11.5, 7.6, xlim=(0, 11.5), ylim=(0, 7.6))
+    fig, ax = canvas(12.2, 7.6)
     top, rowh = 7.15, 0.72
-    label(ax, 0.2, top + 0.15, "Task", colour=GREY, fs=12, ha="left",
-          weight="bold")
-    label(ax, 3.7, top + 0.15, "AI method named for it", colour=GREY, fs=12,
-          ha="left", weight="bold")
-    label(ax, 7.9, top + 0.15, "Where this talk puts it", colour=GREY, fs=12,
-          ha="left", weight="bold")
+    for x, t in ((0.2, "Task"), (3.7, "Kraemer et al. 2025"),
+                 (7.6, "In this talk")):
+        label(ax, x, top + 0.15, t, colour=GREY, fs=12.5, ha="left",
+              weight="bold")
     for i, (task, method, colour, note) in enumerate(ROWS):
         y = top - (i + 1) * rowh
         edge = colour or LIGHT
-        fill = {TEAL: PALE_TEAL, SLATE: PALE_SLATE, BRICK: PALE_BRICK}.get(
-            colour, "white")
-        ax.add_patch(FancyBboxPatch((0.1, y - 0.3), 7.3, 0.6,
+        fill = PALE.get(colour, "white") if colour else "white"
+        ax.add_patch(FancyBboxPatch((0.1, y - 0.3), 11.9, 0.6,
                                     boxstyle="round,pad=0.02,rounding_size=0.08",
                                     edgecolor=edge, facecolor=fill,
                                     linewidth=1.6, zorder=1))
@@ -274,98 +236,100 @@ def kraemer_map():
         label(ax, 3.7, y, method, colour=tc if colour else GREY, fs=11,
               ha="left")
         if note:
-            label(ax, 7.9, y, note, colour=colour, fs=11.5, ha="left",
+            label(ax, 7.6, y, note, colour=colour, fs=11.5, ha="left",
                   style="italic")
     save(fig, "keynote-map.png")
 
 
-# 6. An SEIR model with one term learned -----------------------------------
+# 4. A semi-mechanistic SEIR beside a UDE ----------------------------------
 
-def nn_glyph(ax, cx, cy, colour=BRICK, scale=1.0):
-    layers = [3, 4, 2]
-    xs = [cx - 0.45 * scale, cx, cx + 0.45 * scale]
-    pts = []
-    for x, n in zip(xs, layers):
-        ys = [cy + (i - (n - 1) / 2) * 0.22 * scale for i in range(n)]
-        pts.append([(x, y) for y in ys])
-    for a, b in zip(pts[:-1], pts[1:]):
-        for (x0, y0) in a:
-            for (x1, y1) in b:
-                ax.plot([x0, x1], [y0, y1], color=colour, lw=0.7, alpha=0.6,
-                        zorder=2)
-    for layer in pts:
-        for (x, y) in layer:
-            ax.scatter([x], [y], s=28 * scale, color=colour, zorder=3)
+def seir(ax, x0, y0, colour=TEAL):
+    xs = [x0 + i * 1.15 for i in range(4)]
+    for x, c in zip(xs, "SEIR"):
+        box(ax, x, y0, 0.8, 0.7, c, colour=colour, fs=17, weight="bold")
+    for xa, xb in zip(xs[:-1], xs[1:]):
+        arrow(ax, (xa + 0.8, y0 + 0.35), (xb, y0 + 0.35), colour=colour,
+              lw=2)
+    return xs
 
 
-def ude():
-    fig, ax = canvas(10, 4.4, ylim=(0, 4.4))
-    comps = ["S", "E", "I", "R"]
-    xs = [0.5, 3.0, 5.5, 8.0]
-    for x, c in zip(xs, comps):
-        box(ax, x, 2.4, 1.4, 1.1, c, colour=TEAL, fill=PALE_TEAL, fs=22,
-            weight="bold")
-    for x0, x1 in zip(xs[:-1], xs[1:]):
-        arrow(ax, (x0 + 1.4, 2.95), (x1, 2.95), colour=TEAL, lw=2.2)
-    label(ax, 4.55, 3.15, r"$\sigma$", colour=TEAL, fs=15)
-    label(ax, 7.05, 3.15, r"$\gamma$", colour=TEAL, fs=15)
-    # The learned term.
-    ax.add_patch(FancyBboxPatch((1.15, 0.35), 2.2, 1.4,
-                                boxstyle="round,pad=0.02,rounding_size=0.12",
-                                edgecolor=BRICK, facecolor=PALE_BRICK,
-                                linewidth=2, zorder=1))
-    nn_glyph(ax, 2.25, 1.05, scale=1.0)
-    label(ax, 2.25, 1.62, r"$\beta(t) = \mathrm{NN}(t,\ \ldots)$",
-          colour=BRICK, fs=13)
-    arrow(ax, (2.45, 1.75), (2.45, 2.85), colour=BRICK, lw=2)
-    label(ax, 4.0, 1.05,
-          "The transmission rate is the term\nyou cannot write down.\n"
-          "Behaviour, season, policy.",
-          colour=INK, fs=12.5, ha="left")
-    label(ax, 5.0, 4.1, "Written down: the S, E, I, R structure.  "
-          "Learned: one rate.", colour=GREY, fs=12.5, style="italic")
-    save(fig, "keynote-ude.png")
+def seir_vs_ude():
+    fig, ax = canvas(12, 5.6)
+    # Left: semi-mechanistic, stochastic.
+    label(ax, 2.9, 5.25, "Semi-mechanistic stochastic SEIR", colour=TEAL,
+          fs=14, weight="bold")
+    xs = seir(ax, 0.6, 3.2)
+    label(ax, xs[0] + 0.98, 3.75, r"$\beta_t$", colour=TEAL, fs=14)
+    box(ax, 0.9, 1.55, 2.2, 0.8, r"$\log \beta_t$ a random walk",
+        colour=SLATE, fs=11.5)
+    arrow(ax, (2.0, 2.35), (xs[0] + 0.98, 3.2), colour=SLATE, lw=1.8)
+    box(ax, 3.6, 1.55, 1.9, 0.8, "cases", colour=GREY, fs=12)
+    arrow(ax, (xs[2] + 0.4, 3.2), (4.55, 2.35), colour=GREY, lw=1.8)
+    label(ax, 2.9, 0.85, "the rate is free to move, and one stream "
+          "constrains it", colour=INK, fs=11.5)
+    # Divider.
+    ax.plot([6.0, 6.0], [0.5, 5.4], color=LIGHT, lw=2)
+    # Right: the UDE.
+    label(ax, 9.0, 5.25, "Universal differential equation", colour=BRICK,
+          fs=14, weight="bold")
+    xs = seir(ax, 6.5, 3.2)
+    label(ax, xs[0] + 0.98, 3.75, r"$\beta_t$", colour=TEAL, fs=14)
+    box(ax, 6.75, 1.3, 2.5, 1.1, "", colour=BRICK)
+    nn_glyph(ax, 7.6, 1.85, scale=0.9)
+    label(ax, 8.55, 1.85, r"$\beta_t = \mathrm{NN}(\cdot)$", colour=BRICK,
+          fs=12)
+    arrow(ax, (8.0, 2.4), (xs[0] + 0.98, 3.2), colour=BRICK, lw=1.8)
+    inputs = ["mobility", "surveys", "policy", "weather", "wastewater"]
+    for i, t in enumerate(inputs):
+        yy = 2.45 - i * 0.42
+        box(ax, 9.75, yy - 0.16, 1.6, 0.34, t, colour=GREY, fs=10.5)
+        arrow(ax, (9.75, yy + 0.01), (9.27, 1.85), colour=GREY, lw=1.2)
+    box(ax, 8.9, 4.15, 2.0, 0.7, "cases, deaths, admissions",
+        colour=GREY, fs=10.5)
+    arrow(ax, (xs[2] + 0.4, 3.9), (9.6, 4.15), colour=GREY, lw=1.6)
+    label(ax, 9.0, 0.35, "the same compartments; the rate is learned "
+          "from many sources", colour=INK, fs=11.5)
+    save(fig, "keynote-seir-vs-ude.png")
 
 
-# 7. Simulation-based inference with a flow -----------------------------
+# 5. Renewal as a network layer ----------------------------------------------
 
-def sbi():
-    fig, ax = canvas(10, 4.6, ylim=(0, 4.6))
-    box(ax, 0.2, 2.3, 2.2, 1.4,
-        "Simulator\n\nSEIR, agent-based,\nanything you can run",
-        colour=TEAL, fill=PALE_TEAL, fs=11.5)
-    box(ax, 3.3, 2.3, 2.2, 1.4,
-        "Many simulated\npairs\n\n$(\\theta_i,\\ y_i)$",
-        colour=SLATE, fill=PALE_SLATE, fs=11.5)
-    box(ax, 6.4, 2.3, 2.2, 1.4,
-        "A network learns\n$p(\\theta \\mid y)$\n\nnormalising flow",
-        colour=BRICK, fill=PALE_BRICK, fs=11.5)
-    arrow(ax, (2.4, 3.0), (3.3, 3.0), colour=GREY, lw=2)
-    arrow(ax, (5.5, 3.0), (6.4, 3.0), colour=GREY, lw=2)
-    label(ax, 2.85, 3.25, "draw $\\theta$,\nrun", colour=GREY, fs=10.5)
-    label(ax, 5.95, 3.25, "train\nonce", colour=GREY, fs=10.5)
-    # Then: observed data in, posterior out.
-    box(ax, 3.3, 0.3, 2.2, 1.0, "Observed data $y_{obs}$", colour=INK,
-        fill="white", fs=11.5)
-    arrow(ax, (5.5, 0.8), (7.5, 0.8), colour=GREY, lw=2, style="-")
-    arrow(ax, (7.5, 0.8), (7.5, 2.3), colour=GREY, lw=2)
-    bell(ax, 9.3, 0.5, 1.2, 0.9, BRICK)
-    label(ax, 9.3, 0.25, "posterior, in seconds", colour=BRICK, fs=10.5)
-    arrow(ax, (8.6, 3.0), (9.3, 3.0), colour=BRICK, lw=2, style="-")
-    arrow(ax, (9.3, 3.0), (9.3, 1.5), colour=BRICK, lw=2)
-    label(ax, 0.25, 1.0, "No likelihood needed.\nThe cost moves to\n"
-          "training, paid once.", colour=INK, fs=12, ha="left")
-    label(ax, 5.0, 4.3, "Fit models you could not write a likelihood for",
-          colour=INK, fs=14, weight="bold")
-    save(fig, "keynote-sbi.png")
+def renewal_layer():
+    fig, ax = canvas(11, 5.6)
+    x0, w = 3.2, 4.6
+    layers = [
+        (4.55, "Inputs to $R_t$\nbehaviour data, mobility, policy, a random "
+         "walk", GREY),
+        (3.55, r"$R_t$ layer" + "\na network, a spline, or a random walk",
+         SLATE),
+        (2.55, "Renewal layer\n$I_t = R_t \\sum_s I_{t-s}\\, g_s$", TEAL),
+        (1.55, "Observation layers\ndelays, ascertainment, noise", TEAL),
+        (0.55, "Data streams\ncases, deaths, onsets, exports, beds", GREY),
+    ]
+    for y, text, colour in layers:
+        box(ax, x0, y - 0.38, w, 0.76, text, colour=colour, fs=11.5)
+    for (ya, _, _), (yb, _, _) in zip(layers[:-1], layers[1:]):
+        arrow(ax, (x0 + w / 2 - 0.35, ya - 0.38), (x0 + w / 2 - 0.35,
+                                                    yb + 0.38),
+              colour=INK, lw=2)
+        arrow(ax, (x0 + w / 2 + 0.35, yb + 0.38), (x0 + w / 2 + 0.35,
+                                                    ya - 0.38),
+              colour=BRICK, lw=1.6, ls="--")
+    label(ax, 1.5, 3.0, "forward:\nsimulate", colour=INK, fs=12.5)
+    arrow(ax, (1.5, 2.6), (1.5, 1.7), colour=INK, lw=2)
+    label(ax, 9.4, 3.0, "backward:\ngradients of the\nlog likelihood",
+          colour=BRICK, fs=12.5)
+    arrow(ax, (9.4, 1.7), (9.4, 2.6), colour=BRICK, lw=1.6, ls="--")
+    label(ax, 1.5, 4.7, "swap a layer,\nkeep the rest", colour=SLATE, fs=12.5)
+    label(ax, 9.4, 0.75, "add a stream,\nadd a layer", colour=TEAL, fs=12.5)
+    save(fig, "keynote-renewal-layer.png")
 
 
-# 8. A time series foundation model, zero-shot ------------------------------
+# 6. A time series foundation model, zero-shot -------------------------------
 
 def foundation():
     rng = np.random.default_rng(3)
-    fig, ax = canvas(10, 4.6, ylim=(0, 4.6))
-    # Left: a stack of many series.
+    fig, ax = canvas(10, 4.6)
     for i in range(7):
         y0 = 0.55 + i * 0.5
         x = np.linspace(0.3, 2.6, 60)
@@ -377,12 +341,12 @@ def foundation():
     arrow(ax, (2.7, 2.3), (3.8, 2.3), colour=GREY, lw=2)
     label(ax, 3.25, 2.55, "pre-train", colour=GREY, fs=10.5)
     box(ax, 3.8, 1.5, 2.1, 1.6, "One pretrained\nmodel\n\na transformer",
-        colour=SLATE, fill=PALE_SLATE, fs=12)
+        colour=SLATE, fs=12)
     arrow(ax, (5.9, 2.3), (7.0, 2.3), colour=SLATE, lw=2)
     label(ax, 6.45, 2.55, "zero-shot", colour=SLATE, fs=10.5)
-    # Right: one epidemic series with a forecast fan.
     x = np.linspace(7.1, 8.6, 40)
-    y = 1.4 + 1.2 * np.exp(-((x - 8.0) / 0.6) ** 2) + 0.05 * rng.standard_normal(40)
+    y = 1.4 + 1.2 * np.exp(-((x - 8.0) / 0.6) ** 2) \
+        + 0.05 * rng.standard_normal(40)
     ax.plot(x, y, color=TEAL, lw=2.2)
     xf = np.linspace(8.6, 9.7, 20)
     med = 1.4 + 1.2 * np.exp(-((xf - 8.0) / 0.6) ** 2)
@@ -392,112 +356,162 @@ def foundation():
                     alpha=0.3)
     ax.plot(xf, med, color=BRICK, lw=2)
     ax.plot([8.6, 8.6], [0.9, 3.0], color=GREY, lw=1, ls="--")
-    label(ax, 8.3, 3.55, "Your series in.\nA forecast out.\nNo mechanism "
-          "anywhere.", colour=INK, fs=12)
+    label(ax, 8.3, 3.55, "Your series in.\nA forecast out.\nNo fitting.",
+          colour=INK, fs=12)
     label(ax, 8.6, 0.7, "today", colour=GREY, fs=10.5)
     save(fig, "keynote-foundation.png")
 
 
-# 9. Static fallback for the renewal slider ----------------------------------
+# 7. Reinforcement learning for control --------------------------------------
 
-def renewal_curve(r, gen_mean=5.0, days=60):
-    """Infections from a renewal process with constant R and a gamma-like
-    discrete generation interval with the given mean. The seed is the
-    exponential solution of the recursion itself, ten on day 0, so the
-    series is a straight line on a log scale from the first day rather
-    than dipping while a flat seed runs out. Mirrors the ojs cell in
-    keynote/_partials/02-modeller.qmd."""
-    k = 4.0
-    theta = gen_mean / k
-    support = 24
-    s = np.arange(1, support + 1)
-    g = s ** (k - 1) * np.exp(-s / theta)
-    g /= g.sum()
-    # Growth rate from the Euler-Lotka equation R * sum g_s exp(-rate s) = 1.
-    lo, hi = -2.0, 2.0
-    for _ in range(80):
-        mid = (lo + hi) / 2
-        if r * np.sum(g * np.exp(-mid * s)) > 1:
-            lo = mid
-        else:
-            hi = mid
-    rate = (lo + hi) / 2
-    inf = np.zeros(support + days)
-    inf[:support] = 10 * np.exp(rate * (np.arange(support) - support + 1))
-    for t in range(support, support + days):
-        past = inf[t - support:t][::-1]
-        inf[t] = r * np.sum(past * g)
-    return inf[support - 1:], g
+def rl_loop():
+    fig, ax = canvas(10, 4.2)
+    box(ax, 0.4, 1.4, 2.8, 1.5, "Policy\n\na network mapping the\nstate to "
+        "an action", colour=SLATE, fs=12)
+    box(ax, 6.6, 1.4, 3.0, 1.5, "Simulator\n\na meta-population or\n"
+        "individual-based model", colour=TEAL, fs=12)
+    arrow(ax, (3.2, 2.55), (6.6, 2.55), colour=SLATE, lw=2.2)
+    label(ax, 4.9, 2.7, "action: close schools,\nallocate vaccine",
+          colour=SLATE, fs=11.5, style="italic", va="bottom")
+    arrow(ax, (6.6, 1.75), (3.2, 1.75), colour=TEAL, lw=2.2)
+    label(ax, 4.9, 1.45, "state: cases by district, beds\n"
+          "reward: cases averted minus cost", colour=TEAL, fs=11.5,
+          style="italic", va="top")
+    label(ax, 5.0, 3.85, "Learn a policy by trial and error against a "
+          "model, then hope the model was right", colour=INK, fs=12.5)
+    label(ax, 5.0, 0.35, "the simulator is the whole world the policy "
+          "ever sees", colour=GREY, fs=11.5, style="italic")
+    save(fig, "keynote-rl-loop.png")
 
 
-def renewal():
-    fig, (ax1, ax2) = plt.subplots(
-        1, 2, figsize=(10, 4.2), gridspec_kw={"width_ratios": [1, 2.4]})
-    for ax in (ax1, ax2):
-        for side in ("top", "right"):
-            ax.spines[side].set_visible(False)
-        ax.grid(alpha=0.25)
-        ax.set_axisbelow(True)
-    _, g = renewal_curve(1.0)
-    ax1.bar(np.arange(1, len(g) + 1), g, color=SLATE, width=0.8)
-    ax1.set_xlim(0, 20)
-    ax1.set_title("Generation interval", fontsize=13)
-    ax1.set_xlabel("days since infection")
-    for r, colour in ((0.8, TEAL), (1.0, GREY), (1.3, BRICK)):
-        inf, _ = renewal_curve(r)
-        ax2.plot(inf, color=colour, lw=2.4, label=f"$R$ = {r}")
-    ax2.set_yscale("log")
-    ymax = max(renewal_curve(1.3)[0].max(), 10.0)
-    lo, hi = 1, 10 ** int(np.ceil(np.log10(ymax * 1.5)))
-    ax2.set_ylim(lo, hi)
-    ticks = [10 ** i for i in range(int(np.log10(lo)), int(np.log10(hi)) + 1)]
-    ax2.set_yticks(ticks)
-    ax2.set_yticklabels([f"{t:,}" for t in ticks])
-    ax2.yaxis.set_minor_formatter(NullFormatter())
-    ax2.axhline(10, color=GREY, lw=1, ls="--")
-    ax2.set_title("Infections per day", fontsize=13)
-    ax2.set_xlabel("day")
-    ax2.legend(frameon=False, fontsize=12)
-    fig.suptitle(
-        r"$I_t = R_t \sum_s I_{t-s}\, g_s$. Today's infections are "
-        r"$R_t$ times a weighted sum of recent ones",
-        fontsize=12.5, y=1.02)
-    fig.tight_layout()
-    save(fig, "keynote-renewal.png")
+# 8. Agents, built up over three figures --------------------------------------
+
+def inner_loop(ax, cx, cy, r=1.35, fs=10.5):
+    nodes = [("Read the files\nand the docs", 90), ("Write or\nchange code", 0),
+             ("Run it.\nTests, render", -90), ("Check passed?", 180)]
+    for text, deg in nodes:
+        t = np.deg2rad(deg)
+        x, y = cx + r * np.cos(t), cy + r * np.sin(t)
+        colour = TEAL if deg == 180 else SLATE
+        box(ax, x - 0.8, y - 0.36, 1.6, 0.72, text, colour=colour, fs=fs)
+    d = 0.62 * r
+    arcs = [((cx + 0.5, cy + r - 0.36), (cx + r - 0.2, cy + 0.36)),
+            ((cx + r - 0.2, cy - 0.36), (cx + 0.5, cy - r + 0.36)),
+            ((cx - 0.5, cy - r + 0.36), (cx - r + 0.2, cy - 0.36)),
+            ((cx - r + 0.2, cy + 0.36), (cx - 0.5, cy + r - 0.36))]
+    for p, q in arcs:
+        arrow(ax, p, q, colour=SLATE, lw=1.8, rad=-0.35)
+    label(ax, cx, cy, "a language\nmodel with\ntools", colour=GREY, fs=9.5,
+          style="italic")
+    label(ax, cx - r + 0.1, cy + 0.85, "no, again", colour=SLATE, fs=9.5,
+          style="italic", ha="right")
+    return d
 
 
-# 10. Who does what, my guess --------------------------------------------
+def agent_1():
+    fig, ax = canvas(11, 4.6)
+    box(ax, 0.1, 1.55, 1.9, 1.5, "You\n\nthe task, and\nwhat counts\nas right",
+        colour=BRICK, fs=11.5)
+    inner_loop(ax, 5.3, 2.3, r=1.3)
+    arrow(ax, (2.0, 2.3), (3.2, 2.3), colour=BRICK, lw=2)
+    label(ax, 2.6, 2.55, "a prompt", colour=BRICK, fs=10, style="italic")
+    box(ax, 8.3, 1.75, 1.3, 1.1, "Pull\nrequest", colour=TEAL, fs=11.5)
+    arrow(ax, (7.4, 2.3), (8.3, 2.3), colour=TEAL, lw=2)
+    label(ax, 7.85, 2.55, "yes", colour=TEAL, fs=10, style="italic")
+    box(ax, 9.8, 1.55, 1.15, 1.5, "You\n\nread it,\nmerge or\nsend back",
+        colour=BRICK, fs=11)
+    arrow(ax, (9.6, 2.3), (9.8, 2.3), colour=BRICK, lw=2)
+    save(fig, "keynote-agent-1.png")
 
-def who():
-    fig, ax = canvas(10, 4.0, ylim=(0, 4.0))
-    cols = [
-        ("Agents", "build and check\n\ndata ingest, pipelines,\ntests, "
-         "docs, releases,\nreading French PDFs", SLATE, PALE_SLATE),
-        ("The mechanism", "stays the object\n\ninfections, delays,\n"
-         "$R_t$, ascertainment.\nThe thing being\nestimated", TEAL,
-         PALE_TEAL),
-        ("People", "keep\n\nthe question,\nfitness for use,\nthe trust of "
-         "whoever\ndecides", BRICK, PALE_BRICK),
-    ]
-    xs = [0.3, 3.55, 6.8]
-    for x, (head, body, colour, fill) in zip(xs, cols):
-        ax.add_patch(FancyBboxPatch((x, 0.3), 2.9, 3.4,
-                                    boxstyle="round,pad=0.02,rounding_size=0.12",
-                                    edgecolor=colour, facecolor=fill,
-                                    linewidth=2, zorder=1))
-        label(ax, x + 1.45, 3.3, head, colour=colour, fs=17, weight="bold")
-        label(ax, x + 1.45, 1.75, body, colour=INK, fs=12.5)
-    save(fig, "keynote-who.png")
+
+def agent_2():
+    fig, ax = canvas(11, 6.2)
+    # Top: where tasks come from.
+    box(ax, 0.1, 4.7, 2.6, 1.1, "A spec, or a\nconversation with me",
+        colour=BRICK, fs=11.5)
+    box(ax, 3.4, 4.7, 2.4, 1.1, "Agents write\nthe tasks", colour=SLATE,
+        fs=11.5)
+    arrow(ax, (2.7, 5.25), (3.4, 5.25), colour=BRICK, lw=2)
+    arrow(ax, (4.6, 4.7), (4.6, 3.75), colour=SLATE, lw=2)
+    label(ax, 4.95, 4.25, "one task each", colour=SLATE, fs=10,
+          style="italic", ha="left")
+    # Middle: the inner loop.
+    inner_loop(ax, 4.6, 2.3, r=1.3, fs=10)
+    box(ax, 7.3, 1.75, 1.35, 1.1, "Pull\nrequest", colour=TEAL, fs=11.5)
+    arrow(ax, (6.7, 2.3), (7.3, 2.3), colour=TEAL, lw=2)
+    # Review agents feed findings back.
+    box(ax, 7.05, 0.15, 1.85, 0.95, "Review agents\nseveral, argued",
+        colour=SLATE, fs=10.5)
+    arrow(ax, (7.975, 1.75), (7.975, 1.1), colour=SLATE, lw=1.8)
+    arrow(ax, (7.05, 0.62), (4.6, 0.62), colour=SLATE, lw=1.8, style="-")
+    arrow(ax, (4.6, 0.62), (4.6, 0.95), colour=SLATE, lw=1.8)
+    label(ax, 5.8, 0.38, "findings, back into the loop", colour=SLATE,
+          fs=10, style="italic", va="top")
+    # Me, at a level I choose.
+    box(ax, 9.3, 1.55, 1.6, 1.5, "Me\n\nall the code,\nor only the\noutcome",
+        colour=BRICK, fs=11)
+    arrow(ax, (8.65, 2.3), (9.3, 2.3), colour=BRICK, lw=2)
+    # Merge runs CI, which refits and raises new tasks.
+    box(ax, 9.05, 4.7, 1.9, 1.1, "Merge. CI refits,\npublishes a release",
+        colour=TEAL, fs=10.5)
+    arrow(ax, (10.1, 3.05), (10.1, 4.7), colour=TEAL, lw=1.8)
+    arrow(ax, (9.05, 5.25), (5.8, 5.25), colour=TEAL, lw=1.8, ls="--")
+    label(ax, 7.4, 5.92, "what broke, what moved: new tasks", colour=TEAL,
+          fs=10, style="italic", va="bottom")
+    save(fig, "keynote-agent-2.png")
+
+
+def agent_3():
+    fig, ax = canvas(11, 6.4)
+    label(ax, 5.5, 6.1, "One task: make the model better on a held-out "
+          "week", colour=INK, fs=13, weight="bold")
+    # Root.
+    root = (5.5, 5.1)
+    box(ax, root[0] - 1.0, root[1] - 0.35, 2.0, 0.7, "the current model",
+        colour=TEAL, fs=11.5)
+    # Level 1: three candidates proposed by an agent.
+    l1 = [(1.9, "add a stream"), (5.5, "change the\ndelay prior"),
+          (9.1, "split $R_t$\nby province")]
+    l1_status = [SLATE, GREY, SLATE]
+    for (x, t), colour in zip(l1, l1_status):
+        arrow(ax, (root[0], root[1] - 0.35), (x, 3.95), colour=colour, lw=1.6)
+        box(ax, x - 0.95, 3.25, 1.9, 0.7, t, colour=colour, fs=10.5)
+        label(ax, x + 1.05, 3.6, "score", colour=colour, fs=9, ha="left",
+              style="italic")
+    label(ax, 6.7, 5.1, "an agent proposes candidates,\none loop each, "
+          "fit and score", colour=SLATE, fs=10.5, style="italic", ha="left")
+    # Level 2 under the two survivors.
+    l2 = {1.9: [(0.7, "beds"), (1.9, "exports"), (3.1, "onsets")],
+          9.1: [(7.9, "shared\nwalk"), (9.1, "per\nprovince"),
+                (10.3, "distance\nkernel")]}
+    keep = {(1.9, 3.1), (9.1, 9.1)}
+    for px, kids in l2.items():
+        for x, t in kids:
+            colour = TEAL if (px, x) in keep else GREY
+            arrow(ax, (px, 3.25), (x, 2.2), colour=colour, lw=1.4)
+            box(ax, x - 0.55, 1.55, 1.1, 0.65, t, colour=colour, fs=9.5)
+    # Level 3: the two kept branches meet.
+    for x in (3.1, 9.1):
+        arrow(ax, (x, 1.55), (5.5 if x < 5 else 6.2, 0.75), colour=TEAL,
+              lw=1.6)
+    box(ax, 4.55, 0.1, 2.6, 0.65, "keep the best, branch again",
+        colour=TEAL, fs=10.5, weight="bold")
+    label(ax, 1.0, 0.42, "grey: tried, scored,\ndropped", colour=GREY,
+          fs=10, style="italic")
+    label(ax, 9.6, 0.42, "the score is the thing\nthat can be gamed",
+          colour=BRICK, fs=10, style="italic")
+    save(fig, "keynote-agent-3.png")
 
 
 if __name__ == "__main__":
-    loop()
-    chain()
-    agent()
-    sai_loop()
+    ebola_delays()
+    workflow()
+    workflow(tags=AGENT_TAGS, name="keynote-workflow-agents.png")
     kraemer_map()
-    ude()
-    sbi()
+    seir_vs_ude()
+    renewal_layer()
     foundation()
-    renewal()
-    who()
+    rl_loop()
+    agent_1()
+    agent_2()
+    agent_3()

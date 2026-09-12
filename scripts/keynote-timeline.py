@@ -4,11 +4,15 @@
 Run with:
     uv run --with matplotlib scripts/keynote-timeline.py
 
-Writes figures/keynote-timeline.png (outbreaks, 1760 to 2026) and
-figures/keynote-packages.png (software, 2020 to 2026). Dates come from
-notes/research-history.md sections 1 to 3, and from
-`git log --reverse --format=%ad --date=short | head -n 1` in the local
-clones for scoringutils (2020-02-14) and baselinenowcast (2026-04-13).
+Writes three figures into figures/:
+    keynote-timeline-centuries.png   outbreak models, Bernoulli 1760 to 2026
+    keynote-timeline-ten-years.png   the outbreaks I have worked on, 2014 on
+    keynote-packages.png             software, 2020 to 2026
+
+Dates come from notes/research-history.md sections 1 to 3. Package dates
+are first commits or repository creation months, from the local clones and
+the GitHub API; scoringutils (2020-02-14) and baselinenowcast (2026-04-13)
+from `git log --reverse --format=%ad --date=short | head -n 1`.
 """
 
 import matplotlib
@@ -33,110 +37,125 @@ plt.rcParams.update(
     }
 )
 
-# Deep history, drawn as small ticks on a compressed left axis.
+
+# 1. Two and a half centuries -----------------------------------------------
+
+# (year, label, colour). Grey for others' work, teal where I was involved.
+# (year, label, colour, label height). Heights keep neighbours apart.
 DEEP = [
-    (1760, "Bernoulli\nsmallpox"),
-    (1911, "Ross\nmalaria"),
-    (1927, "Kermack and\nMcKendrick"),
-    (2001, "Foot and\nmouth"),
-    (2009, "H1N1"),
+    (1760, "Bernoulli\nsmallpox inoculation", GREY, 0.32),
+    (1911, "Ross\nmalaria threshold", GREY, -0.32),
+    (1927, "Kermack and\nMcKendrick, SIR", GREY, 0.32),
+    (1991, "Anderson and May\nInfectious Diseases\nof Humans", GREY, -1.15),
 ]
 
-# The ten years, drawn large on the right. Colour marks whose work it was.
-TEN = [
-    (2014, "Ebola\nWest Africa", "watching", GREY),
-    (2020, "COVID-19", "doing it", TEAL),
-    (2022, "mpox", "nowcasting", TEAL),
-    (2026, "Ebola disease,\nBundibugyo virus\nDRC", "live", TEAL),
+RECENT = [
+    (2001, "Foot and mouth\nreal-time fitting", GREY, 0.32),
+    (2009, "H1N1\nearly assessment", GREY, -0.32),
+    (2014, "Ebola\nWest Africa", GREY, 0.32),
+    (2020, "COVID-19", TEAL, -0.32),
+    (2022, "mpox", TEAL, 0.32),
+    (2026, "Ebola disease,\nBundibugyo virus", TEAL, -1.15),
 ]
 
 
-def timeline():
+def centuries():
     fig, (ax_l, ax_r) = plt.subplots(
         1,
         2,
-        figsize=(14, 4.2),
-        gridspec_kw={"width_ratios": [1.15, 2.0], "wspace": 0.04},
+        figsize=(14, 4.4),
+        gridspec_kw={"width_ratios": [1.0, 1.6], "wspace": 0.03},
     )
     for ax in (ax_l, ax_r):
-        ax.set_ylim(-1.4, 2.0)
+        ax.set_ylim(-2.2, 1.7)
         ax.axis("off")
 
-    # Left: compressed deep history.
-    ax_l.set_xlim(1740, 2012)
-    ax_l.plot([1740, 2012], [0, 0], color=LIGHT, lw=3, zorder=1)
-    for i, (year, label) in enumerate(DEEP):
-        ax_l.plot([year, year], [-0.12, 0.12], color=GREY, lw=2)
-        y = 0.35 if i % 2 == 0 else -0.45
-        va = "bottom" if i % 2 == 0 else "top"
+    ax_l.set_xlim(1745, 1997)
+    ax_l.plot([1745, 1997], [0, 0], color=LIGHT, lw=3, zorder=1)
+    for year, text, colour, h in DEEP:
+        ax_l.scatter([year], [0], s=160, color=colour, zorder=3)
+        ax_l.plot([year, year], [0, h], color=LIGHT, lw=1.2, zorder=0)
         ax_l.text(
-            year,
-            y,
-            f"{year}\n{label}",
-            ha="center",
-            va=va,
-            fontsize=11.5,
-            color=GREY,
-            linespacing=1.15,
+            year, h, f"{year}\n{text}",
+            ha="center", va="bottom" if h > 0 else "top", fontsize=12.5,
+            color=colour, linespacing=1.15,
         )
 
-    # Right: the ten years, expanded.
-    ax_r.set_xlim(2012.4, 2027.8)
-    ax_r.plot([2012.4, 2027.8], [0, 0], color=LIGHT, lw=3, zorder=1)
-    for year, label, verb, colour in TEN:
-        ax_r.scatter([year], [0], s=420, color=colour, zorder=3)
+    ax_r.set_xlim(1997.5, 2030.5)
+    ax_r.plot([1997.5, 2030.5], [0, 0], color=LIGHT, lw=3, zorder=1)
+    for year, text, colour, h in RECENT:
+        ax_r.scatter([year], [0], s=160 if colour == GREY else 320,
+                     color=colour, zorder=3)
+        ax_r.plot([year, year], [0, h], color=LIGHT, lw=1.2, zorder=0)
         ax_r.text(
-            year,
-            0.42,
-            f"{year}",
-            ha="center",
-            va="bottom",
-            fontsize=20,
-            fontweight="bold",
-            color=colour,
-        )
-        ax_r.text(
-            year,
-            -0.42,
-            label,
-            ha="center",
-            va="top",
-            fontsize=13.5,
-            color=INK,
-            linespacing=1.15,
-        )
-        ax_r.text(
-            year,
-            1.35 if year == 2022 else 0.98,
-            verb,
-            ha="center",
-            va="bottom",
-            fontsize=12.5,
-            style="italic",
-            color=colour,
+            year, h, f"{year}\n{text}",
+            ha="center", va="bottom" if h > 0 else "top", fontsize=12.5,
+            color=colour, linespacing=1.15,
+            fontweight="bold" if colour == TEAL else "normal",
         )
 
-    # Axis break marks between the two panels.
-    for ax, x in ((ax_l, 2012), (ax_r, 2012.4)):
-        ax.plot([x - 0.6, x + 0.6], [-0.18, 0.18], color=GREY, lw=1.6)
+    # Axis break between the panels.
+    for ax, x in ((ax_l, 1997), (ax_r, 1997.5)):
+        ax.plot([x - 0.9, x + 0.9], [-0.16, 0.16], color=GREY, lw=1.6)
 
     handles = [
-        Line2D([], [], marker="o", ls="", color=GREY, ms=13,
+        Line2D([], [], marker="o", ls="", color=GREY, ms=11,
                label="others' work"),
         Line2D([], [], marker="o", ls="", color=TEAL, ms=13,
-               label="my work"),
+               label="work I was part of"),
     ]
-    ax_l.legend(
-        handles=handles,
-        loc="upper left",
-        frameon=False,
-        fontsize=12.5,
-        handletextpad=0.4,
-    )
-    fig.savefig("figures/keynote-timeline.png", bbox_inches="tight")
+    ax_r.legend(handles=handles, loc="upper right", frameon=False,
+                fontsize=12.5, handletextpad=0.4)
+    fig.savefig("figures/keynote-timeline-centuries.png", bbox_inches="tight")
+    plt.close(fig)
+    print("wrote figures/keynote-timeline-centuries.png")
 
 
-# Software, with the first-commit or repo-creation month as the anchor.
+# 2. My ten years -----------------------------------------------------------
+
+# (start, end, label, colour, height). Spans are drawn as bars, points as
+# dots. Heights alternate to keep the labels apart.
+TEN = [
+    (2014.2, 2016.0, "Ebola, West Africa\nwatched from a PhD", GREY, 1.0),
+    (2020.0, 2020.2, "Wuhan\nearly estimates", TEAL, -0.9),
+    (2020.25, 2022.25, "$R_t$ dashboard\nand SPI-M-O", TEAL, 1.0),
+    (2020.9, 2021.6, "Variants\nAlpha, Delta", SLATE, -1.9),
+    (2022.4, 2022.9, "mpox\nnowcasting, networks", TEAL, 1.9),
+    (2026.37, 2026.75, "Ebola disease,\nBundibugyo virus\njoint model, live",
+     BRICK, -0.9),
+]
+
+
+def ten_years():
+    fig, ax = plt.subplots(figsize=(14, 4.4))
+    ax.set_xlim(2013.3, 2027.6)
+    ax.set_ylim(-3.0, 2.9)
+    ax.axis("off")
+    ax.plot([2013.3, 2027.6], [0, 0], color=LIGHT, lw=3, zorder=1)
+    for year in range(2014, 2027):
+        ax.plot([year, year], [-0.08, 0.08], color=GREY, lw=1.4)
+        ax.text(year, -0.2, str(year), ha="center", va="top", fontsize=12,
+                color=GREY)
+    for start, end, text, colour, h in TEN:
+        mid = (start + end) / 2
+        if end - start > 0.3:
+            ax.plot([start, end], [0, 0], color=colour, lw=9,
+                    solid_capstyle="butt", zorder=2)
+        else:
+            ax.scatter([mid], [0], s=220, color=colour, zorder=3)
+        ax.plot([mid, mid], [0.12 if h > 0 else -0.35, h], color=colour,
+                lw=1.4, zorder=2)
+        ax.text(mid, h + (0.06 if h > 0 else -0.06), text, ha="center",
+                va="bottom" if h > 0 else "top", fontsize=12.5,
+                color=colour, linespacing=1.15,
+                fontweight="bold" if colour != GREY else "normal")
+    fig.savefig("figures/keynote-timeline-ten-years.png", bbox_inches="tight")
+    plt.close(fig)
+    print("wrote figures/keynote-timeline-ten-years.png")
+
+
+# 3. Software ----------------------------------------------------------------
+
 PACKAGES = [
     ("2020-02", "scoringutils\nforecast scoring", 1.45, TEAL),
     ("2020-03", "EpiNow and the $R_t$ dashboard\nepiforecasts.io/covid",
@@ -176,9 +195,11 @@ def packages():
         ax.text(x, y, name, ha="center", va=va, fontsize=12.5, color=colour,
                 linespacing=1.15)
     fig.savefig("figures/keynote-packages.png", bbox_inches="tight")
+    plt.close(fig)
+    print("wrote figures/keynote-packages.png")
 
 
 if __name__ == "__main__":
-    timeline()
+    centuries()
+    ten_years()
     packages()
-    print("wrote figures/keynote-timeline.png, figures/keynote-packages.png")

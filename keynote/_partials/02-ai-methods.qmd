@@ -1,0 +1,197 @@
+# Use of AI in past, present and future outbreak modelling
+
+## My view {.center}
+
+::: {style="font-size: 1.25em; margin-top: 0.6em;"}
+Many of these approaches are under-explored and not well integrated with
+the rapidly evolving, noisy, sparse data settings I have worked in.
+I am not aware of any real-world operational use so far, and I am mostly
+not convinced by the evaluations.
+:::
+
+::: {style="font-size: 0.8em; margin-top: 1em; color: #4a5899;"}
+Sam Abbott, September 2026
+:::
+
+## AI methods by task, after Kraemer et al. 2025
+
+![](../figures/keynote-map.png){height="800px" fig-align="center"
+fig-alt="A table with columns task, Kraemer et al. 2025 and in this talk.
+Eight tasks from the paper with the AI method named for each. Inference,
+forecasting, scenario modelling, spread mechanisms and decision making
+are marked in slate with where this talk puts them. A ninth brick row,
+building and checking the model, is marked not in the table, agentic AI,
+the third part of this talk."}
+
+::: {.attribution}
+Table 1 of Kraemer et al. 2025, Nature 638, 623,
+[doi:10.1038/s41586-024-08564-w](https://doi.org/10.1038/s41586-024-08564-w)
+:::
+
+## Universal differential equations
+
+:::: {.columns}
+::: {.column width="40%"}
+- Keep the compartments. Replace the rate you cannot write down with a
+  network fed by the data you have on behaviour, mobility and policy
+- Philipps, Schmid and Hasenauer 2025. Noise and limited data degrade
+  performance. The fitted mechanistic parameters did not match the
+  published values
+- Charlotte Holt, epiforecasts PhD student, is using UDEs to recover
+  behavioural change in outbreaks to improve forecasts
+- This is one answer to methods that cannot take the data sources that
+  exist
+:::
+::: {.column width="60%"}
+![](../figures/keynote-seir-vs-ude.png){width="100%"
+fig-alt="Left, an SEIR box model with the transmission rate a random walk
+and one arrow to a cases box. Right, the same SEIR boxes with the
+transmission rate a neural network fed by mobility, surveys, policy,
+weather and wastewater, and an arrow to cases, deaths and admissions."}
+
+::: {.attribution}
+Rackauckas et al. 2020, [arXiv:2001.04385](https://arxiv.org/abs/2001.04385)
+· Philipps, Schmid and Hasenauer 2025, npj Syst Biol Appl,
+[PMC12398592](https://pmc.ncbi.nlm.nih.gov/articles/PMC12398592/)
+· behaviour-informed UDEs for COVID-19 waves, Heliyon 2024
+· Nina Schmid, epinowcast seminar, 4 March 2026,
+[epinowcast.org](https://www.epinowcast.org/seminars/2026-03-04-nina-schmid/)
+:::
+:::
+::::
+
+## Renewal as a neural network layer
+
+:::: {.columns}
+::: {.column width="40%"}
+- A renewal process is a differentiable map from $R_t$ and past
+  infections to today's infections. A layer, in network terms
+- Stack them. Inputs to $R_t$, an $R_t$ layer, the renewal layer,
+  observation layers, data streams. Gradients run back through all of it
+- Swap the $R_t$ layer for a network on behaviour data and the rest of
+  the model does not change
+- The reuse across outbreaks we did not have, with the model structure
+  kept
+:::
+::: {.column width="60%"}
+![](../figures/keynote-renewal-layer.png){width="100%"
+fig-alt="Five stacked boxes, inputs to Rt, an Rt layer, a renewal layer
+with the renewal equation, observation layers and data streams, with
+black forward arrows for simulation and dashed brick arrows back for
+gradients of the log likelihood."}
+
+::: {.attribution}
+Composability with machine learning approaches, a design consideration
+in the composable modelling grant, Abbott, Funk et al., research vision,
+2026 · UDEs inside individual model components, EU grant idea note,
+2026 · Pervez, Locatello and Gavves 2024, *Mechanistic Neural Networks*
+:::
+:::
+::::
+
+## AI-driven inference
+
+:::: {.columns}
+::: {.column width="40%"}
+- Simulate parameter and data pairs from any model you can run. Train a
+  network to map data to a posterior. No likelihood needed
+- OutbreakFlow, Radev et al. 2021. Generation time, undetected fraction
+  and reporting delays for early COVID-19 in Germany
+- Pinotti et al. 2025 fitted an SEIR model to the 2014 Sierra Leone
+  Ebola data by neural posterior estimation. Jang, Candan and Chowell
+  2026 compare it with ABC
+- A way to fit the models flexible enough for the data
+:::
+::: {.column width="60%"}
+![](../figures/keynote-outbreakflow2021.png){width="100%"
+fig-alt="The OutbreakFlow architecture. A training phase on the left with
+a prior, an SIRD model and simulated time series, a stack of filtering,
+summary and inference networks in the middle producing an approximate
+posterior, and an inference phase on the right taking observed time
+series."}
+
+::: {.attribution}
+Figure 1 of Radev et al. 2021, PLOS Comput Biol,
+[doi:10.1371/journal.pcbi.1009472](https://doi.org/10.1371/journal.pcbi.1009472),
+CC BY
+· Pinotti et al. 2025, bioRxiv,
+[doi:10.1101/2025.11.25.690436](https://www.biorxiv.org/content/10.1101/2025.11.25.690436v1)
+· Jang, Candan and Chowell 2026, PLOS Comput Biol,
+[doi:10.1371/journal.pcbi.1014364](https://doi.org/10.1371/journal.pcbi.1014364)
+:::
+:::
+::::
+
+## Foundation time series models
+
+:::: {.columns}
+::: {.column width="40%"}
+- Pretrained on many series from other domains. Your series in, a
+  forecast out, no fitting
+- Kalahasti et al. 2025. Strong short-term accuracy on sparse or
+  irregular data. Wang, Li and Perra 2026. TabPFN-TS, zero-shot,
+  rivalled the ECDC RespiCast ensemble on influenza-like illness
+- Jafari et al. 2026. A mixture of pretrained forecasters did best on
+  US influenza. CAPE pretrains on simulated epidemics
+- An outbreak-specific foundation model that handles data changing over
+  time is a project I would like to be involved in
+:::
+::: {.column width="60%"}
+![](../figures/keynote-foundation.png){width="100%"
+fig-alt="A stack of many grey time series labelled many series, many
+domains, feeds a slate box labelled one pretrained model, a transformer,
+which produces a brick forecast fan on a teal epidemic curve to the
+right, labelled your series in, a forecast out, no fitting."}
+
+::: {.attribution}
+Kalahasti et al. 2025, medRxiv,
+[doi:10.1101/2025.02.24.25322795](https://www.medrxiv.org/content/10.1101/2025.02.24.25322795v1)
+· Wang, Li and Perra 2026, medRxiv,
+[doi:10.64898/2026.05.11.26352889](https://www.medrxiv.org/content/10.64898/2026.05.11.26352889v1.full)
+· Jafari et al. 2026, [arXiv:2606.19560](https://arxiv.org/abs/2606.19560)
+· CAPE, Liu et al., KDD 2026,
+[PMC13464487](https://pmc.ncbi.nlm.nih.gov/articles/PMC13464487/)
+:::
+:::
+::::
+
+## Reinforcement learning for control
+
+:::: {.columns}
+::: {.column width="40%"}
+- Libin et al. 2020. School closure policies learned with PPO on a
+  379-district influenza model of Great Britain
+- Reymond et al. 2024. The Pareto front of multi-objective COVID-19
+  mitigation policies on a Belgian stochastic compartmental model
+- Bolshov and Chumachenko 2026, a scoping review of 13 studies. Limited
+  prospective validation or real-world deployment testing
+- Evaluation is the open problem here too
+:::
+::: {.column width="60%"}
+![](../figures/keynote-rl-loop.png){width="100%"
+fig-alt="Two boxes, a policy network on the left and a simulator on the
+right, joined by an action arrow labelled close schools, allocate
+vaccine, and a return arrow labelled state and reward, with a line
+above reading learn a policy by trial and error against a model, then
+hope the model was right."}
+
+::: {.attribution}
+Libin et al. 2020, ECML PKDD,
+[arXiv:2003.13676](https://arxiv.org/abs/2003.13676)
+· Reymond et al. 2024, Expert Syst Appl,
+[doi:10.1016/j.eswa.2024.123686](https://doi.org/10.1016/j.eswa.2024.123686)
+· Bolshov and Chumachenko 2026, PLOS ONE,
+[doi:10.1371/journal.pone.0351176](https://doi.org/10.1371/journal.pone.0351176)
+:::
+:::
+::::
+
+## And yet {.center}
+
+::: {style="font-size: 1.6em; margin-top: 0.8em;"}
+I am very excited about their potential.
+:::
+
+::: {style="font-size: 0.8em; margin-top: 1em; color: #4a5899;"}
+Sam Abbott, September 2026
+:::

@@ -20,12 +20,9 @@ format:
 
 :::: {.columns}
 ::: {.column width="68%"}
-- Ten years of outbreaks, from West Africa to the DRC
-- What a modeller does during an outbreak, and what keeps going wrong
-- Agents. How I work now, and a live outbreak built with them
-- The other AI. Learning mechanism, fitting the unfittable,
-  forecasting without one
-- Where does AI fit?
+- Ten years of outbreak modelling
+- Use of AI methods in outbreak modelling
+- Agentic AI and outbreak modelling
 :::
 ::: {.column width="32%"}
 ![](../figures/qr-keynote.png){width="58%"}
@@ -39,15 +36,11 @@ Monday 14 September 2026, 09:00.
 :::
 ::::
 
-{{< include _partials/01-outbreaks.qmd >}}
+{{< include _partials/01-ten-years.qmd >}}
 
-{{< include _partials/02-modeller.qmd >}}
+{{< include _partials/02-ai-methods.qmd >}}
 
 {{< include _partials/03-agents.qmd >}}
-
-{{< include _partials/04-other-ai.qmd >}}
-
-{{< include _partials/05-question.qmd >}}
 
 ## Thank you
 

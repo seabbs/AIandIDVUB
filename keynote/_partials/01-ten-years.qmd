@@ -1,0 +1,435 @@
+# Ten years of outbreak modelling
+
+## Two and a half centuries of outbreak models
+
+![](../figures/keynote-timeline-centuries.png){width="94%" fig-align="center"
+fig-alt="A timeline from 1760 to 2026. Grey dots for Bernoulli 1760, Ross
+1911, Kermack and McKendrick 1927, Anderson and May 1991, foot and mouth
+2001, H1N1 2009 and Ebola in West Africa 2014. Teal dots for COVID-19
+2020, mpox 2022 and Ebola disease caused by Bundibugyo virus 2026."}
+
+::: {.attribution}
+Bernoulli 1760, after Dietz and Heesterbeek 2002, Math Biosci
+· Ross 1911, *The Prevention of Malaria*
+· Kermack and McKendrick 1927, Proc R Soc A
+· Anderson and May 1991, OUP
+· Ferguson, Donnelly and Anderson 2001, Science
+· Fraser et al. 2009, Science
+· WHO notified of Ebola in Guinea, 23 March 2014
+· mpox PHEIC 23 July 2022, WHO
+· BVD PHEIC 17 May 2026, [WHO DON602][don602]
+:::
+
+## My ten years
+
+![](../figures/keynote-timeline-ten-years.png){width="92%" fig-align="center"
+fig-alt="A timeline from 2014 to 2026. A grey bar for Ebola in West
+Africa 2014 to 2016, a teal dot for the Wuhan estimates in January 2020,
+a teal bar for the Rt dashboard and SPI-M-O from 2020 to 2022 with a slate
+segment for variants in 2021, a teal bar for mpox in 2022 and a brick bar
+for the Bundibugyo virus outbreak from May 2026."}
+
+- Ebola, West Africa. Watched from a PhD on tuberculosis vaccination
+- COVID-19. Early Wuhan estimates, then $R_t$, the reproduction number
+  over time, daily for several thousand places. Variant transmissibility
+- mpox. Nowcasting for UKHSA and heavy-tailed sexual contact networks
+- Ebola disease caused by Bundibugyo virus. A joint model of the
+  streams in the situation reports, refit on every push
+
+::: {.attribution}
+Started at LSHTM in January 2020, 4 January 2023 post at
+[samabbott.co.uk][iisa-post] · the papers and repositories on the next
+slides
+:::
+
+## Ebola, West Africa. CDC's 1.4 million and real-time forecasts
+
+:::: {.columns}
+::: {.column width="40%"}
+- Meltzer et al., CDC, fitted exponential growth without further
+  intervention. 550,000 cases by 20 January 2015, 1.4 million corrected
+  for under-reporting
+- About 21,000 had occurred by mid January
+- Camacho, Funk and colleagues estimated $R$, new infections per
+  infected person, by district in Sierra Leone and forecast weekly
+- A semi-mechanistic model. Funk et al. scored the forecasts in 2019
+:::
+::: {.column width="60%"}
+![](../figures/keynote-funk2019-forecasts-panel.png){width="100%"
+fig-alt="Weekly Ebola incidence in Western Area, Sierra Leone, from
+September 2014 to February 2015 as a thick black line, with one-week-ahead
+forecasts as dots joined by a thin line and grey credible bands, peaking
+near 350 cases a week in December 2014."}
+
+::: {.attribution}
+Meltzer et al. 2014, MMWR 63 Suppl 3
+· CDC 2016, MMWR 65 Suppl 3, on the 21,000
+· Camacho et al. 2015, PLOS Currents Outbreaks
+· Funk et al. 2018, Epidemics
+· figure: panel B of figure 2, Funk et al. 2019, PLOS Comput Biol,
+[doi:10.1371/journal.pcbi.1006785](https://doi.org/10.1371/journal.pcbi.1006785),
+CC BY
+:::
+:::
+::::
+
+## Delays from the WHO Ebola Response Team
+
+:::: {.columns}
+::: {.column width="40%"}
+- Case investigation forms for 4,507 probable and confirmed cases by
+  14 September 2014
+- Incubation period, serial interval and case fatality from the forms;
+  $R_0$ of 1.71 in Guinea, 1.83 in Liberia, 2.02 in Sierra Leone
+- More than 20,000 cases by 2 November without a change in control
+- Every model on the following slides leans on delay estimates like these
+:::
+::: {.column width="60%"}
+![](../figures/keynote-ebola-delays.png){width="100%"
+fig-alt="Three events on a line, infection, symptom onset and onset of
+the next case, with the incubation period of mean 11.4 days and the serial
+interval of mean 15.3 days marked beneath, and a box giving case fatality
+of 70.8 percent."}
+
+::: {.attribution}
+WHO Ebola Response Team 2014, NEJM 371, 1481,
+[doi:10.1056/NEJMoa1411100](https://doi.org/10.1056/NEJMoa1411100)
+:::
+:::
+::::
+
+## Early Wuhan estimates
+
+:::: {.columns}
+::: {.column width="40%"}
+- We started on 2019-nCoV on 12 January 2020, with sparse, delayed case
+  reports from China and detected cases elsewhere
+- 3 February. $R_0$ in Wuhan from the size and duration of the outbreak
+  under a range of serial intervals
+- 28 February. Whether isolating cases and their contacts could control
+  new outbreaks, by simulation
+- By March we were estimating $R_t$ for the UK and a growing list of
+  countries
+:::
+::: {.column width="60%"}
+![](../figures/keynote-abbott2020-r0.jpg){height="600px" fig-align="center"
+fig-alt="A grid of density plots of the reproduction number, rows for
+MERS-like, SARS-like and pre-intervention SARS-like serial intervals,
+columns for outbreak duration in days, ridges for transmission event
+sizes from 20 to 400. Estimates run from about 1 to 4."}
+
+::: {.attribution}
+Figure 2 of Abbott et al. 2020, Wellcome Open Research 5:17,
+[doi:10.12688/wellcomeopenres.15718.1](https://doi.org/10.12688/wellcomeopenres.15718.1),
+CC BY · Hellewell et al. 2020, Lancet Global Health
+· dates from the 4 January 2023 post at [samabbott.co.uk][iisa-post];
+EpiNow repository created 15 March 2020
+:::
+:::
+::::
+
+## Real-time $R_t$ for thousands of locations
+
+:::: {.columns}
+::: {.column width="40%"}
+- $R_t$ daily for several thousand national and subnational locations,
+  on a public dashboard from spring 2020 to March 2022
+- `EpiNow2`. A renewal process, where today's infections are $R_t$
+  times a weighted sum of recent infections, with delays to report
+- Weekly to SPI-M-O, the UK government's modelling advisers. Other
+  governments used the dashboard directly or through their scientists
+- In 2022 I wrote that we sometimes published nonsensical estimates
+:::
+::: {.column width="60%"}
+![](../figures/keynote-example-rt-panel.png){width="100%"
+fig-alt="Four panels of estimated reproduction number over time for
+Australia, France, Germany and South Korea, each a green ribbon around
+a dashed line at one, with an orange widening ribbon for the most recent
+days where the estimate is still uncertain."}
+
+::: {.attribution}
+Abbott et al. 2020, Wellcome Open Research,
+[doi:10.12688/wellcomeopenres.16006.1](https://doi.org/10.12688/wellcomeopenres.16006.1)
+· [epiforecasts.io/covid](https://epiforecasts.io/covid/)
+· figure and quote from the 25 March 2022 post at [samabbott.co.uk][rt-post]
+· SPI-M-O consensus statements on [GOV.UK][spimo]
+:::
+:::
+::::
+
+## What could not be done in time
+
+:::: {.columns}
+::: {.column width="40%"}
+- Variants. Alpha in late 2020, Delta in 2021. The routine model could
+  not estimate their transmissibility on the timeline policy needed
+- So we went back to chains. One model's output became the next
+  model's data
+- The data changed under us. Tests to hospitalisations in 2021, tests
+  unreliable and sparse by 2022, the ONS survey and sequences arriving
+- Most of the specialised models of 2021 could not take Omicron's
+  immune escape and shorter generation time. Chains again
+:::
+::: {.column width="60%"}
+![](../figures/keynote-ons-cascade.jpg){width="100%"
+fig-alt="Four panels from the ONS Community Infection Survey model.
+Prevalence, incident infections, antibody prevalence and the reproduction
+number from mid 2020 to November 2021, each a fitted line with a fan of
+posterior draws."}
+
+::: {.attribution}
+The pandemic years from the 4 January 2023 post at [samabbott.co.uk][iisa-post]
+· figure: Abbott and Funk 2022, medRxiv,
+[doi:10.1101/2022.03.29.22273101](https://doi.org/10.1101/2022.03.29.22273101),
+prevalence to incidence to antibodies to $R_t$ fitted as one model
+· slide after my JuliaCon 2026 composable deck
+:::
+:::
+::::
+
+## The tools that came out of it, 2020 to 2026
+
+![](../figures/keynote-packages.png){width="94%" fig-align="center"
+fig-alt="A horizontal timeline from 2020 to 2026 with lollipops for
+scoringutils, EpiNow and the Rt dashboard, EpiNow2, the European
+COVID-19 Forecast Hub, epinowcast, epidist, EpiAware.jl,
+primarycensored, baselinenowcast and BVDOutbreakSize, each at its first
+commit or repository creation month."}
+
+::: {.attribution}
+First commits from the local clones, repository creation dates from the
+GitHub API, 11 September 2026
+:::
+
+## mpox 2022. Heavy-tailed sexual contact networks
+
+:::: {.columns}
+::: {.column width="40%"}
+- A global outbreak. A PHEIC, WHO's highest alert, on 23 July 2022
+  with more than 16,000 cases in 75 countries
+- Endo et al. A few initial cases in a heavy-tailed sexual network gave
+  a high risk of a large outbreak. Elsewhere, outbreaks stayed small
+- Existing COVID-19 models lacked the flexibility to adapt. New
+  single-source models were built instead
+:::
+::: {.column width="60%"}
+![](../figures/keynote-endo2022.png){width="88%" fig-align="center"
+fig-alt="Four panels. Risk of an outbreak of at least 728 cases against
+the secondary attack rate per sexually associated contact, for one to
+five initial cases among men who have sex with men with sexual or other
+exposure, for general index cases, and outbreak size in a non-MSM sexual
+network for a thousand initial cases."}
+
+::: {.attribution}
+Endo et al. 2022, Science 378, 90,
+[doi:10.1126/science.add4507](https://doi.org/10.1126/science.add4507),
+figure as used in my JuliaCon 2026 composable deck
+· WHO Director-General's statement, 23 July 2022
+· third bullet from the composable deck, [samabbott.co.uk/JuliaCon2026][jc]
+:::
+:::
+::::
+
+## Nowcasting for UKHSA
+
+:::: {.columns}
+::: {.column width="40%"}
+- Nowcasting, estimating what has already happened but has not yet
+  been reported. Cases by symptom onset arrive late, so the most recent
+  days look like a fall
+- Overton, Abbott and colleagues nowcast the England outbreak for
+  UKHSA, the UK Health Security Agency
+- As I recall it, UKHSA could not install other nowcasting methods, so
+  the models were built on standard regression packages
+:::
+::: {.column width="60%"}
+![](../figures/keynote-overton2023-historical.png){width="100%"
+fig-alt="Two panels of daily mpox cases in England by symptom onset. Red
+dots are the counts known on the nowcast date, blue dots the counts
+eventually reported, a dashed black line the nowcast median and a grey
+band its interval. The red dots fall to zero in the most recent days
+while the nowcast and the later data do not."}
+
+::: {.attribution}
+Figure 7 of Overton, Abbott et al. 2023, PLOS Comput Biol,
+[doi:10.1371/journal.pcbi.1011463](https://doi.org/10.1371/journal.pcbi.1011463),
+CC BY
+:::
+:::
+::::
+
+## Ebola disease caused by Bundibugyo virus, DRC, 2026
+
+:::: {.columns}
+::: {.column width="40%"}
+- WHO alerted on 5 May to a high-mortality illness in Mongbwalu, Ituri.
+  DRC declared its 17th Ebola outbreak on 15 May. A PHEIC on 17 May
+- 6,757 confirmed cases and 3,267 deaths in DRC by 7 September. 20
+  cases and 2 deaths in Uganda
+- Six provinces and 61 health zones. The largest Ebola disease outbreak
+  recorded in DRC
+- The data arrive as a daily PDF situation report, in French
+:::
+::: {.column width="60%"}
+![](../figures/keynote-bvd-sitrep087.png){height="720px" fig-align="center"
+fig-alt="The front page of INSP situation report 87 of 9 August 2026, in
+French, with headline tiles for 4,381 confirmed cases, 2,011 confirmed
+deaths, 45.9 percent case fatality, 704 patients in isolation and 869
+recovered, and a table of cases and deaths by province."}
+
+::: {.attribution}
+[WHO DON602][don602], [DON616][don616] and [DON617][don617], the last
+published 10 September 2026 with data to 7 September
+· INSP SitRep 087, 9 August 2026, [insp.cd](https://insp.cd/ebola-17eme-epidemie/)
+:::
+:::
+::::
+
+## McCabe et al., and a replication the next day
+
+:::: {.columns}
+::: {.column width="40%"}
+- McCabe et al., Imperial, 18 May. Outbreak size from the exports to
+  Uganda and from the deaths. 400 to 900 cases in their 20 May update
+- We replicated it on 19 May, in a few hours
+- Then a joint renewal model. Suspected, confirmed, deaths, exports and
+  bed occupancy from one infection process
+- Each stream alone gives a different size. The joint estimate sits
+  inside their spread
+:::
+::: {.column width="60%"}
+![](../figures/keynote-bvd-streams.png){width="100%"
+fig-alt="Posterior densities of cumulative infections, one curve per data
+stream, cases, confirmed, deaths and exports, and one for the joint fit,
+which sits inside the spread of the single-stream fits."}
+
+::: {.attribution}
+McCabe et al., Imperial College London, 18 and 20 May 2026,
+[doi:10.25560/130007](https://doi.org/10.25560/130007)
+· [BVDOutbreakSize][bvd-repo], first commit 19 May 2026
+· figure from my WHO collaboratory talk, 10 June 2026, data to 7 June
+:::
+:::
+::::
+
+## Refit on every push
+
+:::: {.columns}
+::: {.column width="40%"}
+- The streams in the situation reports. Suspected and confirmed cases
+  and deaths, laboratory, isolation, recoveries, a digitised onset
+  curve, Uganda exports and a genomic bound
+- Updated up to daily. 145 releases since 20 May, each with the draws
+- A one-week-ahead forecast scored against the data that came later
+- No other regularly updated public model of this outbreak that I know
+  of
+:::
+::: {.column width="60%"}
+<!-- data-external stops embed-resources inlining the remote page as a
+data URL. That inlining left the frame unstyled and lost the anchor. -->
+<iframe src="https://epiforecasts.io/BVDOutbreakSize/stable/summary#Headline-estimates"
+  data-external="1" width="100%" height="640"
+  title="BVDOutbreakSize live report, headline estimates"
+  style="border: 1px solid #d5d8de;"></iframe>
+
+::: {.attribution}
+[BVDOutbreakSize][bvd], live, the headline estimates on its summary page
+· streams from the repository README · 145 releases, `results-43` on
+20 May to `results-1699` on 9 September 2026, GitHub API, 11 September
+:::
+:::
+::::
+
+<!-- Static fallback for the live report, for a room with no network.
+Swap the visibility attribute between this slide and the one above, then
+re-render. Quarto drops hidden slides from the HTML. -->
+
+## Refit on every push {visibility="hidden"}
+
+:::: {.columns}
+::: {.column width="40%"}
+- The streams in the situation reports. Suspected and confirmed cases
+  and deaths, laboratory, isolation, recoveries, a digitised onset
+  curve, Uganda exports and a genomic bound
+- Updated up to daily. 145 releases since 20 May, each with the draws
+- A one-week-ahead forecast scored against the data that came later
+- No other regularly updated public model of this outbreak that I know
+  of
+:::
+::: {.column width="60%"}
+![](../figures/keynote-bvd-streams-fit-sep.png){width="100%"
+fig-alt="Eleven panels of situation report streams, suspected cases and
+deaths, new suspects and suspected deaths per day, specimens analysed,
+admissions, in-care deaths, rule-outs and absconded per day, and
+confirmed and suspected patients in care, each with black data points
+inside coloured posterior predictive bands."}
+
+::: {.attribution}
+[BVDOutbreakSize][bvd] release `results-1699`, 9 September 2026, data to
+SitRep 115 of 6 September, the per-stream posterior predictive panel of
+its analysis page · 145 releases, `results-43` on 20 May to
+`results-1699` on 9 September, GitHub API, 11 September
+:::
+:::
+::::
+
+## How an outbreak gets modelled
+
+:::: {.columns}
+::: {.column width="40%"}
+- The question first. The estimand decides which streams matter
+- Catalogue the data. What each stream measures, and how late it
+  arrives
+- One process for infections and an observation model per stream.
+  Delays sit inside the joint model
+- Fit, check against what was known independently, report with a date.
+  Then again tomorrow
+:::
+::: {.column width="60%"}
+![](../figures/keynote-workflow.png){width="100%"
+fig-alt="Six teal boxes in a row, question, data, model, fit, check and
+report, joined by arrows, with a brick return arrow beneath labelled
+iterate and grey dashed arrows from fit and check back to model."}
+
+::: {.attribution}
+After [A workflow for infectious disease modelling][wf], Abbott et al.
+:::
+:::
+::::
+
+## What keeps going wrong
+
+:::: {.columns}
+::: {.column width="40%"}
+- Methods built for one outbreak are not reused for the next
+- Methods not flexible enough to take the data sources that exist
+- The data change under the model. Streams start, stop and get
+  redefined. Daily suspects stopped on 6 August this year
+- Evaluation. Knowing which of it worked
+:::
+::: {.column width="60%"}
+![](../figures/keynote-onset-vintages.png){width="100%"
+fig-alt="Step lines of confirmed cases by week of symptom onset as read
+from situation reports of 12 July, 26 July, 9 August, 23 August and
+6 September 2026, rising from near zero in May to about 400 a week in
+August, with the reads for the same week differing by up to a few tens
+of cases between reports."}
+
+::: {.attribution}
+Figure from `data/onset_curve_scanned.csv` in [BVDOutbreakSize][bvd-repo],
+read 11 September 2026, `scripts/keynote-onset-vintages.py`
+· the suspects stream from the repository README
+:::
+:::
+::::
+
+[don602]: https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON602
+[don616]: https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON616
+[don617]: https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON617
+[bvd]: https://epiforecasts.io/BVDOutbreakSize/stable/
+[bvd-repo]: https://github.com/epiforecasts/BVDOutbreakSize
+[rt-post]: https://samabbott.co.uk/posts/2022-03-25-rt-reflections/
+[iisa-post]: https://samabbott.co.uk/posts/2023-01-04-iisa-data-models-and-modellers-during-a-global-pandemic/
+[spimo]: https://www.gov.uk/government/publications/spi-m-o-consensus-statement-on-covid-19-6-january-2021
+[jc]: https://samabbott.co.uk/JuliaCon2026
+[wf]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/

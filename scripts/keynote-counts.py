@@ -4,7 +4,7 @@
 Run with:
     uv run --with matplotlib scripts/keynote-counts.py
 
-Writes figures/keynote-bot-prs.png and figures/keynote-bvd-authorship.png.
+Writes figures/keynote-bot-prs.png.
 Counts are recorded here so the figures rebuild without re-querying.
 Sources: notes/research-agentic.md section 5, run 2026-09-11 with
 `gh api search/issues ... --jq .total_count` per month, and
@@ -75,49 +75,6 @@ def bot_prs():
     fig.savefig("figures/keynote-bot-prs.png", bbox_inches="tight")
 
 
-# BVDOutbreakSize commits by author identity, local clone, 2026-09-11.
-# Bot identities: Sam Abbott (bot) 238, seabbs-bot 144,
-# Sebastian Funk robot edition 7, Claude 3.
-# By hand: Sam Abbott 40, Sam 11, Sebastian Funk 3, Samuel Brand 1.
-AUTHORS = [
-    ("Agent, from bot identities", 392, TEAL),
-    ("Dependabot", 50, LIGHT),
-    ("By hand", 55, BRICK),
-]
-
-
-def authorship():
-    fig, ax = plt.subplots(figsize=(10, 3.3))
-    total = sum(c for _, c, _ in AUTHORS)
-    left = 0
-    for i, (label, count, colour) in enumerate(AUTHORS):
-        share = round(100 * count / total)
-        ax.barh(0, count, left=left, color=colour, height=0.55)
-        text_colour = "white" if colour != LIGHT else INK
-        if count / total > 0.15:
-            ax.text(left + count / 2, 0, f"{label}\n{count} ({share}%)",
-                    ha="center", va="center", color=text_colour,
-                    fontsize=14, linespacing=1.15)
-        else:
-            # Narrow segments take turns above and below the bar so their
-            # labels do not run into each other.
-            above = (i % 2 == 0)
-            ax.text(left + count / 2, 0.38 if above else -0.38,
-                    f"{label}\n{count} ({share}%)", ha="center",
-                    va="bottom" if above else "top", color=INK,
-                    fontsize=12, linespacing=1.1)
-        left += count
-    ax.set_xlim(0, total)
-    ax.set_ylim(-1.0, 1.0)
-    ax.axis("off")
-    ax.set_title(f"BVDOutbreakSize: {total} commits, 19 May to 11 September",
-                 fontsize=18, pad=8)
-    fig.tight_layout()
-    fig.savefig("figures/keynote-bvd-authorship.png", bbox_inches="tight")
-
-
 if __name__ == "__main__":
     bot_prs()
-    authorship()
-    print("wrote figures/keynote-bot-prs.png, "
-          "figures/keynote-bvd-authorship.png")
+    print("wrote figures/keynote-bot-prs.png")
