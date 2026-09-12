@@ -2,8 +2,8 @@
 title: "Infectious disease modelling in the age of AI"
 subtitle: "Opening keynote"
 description: >-
-  Ten years of outbreaks, what agents change about how models get built, a
-  short tour of the other AI, and an open question.
+  Ten years of outbreak modelling, integration of AI and outbreak
+  modelling, and agentic AI and outbreak modelling.
 page-layout: full
 ---
 
@@ -27,29 +27,27 @@ Sam Abbott
 ::: {.abstract}
 Infectious disease modelling has a long history, but the last ten years
 changed what it is asked to do during an outbreak and how fast.
-I open with that decade as I saw it.
-The 2014 Ebola epidemic in West Africa, where real-time modelling arrived
-in public view and so did its overreach.
-COVID-19, where my group produced daily reproduction number estimates for
-thousands of locations and weekly estimates for the UK government's
-advisers.
-Mpox in 2022, and the current outbreak of Ebola disease caused by
-Bundibugyo virus in the Democratic Republic of the Congo.
-Along the way I say what a modeller does during an outbreak and what keeps
-going wrong.
+The first part is the outbreaks we worked on.
+Ebola in West Africa in 2014, where real-time modelling and its overreach
+both arrived in public view.
+COVID-19, where we produced reproduction number estimates daily for
+thousands of locations and weekly for the UK government's advisers.
+Mpox in 2022, where the COVID-19 models could not be reused.
+The 2026 outbreak of Ebola disease caused by Bundibugyo virus in the
+Democratic Republic of the Congo, where we refit a joint model with each
+situation report.
+Then how an outbreak gets modelled and what keeps going wrong.
 
-The second part is about AI in two senses.
-Coding agents now write most of the code I ship, including a live model of
-the current outbreak.
-I describe what that changes about how models get built and checked, and
-what it does not.
-I then place the other methods, universal differential equations,
-normalising flows and time series foundation models, on a shared map
-alongside the reinforcement learning and machine learning that later
-speakers cover.
+The second part is the use of AI methods in outbreak modelling.
+Universal differential equations, normalising flows, foundation models and
+reinforcement learning, each linked to a problem from the first part.
+They are under-explored and have seen little operational use so far.
 
-I close with an open question.
-Where does AI fit in this work, and what stays with people?
+The third part is agentic AI and outbreak modelling.
+Coding agents wrote the model of the current outbreak.
+What that made possible, what went wrong, and agents that search over
+models.
+I close with who gets to do this.
 :::
 
 The organisers asked me to open the workshop with a keynote of 20 to 30
@@ -60,8 +58,8 @@ practical examples from my own experience, and an open question on how AI
 fits into this space going forward.
 The audience is a mix of infectious disease and AI researchers, some with
 little or no modelling background.
-Steven Abrams and Pieter Libin speak straight after with an overview of
-methods, followed by three case studies.
+Steven Abrams and Pieter Libin speak straight after, followed by three case
+studies.
 
 ## Later the same day
 

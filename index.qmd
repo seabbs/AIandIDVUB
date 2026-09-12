@@ -37,8 +37,8 @@ The event is free, and the [workshop page][simid] has the programme.
 
 [Opening keynote]{.talk-sub}
 
-Ten years of outbreaks, what agents change about how models get built, a
-short tour of the other AI, and an open question.
+Ten years of outbreak modelling, integration of AI and outbreak modelling,
+and agentic AI and outbreak modelling.
 
 [Page](keynote/index.qmd){.btn .btn-sm .btn-outline-primary}
 [Slides](keynote/slides.qmd){.btn .btn-sm .btn-outline-primary}
@@ -54,7 +54,8 @@ short tour of the other AI, and an open question.
 [Lecture]{.talk-sub}
 
 Government, the public and other scientists during COVID-19, software as
-communication, and what changes when both sides have a language model.
+communication, and what the person is for when writer and reader both have
+a language model.
 
 [Page](communication/index.qmd){.btn .btn-sm .btn-outline-primary}
 [Slides](communication/slides.qmd){.btn .btn-sm .btn-outline-primary}
@@ -84,8 +85,9 @@ Moderated by Philippe Beutels.
 
 [Research exchange, VUB AI group and SIMID]{.talk-sub}
 
-My group and its communities, then composable models, recent delays work
-and the workflow, at a morning of short talks at the AI Experience Centre.
+The groups I work with and what I work on, then composable models, recent
+delays work and the workflow, at a morning of short talks at the AI
+Experience Centre.
 
 [Page](exchange/index.qmd){.btn .btn-sm .btn-outline-primary}
 [Slides](exchange/slides.qmd){.btn .btn-sm .btn-outline-primary}

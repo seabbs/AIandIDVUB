@@ -25,11 +25,11 @@ by Philippe Beutels
 The closing panel asks where modelling and AI go next, and how
 communication and collaboration fit in.
 I bring the two talks from earlier in the day.
-What coding agents have and have not changed in how I build outbreak
-models, and what communicating model outputs during COVID-19 taught me.
-My guess, offered as a guess, is that agents build and check, while people
-keep the question, the judgement of fitness for use, and the trust of
-those who act on the numbers.
+What coding agents changed in how I build outbreak models, and what we
+learned communicating model outputs during COVID-19.
+My guess is that agents build and check, while people keep the question,
+the judgement of whether a model is fit for use, and the trust of those who
+act on the numbers.
 :::
 
 The organisers asked me to join the panel at the end of the day alongside
