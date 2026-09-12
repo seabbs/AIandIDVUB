@@ -39,12 +39,11 @@ Diagram this talk, `scripts/keynote-schematics.py`, after
 :::
 ::: {.column width="60%"}
 <style>
-.reveal .renewal-controls form[class^="oi-"] {
+.reveal .slides form[class^="oi-"] {
   --label-width: 260px; --input-width: 460px;
 }
 </style>
 
-::: {.renewal-controls}
 ```{ojs}
 //| echo: false
 viewof R = Inputs.range([0.5, 1.8], {
@@ -54,7 +53,6 @@ viewof gmean = Inputs.range([2, 12], {
   value: 5, step: 0.5, label: "Mean GI, days"
 })
 ```
-:::
 
 ```{ojs}
 //| echo: false
@@ -157,8 +155,10 @@ infections on day 0 seeded on the exponential curve.
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Delays estimated during growth are too short. The long ones have not
-  happened yet
+- Short delays are over-represented early in an epidemic. The long
+  ones have not happened yet
+- Chained models pass on a point estimate. The interval at the end is
+  too narrow
 - Bespoke code for each outbreak. Slow to adapt when the data change
 - "We sometimes published nonsensical estimates"
 
@@ -168,20 +168,21 @@ Half of the 105 Belgian COVID-19 models reviewed by Bagaforo et al.
 :::
 :::
 ::: {.column width="60%"}
-![](../figures/keynote-chain.png){width="100%"
-fig-alt="Three boxes, delay distribution, Rt and forecast, each holding
-a bell curve, joined by red arrows labelled the mean that carry a single
-tick mark. Below, a narrow teal bell labelled reported sits inside a
-wider grey bell labelled should carry, with the text each stage is fitted
-on its own, only a point estimate is passed on, the interval at the end
-is too narrow."}
+![](../figures/keynote-truncation.png){width="100%"
+fig-alt="A primary event on the left and a cutoff C as a dashed vertical
+line. Three short delays end before the cutoff and are drawn in red as
+observed. Two longer delays cross the cutoff and are drawn as grey
+dashes, labelled truncated, not yet seen. Below, condition on being
+observed, divide by the CDF at C minus P."}
 
 ::: {.attribution}
-Quote from the 25 March 2022 post at [samabbott.co.uk][rt-post]
+Figure and first line from the how to serial interval deck, Lorentz
+workshop, June 2026, `_partials/02-censoring.qmd` and
+`figures/fig-truncation.png`, copied as `keynote-truncation.png`
+· quote from the 25 March 2022 post at [samabbott.co.uk][rt-post]
 · Bagaforo, Dupas, Abrams, Dellicour and Hens 2026, Archives of Public
 Health,
 [doi:10.1186/s13690-026-01959-3](https://doi.org/10.1186/s13690-026-01959-3)
-· diagram this talk, `scripts/keynote-schematics.py`
 :::
 :::
 ::::

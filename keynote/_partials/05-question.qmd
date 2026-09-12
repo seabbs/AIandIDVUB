@@ -24,6 +24,45 @@ trust of whoever decides."}
 :::
 ::::
 
+## Community, in the age of robots
+
+<style>
+.reveal .emoji-crowd {
+  font-size: 2.1em; line-height: 1.15; letter-spacing: 0.06em;
+  text-align: center; white-space: nowrap;
+}
+.reveal .emoji-crowd .humans { font-size: 1.18em; }
+</style>
+
+:::: {.columns}
+::: {.column width="58%"}
+- Nobody from outside the team has committed since February, so the other
+  party on an issue is usually one of my robots. Answering a robot is
+  dispiriting
+- Do 🤖 shut down collaboration?
+- 🌍 We want contributors who are not Julia developers, and not in
+  well resourced settings
+:::
+::: {.column width="42%"}
+::: {.emoji-crowd}
+🤖 🤖 🤖 🤖 🤖 🤖\
+🤖 🤖 🤖 🤖 🤖 🤖\
+🤖 🤖 [🧑‍💻 👩‍💻]{.humans} 🤖 🤖\
+🤖 🤖 🤖 [🧑‍🔬]{.humans} 🤖 🤖\
+🤖 🤖 🤖 🤖 🤖 🤖\
+🤖 🤖 🤖 🤖 🤖 🤖
+:::
+:::
+::::
+
+::: {.attribution}
+Slide from the JuliaCon 2026 roadmap deck,
+`roadmap/_partials/10-community.qmd`,
+[samabbott.co.uk/JuliaCon2026](https://samabbott.co.uk/JuliaCon2026)
+· the most recent outside commit to the EpiAware org is 2026-02-03 from
+`git log` on `main`, read 2026-08-12
+:::
+
 ## For the panel {.center}
 
 ::: {style="font-size: 1.5em; margin-top: 0.8em;"}

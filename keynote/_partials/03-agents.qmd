@@ -29,13 +29,15 @@ Diagram this talk, `scripts/keynote-schematics.py`
 
 :::: {.columns}
 ::: {.column width="40%"}
+- I was travelling for summer schools, teaching and workshops, so
+  decided to have a go with agents
 - Most of the code I merge is agent-written. About half went in
   unreviewed
 - Agents push from a bot account, a second GitHub login. Git shows
   who wrote what
 - My time goes on writing the task and reading the result
 :::
-::: {.column width="60%"}
+::: {.column width="47%"}
 ![](../figures/keynote-bot-prs.png){width="100%"
 fig-alt="Bar chart of seabbs-bot pull requests opened per month in
 2026: 17, 92, 78, 61, 124, 531, 744, 399, and 98 for September to the
@@ -47,7 +49,23 @@ GitHub search API `total_count` per month, run 11 September 2026;
 `seabbs-bot` created 23 January 2026 · review share: 712 of 1,371 merged
 bot pull requests carried no review, counted for the
 [how I LLM](https://samabbott.co.uk/how-I-llm) deck, August 2026
+· first bullet and layout from the JuliaCon 2026 roadmap deck,
+`roadmap/_partials/05-what-it-takes.qmd`,
+[samabbott.co.uk/JuliaCon2026](https://samabbott.co.uk/JuliaCon2026)
 · `scripts/keynote-counts.py`
+:::
+:::
+::: {.column width="13%"}
+![](../figures/keynote-seabbs-bot.jpg){width="100%"
+fig-alt="The seabbs-bot GitHub avatar, a robot wearing a party hat."}
+
+![](../figures/keynote-sbfnk-bot.jpg){width="100%"
+fig-alt="The sbfnk-bot GitHub avatar, a robot in a red scarf."}
+
+::: {.attribution}
+[@seabbs-bot](https://github.com/seabbs-bot) and
+[@sbfnk-bot](https://github.com/sbfnk-bot), copied from
+`JuliaCon2026/figures/`
 :::
 :::
 ::::
@@ -56,11 +74,11 @@ bot pull requests carried no review, counted for the
 
 :::: {.columns}
 ::: {.column width="40%"}
-- McCabe et al. published an outbreak size estimate on 18 May.
-  A replication in a few hours the next day
+- A replication of the McCabe et al. report of 18 May, in a few
+  hours the next day
 - Refit on every push. 145 releases since 20 May
-- The situation reports are French PDFs. Agents read them. Recent
-  reports get two blind reads
+- The situation reports are French PDFs. Agents ingest them directly.
+  Recent reports get two blind reads
 - 333 of 425 pull requests by the bot. Four named authors
 :::
 ::: {.column width="60%"}
@@ -80,6 +98,8 @@ GitHub search API, 11 September 2026 · two blind readers recorded in
 · McCabe et al.,
 Imperial College London, 18 May 2026,
 [doi:10.25560/130007](https://doi.org/10.25560/130007)
+· bullets after the JuliaCon 2026 roadmap deck,
+`roadmap/_partials/00-outbreak.qmd`
 :::
 :::
 ::::
@@ -92,11 +112,11 @@ re-render. Quarto drops hidden slides from the HTML. -->
 
 :::: {.columns}
 ::: {.column width="40%"}
-- McCabe et al. published an outbreak size estimate on 18 May.
-  A replication in a few hours the next day
+- A replication of the McCabe et al. report of 18 May, in a few
+  hours the next day
 - Refit on every push. 145 releases since 20 May
-- The situation reports are French PDFs. Agents read them. Recent
-  reports get two blind reads
+- The situation reports are French PDFs. Agents ingest them directly.
+  Recent reports get two blind reads
 - 333 of 425 pull requests by the bot. Four named authors
 :::
 ::: {.column width="60%"}
@@ -119,6 +139,8 @@ counts from the GitHub search API, 11 September 2026 · two blind readers
 recorded in `data/README.md` for SitReps 097 to 099, 104 to 107 and 110
 to 114 · McCabe et al., Imperial College London, 18 May 2026,
 [doi:10.25560/130007](https://doi.org/10.25560/130007)
+· bullets after the JuliaCon 2026 roadmap deck,
+`roadmap/_partials/00-outbreak.qmd`
 :::
 :::
 ::::
