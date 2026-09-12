@@ -52,3 +52,5 @@ as the steering section.
 > use an agent to make the prmp on the site a bit more formal ess confusin
 > from me and i.e the abstracts make it a bit more formal but steered by what
 > htey saidf
+
+> Note you can use less powerfulk asgents as makes sense for tasks
