@@ -52,6 +52,7 @@ Nothing is committed.
 30 numbered slides: title, talk plan, five dividers, 22 content, thank you. Two hidden fallbacks.
 A 6, B 3 (+1 hidden), C 6 (+1 hidden), D 4, E 3.
 No slide exceeds 1080 px; tallest are "2014. Watching" at 1076 and "2020. Doing it" at 1028.
+Quarto prints two "OJS block count mismatch" warnings; the committed deck prints the same two, and the slider renders and responds.
 
 ## Greps
 
