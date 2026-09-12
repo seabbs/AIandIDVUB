@@ -182,6 +182,12 @@ organisers said.
 You can use less powerful agents where that makes sense for a task.
 :::
 
+::: {.prompt}
+Can we look at my recent packages and papers and get a slide with
+collaborators, or a few slides organised in some logical way?
+Use a lower powered series of subagents.
+:::
+
 ::::
 
 ## How it was built

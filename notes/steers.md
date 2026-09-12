@@ -54,3 +54,7 @@ as the steering section.
 > htey saidf
 
 > Note you can use less powerfulk asgents as makes sense for tasks
+
+> Can we look at my recent packages and appers qand get a sldi with
+> collaborators...or a few slides organisedf in some logical way? Seems
+> lovely maybe? Use a lower poweredseries of subagents
