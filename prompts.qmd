@@ -134,6 +134,15 @@ Not sure.
 Review and come up with a first version after cross review.
 :::
 
+::: {.prompt}
+The organiser says there is no theme for the exchange, just an
+introduction of my work and group.
+So day two needs a bit on my epinowcast org and seminar (a loose forum,
+users, Clara and Fanny organising the seminar), epiforecasts led by Seb
+Funk which I am associated with, where the cross-over is real-time
+modelling and evaluating it, and CMMID.
+:::
+
 ::::
 
 ## How it was built

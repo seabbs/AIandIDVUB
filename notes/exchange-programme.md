@@ -20,3 +20,11 @@ Bagaforo, UHasselt). Join link and passcode omitted on purpose.
 
 Sam asked the organiser whether there is a theme for the day (AI-themed
 current research, or open). No answer yet.
+
+## Update, 12 September
+
+The organiser replied that there is no theme.
+"Basically, just a research exchange, maybe an introduction of your work
+and group."
+The VUB AI group and the SIMID group will introduce their groups and share
+some work.

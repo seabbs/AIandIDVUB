@@ -35,3 +35,13 @@ as the steering section.
 > recent dewlays wortk and i.e epidsit less clear AI cross links mat ah no 5
 > workflow chat and whewre AI sits maybe not sure review and come up with a
 > first version after cross review
+
+> [Organiser's reply, 12 September: there is no theme for the exchange.
+> "Basically, just a research exchange, maybe an introduction of your work
+> and group. The VUB-AI group and the UH-UA SIMID group will do the same,
+> introducing their groups and some work to share."]
+
+> so I think our day 2 theme needs to have a bit on my epinowcast org and
+> seminare (loose formum users clara and fanny organising seminaer)
+> epiforecats led by seb funk which I am associated with not clear cross
+> over is i.e realtime modell and evaluating it. CMMID ...

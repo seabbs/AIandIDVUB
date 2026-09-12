@@ -73,3 +73,35 @@ distribution or the renewal `{ojs}` slider if the keynote made one.
 `research-workshop.md` section 2 for what this room works on;
 `/Users/lshsa2/code/seabbs/JuliaCon2026/notes/spec-composable.md` and
 `notes/style-juliacon.md` here for what he cut from the composable deck.
+
+## Update, 12 September: no theme, so introduce the group
+
+The organiser confirmed there is no theme; each group introduces itself
+and shares some work.
+His steer, spelling normalised:
+
+> Our day 2 needs a bit on my epinowcast org and seminar (loose forum,
+> users, Clara and Fanny organising the seminar), epiforecasts led by Seb
+> Funk which I am associated with, the cross-over is real-time modelling
+> and evaluating it. CMMID ...
+
+Expand "Who I am and what the group does" from one slide to three, and
+take the two minutes from the composable section:
+
+1. **Me.** LSHTM, CMMID. Real-time outbreak analysis, delays and
+   nowcasting, evaluation, tools. The timeline strip.
+2. **epiforecasts.** Led by Sebastian Funk; I am part of it. The shared
+   ground is real-time modelling and evaluating it. Name the packages
+   (EpiNow2, scoringutils, epinowcast) and the hubs. Source:
+   `research-communication.md` section 3, `research-history.md` section 1.
+3. **epinowcast, the community.** Packages, a loose forum with users, a
+   monthly seminar organised by Clara and Fanny. Verify their surnames
+   and roles from `/Users/lshsa2/code/epinowcast/epinowcast.github.io`
+   (seminars, meetings, or team pages) before putting them on a slide;
+   if not verifiable, first names only as he gave them. Counts from
+   `research-communication.md` section 3 (31 seminars since May 2023,
+   over 50 members per grant text). His lines "community >> methods or
+   models alone" and "too complex for anyone else to use" are available.
+
+New budget: who and group 4, composable 10, delays 5, workflow and AI 3,
+total 22.
