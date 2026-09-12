@@ -21,7 +21,7 @@ format:
 
 :::: {.columns}
 ::: {.column width="68%"}
-- Who I am and what the group does
+- Who I am, epiforecasts and the epinowcast community
 - Composable infectious disease modelling. The gap, what composable
   means, two approaches, one replication
 - Where AI might plug in. A network as a component, agents building

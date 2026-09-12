@@ -1,24 +1,22 @@
-## Who I am and what the group does
+## Who I am
 
 :::: {.columns}
 ::: {.column width="62%"}
+- London School of Hygiene & Tropical Medicine, Centre for the
+  Mathematical Modelling of Infectious Diseases
 - Real-time outbreak analysis. $R_t$, the number of new infections per
   infected person, estimated as an outbreak happens
 - Delays and nowcasting. Nowcasting is estimating what has already
   happened but has not yet been reported
 - Evaluation. Scoring forecasts so that teams can be compared
-- Tools. `EpiNow2`, `epinowcast`, `scoringutils`, `primarycensored`,
-  `epidist`, and the `EpiAware` Julia ecosystem
 :::
 ::: {.column width="38%"}
 ![](../figures/sam-abbott.jpg){width="36%" fig-align="center"
 fig-alt="Sam Abbott"}
 
 ::: {.attribution}
-Sam Abbott, London School of Hygiene & Tropical Medicine ·
-[github.com/epiforecasts](https://github.com/epiforecasts) ·
-[epinowcast.org](https://www.epinowcast.org) ·
-[epiaware.org](https://epiaware.org)
+[github.com/seabbs](https://github.com/seabbs) ·
+[samabbott.co.uk](https://samabbott.co.uk)
 :::
 :::
 ::::
@@ -34,3 +32,77 @@ live."}
 ::: {.attribution}
 `scripts/keynote-timeline.py`, dates in `notes/research-history.md`
 :::
+
+## epiforecasts
+
+:::: {.columns}
+::: {.column width="46%"}
+- Led by Sebastian Funk at LSHTM. I am part of it
+- The cross-over with my work is real-time modelling, and evaluating it
+- `EpiNow2`, `scoringutils` and `epinowcast`. The European COVID-19
+  Forecast Hub from 2021, now ECDC's RespiCast
+- 2020 to 2022, weekly $R_t$ estimates and forecasts to SPI-M-O, the
+  UK's modelling advisory group
+
+::: {.attribution}
+[github.com/epiforecasts](https://github.com/epiforecasts) · Hub
+repository created 13 January 2021, GitHub API · SPI-M-O from
+`composable-grant/coapplicant_details/sam.qmd:89`
+:::
+:::
+::: {.column width="54%"}
+![](../figures/exchange-respicast-multi.png){width="92%"
+fig-align="center"
+fig-alt="RespiCast, ECDC's forecasting hub. Weekly influenza-like
+illness incidence for Poland, 2023 to 2024, with forecasts from many
+teams fanning out past the last data point, one of them EpiNow."}
+
+::: {.attribution}
+Slide "Multiple forecasts bring different perspectives" from the HPRU
+PPIE kick-off deck, Funk, Abbott and Cori, September 2025,
+`hpru-ppie-kickoff/slides.qmd:52-56` ·
+[respicast.ecdc.europa.eu](https://respicast.ecdc.europa.eu/)
+:::
+:::
+::::
+
+## epinowcast, the community
+
+:::: {.columns}
+::: {.column width="46%"}
+| Package | Since | Stars | CRAN |
+|---|---|---:|---:|
+| `EpiNow2` | 2020 | 141 | 58,073 |
+| `epinowcast` | 2021 | 67 | not on CRAN |
+| `epidist` | 2023 | 16 | not on CRAN |
+| `primarycensored` | 2024 | 9 | 11,294 |
+| `baselinenowcast` | 2025 | 10 | 1,678 |
+
+::: {.attribution}
+Table from the JuliaCon 2026 roadmap talk, `roadmap/_partials/04-r.qmd`.
+Stars and creation dates from the GitHub API, downloads are CRAN totals
+to 2026-08-11 from [cranlogs](https://cranlogs.r-pkg.org/), retrieved
+2026-08-12, and `baselinenowcast` 2026-08-13
+:::
+:::
+::: {.column width="54%"}
+- [`epinowcast`][lk-epinowcast] was the attempt at community developed
+  tools. In many cases the package is too complex for anyone else to use
+- A loose forum, [community.epinowcast.org][lk-forum], over 50
+  researchers and public health analysts
+- A monthly seminar since May 2023, 31 so far, organised with Fanny
+  Bergström and Clara Brigitta
+- Community >> methods or models alone
+
+::: {.attribution}
+Wording from `roadmap/_partials/04-r.qmd:22-23` · 50 from
+`composable-workflow-grant/.../abbott.md:127` · 31 entries at
+[epinowcast.org/seminars](https://www.epinowcast.org/seminars), read
+2026-09-11 · Organisers from `epinowcast.github.io/seminars.qmd` at
+`20be2ff` · IISA post, 2023
+:::
+:::
+::::
+
+[lk-epinowcast]: https://www.epinowcast.org/
+[lk-forum]: https://community.epinowcast.org/
