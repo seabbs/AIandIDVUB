@@ -11,7 +11,8 @@
   analysis, not only how to call a function
 - **The rest is support.** We meet analysts from health agencies and
   answer their questions
-- In some cases the package is too complex for anyone else to use
+- In some cases the package is too complex for anyone else to use,
+  because it aims to be general
 :::
 ::: {.column width="60%"}
 | Package | Since | Stars | CRAN downloads |
