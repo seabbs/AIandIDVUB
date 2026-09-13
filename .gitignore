@@ -6,3 +6,4 @@ _site/
 /.quarto/
 **/*.quarto_ipynb
 _shots/
+__pycache__/

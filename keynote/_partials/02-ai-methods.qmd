@@ -2,10 +2,10 @@
 
 ## What even is AI?
 
-- Machine learning (i.e.statistics)
+- Machine learning (i.e. statistics)
 - Neural networks (i.e. statistics)
 - Physics informed neural networks (i.e. statistics and mathematical modelling)
-- Universal differential equations (i.e.statistics and mathematical modelling)
+- Universal differential equations (i.e. statistics and mathematical modelling)
 - Reinforcement learning
 - Attention based neural networks
 - Large language models
@@ -45,22 +45,27 @@ Table 1 of Kraemer et al. 2025, Nature 638, 623,
 [doi:10.1038/s41586-024-08564-w](https://doi.org/10.1038/s41586-024-08564-w)
 :::
 
-## Universal differential equations
+## Universal differential equations {.smaller}
 
 :::: {.columns}
-::: {.column width="40%"}
-TODO: As in the detailed comments we need to actually define what a UDE is in this
-the bullet keep the compartments etc etc is just piint les fluff
-- Mnetioned proposed for epi in rack... flag limitations of model i.e real world reporting consideratoinis not compared to i.e a simple statistical modle as in semi-mechansitic approaches (i.e. funk et al. from ebola)
-- Philipps, Schmid and Hasenauer 2025. Noise and limited data degrade
-  performance. The fitted mechanistic parameters did not match the
-published values TODO: this should be a link to there paper but isn't
-- Charlotte Holt, epiforecasts PhD student, is using UDEs to try and recover
-  behavioural change in outbreaks to improve forecasts
-- Potenitally most exciting where there are many difficult to model datasets that we would like to fit jointly but otherwise a quite well understood system.
-
+::: {.column width="42%"}
+- A universal differential equation (UDE) is a differential equation
+  with one or more terms a neural network, fitted jointly with the
+  mechanistic parameters. Rackauckas et al. 2020
+- Applied to epidemics by Dandekar, Rackauckas and Barbastathis 2020.
+  A network for quarantine strength in an SIR (susceptible, infectious,
+  recovered) model, fitted to case counts from 70 countries
+- Reporting is not modelled. No comparison with a simple statistical or
+  semi-mechanistic model, as Funk et al. 2019 made for Ebola
+- [Philipps, Schmid and Hasenauer 2025][philipps]. Noise and limited
+  data degrade performance. The fitted mechanistic parameters did not
+  match the published values
+- Charlotte Holt, epiforecasts PhD student, is using UDEs to try and
+  recover behavioural change in outbreaks and improve forecasts
+- Potentially most exciting where many hard to model data sets are
+  fitted jointly to an otherwise well understood system
 :::
-::: {.column width="60%"}
+::: {.column width="58%"}
 ![](../figures/keynote-seir-vs-ude.png){width="100%"
 fig-alt="Left, an SEIR box model with the transmission rate a random walk
 and one arrow to a cases box. Right, the same SEIR boxes with the
@@ -68,9 +73,13 @@ transmission rate a neural network fed by mobility, surveys, policy,
 weather and wastewater, and an arrow to cases, deaths and admissions."}
 
 ::: {.attribution}
-Rackauckas et al. 2020c, [arXiv:2001.04385](https://arxiv.org/abs/2001.04385)
+Rackauckas et al. 2020, [arXiv:2001.04385](https://arxiv.org/abs/2001.04385)
+· Dandekar, Rackauckas and Barbastathis 2020, Patterns,
+[doi:10.1016/j.patter.2020.100145](https://doi.org/10.1016/j.patter.2020.100145)
+· Funk et al. 2019, PLOS Comput Biol,
+[doi:10.1371/journal.pcbi.1006785](https://doi.org/10.1371/journal.pcbi.1006785)
 · Philipps, Schmid and Hasenauer 2025, npj Syst Biol Appl,
-[PMC12398592](https://pmc.ncbi.nlm.nih.gov/articles/PMC12398592/)
+[PMC12398592][philipps]
 · behaviour-informed UDEs for COVID-19 waves, Heliyon 2024
 · Nina Schmid, epinowcast seminar, 4 March 2026,
 [epinowcast.org](https://www.epinowcast.org/seminars/2026-03-04-nina-schmid/)
@@ -78,59 +87,94 @@ Rackauckas et al. 2020c, [arXiv:2001.04385](https://arxiv.org/abs/2001.04385)
 :::
 ::::
 
-## Phyiscs informed neural networks 
-
-- What they are
-- Diagram
-- Epi uses
-- Help to fit to i.e challenging surveillance data
-- been applied succesffuly in
-- Limitations
-
-## Renewal processes as a neural network layer
+## Physics-informed neural networks {.smaller}
 
 :::: {.columns}
-::: {.column width="40%"}
-- A specialised form of PINN
-- A renewal process is a autoregressive transformation of $R_t$ and past
-  infections to today's infections.
-- Can be thought of as a nearal network layer
--  Can then be stacked with other layers. Inputs to $R_t$, an $R_t$ layer,
-  observation layers, and multiple data streams.
-- Not seen this used in research yet. Proposed in Samuel Brand's renewal examples repository.
-- TODO note advantages vs PINN using ODE, timevarying params of reneweal process from renewal.
-- TODO clean up schematic no need to focus on grads
+::: {.column width="42%"}
+- A physics-informed neural network (PINN) maps time to the model
+  state, $S(t)$, $I(t)$, $R(t)$. The loss adds the residual of the
+  differential equation to the misfit with the data
+- Time-varying parameters such as $\beta_t$ come out of the same fit.
+  Kharazmi et al. 2021 on New York City, Rhode Island, Michigan and Italy
+- The equation constrains the fit where surveillance series are short
+  or noisy. Millevoi, Pasetto and Ferronato 2024 fitted Italian COVID-19
+  cases and hospital admissions jointly
+- Rama et al. 2026 forecast Italian influenza seasons with a PINN,
+  competitive on the weighted interval score
+- Deterministic, so no uncertainty quantification by default, and
+  extrapolation past the training window can go far from the data.
+  Millevoi et al. 2024
 :::
-::: {.column width="60%"}
-![](../figures/keynote-renewal-layer.png){width="100%"
-fig-alt="Five stacked boxes, inputs to Rt, an Rt layer, a renewal layer
-with the renewal equation, observation layers and data streams, with
-black forward arrows for simulation and dashed brick arrows back for
-gradients of the log likelihood."}
+::: {.column width="58%"}
+![](../figures/keynote-pinn.png){width="100%"
+fig-alt="A schematic. A time input feeds a neural network. The network
+outputs the model state S, I and R and the transmission rate. The outputs
+go to two loss boxes, a data misfit against reported cases and a physics
+residual of the SIR equations. The two losses sum to one training loss."}
 
 ::: {.attribution}
-2026 · Pervez, Locatello and Gavves 2024, *Mechanistic Neural Networks*
+Raissi, Perdikaris and Karniadakis 2019, J Comput Phys,
+[doi:10.1016/j.jcp.2018.10.045](https://doi.org/10.1016/j.jcp.2018.10.045)
+· Kharazmi et al. 2021, Nat Comput Sci,
+[doi:10.1038/s43588-021-00158-0](https://doi.org/10.1038/s43588-021-00158-0)
+· Millevoi, Pasetto and Ferronato 2024, PLOS Comput Biol,
+[doi:10.1371/journal.pcbi.1012387](https://doi.org/10.1371/journal.pcbi.1012387)
+· Rama et al. 2026, [arXiv:2506.03897](https://arxiv.org/abs/2506.03897)
 :::
 :::
 ::::
 
-## AI-driven inference
+## Renewal processes as a neural network layer {.smaller}
 
 :::: {.columns}
-::: {.column width="40%"}
-- Traditionally in ID modelling we would most commonly use MCMC, SMC, and similar bayesian inference methods.
-- Compute intensive - especially when the model is stochastic and so a particle filter is needed to estimate the likelihood.
-- AI inference methods offer an alternative.
-- Simulate parameter and data pairs from any model you can run. Train a
-  network to map data to a posterior.
+::: {.column width="42%"}
+- A specialised form of physics-informed neural network
+- A renewal process is an autoregressive transformation of the
+  reproduction number $R_t$ and past infections to today's infections
+- Can be thought of as a neural network layer
+- Can then be stacked with other layers. Inputs to $R_t$, an $R_t$
+  layer, observation layers, and multiple data streams
+- Against a PINN on a differential equation, time-varying parameters are
+  natural to a renewal process, and its discrete time matches the data
+- Not seen this used in research yet. Proposed in Samuel Brand's
+  [RenewalExamples repository][brand]
+:::
+::: {.column width="58%"}
+![](../figures/keynote-renewal-layer.png){width="100%"
+fig-alt="Five stacked boxes joined by downward arrows. Inputs to Rt, an Rt
+layer, a renewal layer as a recurrent cell with the renewal equation,
+observation layers as a convolution over the delay, and data streams.
+Side notes read swap a layer, keep the rest, and add a stream, add a
+layer."}
+
+::: {.attribution}
+Composability with machine learning approaches, a design consideration
+in the composable modelling grant, Abbott, Funk et al. 2026
+· Samuel Brand, [github.com/SamuelBrand1/RenewalExamples][brand],
+`conv` branch
+· Pervez, Locatello and Gavves 2024, *Mechanistic Neural Networks*
+:::
+:::
+::::
+
+## AI-driven inference {.smaller}
+
+:::: {.columns}
+::: {.column width="42%"}
+- Infectious disease models are mostly fitted by Markov chain Monte
+  Carlo (MCMC), sequential Monte Carlo (SMC) and similar Bayesian methods
+- Compute intensive, especially for stochastic models where a particle
+  filter is needed to estimate the likelihood
+- AI inference methods offer an alternative. Simulate parameter and data
+  pairs from any model you can run. Train a network to map data to a
+  posterior
 - OutbreakFlow, Radev et al. 2021. Generation time, undetected fraction
   and reporting delays for early COVID-19 in Germany
 - Pinotti et al. 2025 fitted an SEIR model to the 2014 Sierra Leone
   Ebola data by neural posterior estimation. Jang, Candan and Chowell
-  2026 compare it with ABC
-
+  2026 compare it with approximate Bayesian computation
 :::
-::: {.column width="60%"}
+::: {.column width="58%"}
 ![](../figures/keynote-outbreakflow2021.png){width="100%"
 fig-alt="The OutbreakFlow architecture. A training phase on the left with
 a prior, an SIRD model and simulated time series, a stack of filtering,
@@ -150,23 +194,23 @@ CC BY
 :::
 ::::
 
-## Foundation time series models
+## Foundation time series models {.smaller}
 
 :::: {.columns}
-::: {.column width="40%"}
-- What kind of model? NN - recently attention based transformer? TODO.
-- Pretrained on many series from other domains. Your series in, a
-  forecast out, no fitting
+::: {.column width="42%"}
+- Transformers, attention-based neural networks, pretrained on many
+  series from other domains. TimesFM is decoder-only, Chronos uses T5
+- Your series in, a forecast out, no fitting
 - Kalahasti et al. 2025. Strong short-term accuracy on sparse or
   irregular data. Wang, Li and Perra 2026. TabPFN-TS, zero-shot,
-  rivalled the ECDC RespiCast ensemble on influenza-like illness
+  rivalled the RespiCast influenza-like illness ensemble of the
+  European Centre for Disease Prevention and Control
 - Jafari et al. 2026. A mixture of pretrained forecasters did best on
   US influenza. CAPE pretrains on simulated epidemics
-- How did do these methods really hold up when data is changing over in prospective settings?
-- An outbreak-specific foundation model that handles data changing over
-time is a project I would like to be involved in TODO: make this a quote or similar highlighting.
+- How do these methods hold up prospectively when the data change over
+  time?
 :::
-::: {.column width="60%"}
+::: {.column width="58%"}
 ![](../figures/keynote-foundation.png){width="100%"
 fig-alt="A stack of many grey time series labelled many series, many
 domains, feeds a slate box labelled one pretrained model, a transformer,
@@ -185,21 +229,36 @@ Kalahasti et al. 2025, medRxiv,
 :::
 ::::
 
-## Reinforcement learning for control (I don't know anything about this)
+::: {style="font-size: 1.15em; margin-top: 0.3em;"}
+An outbreak-specific foundation model that handles data changing over
+time is a project I would like to be involved in.
+:::
+
+::: {style="font-size: 0.75em; margin-top: 0.3em; color: #4a5899;"}
+Sam Abbott, September 2026
+:::
+
+## Reinforcement learning for control (I don't know anything about this) {.smaller}
 
 :::: {.columns}
-::: {.column width="40%"}
-- TODO: What is it
-- How does it differ from i.e JUMP in Julia for optimal control (one sentence) and/or I am more familiar with. Then how does it differ as a q left in the slides
-- Libin et al. 2020. School closure policies learned with PPO on a
-  379-district influenza model of Great Britain
+::: {.column width="42%"}
+- Reinforcement learning. A policy, a network from the state of the
+  epidemic to an action, is learned by trial and error against a
+  simulator to maximise a reward
+- Optimal control, as with JuMP in Julia, needs the model equations and
+  solves for the optimal actions. Reinforcement learning only needs to run
+  the simulator
+- Where does it beat optimal control on the same model? An open question
+  for me
+- Libin et al. 2020. School closure policies learned with proximal
+  policy optimisation (PPO) on a 379-district influenza model of Great
+  Britain
 - Reymond et al. 2024. The Pareto front of multi-objective COVID-19
   mitigation policies on a Belgian stochastic compartmental model
 - Bolshov and Chumachenko 2026, a scoping review of 13 studies. **Limited
   prospective validation or real-world deployment testing**
-
 :::
-::: {.column width="60%"}
+::: {.column width="58%"}
 ![](../figures/keynote-rl-loop.png){width="100%"
 fig-alt="Two boxes, a policy network on the left and a simulator on the
 right, joined by an action arrow labelled close schools, allocate
@@ -218,3 +277,5 @@ Libin et al. 2020, ECML PKDD,
 :::
 ::::
 
+[philipps]: https://pmc.ncbi.nlm.nih.gov/articles/PMC12398592/
+[brand]: https://github.com/SamuelBrand1/RenewalExamples

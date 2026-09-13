@@ -11,6 +11,7 @@ Writes, into figures/:
     keynote-map.png              Kraemer et al. 2025, Table 1, plus one row
     keynote-seir-vs-ude.png      a semi-mechanistic SEIR beside a UDE
     keynote-renewal-layer.png    a renewal process as a network layer
+    keynote-pinn.png             a physics-informed neural network
     keynote-foundation.png       a time series foundation model, zero-shot
     keynote-rl-loop.png          reinforcement learning for control
     keynote-agent-1.png          an agent: the inner loop
@@ -56,7 +57,7 @@ def canvas(w=10, h=5.2, xlim=None, ylim=None):
 
 
 def box(ax, x, y, w, h, text, colour=TEAL, fill=None, fs=14, lw=2,
-        weight="normal", text_colour=None, ls="-"):
+        weight="normal", text_colour=None, ls="-", spacing=1.15):
     patch = FancyBboxPatch((x, y), w, h,
                            boxstyle="round,pad=0.02,rounding_size=0.12",
                            edgecolor=colour, facecolor=fill or PALE[colour],
@@ -65,7 +66,7 @@ def box(ax, x, y, w, h, text, colour=TEAL, fill=None, fs=14, lw=2,
     if text:
         ax.text(x + w / 2, y + h / 2, text, ha="center", va="center",
                 fontsize=fs, color=text_colour or colour, fontweight=weight,
-                zorder=3, linespacing=1.15)
+                zorder=3, linespacing=spacing)
 
 
 def arrow(ax, p, q, colour=GREY, lw=2, style="-|>", rad=0.0, ls="-",
@@ -128,7 +129,7 @@ def ebola_delays():
           style="<|-|>")
     label(ax, 6.4, y - 0.95, "serial interval, onset to onset\nmean 15.3 days",
           colour=SLATE, fs=13, va="top")
-    box(ax, 8.45, 0.7, 1.85, 0.7, "case fatality 70.8%\n(69 to 73)",
+    box(ax, 8.25, 0.7, 2.05, 0.7, "case fatality\n70.8% (69 to 73)",
         colour=BRICK, fs=11.5)
     label(ax, 5.0, 0.28, "4,507 probable and confirmed cases by 14 September "
           "2014, from case investigation forms", colour=GREY, fs=11.5)
@@ -295,34 +296,71 @@ def seir_vs_ude():
 # 5. Renewal as a network layer ----------------------------------------------
 
 def renewal_layer():
-    fig, ax = canvas(11, 5.6)
-    x0, w = 3.2, 4.6
+    fig, ax = canvas(11, 6.0)
+    x0, w, h = 2.6, 5.8, 0.72
     layers = [
-        (4.55, "Inputs to $R_t$\nbehaviour data, mobility, policy, a random "
-         "walk", GREY),
-        (3.55, r"$R_t$ layer" + "\na network, a spline, or a random walk",
-         SLATE),
-        (2.55, "Renewal layer\n$I_t = R_t \\sum_s I_{t-s}\\, g_s$", TEAL),
-        (1.55, "Observation layers\ndelays, ascertainment, noise", TEAL),
-        (0.55, "Data streams\ncases, deaths, onsets, exports, beds", GREY),
+        (5.0, "Inputs to $R_t$\nbehaviour data, mobility, policy, a random "
+         "walk", GREY, 1.15),
+        (3.9, r"$R_t$ layer" + "\na network, a spline, or a random walk",
+         SLATE, 1.15),
+        (2.8, "Renewal layer, a recurrent cell\n"
+         "$I_t = R_t \\sum_s I_{t-s}\\, g_s$", TEAL, 1.6),
+        (1.7, "Observation layers, a convolution over the delay\n"
+         "ascertainment, noise", TEAL, 1.15),
+        (0.6, "Data streams\ncases, deaths, onsets, exports, beds", GREY,
+         1.15),
     ]
-    for y, text, colour in layers:
-        box(ax, x0, y - 0.38, w, 0.76, text, colour=colour, fs=11.5)
-    for (ya, _, _), (yb, _, _) in zip(layers[:-1], layers[1:]):
-        arrow(ax, (x0 + w / 2 - 0.35, ya - 0.38), (x0 + w / 2 - 0.35,
-                                                    yb + 0.38),
+    for y, text, colour, spacing in layers:
+        box(ax, x0, y - h / 2, w, h, text, colour=colour, fs=11.5,
+            spacing=spacing)
+    for (ya, *_), (yb, *_) in zip(layers[:-1], layers[1:]):
+        arrow(ax, (x0 + w / 2, ya - h / 2), (x0 + w / 2, yb + h / 2),
               colour=INK, lw=2)
-        arrow(ax, (x0 + w / 2 + 0.35, yb + 0.38), (x0 + w / 2 + 0.35,
-                                                    ya - 0.38),
-              colour=BRICK, lw=1.6, ls="--")
-    label(ax, 1.5, 3.0, "forward:\nsimulate", colour=INK, fs=12.5)
-    arrow(ax, (1.5, 2.6), (1.5, 1.7), colour=INK, lw=2)
-    label(ax, 9.4, 3.0, "backward:\ngradients of the\nlog likelihood",
-          colour=BRICK, fs=12.5)
-    arrow(ax, (9.4, 1.7), (9.4, 2.6), colour=BRICK, lw=1.6, ls="--")
-    label(ax, 1.5, 4.7, "swap a layer,\nkeep the rest", colour=SLATE, fs=12.5)
-    label(ax, 9.4, 0.75, "add a stream,\nadd a layer", colour=TEAL, fs=12.5)
+    label(ax, 1.25, 5.1, "swap a layer,\nkeep the rest", colour=SLATE,
+          fs=12.5)
+    label(ax, 1.25, 2.8, "$R_t$ varies in time\nby construction",
+          colour=TEAL, fs=12.5)
+    label(ax, 9.75, 2.8, "discrete time,\nlike the data", colour=TEAL,
+          fs=12.5)
+    label(ax, 9.75, 0.7, "add a stream,\nadd a layer", colour=TEAL, fs=12.5)
     save(fig, "keynote-renewal-layer.png")
+
+
+# 5b. A physics-informed neural network ------------------------------------
+
+def pinn():
+    fig, ax = canvas(11, 5.2)
+    box(ax, 0.2, 2.35, 1.1, 0.7, "time $t$", colour=GREY, fs=12)
+    arrow(ax, (1.3, 2.7), (1.9, 2.7), colour=GREY, lw=2)
+    box(ax, 1.9, 1.75, 2.4, 1.9, "", colour=BRICK)
+    nn_glyph(ax, 3.1, 2.95, scale=1.1, layers=(1, 4, 4, 3))
+    label(ax, 3.1, 2.05, "neural network", colour=BRICK, fs=11.5)
+    box(ax, 4.9, 3.05, 2.0, 0.8, "$S(t),\\; I(t),\\; R(t)$", colour=TEAL,
+        fs=12.5)
+    box(ax, 4.9, 1.65, 2.0, 0.8, r"$\beta(t)$", colour=SLATE, fs=12.5)
+    arrow(ax, (4.3, 3.05), (4.9, 3.45), colour=TEAL, lw=1.8)
+    arrow(ax, (4.3, 2.35), (4.9, 2.05), colour=SLATE, lw=1.8)
+    # Two losses.
+    box(ax, 7.6, 3.45, 2.7, 1.05, "Data loss\nmisfit to reported cases",
+        colour=TEAL, fs=11)
+    box(ax, 7.6, 1.15, 2.7, 1.25, "Physics loss\nresidual of\n"
+        r"$\dot S = -\beta S I / N$, ...", colour=SLATE, fs=11)
+    arrow(ax, (6.9, 3.6), (7.6, 3.85), colour=TEAL, lw=1.8)
+    arrow(ax, (6.9, 3.25), (7.6, 2.3), colour=TEAL, lw=1.4)
+    arrow(ax, (6.9, 2.05), (7.6, 1.85), colour=SLATE, lw=1.8)
+    label(ax, 7.75, 2.9, "autodiff gives $\\dot S, \\dot I, \\dot R$",
+          colour=GREY, fs=9.5, ha="left")
+    box(ax, 7.85, 0.15, 2.2, 0.6, "one loss, summed", colour=BRICK, fs=11,
+        weight="bold")
+    arrow(ax, (8.95, 1.15), (8.95, 0.75), colour=BRICK, lw=1.8)
+    arrow(ax, (10.3, 3.97), (10.6, 3.97), colour=BRICK, lw=1.4, style="-")
+    arrow(ax, (10.6, 3.97), (10.6, 0.45), colour=BRICK, lw=1.4, style="-")
+    arrow(ax, (10.6, 0.45), (10.05, 0.45), colour=BRICK, lw=1.4)
+    label(ax, 8.95, 4.85, "the data pull the fit, the equation holds it "
+          "to the model", colour=INK, fs=11.5)
+    label(ax, 3.1, 0.6, "trained on both losses at once,\nnetwork weights "
+          "and $\\beta(t)$ together", colour=GREY, fs=11, style="italic")
+    save(fig, "keynote-pinn.png")
 
 
 # 6. A time series foundation model, zero-shot -------------------------------
@@ -498,8 +536,6 @@ def agent_3():
         colour=TEAL, fs=10.5, weight="bold")
     label(ax, 1.0, 0.42, "grey: tried, scored,\ndropped", colour=GREY,
           fs=10, style="italic")
-    label(ax, 9.6, 0.42, "the score is the thing\nthat can be gamed",
-          colour=BRICK, fs=10, style="italic")
     save(fig, "keynote-agent-3.png")
 
 
@@ -510,6 +546,7 @@ if __name__ == "__main__":
     kraemer_map()
     seir_vs_ude()
     renewal_layer()
+    pinn()
     foundation()
     rl_loop()
     agent_1()
