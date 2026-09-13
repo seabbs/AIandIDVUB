@@ -201,7 +201,10 @@ CC BY
 :::: {.columns}
 ::: {.column width="42%"}
 - Transformers, attention-based neural networks, pretrained on many
-  series from other domains. TimesFM is decoder-only, Chronos uses T5
+  series from other domains. Google's TimesFM predicts the next values
+  from the ones before, like a language model predicts the next word.
+  Amazon's Chronos rounds values into a vocabulary and forecasts them
+  as text
 - Your series in, a forecast out, no fitting
 - Kalahasti et al. 2025. Strong short-term accuracy on sparse or
   irregular data. Wang, Li and Perra 2026. TabPFN-TS, zero-shot,
