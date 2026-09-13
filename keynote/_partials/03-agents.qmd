@@ -70,7 +70,7 @@ merged 8 September 2026
 - **epidist.** A meta-analysis model for published delay estimates,
   from scratch in about a week
 - **EpiDelays.** A UHasselt package rewired onto the primarycensored
-  likelihood in two days. The pull request is still open
+  likelihood in two days
 - **primarycensored.** The generalised gamma integral solved
   analytically by an agent. Three earlier ones we solved by hand
 :::
