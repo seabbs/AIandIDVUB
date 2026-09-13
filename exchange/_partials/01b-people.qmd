@@ -5,14 +5,14 @@
 :::: {.columns}
 ::: {.column width="50%"}
 ![](../figures/exchange-people-grid-a.jpg){width="100%"
-fig-alt="Eight collaborators on real-time tools and hubs: Sebastian Funk,
-James Azam, Nikos Bosse, Kath Sherratt, Hugo Gruson, Joe Hickson, Hamada
-Badr and Katelyn Gostic."}
+fig-alt="Six collaborators on real-time tools and hubs: Sebastian Funk,
+Samuel Brand, James Azam, Nikos Bosse, Kath Sherratt and Katelyn
+Gostic."}
 
-- Six of these eight are `EpiNow2` co-authors. Nikos Bosse wrote
+- Five of these six are `EpiNow2` co-authors. Nikos Bosse wrote
   `scoringutils`, the forecast scoring package
-- Sebastian Funk and Kath Sherratt are co-authors on the live DRC model.
-  Katelyn Gostic is at CDC
+- Sebastian Funk, Samuel Brand and Kath Sherratt are co-authors on the
+  live DRC model. Katelyn Gostic is at CDC
 :::
 ::: {.column width="50%"}
 ![](../figures/exchange-people-grid-b.jpg){width="100%"

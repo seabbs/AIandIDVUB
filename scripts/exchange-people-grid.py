@@ -30,7 +30,14 @@ GREY_TEXT = (51, 51, 51)
 GREY_TILE = (150, 156, 163)
 WHITE = (255, 255, 255)
 
-FONT_BOLD = "/System/Library/Fonts/Supplemental/Arial Bold.ttf"
+# Arial on macOS, the metric-compatible Liberation or DejaVu on Linux.
+FONT_CANDIDATES = [
+    "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
+    "/usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf",
+    "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+    "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+]
+FONT_BOLD = next(f for f in FONT_CANDIDATES if Path(f).exists())
 
 CANVAS_W = 1600
 COL_GAP = 40
@@ -95,15 +102,16 @@ def wrap_name(name, font, draw, max_w):
 
 
 def build_grid(people, ring_colour, out_path, cols=4, circle=260,
-               name_size=30):
+               name_size=30, canvas_w=None):
     """people: list of (name, photo_path_or_None)."""
+    width = canvas_w or CANVAS_W
     rows = -(-len(people) // cols)
     canvas_h = TOP_PAD + rows * (circle + 12 + NAME_H) + \
         (rows - 1) * ROW_GAP + BOTTOM_PAD
     total_cols_w = cols * circle + (cols - 1) * COL_GAP
-    x0 = (CANVAS_W - total_cols_w) // 2
+    x0 = (width - total_cols_w) // 2
 
-    canvas = Image.new("RGB", (CANVAS_W, canvas_h), WHITE)
+    canvas = Image.new("RGB", (width, canvas_h), WHITE)
     draw = ImageDraw.Draw(canvas)
     name_font = ImageFont.truetype(FONT_BOLD, name_size)
 
@@ -133,15 +141,14 @@ def p(login):
     return FIGURES / f"exchange-people-{login}.jpg"
 
 
-# Real-time tools and hubs: EpiNow2 and scoringutils authors.
+# Real-time tools and hubs: EpiNow2 and scoringutils authors, and the
+# co-authors on the live DRC model.
 GROUP_A = [
     ("Sebastian Funk", p("sbfnk")),
+    ("Samuel Brand", p("samuelbrand1")),
     ("James Azam", p("jamesmbaazam")),
     ("Nikos Bosse", p("nikosbosse")),
     ("Kath Sherratt", p("kathsherratt")),
-    ("Hugo Gruson", p("bisaloo")),
-    ("Joe Hickson", p("joehickson")),
-    ("Hamada Badr", p("hsbadr")),
     ("Katelyn Gostic", p("kgostic")),
 ]
 
@@ -179,7 +186,8 @@ GROUP_C = [
 
 
 if __name__ == "__main__":
-    build_grid(GROUP_A, TEAL, FIGURES / "exchange-people-grid-a.jpg")
+    build_grid(GROUP_A, TEAL, FIGURES / "exchange-people-grid-a.jpg",
+               cols=3, circle=300, canvas_w=1060)
     build_grid(GROUP_B, SLATE, FIGURES / "exchange-people-grid-b.jpg")
     build_grid(GROUP_C, BRICK, FIGURES / "exchange-people-grid-c.jpg",
                cols=6, circle=215, name_size=26)
