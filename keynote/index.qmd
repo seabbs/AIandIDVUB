@@ -27,7 +27,7 @@ Sam Abbott
 ::: {.abstract}
 Infectious disease modelling has a long history.
 I focus on the last ten years because that is how long I have worked in
-it, since starting my PhD, not because the job changed then.
+it, since starting my PhD.
 Firstly, the outbreaks we worked on.
 Ebola in West Africa in 2014, with CDC's projections and real-time
 forecasts in Sierra Leone.
