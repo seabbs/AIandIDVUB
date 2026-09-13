@@ -41,20 +41,45 @@ Started at LSHTM in January 2020, 4 January 2023 post at
 [samabbott.co.uk][iisa-post]
 :::
 
-## Ebola, West Africa
+## Ebola, West Africa. CDC's projection
 
 :::: {.columns}
 ::: {.column width="40%"}
 - **Meltzer et al., US Centers for Disease Control and Prevention.**
-  Exponential growth without further intervention. 550,000 cases by
-  20 January 2015, 1.4 million corrected for under-reporting
+  Exponential growth without further intervention
+- 550,000 cases by 20 January 2015, 1.4 million corrected for
+  under-reporting
 - About 21,000 had occurred by mid January
+:::
+::: {.column width="60%"}
+![](../figures/keynote-cdc-meltzer2014.png){width="100%"
+fig-align="center"
+fig-alt="Two line graphs from the CDC EbolaResponse model, cumulative
+cases and daily beds in use in Liberia and Sierra Leone combined, March
+2014 to January 2015. Each has an uncorrected curve reaching about
+550,000 cases and a corrected curve reaching about 1.4 million cases by
+20 January 2015, both rising slowly then very steeply."}
+
+::: {.attribution}
+Meltzer et al. 2014, MMWR 63 Suppl 3
+· CDC 2016, MMWR 65 Suppl 3, on the 21,000
+· figure: Appendix Figure 2, Meltzer et al. 2014, MMWR 63 Suppl 3,
+public domain, US government work
+:::
+:::
+::::
+
+## Ebola, West Africa. Real-time forecasts in Sierra Leone
+
+:::: {.columns}
+::: {.column width="40%"}
 - **Camacho, Funk and colleagues.** Estimated $R$, new infections per
   infected person, by district in Sierra Leone and forecast weekly with
   a semi-mechanistic model
 - **Funk et al. scored the forecasts in 2019.** Calibrated one and two
-  weeks ahead. Three weeks or more ahead they overestimated, by more the
-  further out they looked
+  weeks ahead
+- Three weeks or more ahead they overestimated, by more the further out
+  they looked
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-funk2019-forecasts-panel.png){width="100%"
@@ -64,9 +89,7 @@ forecasts as dots joined by a thin line and grey credible bands, peaking
 near 350 cases a week in December 2014."}
 
 ::: {.attribution}
-Meltzer et al. 2014, MMWR 63 Suppl 3
-· CDC 2016, MMWR 65 Suppl 3, on the 21,000
-· Camacho et al. 2015, PLOS Currents Outbreaks
+Camacho et al. 2015, PLOS Currents Outbreaks
 · Funk et al. 2018, Epidemics
 · figure: panel B of figure 2, Funk et al. 2019, PLOS Comput Biol,
 [doi:10.1371/journal.pcbi.1006785](https://doi.org/10.1371/journal.pcbi.1006785),

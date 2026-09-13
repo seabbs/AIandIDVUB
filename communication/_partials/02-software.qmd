@@ -1,15 +1,14 @@
 # Software is communication
 
-## What a package carries
+## A package carries our assumptions to every analyst who runs it
 
 :::: {.columns}
 ::: {.column width="40%"}
-- A package carries the methods, assumptions and defaults of the people
-  who wrote it to every analyst who runs it
-- **Who runs ours.** Public health agencies, including the US Centers
-  for Disease Control and Prevention, UKHSA, the Robert Koch Institute,
-  the European Centre for Disease Prevention and Control and WHO
+- **Who runs ours.** The US Centers for Disease Control and Prevention,
+  UKHSA, the Robert Koch Institute and the World Health Organization
 - **Users run the defaults**, so the defaults are the advice
+- **The rest is support.** We meet analysts from health agencies and
+  answer their questions
 - In some cases the package is too complex for anyone else to use
 :::
 ::: {.column width="60%"}
@@ -24,9 +23,9 @@
 ::: {.attribution}
 Table from the
 [JuliaCon 2026 roadmap deck](https://samabbott.co.uk/JuliaCon2026/roadmap/slides.html),
-August 2026. Stars from the GitHub API, downloads from
+August 2026 · stars from the GitHub API, downloads from
 [cranlogs](https://cranlogs.r-pkg.org/), CRAN being the Comprehensive R
-Archive Network, both to mid August 2026
+Archive Network, to mid August 2026
 :::
 :::
 ::::
@@ -37,7 +36,6 @@ Archive Network, both to mid August 2026
 ::: {.column width="40%"}
 - [EpiNow2](https://epiforecasts.io/EpiNow2/) has been on CRAN since
   1 September 2020
-- The US CDC used it for nowcasts and $R_t$ until June 2026
 - **Every argument a user leaves alone is a decision they inherited
   from us**
 - The generation time and the delays. The prior on $R_t$. The sampler
@@ -58,22 +56,19 @@ estimates <- epinow(
 ::: {.attribution}
 [EpiNow2 vignette](https://epiforecasts.io/EpiNow2/articles/EpiNow2.html) ·
 [CRAN archive](https://cran.r-project.org/src/contrib/Archive/EpiNow2/),
-1.1.0 on 1 September 2020 ·
-[CDC CFA, nowcasting](https://www.cdc.gov/cfa-behind-the-model/php/data-research/nowcasting.html),
-January 2026, and the CFA $R_t$ page's change of method after 1 June 2026
+1.1.0 on 1 September 2020
 :::
 :::
 ::::
 
-## The epinowcast community
+## epinowcast. Communicating through a community
 
 :::: {.columns}
 ::: {.column width="40%"}
-- **[epinowcast](https://www.epinowcast.org/).** Over 50 researchers and
-  public health analysts. 31 seminars from May 2023 to May 2026
+- **[epinowcast](https://www.epinowcast.org/).** Researchers and public
+  health analysts. 31 seminars from May 2023 to May 2026
 - **A forum**, a monthly meeting with a rotating chair, release notes
   that name everyone who reported a bug or joined a discussion
-- An attempt to communicate through software and the people around it
 - In 2023 I wrote: "I am also interested in why efforts in this
   direction keep failing"
 
@@ -89,9 +84,7 @@ fig-alt="The epinowcast community forum front page"}
 
 ::: {.attribution}
 [community.epinowcast.org](https://community.epinowcast.org/) ·
-seminars from
 [epinowcast.org/seminars](https://www.epinowcast.org/seminars.html) ·
-community size from the composable workflow grant text · quotes from
 [Abbott 2023](https://samabbott.co.uk/posts/2023-01-04-iisa-data-models-and-modellers-during-a-global-pandemic/)
 :::
 :::

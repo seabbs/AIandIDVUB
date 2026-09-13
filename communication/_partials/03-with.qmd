@@ -1,4 +1,4 @@
-# With AI
+# Communication in the age of AI
 
 ## Limitations first. The Bundibugyo report, 2026
 
@@ -6,9 +6,9 @@
 ::: {.column width="40%"}
 - **The live report** on the Bundibugyo virus disease outbreak puts its
   limitations before the methods, in bullets, most consequential first
-- The dashboard's limits were on a page few reached. This report leads
-  with them
-- **The feedback** is that this is off-putting
+- **Drafted with agents.** The report, and the limitations list with it
+- **The feedback** is that a list of limitations first reads as
+  off-putting
 - How should we warn?
 
 > Every estimate is a model-based extrapolation under strong assumptions,
@@ -30,18 +30,17 @@ v1.18.0, screenshot 12 September 2026
 :::
 ::::
 
-## Making it visible
+## Saying where the agents were
 
 :::: {.columns}
 ::: {.column width="40%"}
-- **A bot account.** Agent work goes out from a second GitHub login, so
-  `git log` tells you who did most of it
-- **A disclosure line** in the Bundibugyo analysis README and on the
+- **A bot account.** seabbs-bot, from this morning. Agent work goes out
+  from it
+- **A disclosure line** in the Bundibugyo repository's README and on the
   limitations slide of the WHO call about it
 - **A prompts page** with the brief and the steers
-- **A bio drafted by the bot.** My conference bio for JuliaCon came from
-  seabbs-bot, "who has a very suspiciously high opinion of me, so take
-  it with a pinch of salt"
+- **A bio drafted by the bot.** My JuliaCon bio came from seabbs-bot,
+  "who has a very suspiciously high opinion of me"
 :::
 ::: {.column width="60%"}
 ![](../figures/comms-shot-seabbs-bot.png){height="620px"
@@ -49,12 +48,9 @@ fig-align="center"
 fig-alt="GitHub profile of seabbs-bot, Sam Abbott (bot), robot avatar"}
 
 ::: {.attribution}
-[github.com/seabbs-bot](https://github.com/seabbs-bot), created
-23 January 2026 · "model and analysis drafted with an LLM under human
-oversight", limitations slide of the
+[github.com/seabbs-bot](https://github.com/seabbs-bot) ·
 [WHO collaboratory talk, 10 June 2026](https://epiforecasts.io/slides/bdbv_collaboratory_20260610.html)
-· bio line from the
-[JuliaCon 2026 home page](https://samabbott.co.uk/JuliaCon2026/)
+· [JuliaCon 2026 home page](https://samabbott.co.uk/JuliaCon2026/)
 :::
 :::
 ::::
@@ -77,10 +73,8 @@ so far, and the first workflow steers"}
 
 ::: {.attribution}
 [samabbott.co.uk/JuliaCon2026/prompts.html](https://samabbott.co.uk/JuliaCon2026/prompts.html)
-· 130 counted from `notes/steers.md` in
-[seabbs/JuliaCon2026](https://github.com/seabbs/JuliaCon2026), August
-2026 ·
-[the prompts page for this site](https://samabbott.co.uk/AIandIDVUB/prompts.html)
+· `notes/steers.md` in [seabbs/JuliaCon2026](https://github.com/seabbs/JuliaCon2026)
+· [the prompts page for this site](https://samabbott.co.uk/AIandIDVUB/prompts.html)
 :::
 :::
 ::::
@@ -89,11 +83,11 @@ so far, and the first workflow steers"}
 
 :::: {.columns}
 ::: {.column width="40%"}
-- **114 claims** pulled out of one deck by a second agent workflow, each
-  tested against git and the GitHub API
+- **114 claims** pulled from one deck by a second agent, each checked
+  against git and GitHub's application programming interface (API)
 - **67 needed changing**
 - "530 pull requests" was GitHub's latest issue number. The count was
-  353
+  353. A pull request is a change proposed for review
 - 712 of 1,371 merged bot pull requests carried no review, so "reviewed
   by me" became "about half"
 :::
@@ -108,13 +102,12 @@ fig-alt="A single bar of 114 claims, 67 marked changed and 47 marked stood"}
 :::
 ::::
 
-## seabbs-review-bot
+## seabbs-review-bot. A reviewer that is not a person
 
 :::: {.columns}
 ::: {.column width="40%"}
 - **A GitHub App.** It reviews each pull request I or my bot open, and
   again when either of us asks
-- A pull request is a proposed change that someone reads before it lands
 - **213 pull requests** reviewed since 17 August 2026. Each review ends
   "Not a human review"
 - I fix what it gets right, say which findings I reject and why, and
@@ -129,9 +122,7 @@ name, and the line Automated reviews of @seabbs and @seabbs-bot work"}
 
 ::: {.attribution}
 [github.com/apps/seabbs-review-bot](https://github.com/apps/seabbs-review-bot),
-created 17 August 2026 · count from the GitHub search API,
-`reviewed-by:app/seabbs-review-bot`, 12 September 2026 · the rules from
-my own `CLAUDE.md`, the standing instructions my agents read
+created 17 August 2026 · count from the GitHub search API, 12 September 2026
 :::
 :::
 ::::

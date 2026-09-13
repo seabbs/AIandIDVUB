@@ -24,8 +24,8 @@ format:
   the forecasting hubs and how they score
 - **Software is communication.** What a package carries, defaults, the
   epinowcast community
-- **With AI.** A bot account, a prompt log, and a reviewer that is not a
-  person
+- **Communication in the age of AI.** Limitations first, a bot account,
+  a prompt log, and a reviewer that is not a person
 - **Under AI.** Bots talking to bots, what a language model says about
   us, and what the person is for
 :::
