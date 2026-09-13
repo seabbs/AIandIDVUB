@@ -57,6 +57,17 @@ fig-alt="GitHub profile of seabbs-bot, Sam Abbott (bot), robot avatar"}
 :::
 ::::
 
+## seabbs-review-bot. Another agent checks seabbs-bot before a person has to
+
+![](../figures/comms-shot-review-bot.png){width="70%"
+fig-align="center"
+fig-alt="The GitHub App page for seabbs-review-bot. A robot avatar, the
+name, and the line Automated reviews of @seabbs and @seabbs-bot work"}
+
+::: {.attribution}
+[github.com/apps/seabbs-review-bot](https://github.com/apps/seabbs-review-bot)
+:::
+
 ## A published prompt log
 
 :::: {.columns}
