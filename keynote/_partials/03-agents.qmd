@@ -83,15 +83,10 @@ and a read the approach link, above the line more approaches may join
 these as the ecosystem grows."}
 
 ::: {.attribution}
-[epiaware.org/approaches](https://epiaware.org/approaches/), read
-13 September 2026 · epidist pull request
-[#620](https://github.com/epinowcast/epidist/pull/620), opened 26 August,
-merged 4 September 2026 · Oswaldo Gressani's EpiDelays, pull request
-[#3](https://github.com/oswaldogressani/EpiDelays/pull/3), 36 commits on
-13 and 14 April 2026, open · primarycensored pull request
-[#334](https://github.com/epinowcast/primarycensored/pull/334), merged
-10 September 2026; the gamma, lognormal and Weibull solutions are Samuel
-Brand's, primarycensored NEWS, 2024
+[epiaware.org/approaches](https://epiaware.org/approaches/)
+· epidist [#620](https://github.com/epinowcast/epidist/pull/620)
+· EpiDelays [#3](https://github.com/oswaldogressani/EpiDelays/pull/3)
+· primarycensored [#334](https://github.com/epinowcast/primarycensored/pull/334)
 :::
 :::
 ::::
@@ -107,8 +102,8 @@ Brand's, primarycensored NEWS, 2024
 - Recent reports get two blind reads
 - Symptom onsets are reported only as a figure. An agent-written
   digitiser recovers the counts from pixel colour and axis tick geometry
-- Cross-checked again by several agents, and by digitisers written in
-  both Julia and Python
+- Onsets also move between reports because reporting is late. That is a
+  nowcasting problem, and it is in the model
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-bvd-sitrep087-page3.png){width="100%"
@@ -333,10 +328,7 @@ Sam Abbott, how I LLM, July 2026
 
 ::: {.attribution}
 Sam Abbott, [how I LLM](https://samabbott.co.uk/how-I-llm), July 2026
-· second bullet from my JuliaCon 2026 roadmap deck,
-[samabbott.co.uk/JuliaCon2026][jc]
 :::
 
 [bvd-repo]: https://github.com/epiforecasts/BVDOutbreakSize
-[jc]: https://samabbott.co.uk/JuliaCon2026
 [wf]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/

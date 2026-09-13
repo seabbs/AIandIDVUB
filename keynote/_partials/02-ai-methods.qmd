@@ -55,11 +55,10 @@ Table 1 of Kraemer et al. 2025, Nature 638, 623,
 - Applied to epidemics by Dandekar, Rackauckas and Barbastathis 2020.
   A network for quarantine strength in an SIR (susceptible, infectious,
   recovered) model, fitted to case counts from 70 countries
-- Reporting is not modelled. No comparison with a simple statistical or
-  semi-mechanistic model, as Funk et al. 2019 made for Ebola
-- [Philipps, Schmid and Hasenauer 2025][philipps]. Noise and limited
-  data degrade performance. The fitted mechanistic parameters did not
-  match the published values
+- Reporting is not modelled, and there is no comparison with a simple
+  statistical or semi-mechanistic model, as Funk et al. made for Ebola.
+  [Philipps et al. 2025][philipps] found noise and limited data degrade
+  the fit and the mechanistic parameters lose their meaning
 - Charlotte Holt, epiforecasts PhD student, is using UDEs to try and
   recover behavioural change in outbreaks and improve forecasts
 - Potentially most exciting where many hard to model data sets are
@@ -80,9 +79,6 @@ Rackauckas et al. 2020, [arXiv:2001.04385](https://arxiv.org/abs/2001.04385)
 [doi:10.1371/journal.pcbi.1006785](https://doi.org/10.1371/journal.pcbi.1006785)
 · Philipps, Schmid and Hasenauer 2025, npj Syst Biol Appl,
 [PMC12398592][philipps]
-· behaviour-informed UDEs for COVID-19 waves, Heliyon 2024
-· Nina Schmid, epinowcast seminar, 4 March 2026,
-[epinowcast.org](https://www.epinowcast.org/seminars/2026-03-04-nina-schmid/)
 :::
 :::
 ::::
@@ -97,13 +93,12 @@ Rackauckas et al. 2020, [arXiv:2001.04385](https://arxiv.org/abs/2001.04385)
 - Time-varying parameters such as $\beta_t$ come out of the same fit.
   Kharazmi et al. 2021 on New York City, Rhode Island, Michigan and Italy
 - The equation constrains the fit where surveillance series are short
-  or noisy. Millevoi, Pasetto and Ferronato 2024 fitted Italian COVID-19
-  cases and hospital admissions jointly
+  or noisy. Millevoi et al. 2024 fitted Italian COVID-19 cases and
+  admissions jointly, and found extrapolation past the training window
+  can go far from the data
 - Rama et al. 2026 forecast Italian influenza seasons with a PINN,
   competitive on the weighted interval score
-- Deterministic, so no uncertainty quantification by default, and
-  extrapolation past the training window can go far from the data.
-  Millevoi et al. 2024
+- Deterministic, so no uncertainty quantification by default
 :::
 ::: {.column width="58%"}
 ![](../figures/keynote-pinn.png){width="100%"
@@ -148,8 +143,7 @@ Side notes read swap a layer, keep the rest, and add a stream, add a
 layer."}
 
 ::: {.attribution}
-Composability with machine learning approaches, a design consideration
-in the composable modelling grant, Abbott, Funk et al. 2026
+The composable modelling grant, Abbott, Funk et al. 2026
 · Samuel Brand, [github.com/SamuelBrand1/RenewalExamples][brand],
 `conv` branch
 · Pervez, Locatello and Gavves 2024, *Mechanistic Neural Networks*
@@ -245,11 +239,9 @@ Sam Abbott, September 2026
 - Reinforcement learning. A policy, a network from the state of the
   epidemic to an action, is learned by trial and error against a
   simulator to maximise a reward
-- Optimal control, as with JuMP in Julia, needs the model equations and
-  solves for the optimal actions. Reinforcement learning only needs to run
-  the simulator
-- Where does it beat optimal control on the same model? An open question
-  for me
+- Optimal control needs the model equations. Reinforcement learning
+  only needs to run the simulator. Where does it beat optimal control on
+  the same model? An open question for me
 - Libin et al. 2020. School closure policies learned with proximal
   policy optimisation (PPO) on a 379-district influenza model of Great
   Britain

@@ -38,8 +38,7 @@ for the Bundibugyo virus outbreak from May 2026."}
 
 ::: {.attribution}
 Started at LSHTM in January 2020, 4 January 2023 post at
-[samabbott.co.uk][iisa-post] · the papers and repositories on the next
-slides
+[samabbott.co.uk][iisa-post]
 :::
 
 ## Ebola, West Africa
@@ -86,7 +85,7 @@ CC BY
   forms, by ad hoc methods. Park et al. showed in 2024 that these lead
   to biased estimates
 - **Their forecast.** More than 20,000 cases by 2 November if control
-  did not change. WHO had 14,383 reported by 11 November
+  did not change. 14,383 had been reported by 11 November
 - The models on the following slides lean on delay estimates like these
 :::
 ::: {.column width="60%"}
@@ -194,7 +193,6 @@ The pandemic years from the 4 January 2023 post at [samabbott.co.uk][iisa-post]
 · figure: Abbott and Funk 2022, medRxiv,
 [doi:10.1101/2022.03.29.22273101](https://doi.org/10.1101/2022.03.29.22273101),
 prevalence to incidence to antibodies to $R_t$ fitted as one model
-· slide after my JuliaCon 2026 composable deck
 :::
 :::
 ::::
@@ -238,12 +236,10 @@ network for a thousand initial cases."}
 
 ::: {.attribution}
 Endo et al. 2022, Science 378, 90,
-[doi:10.1126/science.add4507](https://doi.org/10.1126/science.add4507),
-figure as used in my JuliaCon 2026 composable deck
+[doi:10.1126/science.add4507](https://doi.org/10.1126/science.add4507)
 · Murayama, Pearson, Abbott et al. 2024, J Infect Dis,
 [doi:10.1093/infdis/jiad254](https://doi.org/10.1093/infdis/jiad254)
 · WHO Director-General's statement, 23 July 2022
-· last bullet from the composable deck, [samabbott.co.uk/JuliaCon2026][jc]
 :::
 :::
 ::::
@@ -257,8 +253,8 @@ figure as used in my JuliaCon 2026 composable deck
   days look like a fall
 - **Overton, Abbott and colleagues** nowcast the England outbreak for
   UKHSA
-- As I recall it, UKHSA could not install other nowcasting methods, so
-  the models were built on standard regression packages
+- UKHSA could not install other nowcasting methods, so the models were
+  built on standard regression packages
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-overton2023-historical.png){width="100%"
@@ -340,7 +336,7 @@ which sits inside the spread of the single-stream fits."}
 McCabe et al., Imperial College London, 18 and 20 May 2026,
 [doi:10.25560/130007](https://doi.org/10.25560/130007)
 · [BVDOutbreakSize][bvd-repo], first commit 19 May 2026
-· figure from my WHO collaboratory talk, 10 June 2026, data to 7 June
+· figure with data to 7 June 2026
 :::
 :::
 ::::
@@ -464,5 +460,4 @@ read 11 September 2026, `scripts/keynote-onset-vintages.py`
 [rt-post]: https://samabbott.co.uk/posts/2022-03-25-rt-reflections/
 [iisa-post]: https://samabbott.co.uk/posts/2023-01-04-iisa-data-models-and-modellers-during-a-global-pandemic/
 [spimo]: https://www.gov.uk/government/publications/spi-m-o-consensus-statement-on-covid-19-6-january-2021
-[jc]: https://samabbott.co.uk/JuliaCon2026
 [wf]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
