@@ -31,28 +31,29 @@ for Mathematical Modelling of Infectious Diseases.
 My research is on improving outbreak modelling through composable models,
 where components can be reused across contexts, and a workflow for
 modelling with multiple data sources.
-I work in the epiforecasts group led by Sebastian Funk, whose shared
-ground is real-time modelling and evaluating it, through packages such as
-EpiNow2 and scoringutils and through the forecast hubs.
+I am associated with the epiforecasts group led by Sebastian Funk, whose
+shared ground is real-time modelling and evaluating it, through packages
+such as EpiNow2 and scoringutils and through the forecast hubs.
 I lead the epinowcast community, which has a forum, a monthly seminar
-series and a set of packages for nowcasting and delay estimation, and I am
-part of the EpiAware organisation building composable models in Julia.
+series and a set of packages for nowcasting and delay estimation.
+The composable modelling work is in Julia, in the EpiAware organisation.
 I also spend time consulting with collaborators at the US CDC, UKHSA, and
 state and local public health departments in the US.
 The tools from this work are used in outbreak response.
 
 The talk then covers three strands of current work.
-Composable modelling in EpiAware, and the two approaches we are taking to
-it.
+Composable modelling in EpiAware, the two approaches we are taking to it,
+and the AI methods that might plug into it.
+The workflow we think models should be built and checked with, and where
+agents sit in it.
 Recent work on epidemiological delays and the censoring and truncation
 biases in estimating them, in primarycensored, epidist and
 CensoredDistributions.jl.
-And the workflow we think models should be built and checked with.
 
-For each strand I ask where AI might plug in.
-A neural network as a model component, a renewal process as a neural
-network layer, agents building and checking components, learned or
-amortised inference for delays, and an outbreak-specific foundation model.
+Where AI might plug in is an open question rather than a set of answers.
+Universal differential equations, physics-informed neural networks, a
+renewal process as a neural network layer, agents building and checking
+components, and an outbreak-specific foundation model.
 :::
 
 The organisers proposed a research exchange the day after the workshop,

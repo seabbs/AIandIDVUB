@@ -12,57 +12,23 @@
 - **Tools in wide use.** The use has not turned into funding
 
 ![](../figures/sam-abbott.jpg){width="20%" fig-alt="Sam Abbott"}
-
-::: {.attribution}
-[github.com/seabbs](https://github.com/seabbs) ·
-[samabbott.co.uk](https://samabbott.co.uk) · grant record from the
-2026 fellowship decks, `seabbs/fellowships/decks`
-:::
 :::
 ::: {.column width="54%"}
-| Package | Since | Stars | CRAN downloads |
+| Package | Since | Stars | Downloads |
 |---|---|---:|---:|
 | `EpiNow2` | 2020 | 141 | 58,073 |
 | `scoringutils` | 2020 | 64 | 63,648 |
-| `epinowcast` | 2021 | 67 | not on CRAN |
-| `epidist` | 2023 | 16 | not on CRAN |
+| `epinowcast` | 2021 | 67 | not on the archive |
+| `epidist` | 2023 | 16 | not on the archive |
 | `primarycensored` | 2024 | 9 | 11,294 |
 | `baselinenowcast` | 2025 | 10 | 1,678 |
 
 ::: {.attribution}
-Stars and creation dates from the GitHub API, downloads are CRAN
-totals from [cranlogs](https://cranlogs.r-pkg.org/), August 2026 as in
-the JuliaCon 2026 roadmap deck, `scoringutils` 2026-09-12
+Stars from the GitHub API; downloads are totals from the Comprehensive
+R Archive Network, August 2026
 :::
 :::
 ::::
-
-## Three outbreaks, the same problems
-
-- **COVID-19, 2020.** $R_t$, the number of new infections per infected
-  person, daily for thousands of locations. Weekly to SPI-M-O, the
-  UK government's modelling advisers
-- **mpox, 2022.** Nowcasting for UKHSA. Nowcasting is estimating what
-  has already happened but has not yet been reported
-- **Ebola disease caused by Bundibugyo virus, Democratic Republic of
-  the Congo (DRC), 2026.** One joint model across five data streams,
-  refit on every push
-- Each time the methods from the last outbreak were not reusable
-- Each time the models did not fit the data sources that existed, and
-  the data changed under us
-
-![](../figures/exchange-timeline.png){width="72%" fig-align="center"
-fig-alt="A timeline from 1760 to 2026 in two panels with an axis break.
-Grey dots for Bernoulli 1760, Ross 1911, Kermack and McKendrick 1927,
-Anderson and May 1991, foot and mouth 2001, H1N1 2009 and Ebola in West
-Africa 2014. Teal dots, marked work I was part of, for COVID-19 in 2020,
-mpox in 2022 and Ebola disease caused by Bundibugyo virus in 2026."}
-
-::: {.attribution}
-Abbott et al. 2020, Wellcome Open Research · Overton et al. 2023, PLoS
-Comput Biol · [BVDOutbreakSize][bvd] · dates in
-`notes/research-history.md`, drawn by `scripts/keynote-timeline.py`
-:::
 
 ## What I work on
 
@@ -89,8 +55,7 @@ to full joint modelling. The four snap together at the bottom right."}
 
 ::: {.attribution}
 Figure 6 of Abbott et al., [A workflow for infectious disease
-modelling][wf] · [epiaware.org](https://epiaware.org) · Lison et al.
-2024, PLoS Comput Biol
+modelling][wf]
 :::
 :::
 ::::
@@ -104,7 +69,7 @@ modelling][wf] · [epiaware.org](https://epiaware.org) · Lison et al.
 - The aim is to add other countries' public health departments
 - **In outbreaks.** `epidist` in the DRC response's correspondence in
   the New England Journal of Medicine this August
-- Several teams used the tools in Exercise Pegasus, the UK's 2025
+- Several teams used various tools in Exercise Pegasus, the UK's 2025
   national pandemic exercise
 - **Next.** Tools flexible and extensible enough to be easy for a large
   language model to use
@@ -122,11 +87,8 @@ for regional R_t. South Africa's NICD and SACEMA, EpiNow2 on clinical and
 wastewater data, 2025."}
 
 ::: {.attribution}
-CDC CFA, [Behind the model: nowcasting][cfa], 2026 · MMWR 2024 · Overton
-et al. 2023 · Akilimali et al. 2026, NEJM,
-[doi:10.1056/NEJMc2608070](https://doi.org/10.1056/NEJMc2608070) ·
-[613covid.ca](https://613covid.ca) · Springer 2023, chapter 5 ·
-Mthombothi et al. 2025
+CDC CFA, [Behind the model: nowcasting][cfa], 2026 · Akilimali et al.
+2026, NEJM, [doi:10.1056/NEJMc2608070](https://doi.org/10.1056/NEJMc2608070)
 :::
 :::
 ::::
@@ -140,7 +102,8 @@ Mthombothi et al. 2025
 - `EpiNow2`, `scoringutils`, and the European COVID-19 Forecast Hub
   from 2021, now RespiCast at the European Centre for Disease
   Prevention and Control (ECDC)
-- 2020 to 2022, weekly $R_t$ estimates and forecasts to SPI-M-O
+- 2020 to 2022, weekly estimates and forecasts for the UK
+  government's modelling advisers
 - **epinowcast.** A forum of over 50 researchers and public health
   analysts
 - A monthly seminar since May 2023, 31 so far, organised with Clara
@@ -148,11 +111,8 @@ Mthombothi et al. 2025
 - In 2023 I wrote: "community >> methods or models alone"
 
 ::: {.attribution}
-[github.com/epiforecasts](https://github.com/epiforecasts) ·
-[community.epinowcast.org](https://community.epinowcast.org/) ·
-[epinowcast.org/seminars](https://www.epinowcast.org/seminars), read
-2026-09-11 · 50 from the 2026 Wellcome application · Abbott, [IISA
-2023 post][iisa], 4 January 2023
+[community.epinowcast.org](https://community.epinowcast.org/) · Abbott,
+[IISA 2023 post][iisa], 4 January 2023
 :::
 :::
 ::: {.column width="54%"}
@@ -163,13 +123,11 @@ illness incidence for Poland, 2023 to 2024, with forecasts from many
 teams fanning out past the last data point, one of them EpiNow."}
 
 ::: {.attribution}
-HPRU PPIE kick-off deck, Funk, Abbott and Cori, September 2025 ·
 [respicast.ecdc.europa.eu](https://respicast.ecdc.europa.eu/)
 :::
 :::
 ::::
 
-[bvd]: https://github.com/epiforecasts/BVDOutbreakSize
 [wf]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
 [cfa]: https://www.cdc.gov/cfa-behind-the-model/php/data-research/nowcasting.html
 [iisa]: https://samabbott.co.uk/posts/2023-01-04-iisa-data-models-and-modellers-during-a-global-pandemic/

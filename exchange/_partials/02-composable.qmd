@@ -1,5 +1,30 @@
 # Composable infectious disease modelling
 
+## Three outbreaks, the same problems
+
+- **COVID-19, 2020.** $R_t$, the number of new infections per infected
+  person, daily for thousands of locations
+- **mpox, 2022.** Nowcasting for UKHSA. Nowcasting is estimating what
+  has already happened but has not yet been reported
+- **Ebola disease caused by Bundibugyo virus, Democratic Republic of
+  the Congo (DRC), 2026.** One joint model across five data streams,
+  refit on every push
+- Each time the methods from the last outbreak were not reusable
+- Each time the models did not fit the data sources that existed, and
+  the data changed under us
+
+![](../figures/exchange-timeline.png){width="72%" fig-align="center"
+fig-alt="A timeline from 1760 to 2026 in two panels with an axis break.
+Grey dots for Bernoulli 1760, Ross 1911, Kermack and McKendrick 1927,
+Anderson and May 1991, foot and mouth 2001, H1N1 2009 and Ebola in West
+Africa 2014. Teal dots, marked work I was part of, for COVID-19 in 2020,
+mpox in 2022 and Ebola disease caused by Bundibugyo virus in 2026."}
+
+::: {.attribution}
+Abbott et al. 2020, Wellcome Open Research · Overton et al. 2023, PLoS
+Comput Biol
+:::
+
 ## Analysing data and processes separately, or all together
 
 :::: {.columns}
@@ -20,13 +45,44 @@ Lison et al. (2024),
 ::: {.column width="58%"}
 ![](../figures/exchange-composable-ons-cascade.jpg){width="94%"
 fig-align="center"
-fig-alt="Four panels of the survey chain fitted as one model"}
+fig-alt="Four panels of the survey chain fitted as one model: prevalence,
+incidence, antibody prevalence and R_t, each with a posterior ribbon over
+the survey period."}
 
 ::: {.attribution}
-Prevalence (A), incidence (B), antibody prevalence (C) and $R_t$ (D)
-fitted together as one model. Abbott and Funk (2022),
-[doi:10.1101/2022.03.29.22273101](https://doi.org/10.1101/2022.03.29.22273101).
-Survey figures from the paper's introduction
+Abbott and Funk (2022),
+[doi:10.1101/2022.03.29.22273101](https://doi.org/10.1101/2022.03.29.22273101)
+:::
+:::
+::::
+
+## What we want from any approach
+
+:::: {.columns}
+::: {.column width="40%"}
+- **Uncertainty and inference.** Joint and staged inference that avoids
+  the cascading biases, and automatic differentiation for fitting
+- **Model structure.** Components separated by process type, and models
+  nested inside models
+- **Workflow.** One specification that is useful for simulation and for
+  inference
+
+::: {.callout-warning}
+These design considerations were developed by the authors and have not
+yet received broader community input.
+:::
+:::
+::: {.column width="60%"}
+![](../figures/exchange-composable-requirements.png){width="100%"
+fig-alt="Table 1 of the paper. Twelve proposed requirements under six
+themes, each paired with the problem that motivates it, from
+probabilistic specification with full uncertainty propagation to
+programmatic generation of model components."}
+
+::: {.attribution}
+Table 1 of Abbott et al., *Composable probabilistic models can lower
+barriers to rigorous infectious disease modelling* ·
+[epiaware.org/approaches](https://epiaware.org/approaches/)
 :::
 :::
 ::::
@@ -44,16 +100,38 @@ rigorous infectious disease modelling*
 ::: {.column width="60%"}
 ![](../figures/exchange-composable-structure.png){height="700px"
 fig-align="center"
-fig-alt="Four applications drawn as graphs over a band of shared parts"}
+fig-alt="Four applications drawn as graphs over a band of shared parts.
+The incubation period model appears in all four and the latent infection
+model in three."}
 
 ::: {.attribution}
-Four illustrative applications, not implementations. The incubation
-period model appears in all four, the latent infection model in three,
-and the band beneath is what those shared components are themselves
-made of. Figure 1 of Abbott et al., *Composable probabilistic models
-can lower barriers to rigorous infectious disease modelling*, in CDC
-clearance
+Figure 1 of Abbott et al., *Composable probabilistic models can lower
+barriers to rigorous infectious disease modelling*, in CDC clearance
 :::
+:::
+::::
+
+## The Julia composable work
+
+:::: {.columns}
+::: {.column width="34%"}
+- Top row. EpiAware, and the composable paper. Samuel Brand, Damon
+  Bayer and Joseph Lemaitre built `CensoredDistributions.jl` with me.
+  Hong Ge leads `Turing.jl`
+- Bottom row. JuliaBayes, formed April 2026, building the tools around
+  `Turing.jl`. Chains, regression models, a Bayesian workflow package
+
+::: {.attribution}
+Photos from GitHub
+:::
+:::
+::: {.column width="66%"}
+![](../figures/exchange-people-grid-c.jpg){width="100%"
+fig-alt="Twelve collaborators on the Julia work in two rows. Top: Samuel
+Brand, Damon Bayer, Michael DeWitt, Joseph Lemaitre, Hong Ge and Sandra
+Montes-Olivas. Bottom: Penelope Yong, Peter Thestrup Waade, Guillaume
+Dalle, Ryan Senne, Simon Steiger and Jessica Cox. Three shown as initials
+tiles."}
 :::
 ::::
 
@@ -85,9 +163,7 @@ chain = sample(as_turing_model(model, cases, length(cases)),
 ```
 
 ::: {.attribution}
-`renewal_model.jl` from
-[epiaware.org/approaches/composable-turing-models](https://epiaware.org/approaches/composable-turing-models.html),
-read 2026-09-12, with the Mooncake and ADTypes lines dropped
+[epiaware.org/approaches/composable-turing-models](https://epiaware.org/approaches/composable-turing-models.html)
 :::
 :::
 ::: {.column width="44%"}
@@ -98,15 +174,6 @@ read 2026-09-12, with the Mooncake and ADTypes lines dropped
 - A model definition does not know about the data. One definition
   simulates and fits
 - Adding a new application means defining only the new parts
-
-![](../figures/sam-abbott.jpg){width="21%" fig-alt="Sam Abbott"}
-![](../figures/exchange-samuel-brand.jpg){width="21%"
-fig-alt="Samuel Brand"}
-
-::: {.attribution}
-Photos from GitHub, read 2026-08-13 ·
-[github.com/EpiAware/ComposableTuringIDModels.jl][ctim]
-:::
 :::
 ::::
 
@@ -138,9 +205,7 @@ logpdf(tree, case)
 ```
 
 ::: {.attribution}
-`composed_delays.jl` from
-[epiaware.org/approaches/composed-distributions](https://epiaware.org/approaches/composed-distributions.html),
-read 2026-09-12, with the three inspection calls dropped
+[epiaware.org/approaches/composed-distributions](https://epiaware.org/approaches/composed-distributions.html)
 :::
 :::
 ::: {.column width="44%"}
@@ -151,49 +216,39 @@ read 2026-09-12, with the three inspection calls dropped
 - The whole tree is itself a distribution. It slots in wherever a delay
   is needed inside a larger model
 - Parameter uncertainty is an ordinary leaf
-
-![](../figures/sam-abbott.jpg){width="21%" fig-alt="Sam Abbott"}
-![](../figures/seabbs-bot.jpg){width="21%" fig-alt="seabbs-bot"}
-
-::: {.attribution}
-Photos from GitHub, read 2026-08-13 ·
-[github.com/EpiAware/ComposedDistributions.jl][cd]
-:::
 :::
 ::::
 
 ## Real-time nowcasting (`EpiNow2`)
 
 :::: {.columns}
-::: {.column width="48%"}
-- Reuses the ARIMA(2,1,1) autoregressive prior from the paper's first
-  case study, swapping the Poisson observation model for `negbin`
-- `broadcast_weekly` wraps ARIMA to produce piecewise constant weekly
-  $R_t$ values
-- `ascertainment_dayofweek` adds day-of-week reporting effects via
-  softmax transformation
-- Two `LatentDelay` wrappers compose incubation and reporting delays
-  sequentially by nesting structs
+::: {.column width="40%"}
+- Reuses the autoregressive prior from the paper's first case study,
+  swapping the Poisson observation model for a negative binomial one
+- `broadcast_weekly` wraps it to give piecewise constant weekly $R_t$
+  values
+- `ascertainment_dayofweek` adds day-of-week reporting effects
+- Two `LatentDelay` wrappers compose the incubation and reporting
+  delays by nesting structs
 
 ::: {.callout-important}
 No new components needed and took ~ 3 hours
 :::
 
 ::: {.attribution}
-Figures 2 and 4 of the paper. One configuration of `EpiNow2`
-replicated, not a benchmark. Abbott et al. (2020),
-[doi:10.12688/wellcomeopenres.16006.2](https://doi.org/10.12688/wellcomeopenres.16006.2).
-Daily COVID-19 cases from Italy, February to June 2020
+One configuration of `EpiNow2` replicated, not a benchmark. Abbott et
+al. (2020),
+[doi:10.12688/wellcomeopenres.16006.2](https://doi.org/10.12688/wellcomeopenres.16006.2)
 :::
 :::
-::: {.column width="52%"}
-![](../figures/exchange-composable-epinow2-model.png){height="240px"
+::: {.column width="60%"}
+![](../figures/exchange-composable-epinow2-results.png){height="820px"
 fig-align="center"
-fig-alt="The EpiNow2 configuration drawn as a graph of components"}
-
-![](../figures/exchange-composable-epinow2-results.png){height="520px"
-fig-align="center"
-fig-alt="Six panels: prior checks on each part, then the joint fit"}
+fig-alt="Six panels. Prior checks on each part: time varying R_t draws,
+latent infection draws, observed cases against latent infections, and the
+incubation period and reporting delay distributions. Then the joint fit
+to daily COVID-19 cases from Italy, February to June 2020, and the
+posterior for time varying R_t."}
 :::
 ::::
 

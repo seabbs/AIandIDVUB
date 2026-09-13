@@ -1,33 +1,22 @@
 # Agentic modelling workflows
 
-## Being able to follow a workflow
-
-![](../figures/exchange-workflow-schematic.png){width="86%"
-fig-align="center"
-fig-alt="A nine step workflow for infectious disease modelling, from
-research questions through process and observation DAGs, modularisation,
-inference choices, implementation, validation and data integration, with
-feedback arrows running backwards from later steps to earlier ones."}
-
-::: {.attribution}
-[A workflow for infectious disease modelling][wf], Abbott et al.
-:::
-
-## Where the agents sat on the DRC model
+## A workflow for infectious disease modelling
 
 :::: {.columns}
 ::: {.column width="40%"}
+- **The workflow.** Nine stages, from the research question to data
+  integration, with feedback loops running back to earlier ones
 - On [BVDOutbreakSize][bvd] agents wrote the code. The model structure
-  and approach were specified by me at a high level
-- The judgements stayed with people
+  and approach were specified by me at a high level. The judgements
+  stayed with people
 - Agents do best with something to check against. A simulation with
   known parameters, an analytic case, another group's estimate
 - 333 of 425 pull requests, the unit of change on GitHub, came from my
   bot account
 
 ::: {.attribution}
-[github.com/epiforecasts/BVDOutbreakSize][bvd], `README.md` · pull
-request count from the GitHub API, 2026-09-11
+[A workflow for infectious disease modelling][wf], Abbott et al. ·
+[github.com/epiforecasts/BVDOutbreakSize][bvd]
 :::
 :::
 ::: {.column width="60%"}
@@ -40,10 +29,41 @@ at stage 9. To the right, in teal, what agents did: reading French PDF
 sitreps at stage 3, digitising the onset curve at stage 4, fitting
 pipeline, releases and docs at stage 7, tests and recovery checks at
 stage 8, sensitivity analyses and figures at stage 9."}
+:::
+::::
+
+## Agents building methods into software
+
+:::: {.columns}
+::: {.column width="42%"}
+- **`epidist`.** A meta-analysis model for published delay estimates,
+  built from scratch in about a week. Onset to death for Bundibugyo
+  virus disease, beside the study the estimates came from
+- **`EpiDelays`.** A UHasselt package rewired onto the
+  `primarycensored` likelihood in two days
+- **`primarycensored`.** The generalised gamma integral solved
+  analytically by an agent. Three earlier ones we solved by hand
+- What kind of infectious disease modelling language works well for
+  agents?
+:::
+::: {.column width="58%"}
+![](../figures/exchange-epiaware-approaches.png){width="100%"
+fig-alt="The approaches section of epiaware.org. Two cards, composed
+distributions and composable Turing models, each with a short
+description and a read the approach link, above the line more approaches
+may join these as the ecosystem grows."}
+
+![](../figures/exchange-epidist-meta-bdbv.png){width="76%"
+fig-align="center"
+fig-alt="Onset to death delay densities for Bundibugyo virus disease.
+Three fitted curves with credible bands, the meta-analysis model at the
+population level, a re-analysis of the line list and the Rosello 2015
+study level estimate, against a dashed curve for the delay as reported
+by Rosello 2015."}
 
 ::: {.attribution}
-Drawn for this talk, `scripts/exchange-workflow-split.py`, from the
-[BVDOutbreakSize][bvd] `README.md` and `data/README.md`
+[epiaware.org/approaches](https://epiaware.org/approaches/) ·
+[epiforecasts.io/bdbv-linelist-analysis][bdbv]
 :::
 :::
 ::::
@@ -66,8 +86,7 @@ Drawn for this talk, `scripts/exchange-workflow-split.py`, from the
 - Could agents build and check the simulators you learn against?
 
 ::: {.attribution}
-[BVDOutbreakSize][bvd] `README.md` and `data/README.md`, SitReps 104 to
-114 · McCabe et al. report of 18 May 2026
+[BVDOutbreakSize][bvd] `README.md` · McCabe et al. report of 18 May 2026
 :::
 :::
 ::: {.column width="44%"}
@@ -77,39 +96,72 @@ one per data stream and one joint, with the confirmed-case stream far
 to the right of the others."}
 
 ::: {.attribution}
-Outbreak size by data stream, then jointly. June 2026 fit; the live
-report is at
+June 2026 fit; the live report is at
 [epiforecasts.io/BVDOutbreakSize/stable](https://epiforecasts.io/BVDOutbreakSize/stable/)
 :::
 :::
 ::::
 
-## Agents that search over models {.smaller}
+## What else went wrong
 
 :::: {.columns}
-::: {.column width="50%"}
-- **On the DRC model this was ad hoc.** Agents proposed patches as
-  issues, one branch each. Every release was scored against later data
-  and reviewed against domain knowledge
-- **The systematic version, given a target, is a tree search.** Propose
-  candidate models, fit and score, keep the best, branch again
-- **Google did this for the 2025/26 CDC hubs.** A large language model
-  (LLM) guided tree search that writes forecasting code. It matched or
-  beat the hub ensembles for influenza, COVID-19 and respiratory
-  syncytial virus (RSV), prospectively
-- Bracher and Funk put the earlier claimed 11% retrospective gain down
-  to data revisions leaking into the evaluation
-- It mutates and composes models people built. The hubs, the data, the
-  evaluation target and the review of output were still people's work
+::: {.column width="40%"}
+- **Forecasts.** Bugs keep turning up. Five defects in the one-week-ahead
+  forecast, all in the published report, fixed in August. Four weeks
+  ahead, $R_t$ ran from 0.245 to 14.9
+- **Automatic differentiation.** Enzyme cannot differentiate the joint
+  model, open since July. Mooncake, the backend we use, paid for
+  type-unstable closures until a fix in September halved the gradient
+- **Observation models.** Agents proposed models that did not match how
+  the response works. Bed capacity as a walk that could only rise. One
+  length of stay for patients who died and patients discharged
+- Found by looking at plots, by profiling, and by domain knowledge
 
 ::: {.attribution}
-Martinson, Brenner, Plomecka, Williams, Reich and Shamsi 2026,
+`docs/src/news.md` of [BVDOutbreakSize][bvd], v1.15.0 and v1.18.0
+:::
+:::
+::: {.column width="60%"}
+![](../figures/exchange-agent-wrong.png){width="100%"
+fig-alt="Three cards. Forecasts: a fan in log R_t that widens linearly
+with the horizon as shipped against one that widens with its square root
+as fixed, caught by looking at a plot. Automatic differentiation: bars
+for one Mooncake gradient of the joint model, 21 ms then 10 ms, and a
+note that Enzyme cannot differentiate it at all, caught by profiling.
+Observation models: a staircase that only rises, as written, against a
+line with a trend and mean-reverting deviation, as fixed, caught by
+domain knowledge."}
+:::
+::::
+
+## Agents that search over models
+
+:::: {.columns}
+::: {.column width="56%"}
+- **On the DRC model this was ad hoc.** Agents proposed patches as
+  issues, one branch each, and every release was scored against later
+  data and reviewed
+- **Given a known target, the systematic version is a tree search**, or
+  an inference step over models. A Markov chain Monte Carlo (MCMC)
+  proposal in model space
+- **Google did this for the 2025/26 CDC hubs.** A large language model
+  guided tree search that writes forecasting code. Prospectively it
+  matched or beat the hub ensembles for influenza, COVID-19 and
+  respiratory syncytial virus. Most candidates adapt or recombine
+  models already in the hubs
+- Bracher and Funk put the earlier claimed 11% gain down to data
+  revisions leaking into the evaluation. My guess is the gap in compute
+  and people against other teams is huge
+- **Open questions.** How to enforce domain knowledge, and how to pick
+  the evaluation target
+
+::: {.attribution}
+Martinson et al. 2026,
 [arXiv:2605.16238](https://arxiv.org/abs/2605.16238) · Bracher and Funk
-2026, [arXiv:2608.05883](https://arxiv.org/html/2608.05883) ·
-[BVDOutbreakSize][bvd] `README.md`
+2026, [arXiv:2608.05883](https://arxiv.org/html/2608.05883)
 :::
 :::
-::: {.column width="50%"}
+::: {.column width="44%"}
 ![](../figures/exchange-tree-search.png){width="100%"
 fig-alt="A tree. The root is a task, forecast admissions, scored on
 held-out weeks. Four proposed models below it: ARIMA and a GAM in grey,
@@ -119,12 +171,9 @@ and a wastewater stream, with the spline dropped. Arrows from the
 survivors lead to a red box, an ensemble of the survivors is what gets
 submitted. Side labels read propose, write the code, fit, score, expand
 the best, many rounds."}
-
-::: {.attribution}
-Drawn for this talk, `scripts/exchange-schematics.py`
-:::
 :::
 ::::
 
 [wf]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
 [bvd]: https://github.com/epiforecasts/BVDOutbreakSize
+[bdbv]: https://epiforecasts.io/bdbv-linelist-analysis/dev

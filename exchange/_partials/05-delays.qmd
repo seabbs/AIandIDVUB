@@ -10,11 +10,6 @@
   mean
 - Nowcasts, forecasts and transmission models take one as an input and
   do not re-estimate it
-
-::: {.attribution}
-Diagram from the JuliaCon 2026 delays talk,
-[samabbott.co.uk/JuliaCon2026/delays](https://samabbott.co.uk/JuliaCon2026/delays/)
-:::
 :::
 ::: {.column width="60%"}
 ![](../figures/exchange-delays-natural-history.png){width="100%"
@@ -56,7 +51,7 @@ $$
 $$
 
 ::: {.attribution}
-Diagram from the JuliaCon 2026 delays talk · maths after
+Maths after
 [primarycensored](https://primarycensored.epinowcast.org/)
 :::
 :::
@@ -82,11 +77,6 @@ L^{\mathrm{RT}}
   = \frac{F_{\mathrm{PEC}}(n + w_S) - F_{\mathrm{PEC}}(n)}
          {F_{\mathrm{PEC}}(C - P)}
 $$
-
-::: {.attribution}
-`LogNormal(1.6, 0.6)` as in the JuliaCon 2026 delays talk,
-[samabbott.co.uk/JuliaCon2026/delays](https://samabbott.co.uk/JuliaCon2026/delays/)
-:::
 :::
 ::: {.column width="62%"}
 ```{ojs}
@@ -152,8 +142,7 @@ Plot.plot({
 
 ::: {.attribution}
 `LogNormal(1.6, 0.6)` with daily windows, computed with
-`CensoredDistributions.jl` v0.2.22 for the JuliaCon 2026 delays talk,
-its `scripts/delays-right-truncation.jl`
+`CensoredDistributions.jl` v0.2.22
 :::
 :::
 ::: {.column width="66%"}
@@ -187,16 +176,13 @@ chain = sample(delay_model(values, weights),
 ```
 
 ::: {.attribution}
-Model from `CensoredDistributions.jl/README.md:67-81`, run against
-v0.2.22 for the JuliaCon 2026 delays talk ·
-[CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl) ·
-[primarycensored](https://primarycensored.epinowcast.org/) ·
-[epidist](https://epidist.epinowcast.org/)
+[CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl)
+`README.md`, v0.2.22
 :::
 :::
 ::: {.column width="48%"}
 - [`primarycensored`][lk-primarycensored], R. `d`, `p`, `q` and `r`
-  prefixes, so it reads like `dgamma`
+  prefixes, as in base R
 - [`epidist`][lk-epidist], R. The same likelihood through `brms`.
   Delays vary by district, by age and by wave
 - [`CensoredDistributions.jl`][lk-censoreddistributionsjl]. Each

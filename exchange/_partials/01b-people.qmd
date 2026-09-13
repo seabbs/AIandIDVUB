@@ -1,61 +1,33 @@
 # Who I work with
 
-## Real-time tools and the hubs
+## Real-time tools, delays and nowcasting
 
-- Six of these eight are `EpiNow2` co-authors. Nikos Bosse wrote
-  `scoringutils`, the forecast scoring package. Hugo Gruson and James
-  Azam contribute to it
-- Sebastian Funk and Kath Sherratt are co-authors on the live DRC model.
-  Katelyn Gostic is at CDC
-
-![](../figures/exchange-people-grid-a.jpg){width="82%" fig-align="center"
+:::: {.columns}
+::: {.column width="50%"}
+![](../figures/exchange-people-grid-a.jpg){width="100%"
 fig-alt="Eight collaborators on real-time tools and hubs: Sebastian Funk,
 James Azam, Nikos Bosse, Kath Sherratt, Hugo Gruson, Joe Hickson, Hamada
 Badr and Katelyn Gostic."}
 
-::: {.attribution}
-`EpiNow2` and `scoringutils` authorship, [BVDOutbreakSize][bvd]
-`README.md` · photos from GitHub
+- Six of these eight are `EpiNow2` co-authors. Nikos Bosse wrote
+  `scoringutils`, the forecast scoring package
+- Sebastian Funk and Kath Sherratt are co-authors on the live DRC model.
+  Katelyn Gostic is at CDC
 :::
-
-## Delays and nowcasting
-
-- Adrian Lison and Adam Howes are second only to me on `epinowcast`
-  and `epidist`. Kaitlyn Johnson built `baselinenowcast`
-- `primarycensored` is joint work. Thomas Ward, UKHSA, and Christopher
-  Overton co-authored the paper. Overton was first author on the UKHSA
-  mpox nowcasting
-
-![](../figures/exchange-people-grid-b.jpg){width="82%" fig-align="center"
+::: {.column width="50%"}
+![](../figures/exchange-people-grid-b.jpg){width="100%"
 fig-alt="Eight collaborators on delays and nowcasting: Adrian Lison,
 Kaitlyn Johnson, Adam Howes, Carl Pearson, Kelly Charniga, Sang Woo Park,
 Thomas Ward and Christopher Overton, the last four shown as initials
 tiles."}
 
-::: {.attribution}
-Commit counts and paper authorship, `notes/research-collaborators.md` ·
-Overton et al. 2023, PLoS Comput Biol · photos from GitHub
+- Adrian Lison and Adam Howes are second only to me on `epinowcast`
+  and `epidist`. Kaitlyn Johnson built `baselinenowcast`
+- `primarycensored` is joint work with Thomas Ward, UKHSA, and
+  Christopher Overton
 :::
-
-## The Julia composable work
-
-- Top row. EpiAware, and the composable paper. Samuel Brand, Damon
-  Bayer and Joseph Lemaitre built `CensoredDistributions.jl` with me.
-  Hong Ge leads `Turing.jl`
-- Bottom row. JuliaBayes, formed April 2026, building the tools around
-  `Turing.jl`. Chains, regression models, a Bayesian workflow package
-
-![](../figures/exchange-people-grid-c.jpg){width="86%" fig-align="center"
-fig-alt="Twelve collaborators on the Julia work in two rows. Top: Samuel
-Brand, Damon Bayer, Michael DeWitt, Joseph Lemaitre, Hong Ge and Sandra
-Montes-Olivas. Bottom: Penelope Yong, Peter Thestrup Waade, Guillaume
-Dalle, Ryan Senne, Simon Steiger and Jessica Cox. Three shown as initials
-tiles."}
+::::
 
 ::: {.attribution}
-EpiAware and JuliaBayes membership from the GitHub API, 2026-09-12 ·
-`CensoredDistributions.jl` `Project.toml` · composable paper author
-list · photos from GitHub
+Package author lists · photos from GitHub
 :::
-
-[bvd]: https://github.com/epiforecasts/BVDOutbreakSize

@@ -23,12 +23,12 @@ format:
 ::: {.column width="68%"}
 - Who I am, what I work on, where the tools get used, and who I work
   with
-- Composable infectious disease modelling. The gap, what composable
-  means, two approaches, one replication
-- Where AI might plug in. My view, a network as a component, renewal
-  as a layer, an outbreak foundation model
-- Agentic modelling workflows. The workflow, where the agents sat on
-  the Democratic Republic of the Congo (DRC) model, search over models
+- Composable infectious disease modelling. The gap, what we want from
+  any approach, two approaches, one replication
+- Where AI might plug in. Universal differential equations,
+  physics-informed networks, renewal as a layer, a foundation model
+- Agentic modelling workflows. The workflow, agents building methods
+  into software, search over models
 - Recent delays work. `primarycensored`, `epidist`,
   `CensoredDistributions.jl`
 :::

@@ -1,5 +1,18 @@
 # Where AI might plug in
 
+## What even is AI?
+
+- Machine learning (i.e. statistics)
+- Neural networks (i.e. statistics)
+- Physics informed neural networks (i.e. statistics and mathematical
+  modelling)
+- Universal differential equations (i.e. statistics and mathematical
+  modelling)
+- Reinforcement learning
+- Attention based neural networks
+- Large language models
+- My friendly agentic CLI tool (i.e. claude code)
+
 ## My view {.center}
 
 ::: {style="font-size: 1.25em; margin-top: 0.6em;"}
@@ -13,17 +26,55 @@ not convinced by the evaluations of proposed methods.
 Sam Abbott, September 2026
 :::
 
-::: {.fragment style="font-size: 1.6em; margin-top: 1.2em;"}
-And yet. I am very excited about their potential.
+## And yet {.center}
+
+::: {style="font-size: 1.6em; margin-top: 0.8em;"}
+I am very excited about their potential.
 :::
 
-## A neural network as a component?
+::: {style="font-size: 0.8em; margin-top: 1em; color: #4a5899;"}
+Sam Abbott, September 2026
+:::
+
+## Universal differential equations
 
 :::: {.columns}
 ::: {.column width="42%"}
-- **Universal differential equations (UDEs) and physics-informed neural
-  networks (PINNs).** A network inside a mechanistic model. Here the
-  mechanism is the renewal process
+- A universal differential equation (UDE) is a differential equation
+  with one or more terms a neural network, fitted jointly with the
+  mechanistic parameters. Rackauckas et al. 2020
+- Applied to epidemics by Dandekar, Rackauckas and Barbastathis 2020. A
+  network for quarantine strength in a susceptible, infectious,
+  recovered model, fitted to case counts from 70 countries
+- Reporting is not modelled, and there is no comparison with a simple
+  semi-mechanistic model. Philipps et al. 2025 found that noise and
+  limited data degrade the fit and the mechanistic parameters lose
+  their meaning
+- Charlotte Holt, epiforecasts PhD student, is using UDEs to try and
+  recover behavioural change in outbreaks and improve forecasts
+:::
+::: {.column width="58%"}
+![](../figures/exchange-seir-vs-ude.png){width="100%"
+fig-alt="Left, a semi-mechanistic stochastic SEIR box model with the
+transmission rate a random walk and one arrow to a cases box, labelled
+the rate is free to move and one stream constrains it. Right, the same
+SEIR boxes with the transmission rate a neural network fed by mobility,
+surveys, policy, weather and wastewater, and an arrow to cases, deaths
+and admissions, labelled the rate is learned from many sources."}
+
+::: {.attribution}
+Dandekar, Rackauckas and Barbastathis 2020, Patterns,
+[doi:10.1016/j.patter.2020.100145](https://doi.org/10.1016/j.patter.2020.100145)
+· Philipps, Schmid and Hasenauer 2025, npj Syst Biol Appl,
+[PMC12398592](https://pmc.ncbi.nlm.nih.gov/articles/PMC12398592/)
+:::
+:::
+::::
+
+## A neural network in the slots of a composable model
+
+:::: {.columns}
+::: {.column width="42%"}
 - **A network in the $R_t$ slot.** It learns what the autoregressive
   (AR) process cannot say. Behaviour, season, policy
 - **A network on the observation side.** Several data streams fitted
@@ -31,14 +82,6 @@ And yet. I am very excited about their potential.
 - Most exciting where there are many hard to model data sets to fit
   jointly in an otherwise well understood system
 - No neural network code in any EpiAware package yet
-
-::: {.attribution}
-Rackauckas et al. 2020,
-[arXiv:2001.04385](https://arxiv.org/abs/2001.04385) ·
-Millevoi, Pasetto and Ferronato 2024, PLoS Comput Biol ·
-Philipps, Schmid and Hasenauer 2025, npj Syst Biol Appl ·
-grep of the EpiAware organisation for Lux and Flux, 2026-09-11
-:::
 :::
 ::: {.column width="58%"}
 ![](../figures/exchange-nn-component.png){width="100%"
@@ -49,11 +92,39 @@ an AR process, labelled today, and a small neural network of
 covariates, labelled a question, with a swap arrow between them. Under
 the observation model a third candidate, a network from the latent
 infections to cases, deaths and wastewater at once."}
+:::
+::::
+
+## Physics-informed neural networks
+
+:::: {.columns}
+::: {.column width="42%"}
+- A physics-informed neural network (PINN) maps time to the model
+  state, $S(t)$, $I(t)$, $R(t)$. The loss adds the residual of the
+  differential equation to the misfit with the data
+- Time-varying parameters such as the transmission rate $\beta_t$ come
+  out of the same fit. Kharazmi et al. 2021 on New York City, Rhode
+  Island, Michigan and Italy
+- The equation constrains the fit where surveillance series are short
+  or noisy. Millevoi et al. 2024 fitted Italian COVID-19 cases and
+  admissions jointly, and found extrapolation past the training window
+  can go far from the data
+- Deterministic, so no uncertainty quantification by default
+:::
+::: {.column width="58%"}
+![](../figures/exchange-pinn.png){width="100%"
+fig-alt="A schematic. A time input feeds a neural network. The network
+outputs the model state S, I and R and the transmission rate. The state
+goes to a data loss, the misfit to reported cases; the state and the
+rate go to a physics loss, the residual of the differential equations,
+with automatic differentiation supplying the derivatives. The two losses
+sum to one training loss."}
 
 ::: {.attribution}
-Drawn for this talk, `scripts/exchange-nn-component.py`, after the
-parts on
-[epiaware.org/approaches](https://epiaware.org/approaches/composable-turing-models.html)
+Raissi, Perdikaris and Karniadakis 2019, J Comput Phys,
+[doi:10.1016/j.jcp.2018.10.045](https://doi.org/10.1016/j.jcp.2018.10.045)
+· Millevoi, Pasetto and Ferronato 2024, PLOS Comput Biol,
+[doi:10.1371/journal.pcbi.1012387](https://doi.org/10.1371/journal.pcbi.1012387)
 :::
 :::
 ::::
@@ -64,18 +135,19 @@ parts on
 ::: {.column width="40%"}
 - A specialised form of PINN
 - A renewal process is an autoregressive transformation of $R_t$ and
-  past infections to today's infections
-- It can be thought of as a neural network layer
+  past infections to today's infections. It can be thought of as a
+  neural network layer
 - Stacked with other layers. Inputs to $R_t$, an $R_t$ layer,
   observation layers, and multiple data streams
+- Against a PINN on a differential equation, time-varying parameters
+  are natural to a renewal process, and its discrete time matches the
+  data
 - Not seen this used in research yet. Proposed in Samuel Brand's
   `RenewalExamples` repository
 
 ::: {.attribution}
-Pervez, Locatello and Gavves 2024, *Mechanistic Neural Networks*,
-[arXiv:2402.13077](https://arxiv.org/abs/2402.13077) ·
-[github.com/SamuelBrand1/RenewalExamples][rex] · the 2026 Wellcome
-Discovery application
+Samuel Brand, [github.com/SamuelBrand1/RenewalExamples][rex] · Pervez,
+Locatello and Gavves 2024, *Mechanistic Neural Networks*
 :::
 :::
 ::: {.column width="60%"}
@@ -86,14 +158,10 @@ kernel scaled by R_t. On the right a stack of six layers: inputs, an R_t
 layer marked learned, then a renewal layer, a delay layer and an
 ascertainment layer marked fixed by the epidemiology, then a negative
 binomial likelihood on each stream."}
-
-::: {.attribution}
-Drawn for this talk, `scripts/exchange-schematics.py`
-:::
 :::
 ::::
 
-## An outbreak-specific foundation model {.smaller}
+## An outbreak-specific foundation model
 
 :::: {.columns}
 ::: {.column width="40%"}
@@ -110,11 +178,9 @@ Drawn for this talk, `scripts/exchange-schematics.py`
   prospective settings?
 
 ::: {.attribution}
-Kalahasti et al. 2025, medRxiv · Wang, Li and Perra 2026, medRxiv ·
-Jafari et al. 2026, [arXiv:2606.19560](https://arxiv.org/abs/2606.19560)
-· Liu et al. 2026, CAPE, KDD · PNAS 2026,
-[doi:10.1073/pnas.2526192123](https://doi.org/10.1073/pnas.2526192123) ·
-[BVDOutbreakSize][bvd] `README.md`
+Kalahasti et al. 2025, medRxiv,
+[doi:10.1101/2025.02.24.25322795](https://www.medrxiv.org/content/10.1101/2025.02.24.25322795v1)
+· Liu et al. 2026, CAPE, KDD
 :::
 :::
 ::: {.column width="60%"}
@@ -132,12 +198,7 @@ nowcast and forecast fan on the latest vintage."}
 time is a project I would like to be involved in." Sam Abbott,
 September 2026
 :::
-
-::: {.attribution}
-Drawn for this talk, `scripts/exchange-schematics.py`
-:::
 :::
 ::::
 
-[bvd]: https://github.com/epiforecasts/BVDOutbreakSize
 [rex]: https://github.com/SamuelBrand1/RenewalExamples
