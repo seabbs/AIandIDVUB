@@ -274,8 +274,7 @@ at a box reading keep the best, branch again."}
 - Martinson et al. 2026. A large language model (LLM) guided tree search
   that writes forecasting code. An ensemble went to the CDC FluSight,
   COVID-19 and respiratory syncytial virus (RSV) hubs
-- Most candidates adapt or recombine models already in the hubs. 142
-  prompts in three families
+- Most candidates adapt or recombine models already in the hubs
 - Prospective, 2025/26 season. Matched or beat the CDC ensembles, and
   ranked first of 43 eligible FluSight, 12 COVID-19 and 4 RSV
   submissions
@@ -314,6 +313,8 @@ Sam Abbott, how I LLM, July 2026
 :::
 
 - A Claude Max subscription. £200 a month, from my own pocket
+- Funding has started to come in, so each project now comes with its
+  own access
 - Who can do this work at all is narrowing. Agents make that worse
 - Real work is now possible on small open models
 - What happens when the venture capital money dries up?
