@@ -106,28 +106,13 @@ June 2026 fit; the live report is at
 
 :::: {.columns}
 ::: {.column width="56%"}
-- **On the DRC model this was ad hoc.** Agents proposed patches as
-  issues, one branch each, and every release was scored against later
-  data and reviewed
-- **Given a known target, the systematic version is a tree search**, or
-  an inference step over models. A Markov chain Monte Carlo (MCMC)
-  proposal in model space
-- **Google did this for the 2025/26 CDC hubs.** A large language model
-  guided tree search that writes forecasting code. Prospectively it
-  matched or beat the hub ensembles for influenza, COVID-19 and
-  respiratory syncytial virus. Most candidates adapt or recombine
-  models already in the hubs
-- Bracher and Funk put the earlier claimed 11% gain down to data
-  revisions leaking into the evaluation. My guess is the gap in compute
-  and people against other teams is huge
+- **Could a language model be the proposal step?** Inside the inference
+  algorithm rather than wrapped around it, proposing models rather than
+  parameters
+- **Composability gives it a move set.** If models are assembled from
+  components, a proposal is a swap of one part, not a new program
 - **Open questions.** How to enforce domain knowledge, and how to pick
   the evaluation target
-
-::: {.attribution}
-Martinson et al. 2026,
-[arXiv:2605.16238](https://arxiv.org/abs/2605.16238) · Bracher and Funk
-2026, [arXiv:2608.05883](https://arxiv.org/html/2608.05883)
-:::
 :::
 ::: {.column width="44%"}
 ![](../figures/exchange-tree-search.png){width="100%"
