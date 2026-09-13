@@ -28,8 +28,8 @@ Sam Abbott
 Infectious disease modelling has a long history, but the last ten years
 changed what it is asked to do during an outbreak and how fast.
 Firstly, the outbreaks we worked on.
-Ebola in West Africa in 2014, where real-time modelling arrived in public
-view.
+Ebola in West Africa in 2014, with CDC's projections and real-time
+forecasts in Sierra Leone.
 COVID-19, where we produced reproduction number estimates daily for
 thousands of locations and weekly for the UK government's advisers.
 Mpox in 2022, where the COVID-19 models could not be reused.
@@ -39,8 +39,9 @@ and built a joint model that is refit with each situation report.
 Then how an outbreak gets modelled and what keeps going wrong.
 
 Secondly, the use of AI methods in outbreak modelling.
-Universal differential equations, normalising flows, foundation models and
-reinforcement learning.
+Universal differential equations, physics-informed neural networks, a
+renewal process as a neural network layer, normalising flows, foundation
+models and reinforcement learning.
 They are under-explored and have seen little operational use that I am
 aware of.
 

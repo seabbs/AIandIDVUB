@@ -97,15 +97,15 @@ CDC CFA, [Behind the model: nowcasting][cfa], 2026 · Akilimali et al.
 
 :::: {.columns}
 ::: {.column width="46%"}
-- **epiforecasts.** Led by Sebastian Funk at LSHTM. Real-time modelling
-  and evaluating it
+- **epiforecasts.** Led by Sebastian Funk at LSHTM, and I am a member.
+  Real-time modelling and evaluating it
 - `EpiNow2`, `scoringutils`, and the European COVID-19 Forecast Hub
   from 2021, now RespiCast at the European Centre for Disease
   Prevention and Control (ECDC)
 - 2020 to 2022, weekly estimates and forecasts for the UK
   government's modelling advisers
-- **epinowcast.** A forum of over 50 researchers and public health
-  analysts
+- **epinowcast.** A community I created. A forum of over 50 researchers
+  and public health analysts
 - A monthly seminar since May 2023, 31 so far, organised with Clara
   Brigitta and Fanny Bergström
 - In 2023 I wrote: "community >> methods or models alone"

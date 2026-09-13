@@ -115,6 +115,8 @@ barriers to rigorous infectious disease modelling*, in CDC clearance
 
 :::: {.columns}
 ::: {.column width="34%"}
+- **EpiAware.** Loosely an extension of the epinowcast community, and
+  in its initial stages
 - Top row. EpiAware, and the composable paper. Samuel Brand, Damon
   Bayer and Joseph Lemaitre built `CensoredDistributions.jl` with me.
   Hong Ge leads `Turing.jl`
