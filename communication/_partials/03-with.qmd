@@ -57,16 +57,30 @@ fig-alt="GitHub profile of seabbs-bot, Sam Abbott (bot), robot avatar"}
 :::
 ::::
 
-## seabbs-review-bot. Another agent checks seabbs-bot before a person has to
+## seabbs-review-bot. A reviewer that is not a person
 
-![](../figures/comms-shot-review-bot.png){width="70%"
-fig-align="center"
+:::: {.columns}
+::: {.column width="40%"}
+- **A GitHub App.** It reviews each pull request I or my bot open, and
+  again when either of us asks
+- **213 pull requests** reviewed since 17 August 2026. Each review ends
+  "Not a human review"
+- I fix what it gets right, say which findings I reject and why, and
+  check each against the source myself
+- It has caught real bugs. It has also been wrong from its own truncated
+  greps
+:::
+::: {.column width="60%"}
+![](../figures/comms-shot-review-bot.png){width="100%"
 fig-alt="The GitHub App page for seabbs-review-bot. A robot avatar, the
 name, and the line Automated reviews of @seabbs and @seabbs-bot work"}
 
 ::: {.attribution}
-[github.com/apps/seabbs-review-bot](https://github.com/apps/seabbs-review-bot)
+[github.com/apps/seabbs-review-bot](https://github.com/apps/seabbs-review-bot),
+created 17 August 2026 · count from the GitHub search API, 12 September 2026
 :::
+:::
+::::
 
 ## A published prompt log
 
@@ -134,31 +148,6 @@ fig-alt="A single bar of 114 claims, 67 marked changed and 47 marked stood"}
 ::: {.attribution}
 [seabbs/how-I-llm](https://github.com/seabbs/how-I-llm) commits
 `8c7e834` and `1fceb9a`, August 2026
-:::
-:::
-::::
-
-## seabbs-review-bot. A reviewer that is not a person
-
-:::: {.columns}
-::: {.column width="40%"}
-- **A GitHub App.** It reviews each pull request I or my bot open, and
-  again when either of us asks
-- **213 pull requests** reviewed since 17 August 2026. Each review ends
-  "Not a human review"
-- I fix what it gets right, say which findings I reject and why, and
-  check each against the source myself
-- It has caught real bugs. It has also been wrong from its own truncated
-  greps
-:::
-::: {.column width="60%"}
-![](../figures/comms-shot-review-bot.png){width="100%"
-fig-alt="The GitHub App page for seabbs-review-bot. A robot avatar, the
-name, and the line Automated reviews of @seabbs and @seabbs-bot work"}
-
-::: {.attribution}
-[github.com/apps/seabbs-review-bot](https://github.com/apps/seabbs-review-bot),
-created 17 August 2026 · count from the GitHub search API, 12 September 2026
 :::
 :::
 ::::
