@@ -48,7 +48,7 @@ likely to draw on.
 
 - [Infectious disease modelling in the age of AI](../keynote/index.qmd).
 - [Science communication with and under AI](../communication/index.qmd).
-- [Research exchange at the VUB AI Lab](../exchange/index.qmd).
+- [Research exchange with the VUB AI group and SIMID](../exchange/index.qmd).
 
 :::
 ::::

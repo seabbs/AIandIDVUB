@@ -1,11 +1,11 @@
 ---
-title: "Research exchange at the VUB AI Lab"
+title: "Research exchange with the VUB AI group and SIMID"
 subtitle: "Composable infectious disease modelling, and where AI might plug in"
 description: >-
   What I work on and who with, composable EpiAware modelling, recent
-  delays work, and where AI might plug in. A half day exchange between
-  the VUB AI Lab and the UHasselt and UAntwerp infectious disease
-  modelling group, the day after the workshop.
+  delays work, and where AI might plug in. A morning of short talks
+  from the VUB Artificial Intelligence group and the UHasselt and
+  UAntwerp SIMID group, at the AI Experience Centre, Brussels.
 page-layout: full
 ---
 

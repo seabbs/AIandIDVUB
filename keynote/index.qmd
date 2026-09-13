@@ -71,7 +71,7 @@ studies.
 - [Where do we go next?](../panel/index.qmd).
   The closing panel.
   15:20–16:15.
-- [Research exchange at the VUB AI Lab](../exchange/index.qmd).
+- [Research exchange with the VUB AI group and SIMID](../exchange/index.qmd).
   The following day.
 
 :::

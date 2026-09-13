@@ -2,7 +2,7 @@
 
 Talk pages and slides for the workshop *Combining Infectious Disease
 Modelling and AI: Methods and Communication*, VUB, Brussels, Monday 14
-September 2026, and the research exchange at the VUB AI Lab on Tuesday 15
+September 2026, and the research exchange with the VUB AI group and SIMID on Tuesday 15
 September.
 
 Sam Abbott, London School of Hygiene & Tropical Medicine.
