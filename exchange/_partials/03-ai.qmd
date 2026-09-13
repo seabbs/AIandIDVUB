@@ -67,15 +67,17 @@ Raissi, Perdikaris and Karniadakis 2019, J Comput Phys,
 
 :::: {.columns}
 ::: {.column width="40%"}
-- A specialised form of PINN
 - A renewal process is an autoregressive transformation of $R_t$ and
   past infections to today's infections. It can be thought of as a
   neural network layer
-- Stacked with other layers. Inputs to $R_t$, an $R_t$ layer,
-  observation layers, and multiple data streams
-- Against a PINN on a differential equation, time-varying parameters
-  are natural to a renewal process, and its discrete time matches the
-  data
+- **The layers compose.** Inputs to $R_t$, an $R_t$ layer, delay and
+  ascertainment layers, a likelihood on each stream. The same parts we
+  already assemble by hand
+- **The network can stay small**, because the epidemiology is in the
+  layers rather than learned. That is what makes it plausible on the
+  data an outbreak actually gives you
+- **Then build up.** More streams and more structure by stacking, not
+  by writing a new model
 - Not seen this used in research yet. Proposed in Samuel Brand's
   `RenewalExamples` repository
 
