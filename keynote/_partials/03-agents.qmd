@@ -4,11 +4,7 @@
 
 :::: {.columns}
 ::: {.column width="40%"}
-- A language model with tools. It reads files, writes code, runs it, and
-  loops until a check passes
-- Then it opens a pull request, a proposed change to the code that a
-  person reviews before it is merged
-- I write the task and what counts as right. I read what comes back
+A language model with tools. It reads files, writes code, runs it, and loops until a check passes
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-agent-1.png){width="100%"
@@ -20,17 +16,18 @@ back."}
 :::
 ::::
 
-## How I work now
+## How I am working at the moment
 
 :::: {.columns}
 ::: {.column width="40%"}
 - I was travelling for summer schools, teaching and workshops, so made
-  a very focused go of working through agents
-- All code I have produced in the last six months has been agent
+  a very focused go of working through agents only.
+- All code and most text I have produced in the last six months has been agent
   written, pushed from a bot account, a second GitHub login
 - Agents write the tasks, from a spec or from a conversation with me
-- Review at different levels. Sometimes all the code, sometimes only the
-  outcome. A little like working with students
+- I am reviewing at different levels. Sometimes all the code, sometimes only the
+  outcome.
+- My agent is also interacting frequently with Sebastian Funk's who is working in a similar way.
 :::
 ::: {.column width="47%"}
 ![](../figures/keynote-bot-prs.png){width="100%"
@@ -41,8 +38,7 @@ unmerged."}
 
 ::: {.attribution}
 GitHub search API `total_count` per month, 11 September 2026;
-`seabbs-bot` created 23 January 2026 · layout after my JuliaCon 2026
-roadmap deck, [samabbott.co.uk/JuliaCon2026][jc]
+`seabbs-bot` created 23 January 2026
 :::
 :::
 ::: {.column width="13%"}
@@ -59,19 +55,26 @@ fig-alt="The sbfnk-bot GitHub avatar, a robot in a red scarf."}
 :::
 ::::
 
-## Agents in the Bundibugyo model: the data
+## Agents building methods into software
+
+- Epiaware.org two approaches
+- What kind of infectious disease modelling language works well for agents? (q for the slide don't try and answer) TODO
+- Epidist - meta analysis mdoel from scratch in a few days
+- Epidelays - porting others packages to different backends in an automated fashion
+- Solving integrals analytixally i.e gnereralised gamma in primarycensored vs the others there we solved by hand pre-agent.
+
+## Agents in the Bundibugyo DRC outbreak model model: the data
 
 :::: {.columns}
 ::: {.column width="40%"}
 - The situation reports are French PDFs. Agents read every stream from
-  them except confirmed cases and deaths. Those two are cross-checked
-  against the INRB-UMIE transcription
-- Recent reports get two blind reads. The script exits on an
-  undocumented disagreement
-- The onset curve exists only as a picture. A digitiser recovers counts
+  them.
+- Where available results are cross-checked against INRB-UMIE transcription
+- Recent reports get two blind reads.
+- Symptom onset data is reported only as a figure in the report.
+- We use a agent written digitiser to recover counts
   from pixel colour and axis tick geometry
-- Onsets also move between reports because reporting is late. That is a
-  nowcasting problem, and it is in the model
+- These are cross checked again using multiple agents and using digistiers written in both Python and Julia.
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-bvd-sitrep087-page3.png){width="100%"
@@ -89,18 +92,19 @@ read 12 September 2026; the onset reporting triangle fit merged
 :::
 ::::
 
-## Agents in the Bundibugyo model: the model
+## Agents in the Bundibugyo DRC outbreak model: the model
 
 :::: {.columns}
 ::: {.column width="40%"}
 - Model development through issues and pull requests. 333 of 425 pull
   requests from the bot account
-- Performance work by agents, reviewed by agents. 19 perf commits, all
+- Model structure and approaches specificed by me at a high level.
+- Automated performance work by agents, reviewed by agents. 19 perf commits, all
   from bot identities. One review found nothing worth shipping. One
-  halved the gradient cost with the log density bit-identical
-- The renewal model was built in a pull request on top of the
-  original integral model. Agents kept the two in step until it merged
-  on 9 June 2026
+  halved the gradient cost 
+- We used agents to manage two versions of the model in tandem. The original integral version of the model
+and its renewal process successor. 
+- Agents kept the two in step until it merged on 9 June 2026
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-agent-2.png){width="100%"
@@ -122,14 +126,18 @@ API, 11 September 2026 · `git log --grep perf`, issue #444, pull request
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Going wide. One posterior over the situation report streams, the
-  Uganda exports and a genomic bound
-- Checks on every rebuild. Predictive checks per stream, forecasts
-  scored against later data, the McCabe replication
+- The original report replicated the McCabe et al. Imperial report over a few hours.
+- In a few more issues with that report were addressed and it was exanded to jointly fit all the data streams they used.
+- Going wide. One posterior over 5+ situation report streams,
+  Uganda export data and a genomic bounding model.
+- Checks on every rebuild.
+- Following the Infectious disease modelling Bayesian workflow TODO: Needs two refs
+- This includes: predictive checks per stream, forecasts
+  scored against later data the McCabe replication
 - That much debugging would not have happened by hand. The workflow is
-  what kept it reviewable
-- Agents did not choose the model or judge the ascertainment
-  assumption. Infrastructure and review were still needed
+  what kept it reviewable.
+- Agents did not choose the model.
+- Infrastructure and review were still needed to keep the agents in check.
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-workflow-agents.png){width="100%"
@@ -148,7 +156,7 @@ Abbott et al.
 ::::
 
 ## Digitising from figures, and what went wrong
-
+- TODO another slide on what when wrong that isn't the figure. i.e the wreird forecast bugs we keep fidning, issues with perofrmance under AD, isues with somewhat crazy observation model sugggstions from agents that don';t match domain knowledge. Need a picture of some kind?? 
 :::: {.columns}
 ::: {.column width="40%"}
 - SitRep 081. JPEG compression left the axis ticks one pixel tall. About
@@ -182,10 +190,10 @@ The embedded image from INSP SitRep 087, 9 August 2026, page 3
 ::: {.column width="40%"}
 - For the Bundibugyo model this was ad hoc. Agents proposed patches to
   the model as issues, one branch each, and every release scored the
-  forecast against later data
-- The systematic version is a tree. An agent proposes candidate models,
-  one loop each, fit and score, keep the best, branch again
-- The score is the thing that can be gamed
+  forecast against later data and was reviewed based on domain knowledge.
+- The systematic version where there is a known target is a tree search or embedded inference step (i.e. MCMC proposal in model space)
+- An agent proposes candidate models, one loop each, fit and score, keep the best, branch again
+- How to enforce domain knowledge and how to identify the evaluation targets.
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-agent-3.png){width="100%"
@@ -209,12 +217,13 @@ Open `patch model` issues from `seabbs-bot` in [BVDOutbreakSize][bvd-repo],
 - Martinson et al. 2026. An LLM-guided tree search that writes
   forecasting code. An ensemble of the survivors went to the FluSight,
   COVID-19 and RSV hubs
+- It is somewhat limited as it in effect mutates and composes existing domain developed models rather than starting from scratch.
 - Prospective, 2025/26 season. It matched or beat the CDC hub ensembles
-  and topped the leader board for all three
-- Bracher and Funk 2026. The earlier retrospective gain of 11% came
+  and topped the leader board TODO check it topped the leaderboard
+- Bracher and Funk 2026. The earlier claimed retrospective gain of 11% came
   from data revisions leaking into the evaluation
-- Less epidemiological knowledge than the hand-built models. The hubs,
-  the data and the review were still built by people
+- Unclear how optimised other model submissions where and difference in compute and person power used vs other teams is huge.
+- The hubs, the data, the target for evaluation and the review of output were still built by people
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-sai-arxiv.png){width="100%"
@@ -236,14 +245,13 @@ Martinson, Brenner, Plomecka, Williams, Reich and Shamsi 2026,
 
 ::: {style="font-size: 1.15em; margin-top: 0.4em; margin-bottom: 0.9em;"}
 The people modelling outbreaks where outbreaks happen are the least
-likely to have paid access. I do not have a defence for this. I am part
-of the problem.
+likely to have paid access.
 :::
 
-- A Claude Max subscription. £200 a month, from my own pocket. My
-  institution does not cover it, and neither do most
+- A Claude Max subscription. £200 a month, from my own pocket. 
 - Who can do this work at all is narrowing. Agents make that worse
 - Real work is now possible on small open models
+- What happens when the VC funding dries up.
 
 ::: {.attribution}
 Sam Abbott, [how I LLM](https://samabbott.co.uk/how-I-llm), July 2026

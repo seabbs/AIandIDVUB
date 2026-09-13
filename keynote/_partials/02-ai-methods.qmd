@@ -1,12 +1,33 @@
 # Use of AI in past, present and future outbreak modelling
 
+## What even is AI?
+
+- Machine learning (i.e.statistics)
+- Neural networks (i.e. statistics)
+- Physics informed neural networks (i.e. statistics and mathematical modelling)
+- Universal differential equations (i.e.statistics and mathematical modelling)
+- Reinforcement learning
+- Attention based neural networks
+- Large language models
+- My friendly agentic CLI tool (i.e. claude code)
+
 ## My view {.center}
 
 ::: {style="font-size: 1.25em; margin-top: 0.6em;"}
 Many of these approaches are under-explored and not well integrated with
 the rapidly evolving, noisy, sparse data settings I have worked in.
 I am not aware of any real-world operational use so far, and I am mostly
-not convinced by the evaluations.
+not convinced by the evaluations of proposed methods.
+:::
+
+::: {style="font-size: 0.8em; margin-top: 1em; color: #4a5899;"}
+Sam Abbott, September 2026
+:::
+
+## And yet {.center}
+
+::: {style="font-size: 1.6em; margin-top: 0.8em;"}
+I am very excited about their potential.
 :::
 
 ::: {style="font-size: 0.8em; margin-top: 1em; color: #4a5899;"}
@@ -17,11 +38,7 @@ Sam Abbott, September 2026
 
 ![](../figures/keynote-map.png){height="800px" fig-align="center"
 fig-alt="A table with columns task, Kraemer et al. 2025 and in this talk.
-Eight tasks from the paper with the AI method named for each. Inference,
-forecasting, scenario modelling, spread mechanisms and decision making
-are marked in slate with where this talk puts them. A ninth brick row,
-building and checking the model, is marked not in the table, agentic AI,
-the third part of this talk."}
+Eight tasks from the paper with the AI method named for each."}
 
 ::: {.attribution}
 Table 1 of Kraemer et al. 2025, Nature 638, 623,
@@ -32,15 +49,16 @@ Table 1 of Kraemer et al. 2025, Nature 638, 623,
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Keep the compartments. Replace the rate you cannot write down with a
-  network fed by the data you have on behaviour, mobility and policy
+TODO: As in the detailed comments we need to actually define what a UDE is in this
+the bullet keep the compartments etc etc is just piint les fluff
+- Mnetioned proposed for epi in rack... flag limitations of model i.e real world reporting consideratoinis not compared to i.e a simple statistical modle as in semi-mechansitic approaches (i.e. funk et al. from ebola)
 - Philipps, Schmid and Hasenauer 2025. Noise and limited data degrade
   performance. The fitted mechanistic parameters did not match the
-  published values
-- Charlotte Holt, epiforecasts PhD student, is using UDEs to recover
+published values TODO: this should be a link to there paper but isn't
+- Charlotte Holt, epiforecasts PhD student, is using UDEs to try and recover
   behavioural change in outbreaks to improve forecasts
-- This is one answer to methods that cannot take the data sources that
-  exist
+- Potenitally most exciting where there are many difficult to model datasets that we would like to fit jointly but otherwise a quite well understood system.
+
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-seir-vs-ude.png){width="100%"
@@ -50,7 +68,7 @@ transmission rate a neural network fed by mobility, surveys, policy,
 weather and wastewater, and an arrow to cases, deaths and admissions."}
 
 ::: {.attribution}
-Rackauckas et al. 2020, [arXiv:2001.04385](https://arxiv.org/abs/2001.04385)
+Rackauckas et al. 2020c, [arXiv:2001.04385](https://arxiv.org/abs/2001.04385)
 · Philipps, Schmid and Hasenauer 2025, npj Syst Biol Appl,
 [PMC12398592](https://pmc.ncbi.nlm.nih.gov/articles/PMC12398592/)
 · behaviour-informed UDEs for COVID-19 waves, Heliyon 2024
@@ -60,18 +78,28 @@ Rackauckas et al. 2020, [arXiv:2001.04385](https://arxiv.org/abs/2001.04385)
 :::
 ::::
 
-## Renewal as a neural network layer
+## Phyiscs informed neural networks 
+
+- What they are
+- Diagram
+- Epi uses
+- Help to fit to i.e challenging surveillance data
+- been applied succesffuly in
+- Limitations
+
+## Renewal processes as a neural network layer
 
 :::: {.columns}
 ::: {.column width="40%"}
-- A renewal process is a differentiable map from $R_t$ and past
-  infections to today's infections. A layer, in network terms
-- Stack them. Inputs to $R_t$, an $R_t$ layer, the renewal layer,
-  observation layers, data streams. Gradients run back through all of it
-- Swap the $R_t$ layer for a network on behaviour data and the rest of
-  the model does not change
-- The reuse across outbreaks we did not have, with the model structure
-  kept
+- A specialised form of PINN
+- A renewal process is a autoregressive transformation of $R_t$ and past
+  infections to today's infections.
+- Can be thought of as a nearal network layer
+-  Can then be stacked with other layers. Inputs to $R_t$, an $R_t$ layer,
+  observation layers, and multiple data streams.
+- Not seen this used in research yet. Proposed in Samuel Brand's renewal examples repository.
+- TODO note advantages vs PINN using ODE, timevarying params of reneweal process from renewal.
+- TODO clean up schematic no need to focus on grads
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-renewal-layer.png){width="100%"
@@ -81,9 +109,6 @@ black forward arrows for simulation and dashed brick arrows back for
 gradients of the log likelihood."}
 
 ::: {.attribution}
-Composability with machine learning approaches, a design consideration
-in the composable modelling grant, Abbott, Funk et al., research vision,
-2026 · UDEs inside individual model components, EU grant idea note,
 2026 · Pervez, Locatello and Gavves 2024, *Mechanistic Neural Networks*
 :::
 :::
@@ -93,14 +118,17 @@ in the composable modelling grant, Abbott, Funk et al., research vision,
 
 :::: {.columns}
 ::: {.column width="40%"}
+- Traditionally in ID modelling we would most commonly use MCMC, SMC, and similar bayesian inference methods.
+- Compute intensive - especially when the model is stochastic and so a particle filter is needed to estimate the likelihood.
+- AI inference methods offer an alternative.
 - Simulate parameter and data pairs from any model you can run. Train a
-  network to map data to a posterior. No likelihood needed
+  network to map data to a posterior.
 - OutbreakFlow, Radev et al. 2021. Generation time, undetected fraction
   and reporting delays for early COVID-19 in Germany
 - Pinotti et al. 2025 fitted an SEIR model to the 2014 Sierra Leone
   Ebola data by neural posterior estimation. Jang, Candan and Chowell
   2026 compare it with ABC
-- A way to fit the models flexible enough for the data
+
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-outbreakflow2021.png){width="100%"
@@ -126,6 +154,7 @@ CC BY
 
 :::: {.columns}
 ::: {.column width="40%"}
+- What kind of model? NN - recently attention based transformer? TODO.
 - Pretrained on many series from other domains. Your series in, a
   forecast out, no fitting
 - Kalahasti et al. 2025. Strong short-term accuracy on sparse or
@@ -133,8 +162,9 @@ CC BY
   rivalled the ECDC RespiCast ensemble on influenza-like illness
 - Jafari et al. 2026. A mixture of pretrained forecasters did best on
   US influenza. CAPE pretrains on simulated epidemics
+- How did do these methods really hold up when data is changing over in prospective settings?
 - An outbreak-specific foundation model that handles data changing over
-  time is a project I would like to be involved in
+time is a project I would like to be involved in TODO: make this a quote or similar highlighting.
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-foundation.png){width="100%"
@@ -155,17 +185,19 @@ Kalahasti et al. 2025, medRxiv,
 :::
 ::::
 
-## Reinforcement learning for control
+## Reinforcement learning for control (I don't know anything about this)
 
 :::: {.columns}
 ::: {.column width="40%"}
+- TODO: What is it
+- How does it differ from i.e JUMP in Julia for optimal control (one sentence) and/or I am more familiar with. Then how does it differ as a q left in the slides
 - Libin et al. 2020. School closure policies learned with PPO on a
   379-district influenza model of Great Britain
 - Reymond et al. 2024. The Pareto front of multi-objective COVID-19
   mitigation policies on a Belgian stochastic compartmental model
-- Bolshov and Chumachenko 2026, a scoping review of 13 studies. Limited
-  prospective validation or real-world deployment testing
-- Evaluation is the open problem here too
+- Bolshov and Chumachenko 2026, a scoping review of 13 studies. **Limited
+  prospective validation or real-world deployment testing**
+
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-rl-loop.png){width="100%"
@@ -186,12 +218,3 @@ Libin et al. 2020, ECML PKDD,
 :::
 ::::
 
-## And yet {.center}
-
-::: {style="font-size: 1.6em; margin-top: 0.8em;"}
-I am very excited about their potential.
-:::
-
-::: {style="font-size: 0.8em; margin-top: 1em; color: #4a5899;"}
-Sam Abbott, September 2026
-:::

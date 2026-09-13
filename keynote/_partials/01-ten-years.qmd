@@ -20,7 +20,7 @@ Bernoulli 1760, after Dietz and Heesterbeek 2002, Math Biosci
 · BVD PHEIC 17 May 2026, [WHO DON602][don602]
 :::
 
-## My ten years
+## My last ten years
 
 ![](../figures/keynote-timeline-ten-years.png){width="92%" fig-align="center"
 fig-alt="A timeline from 2014 to 2026. A grey bar for Ebola in West
@@ -42,8 +42,7 @@ Started at LSHTM in January 2020, 4 January 2023 post at
 slides
 :::
 
-## Ebola, West Africa. CDC's 1.4 million and real-time forecasts
-
+## Ebola, West Africa.
 :::: {.columns}
 ::: {.column width="40%"}
 - Meltzer et al., CDC, fitted exponential growth without further
@@ -53,6 +52,8 @@ slides
 - Camacho, Funk and colleagues estimated $R$, new infections per
   infected person, by district in Sierra Leone and forecast weekly
 - A semi-mechanistic model. Funk et al. scored the forecasts in 2019
+- Found that they were.... 
+
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-funk2019-forecasts-panel.png){width="100%"
@@ -73,15 +74,15 @@ CC BY
 :::
 ::::
 
-## Delays from the WHO Ebola Response Team
+## Epidemiological delays from the WHO Ebola Response Team
 
 :::: {.columns}
 ::: {.column width="40%"}
 - Case investigation forms for 4,507 probable and confirmed cases by
   14 September 2014
-- Incubation period, serial interval and case fatality from the forms;
-  $R_0$ of 1.71 in Guinea, 1.83 in Liberia, 2.02 in Sierra Leone
-- More than 20,000 cases by 2 November without a change in control
+- Incubation period, serial interval and case fatality from the forms
+- These were estimated using ad-hoc methods which have been since shown due lead to bias (Sang Woo park et al. 2024) TODO get the ref in properly.
+- More than 20,000 cases by 2 November without a change in control TODO: Is this a forecast from there model? Not clear
 - Every model on the following slides leans on delay estimates like these
 :::
 ::: {.column width="60%"}
@@ -98,7 +99,7 @@ WHO Ebola Response Team 2014, NEJM 371, 1481,
 :::
 ::::
 
-## Early Wuhan estimates
+## Early Wuhan nCoV-19 estimates
 
 :::: {.columns}
 ::: {.column width="40%"}
@@ -108,7 +109,7 @@ WHO Ebola Response Team 2014, NEJM 371, 1481,
   under a range of serial intervals
 - 28 February. Whether isolating cases and their contacts could control
   new outbreaks, by simulation
-- By March we were estimating $R_t$ for the UK and a growing list of
+- By March we were estimating $R_t$ for China, Italy, the UK and a growing list of other
   countries
 :::
 ::: {.column width="60%"}
@@ -138,7 +139,8 @@ EpiNow repository created 15 March 2020
   times a weighted sum of recent infections, with delays to report
 - Weekly to SPI-M-O, the UK government's modelling advisers. Other
   governments used the dashboard directly or through their scientists
-- In 2022 I wrote that we sometimes published nonsensical estimates
+- Software widely used  by researchers and public health agencies worldwide.
+- In 2022 I wrote: "we sometimes published nonsensical estimates"
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-example-rt-panel.png){width="100%"
@@ -157,14 +159,13 @@ Abbott et al. 2020, Wellcome Open Research,
 :::
 ::::
 
-## What could not be done in time
+## What we struggled to do in real-time
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Variants. Alpha in late 2020, Delta in 2021. The routine model could
+- **Variants.** Alpha in late 2020, Delta in 2021. The routine model could
   not estimate their transmissibility on the timeline policy needed
-- So we went back to chains. One model's output became the next
-  model's data
+- So we went back to using the output from model as the input for other simple models.
 - The data changed under us. Tests to hospitalisations in 2021, tests
   unreliable and sparse by 2022, the ONS survey and sequences arriving
 - Most of the specialised models of 2021 could not take Omicron's
@@ -189,6 +190,8 @@ prevalence to incidence to antibodies to $R_t$ fitted as one model
 
 ## The tools that came out of it, 2020 to 2026
 
+TODO: No we want tools from the pandemic, then tools after i.e mpox and more cently not all in one like this.
+
 ![](../figures/keynote-packages.png){width="94%" fig-align="center"
 fig-alt="A horizontal timeline from 2020 to 2026 with lollipops for
 scoringutils, EpiNow and the Rt dashboard, EpiNow2, the European
@@ -206,10 +209,10 @@ GitHub API, 11 September 2026
 :::: {.columns}
 ::: {.column width="40%"}
 - A global outbreak. A PHEIC, WHO's highest alert, on 23 July 2022
-  with more than 16,000 cases in 75 countries
+  with more than 16,000 cases in 75 countries This can be more than one bulle point sepp l out pheic in full don't need who highest alert.
 - Endo et al. A few initial cases in a heavy-tailed sexual network gave
-  a high risk of a large outbreak. Elsewhere, outbreaks stayed small
-- Existing COVID-19 models lacked the flexibility to adapt. New
+a high risk of a large outbreak. TODO: THat isn't really what he found it was depeletion of high risk leading to turnover. counter arg was behavour change. all agree heavy tailed networks played a role
+  - Existing COVID-19 models lacked the flexibility to adapt. New, relatively simple,
   single-source models were built instead
 :::
 ::: {.column width="60%"}
@@ -230,7 +233,7 @@ figure as used in my JuliaCon 2026 composable deck
 :::
 ::::
 
-## Nowcasting for UKHSA
+## Nowcasting for UKHSA TODO spell out in full
 
 :::: {.columns}
 ::: {.column width="40%"}
