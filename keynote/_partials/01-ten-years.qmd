@@ -75,10 +75,10 @@ public domain, US government work
 - **Camacho, Funk and colleagues.** Estimated $R$, new infections per
   infected person, by district in Sierra Leone and forecast weekly with
   a semi-mechanistic model
-- **Funk et al. scored the forecasts in 2019.** Calibrated one and two
-  weeks ahead
-- Three weeks or more ahead they overestimated, by more the further out
-  they looked
+- **Funk et al. scored the forecasts in 2019.** Well calibrated up to
+  two weeks ahead, not beyond
+- Biased high at every horizon, 12% one week ahead rising to 44% at
+  five weeks
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-funk2019-forecasts-panel.png){width="100%"

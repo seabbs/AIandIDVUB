@@ -65,7 +65,7 @@ fig-alt="GitHub profile of seabbs-bot, Sam Abbott (bot), robot avatar"}
   again when either of us asks
 - **The point.** It catches the simple things the bot gets wrong, so
   other people deal with as little bot fluff as possible
-- **213 pull requests** reviewed since 17 August 2026. Each review ends
+- **225 pull requests** reviewed since 17 August 2026. Each review ends
   "Not a human review"
 - I fix what it gets right, say which findings I reject and why, and
   check each against the source myself

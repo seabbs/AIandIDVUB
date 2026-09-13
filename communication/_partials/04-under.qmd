@@ -118,9 +118,9 @@ correctness, and flow. seabbs replied Done on 3 July and closed it"}
 ::: {.column width="40%"}
 - **Enzyme** is a Julia automatic differentiation backend. Our models
   need it to run fast
-- **Eight correctness issues** opened by seabbs-bot on one day,
-  13 September 2026. Derivatives that are `NaN`, silently zero, or
-  wrong at a boundary
+- **Eight issues** opened by seabbs-bot on one day, 13 September 2026.
+  Seven are derivatives that are `NaN`, silently zero, or wrong at a
+  boundary. One is documentation
 - Each starts "Reviewed by @seabbs before posting"
 - The maintainer's reply was to open pull requests instead
 - **Some of the fixes, and some of the root causes, are at the edge of

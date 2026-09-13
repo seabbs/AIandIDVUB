@@ -16,16 +16,16 @@
 ::: {.column width="54%"}
 | Package | Since | Stars | Downloads |
 |---|---|---:|---:|
-| `EpiNow2` | 2020 | 141 | 58,073 |
-| `scoringutils` | 2020 | 64 | 63,648 |
+| `EpiNow2` | 2020 | 140 | 58,963 |
+| `scoringutils` | 2020 | 64 | 63,694 |
 | `epinowcast` | 2021 | 67 | not on the archive |
 | `epidist` | 2023 | 16 | not on the archive |
-| `primarycensored` | 2024 | 9 | 11,294 |
-| `baselinenowcast` | 2025 | 10 | 1,678 |
+| `primarycensored` | 2024 | 9 | 12,087 |
+| `baselinenowcast` | 2025 | 10 | 1,953 |
 
 ::: {.attribution}
 Stars from the GitHub API; downloads are totals from the Comprehensive
-R Archive Network, August 2026
+R Archive Network, 13 September 2026
 :::
 :::
 ::::
@@ -106,7 +106,7 @@ CDC CFA, [Behind the model: nowcasting][cfa], 2026 · Akilimali et al.
   government's modelling advisers
 - **epinowcast.** A community I created. A forum of over 50 researchers
   and public health analysts
-- A monthly seminar since May 2023, 31 so far, organised with Clara
+- A monthly seminar since May 2023, 35 so far, organised with Clara
   Brigitta and Fanny Bergström
 - In 2023 I wrote: "community >> methods or models alone"
 

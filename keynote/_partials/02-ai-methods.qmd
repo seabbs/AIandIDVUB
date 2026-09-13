@@ -95,7 +95,7 @@ Rackauckas et al. 2020, [arXiv:2001.04385](https://arxiv.org/abs/2001.04385)
   or noisy. Millevoi et al. 2024 fitted Italian COVID-19 cases and
   admissions jointly, and found extrapolation past the training window
   can go far from the data
-- Rama et al. 2026 forecast Italian influenza seasons with a PINN,
+- Rama et al. 2025 forecast Italian influenza seasons with a PINN,
   competitive on the weighted interval score
 - A point estimate by default. Uncertainty needs an extension, such as
   Bayesian PINNs, Yang, Meng and Karniadakis 2021
@@ -116,7 +116,7 @@ Raissi, Perdikaris and Karniadakis 2019, J Comput Phys,
 [doi:10.1038/s43588-021-00158-0](https://doi.org/10.1038/s43588-021-00158-0)
 · Millevoi, Pasetto and Ferronato 2024, PLOS Comput Biol,
 [doi:10.1371/journal.pcbi.1012387](https://doi.org/10.1371/journal.pcbi.1012387)
-· Rama et al. 2026, [arXiv:2506.03897](https://arxiv.org/abs/2506.03897)
+· Rama et al. 2025, [arXiv:2506.03897](https://arxiv.org/abs/2506.03897)
 · Yang, Meng and Karniadakis 2021, J Comput Phys,
 [doi:10.1016/j.jcp.2020.109913](https://doi.org/10.1016/j.jcp.2020.109913)
 :::
@@ -206,7 +206,7 @@ CC BY
   Amazon's Chronos rounds values into a vocabulary and forecasts them
   as text
 - Your series in, a forecast out, no fitting
-- Kalahasti et al. 2025. Strong short-term accuracy on sparse or
+- Kalahasti et al. 2026. Strong short-term accuracy on sparse or
   irregular data. Wang, Li and Perra 2026. TabPFN-TS, zero-shot,
   rivalled the RespiCast influenza-like illness ensemble of the
   European Centre for Disease Prevention and Control
@@ -223,8 +223,8 @@ which produces a brick forecast fan on a teal epidemic curve to the
 right, labelled your series in, a forecast out, no fitting."}
 
 ::: {.attribution}
-Kalahasti et al. 2025, medRxiv,
-[doi:10.1101/2025.02.24.25322795](https://www.medrxiv.org/content/10.1101/2025.02.24.25322795v1)
+Kalahasti et al. 2026, Epidemics,
+[doi:10.1016/j.epidem.2026.100916](https://doi.org/10.1016/j.epidem.2026.100916)
 · Wang, Li and Perra 2026, medRxiv,
 [doi:10.64898/2026.05.11.26352889](https://www.medrxiv.org/content/10.64898/2026.05.11.26352889v1.full)
 · Jafari et al. 2026, [arXiv:2606.19560](https://arxiv.org/abs/2606.19560)

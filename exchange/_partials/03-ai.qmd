@@ -114,8 +114,8 @@ binomial likelihood on each stream."}
   prospective settings?
 
 ::: {.attribution}
-Kalahasti et al. 2025, medRxiv,
-[doi:10.1101/2025.02.24.25322795](https://www.medrxiv.org/content/10.1101/2025.02.24.25322795v1)
+Kalahasti et al. 2026, Epidemics,
+[doi:10.1016/j.epidem.2026.100916](https://doi.org/10.1016/j.epidem.2026.100916)
 · Liu et al. 2026, CAPE, KDD
 :::
 :::

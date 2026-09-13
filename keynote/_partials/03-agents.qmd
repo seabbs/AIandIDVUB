@@ -33,12 +33,12 @@ box, you, read it, merge or send back."}
 ::: {.column width="47%"}
 ![](../figures/keynote-bot-prs.png){width="100%"
 fig-alt="Bar chart of seabbs-bot pull requests opened per month in
-2026: 17, 92, 78, 61, 124, 531, 744, 399, and 98 for September to the
-11th shown in grey. Footer: 2,144 total, 85.5% merged, 11.9% closed
+2026: 17, 92, 78, 61, 124, 531, 744, 399, and 119 for September to the
+13th shown in grey. Footer: 2,165 total, 85.2% merged, 11.9% closed
 unmerged."}
 
 ::: {.attribution}
-GitHub search API `total_count` per month, 11 September 2026;
+GitHub search API `total_count` per month, 13 September 2026;
 `seabbs-bot` created 23 January 2026
 :::
 :::
@@ -70,7 +70,7 @@ merged 8 September 2026
 - **epidist.** A meta-analysis model for published delay estimates,
   from scratch in about a week
 - **EpiDelays.** A UHasselt package rewired onto the primarycensored
-  likelihood in two days
+  likelihood in two days. The pull request is still open
 - **primarycensored.** The generalised gamma integral solved
   analytically by an agent. Three earlier ones we solved by hand
 :::

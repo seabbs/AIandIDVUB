@@ -6,7 +6,7 @@ Run with:
 
 Writes figures/keynote-bot-prs.png.
 Counts are recorded here so the figures rebuild without re-querying.
-Sources: notes/research-agentic.md section 5, run 2026-09-11 with
+Sources: notes/research-agentic.md section 5, rerun 2026-09-13 with
 `gh api search/issues ... --jq .total_count` per month, and
 `git -C ~/code/seabbs/BVDOutbreakSize log --format='%an' | sort | uniq -c`
 on the local clone the same day (497 commits).
@@ -41,10 +41,10 @@ plt.rcParams.update(
     }
 )
 
-# seabbs-bot pull requests opened per month, 2026. September is to the 11th.
+# seabbs-bot pull requests opened per month, 2026. September is to the 13th.
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"]
-PRS = [17, 92, 78, 61, 124, 531, 744, 399, 98]
-TOTAL, MERGED, UNMERGED = 2144, 1834, 256
+PRS = [17, 92, 78, 61, 124, 531, 744, 399, 119]
+TOTAL, MERGED, UNMERGED = 2165, 1844, 257
 
 
 def bot_prs():
@@ -55,7 +55,7 @@ def bot_prs():
            edgecolor=[TEAL] * 8 + [GREY], linewidth=1.2)
     for m, v in zip(MONTHS, PRS):
         ax.text(m, v + 14, f"{v:,}", ha="center", va="bottom", fontsize=15)
-    ax.text(MONTHS[-1], PRS[-1] + 70, "to 11 Sep", ha="center",
+    ax.text(MONTHS[-1], PRS[-1] + 70, "to 13 Sep", ha="center",
             va="bottom", fontsize=12, color=GREY)
     ax.set_ylabel("Pull requests opened")
     ax.set_ylim(0, max(PRS) * 1.18)
