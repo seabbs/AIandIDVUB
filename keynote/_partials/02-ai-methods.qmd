@@ -97,7 +97,8 @@ Rackauckas et al. 2020, [arXiv:2001.04385](https://arxiv.org/abs/2001.04385)
   can go far from the data
 - Rama et al. 2026 forecast Italian influenza seasons with a PINN,
   competitive on the weighted interval score
-- Deterministic, so no uncertainty quantification by default
+- A point estimate by default. Uncertainty needs an extension, such as
+  Bayesian PINNs, Yang, Meng and Karniadakis 2021
 :::
 ::: {.column width="58%"}
 ![](../figures/keynote-pinn.png){width="100%"
@@ -116,6 +117,8 @@ Raissi, Perdikaris and Karniadakis 2019, J Comput Phys,
 · Millevoi, Pasetto and Ferronato 2024, PLOS Comput Biol,
 [doi:10.1371/journal.pcbi.1012387](https://doi.org/10.1371/journal.pcbi.1012387)
 · Rama et al. 2026, [arXiv:2506.03897](https://arxiv.org/abs/2506.03897)
+· Yang, Meng and Karniadakis 2021, J Comput Phys,
+[doi:10.1016/j.jcp.2020.109913](https://doi.org/10.1016/j.jcp.2020.109913)
 :::
 :::
 ::::
@@ -127,7 +130,11 @@ Raissi, Perdikaris and Karniadakis 2019, J Comput Phys,
 - A specialised form of physics-informed neural network
 - A renewal process is an autoregressive transformation of the
   reproduction number $R_t$ and past infections to today's infections
-- Can be thought of as a neural network layer
+  $$I_t = R_t \sum_{s=1}^{S} g_s\, I_{t-s}$$
+- That is a one-dimensional convolution layer, $y_t = \sum_s w_s x_{t-s}$,
+  with the weights fixed to the generation interval $g$, gated by $R_t$,
+  and fed back its own output. A recurrent layer, differentiable in
+  $R_t$ and $g$
 - Can then be stacked with other layers. Inputs to $R_t$, an $R_t$
   layer, observation layers, and multiple data streams
 - Against a PINN on a differential equation, time-varying parameters are
