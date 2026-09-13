@@ -250,9 +250,10 @@ Sam Abbott, September 2026
 - Reinforcement learning. A policy, a network from the state of the
   epidemic to an action, is learned by trial and error against a
   simulator to maximise a reward
-- Optimal control needs the model equations. Reinforcement learning
-  only needs to run the simulator. Where does it beat optimal control on
-  the same model? An open question for me
+- Optimal control solves for the best actions from the model's
+  equations, so it needs a model it can differentiate. Reinforcement
+  learning only needs to run the simulator. Where does it beat optimal
+  control on the same model? An open question for me
 - Libin et al. 2020. School closure policies learned with proximal
   policy optimisation (PPO) on a 379-district influenza model of Great
   Britain
