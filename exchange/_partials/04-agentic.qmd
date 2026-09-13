@@ -102,38 +102,6 @@ June 2026 fit; the live report is at
 :::
 ::::
 
-## What else went wrong
-
-:::: {.columns}
-::: {.column width="40%"}
-- **Forecasts.** Bugs keep turning up. Five defects in the one-week-ahead
-  forecast, all in the published report, fixed in August. Four weeks
-  ahead, $R_t$ ran from 0.245 to 14.9
-- **Automatic differentiation.** Enzyme cannot differentiate the joint
-  model, open since July. Mooncake, the backend we use, paid for
-  type-unstable closures until a fix in September halved the gradient
-- **Observation models.** Agents proposed models that did not match how
-  the response works. Bed capacity as a walk that could only rise. One
-  length of stay for patients who died and patients discharged
-- Found by looking at plots, by profiling, and by domain knowledge
-
-::: {.attribution}
-`docs/src/news.md` of [BVDOutbreakSize][bvd], v1.15.0 and v1.18.0
-:::
-:::
-::: {.column width="60%"}
-![](../figures/exchange-agent-wrong.png){width="100%"
-fig-alt="Three cards. Forecasts: a fan in log R_t that widens linearly
-with the horizon as shipped against one that widens with its square root
-as fixed, caught by looking at a plot. Automatic differentiation: bars
-for one Mooncake gradient of the joint model, 21 ms then 10 ms, and a
-note that Enzyme cannot differentiate it at all, caught by profiling.
-Observation models: a staircase that only rises, as written, against a
-line with a trend and mean-reverting deviation, as fixed, caught by
-domain knowledge."}
-:::
-::::
-
 ## Agents that search over models
 
 :::: {.columns}
