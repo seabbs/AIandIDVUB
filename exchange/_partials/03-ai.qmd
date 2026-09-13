@@ -101,15 +101,15 @@ binomial likelihood on each stream."}
 
 :::: {.columns}
 ::: {.column width="40%"}
-- **Time series foundation models.** Pretrained on many series from
-  other domains. Your series in, a forecast out, no fitting
-- Good a few weeks out on sparse data. Less good at peaks and turning
-  points
-- **CAPE** pretrains on simulated compartmental epidemics. A model of
-  outbreaks, but of the final curves
 - **Outbreak data change after the fact.** On the DRC model the daily
   suspected stream stopped on 6 August. In May INSP, the DRC's public
   health institute, reclassified suspected cases
+- **So pretrain on outbreaks as they were seen at the time**, not on
+  the final curves. CAPE pretrains on simulated epidemics, but on the
+  curves
+- **We can simulate what it would need.** Composable models generate
+  early and mid-outbreak data, including complex surveillance streams,
+  which could be the training set
 - How do these methods hold up when the data change under them, in
   prospective settings?
 
