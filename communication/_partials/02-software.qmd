@@ -7,6 +7,8 @@
 - **Who runs ours.** The US Centers for Disease Control and Prevention,
   UKHSA, the Robert Koch Institute and the World Health Organization
 - **Users run the defaults**, so the defaults are the advice
+- **Documentation carries broader advice**, on how to organise an
+  analysis, not only how to call a function
 - **The rest is support.** We meet analysts from health agencies and
   answer their questions
 - In some cases the package is too complex for anyone else to use
