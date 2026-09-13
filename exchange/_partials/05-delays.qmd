@@ -188,10 +188,26 @@ chain = sample(delay_model(values, weights),
 - [`CensoredDistributions.jl`][lk-censoreddistributionsjl]. Each
   adjustment is a wrapper on a `Distributions.jl` object. The stack is
   still a distribution, so Turing takes it as it is
-- Less clear where AI plugs in here. A learned delay distribution?
-  Learned or amortised inference trained on your simulators?
 :::
 ::::
+
+## I do not think AI plugs in here, bar the algebra
+
+::: {style="font-size: 1.1em; margin-top: 0.4em;"}
+- **No crossover that I can see** between this work and AI methods.
+  It has taken a lot of my time
+- **The exception is the algebra.** Language models have become good at
+  solving integrals analytically
+- **The generalised gamma.** Solved and added to `primarycensored` in R
+  and Stan by an agent, merged 10 September 2026. The three before it we
+  did by hand
+- Every closed form is one fewer numerical integral in every likelihood
+  evaluation
+:::
+
+::: {.attribution}
+[epinowcast/primarycensored pull request 334](https://github.com/epinowcast/primarycensored/pull/334)
+:::
 
 [lk-censoreddistributionsjl]: https://github.com/EpiAware/CensoredDistributions.jl
 [lk-epidist]: https://epidist.epinowcast.org/

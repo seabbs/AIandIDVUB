@@ -41,8 +41,6 @@ stage 8, sensitivity analyses and figures at stage 9."}
   virus disease, beside the study the estimates came from
 - **`EpiDelays`.** A UHasselt package rewired onto the
   `primarycensored` likelihood in two days
-- **`primarycensored`.** The generalised gamma integral solved
-  analytically by an agent. Three earlier ones we solved by hand
 - What kind of infectious disease modelling language works well for
   agents?
 :::
