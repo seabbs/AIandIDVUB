@@ -30,29 +30,30 @@ During COVID-19 we communicated model outputs to three audiences.
 Government, through weekly estimates and reports to the UK's scientific
 advisory groups and the consensus statements they produced.
 The public, through a dashboard of reproduction number estimates that ran
-from 2020 to 2022 and sometimes published estimates that made no sense.
-Other governments and their scientists used it too, and checking at that
-scale was very hard.
+from 2020 to 2022.
+Other governments and their scientists used it too.
+Checking at that scale was very difficult, and we sometimes published
+estimates that made no sense.
 Other scientists, through collaborative forecast hubs, where a forecast
 becomes part of an ensemble and can be hard to learn from.
+Agreeing how forecasts are scored is communication too.
 
 The software we built was a fourth channel.
+A package carries the methods, assumptions and defaults of the people who
+wrote it to every analyst who runs it.
 Users run the defaults, so the defaults are the advice.
-The limits of a method travel less well than the method.
-Agreeing how forecasts are scored is communication too.
-The epinowcast community and our evaluation tools were attempts to
-communicate through software and the people around it.
+The epinowcast community was an attempt to communicate through software
+and the people around it.
 
-The second half is communication when both the writer and the reader have
-a language model.
+In the second half of the talk we address communication in the age of AI,
+with a specific focus on agentic AI.
 I describe how I use coding agents, how I make that visible with a bot
 account and a published prompt log, and what happens when my bots and other
 people's bots start filing issues on each other's repositories.
 Many people now get their information from a language model, so I ask what
 one says about this work and whether it is right.
-I end with a question.
-When the writer and the reader both have a language model, what is the
-person for?
+I end by asking what the person is for when the writer and the reader
+both have a language model.
 :::
 
 The organisers asked for a communication-focused lecture of about 30

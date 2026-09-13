@@ -27,27 +27,29 @@ Sam Abbott
 ::: {.abstract}
 Infectious disease modelling has a long history, but the last ten years
 changed what it is asked to do during an outbreak and how fast.
-The first part is the outbreaks we worked on.
-Ebola in West Africa in 2014, where real-time modelling and its overreach
-both arrived in public view.
+Firstly, the outbreaks we worked on.
+Ebola in West Africa in 2014, where real-time modelling arrived in public
+view.
 COVID-19, where we produced reproduction number estimates daily for
 thousands of locations and weekly for the UK government's advisers.
 Mpox in 2022, where the COVID-19 models could not be reused.
 The 2026 outbreak of Ebola disease caused by Bundibugyo virus in the
-Democratic Republic of the Congo, where we refit a joint model with each
-situation report.
+Democratic Republic of the Congo, where again we could not reuse past work
+and built a joint model that is refit with each situation report.
 Then how an outbreak gets modelled and what keeps going wrong.
 
-The second part is the use of AI methods in outbreak modelling.
+Secondly, the use of AI methods in outbreak modelling.
 Universal differential equations, normalising flows, foundation models and
-reinforcement learning, each linked to a problem from the first part.
-They are under-explored and have seen little operational use so far.
+reinforcement learning.
+They are under-explored and have seen little operational use that I am
+aware of.
 
-The third part is agentic AI and outbreak modelling.
-Coding agents wrote the model of the current outbreak.
+Thirdly, agentic AI and outbreak modelling.
+Coding agents, working to a written modelling workflow, built the
+Bundibugyo model: they read the French situation reports, digitised the
+onset curve, wrote and checked the code, and refit it with every update.
 What that made possible, what went wrong, and agents that search over
 models.
-I close with who gets to do this.
 :::
 
 The organisers asked me to open the workshop with a keynote of 20 to 30
