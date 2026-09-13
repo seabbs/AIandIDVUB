@@ -65,6 +65,36 @@ January 2026, and the CFA $R_t$ page's change of method after 1 June 2026
 :::
 ::::
 
+## Limitations first. The Bundibugyo report, 2026
+
+:::: {.columns}
+::: {.column width="40%"}
+- **The live report** on the Bundibugyo virus disease outbreak puts its
+  limitations before the methods, in bullets, most consequential first
+- The dashboard's limits were on a page few reached. This report leads
+  with them
+- **The feedback** is that this is off-putting
+- How should we warn?
+
+> Every estimate is a model-based extrapolation under strong assumptions,
+> not a measurement.
+>
+> *Abbott, Sherratt, Brand and Funk, 2026*
+:::
+::: {.column width="60%"}
+![](../figures/comms-shot-bvd-limits.png){height="600px"
+fig-align="center"
+fig-alt="The Limitations section of the live BVDOutbreakSize report. A
+heading, one sentence on how they are grouped, an expand toggle, and the
+first bullets under Data and what it can support"}
+
+::: {.attribution}
+[BVDOutbreakSize analysis page](https://epiforecasts.io/BVDOutbreakSize/stable/analysis#Limitations),
+v1.18.0, screenshot 12 September 2026
+:::
+:::
+::::
+
 ## The epinowcast community
 
 :::: {.columns}
