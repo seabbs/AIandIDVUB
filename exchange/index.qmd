@@ -1,6 +1,5 @@
 ---
 title: "Research exchange with the VUB AI group and SIMID"
-subtitle: "Composable infectious disease modelling, and where AI might plug in"
 description: >-
   What I work on and who with, composable EpiAware modelling, recent
   delays work, and where AI might plug in. A morning of short talks

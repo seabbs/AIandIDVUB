@@ -1,6 +1,6 @@
 ---
-title: "Composable infectious disease modelling, and where AI might plug in"
-subtitle: "Research exchange, VUB AI Lab"
+title: "Research exchange"
+subtitle: "VUB AI group and UH-UA SIMID group"
 author: "Sam Abbott"
 institute: "London School of Hygiene & Tropical Medicine"
 date: 2026-09-15

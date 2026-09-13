@@ -81,9 +81,9 @@ Moderated by Philippe Beutels.
 ::: {.talk-card}
 [15 Sep, 09:45–10:15]{.talk-time}
 
-### [Composable infectious disease modelling, and where AI might plug in](exchange/index.qmd)
+### [Research exchange](exchange/index.qmd)
 
-[Research exchange, VUB AI group and SIMID]{.talk-sub}
+[VUB AI group and UH-UA SIMID group]{.talk-sub}
 
 The groups I work with and what I work on, then composable models, recent
 delays work and the workflow, at a morning of short talks at the AI
