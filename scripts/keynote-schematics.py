@@ -329,7 +329,7 @@ def renewal_layer():
 # 5b. A physics-informed neural network ------------------------------------
 
 def pinn():
-    fig, ax = canvas(11, 5.2)
+    fig, ax = canvas(13, 5.2)
     box(ax, 0.2, 2.35, 1.1, 0.7, "time $t$", colour=GREY, fs=12)
     arrow(ax, (1.3, 2.7), (1.9, 2.7), colour=GREY, lw=2)
     box(ax, 1.9, 1.75, 2.4, 1.9, "", colour=BRICK)
@@ -340,23 +340,27 @@ def pinn():
     box(ax, 4.9, 1.65, 2.0, 0.8, r"$\beta(t)$", colour=SLATE, fs=12.5)
     arrow(ax, (4.3, 3.05), (4.9, 3.45), colour=TEAL, lw=1.8)
     arrow(ax, (4.3, 2.35), (4.9, 2.05), colour=SLATE, lw=1.8)
+    # An observation model sits between the state and the data. It can be
+    # mechanistic, or a second network when the streams are complex.
+    box(ax, 7.3, 3.2, 2.9, 1.3, "observation model\nmechanistic, or a second\n"
+        "network for complex streams", colour=BRICK, fs=10.5, ls="--")
     # Two losses.
-    box(ax, 7.6, 3.45, 2.7, 1.05, "Data loss\nmisfit to reported cases",
+    box(ax, 10.5, 3.45, 2.3, 1.05, "Data loss\nmisfit to the streams",
         colour=TEAL, fs=11)
     box(ax, 7.6, 1.15, 2.7, 1.25, "Physics loss\nresidual of\n"
         r"$\dot S = -\beta S I / N$, ...", colour=SLATE, fs=11)
-    arrow(ax, (6.9, 3.6), (7.6, 3.85), colour=TEAL, lw=1.8)
+    arrow(ax, (6.9, 3.6), (7.3, 3.85), colour=TEAL, lw=1.8)
+    arrow(ax, (10.2, 3.85), (10.5, 3.97), colour=TEAL, lw=1.8)
     arrow(ax, (6.9, 3.25), (7.6, 2.3), colour=TEAL, lw=1.4)
     arrow(ax, (6.9, 2.05), (7.6, 1.85), colour=SLATE, lw=1.8)
-    label(ax, 7.75, 2.9, "autodiff gives $\\dot S, \\dot I, \\dot R$",
+    label(ax, 7.75, 2.85, "autodiff gives $\\dot S, \\dot I, \\dot R$",
           colour=GREY, fs=9.5, ha="left")
-    box(ax, 7.85, 0.15, 2.2, 0.6, "one loss, summed", colour=BRICK, fs=11,
+    box(ax, 10.5, 0.15, 2.3, 0.6, "one loss, summed", colour=BRICK, fs=11,
         weight="bold")
-    arrow(ax, (8.95, 1.15), (8.95, 0.75), colour=BRICK, lw=1.8)
-    arrow(ax, (10.3, 3.97), (10.6, 3.97), colour=BRICK, lw=1.4, style="-")
-    arrow(ax, (10.6, 3.97), (10.6, 0.45), colour=BRICK, lw=1.4, style="-")
-    arrow(ax, (10.6, 0.45), (10.05, 0.45), colour=BRICK, lw=1.4)
-    label(ax, 8.95, 4.85, "the data pull the fit, the equation holds it "
+    arrow(ax, (8.95, 1.15), (8.95, 0.45), colour=BRICK, lw=1.4, style="-")
+    arrow(ax, (8.95, 0.45), (10.5, 0.45), colour=BRICK, lw=1.4)
+    arrow(ax, (11.65, 3.45), (11.65, 0.75), colour=BRICK, lw=1.8)
+    label(ax, 7.6, 4.9, "the data pull the fit, the equation holds it "
           "to the model", colour=INK, fs=11.5)
     label(ax, 3.1, 0.6, "trained on both losses at once,\nnetwork weights "
           "and $\\beta(t)$ together", colour=GREY, fs=11, style="italic")

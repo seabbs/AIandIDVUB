@@ -87,7 +87,8 @@ Rackauckas et al. 2020, [arXiv:2001.04385](https://arxiv.org/abs/2001.04385)
 ::: {.column width="42%"}
 - A physics-informed neural network (PINN) maps time to the model
   state, $S(t)$, $I(t)$, $R(t)$. The loss adds the residual of the
-  differential equation to the misfit with the data
+  differential equation to the misfit with the data, through an
+  observation model that can itself be a network
 - Time-varying parameters such as $\beta_t$ come out of the same fit.
   Kharazmi et al. 2021 on New York City, Rhode Island, Michigan and Italy
 - The equation constrains the fit where surveillance series are short
@@ -101,9 +102,11 @@ Rackauckas et al. 2020, [arXiv:2001.04385](https://arxiv.org/abs/2001.04385)
 ::: {.column width="58%"}
 ![](../figures/keynote-pinn.png){width="100%"
 fig-alt="A schematic. A time input feeds a neural network. The network
-outputs the model state S, I and R and the transmission rate. The outputs
-go to two loss boxes, a data misfit against reported cases and a physics
-residual of the SIR equations. The two losses sum to one training loss."}
+outputs the model state S, I and R and the transmission rate. The state
+passes through an observation model, mechanistic or a second network,
+to a data loss against the observed streams, and with the rate to a
+physics residual of the SIR equations. The two losses sum to one
+training loss."}
 
 ::: {.attribution}
 Raissi, Perdikaris and Karniadakis 2019, J Comput Phys,
