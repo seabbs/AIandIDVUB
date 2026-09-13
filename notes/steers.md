@@ -333,3 +333,12 @@ Keep `keynote/_partials/03-agents.qmd` "Who gets to do this" as the closing
 slide, unchanged.
 The abstract line about closing on it stays cut, as he asked earlier.
 No agent should propose moving or cutting this slide again.
+
+## 12 and 13 September, the passes
+
+Several slide-by-slide passes over all three decks with short specific
+steers: cut, move, retitle, check this number, make this a blockquote,
+add a bullet here.
+Well over a hundred in total, not recorded individually.
+Sam also rewrote some passages directly in the source.
+The prompts page summarises this under "The passes".

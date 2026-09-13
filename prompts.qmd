@@ -190,6 +190,20 @@ Use a lower powered series of subagents.
 
 ::::
 
+### The passes
+
+After those steers the work changed shape.
+Over 12 and 13 September I went through every deck several times, slide by
+slide, and the prompts became specific.
+Cut this bullet.
+Move that slide before this one.
+This heading is wrong, this number is not what the source says, check that
+claim against the paper.
+There were well over a hundred of these, and they are not reproduced here.
+The running file in the repo has the earlier ones verbatim.
+Some passages I rewrote by hand in the source rather than asking.
+The commit history shows which.
+
 ## How it was built
 
 Five research agents ran first, before any slide was written, and wrote
