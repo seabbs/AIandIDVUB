@@ -201,8 +201,12 @@ This heading is wrong, this number is not what the source says, check that
 claim against the paper.
 There were well over a hundred of these, and they are not reproduced here.
 The running file in the repo has the earlier ones verbatim.
-Some passages I rewrote by hand in the source rather than asking.
-The commit history shows which.
+Some passages I rewrote by hand in the source rather than asking, for
+example the keynote edits in [02ca043][c1] and the exchange wording in
+[841b2a7][c2].
+
+[c1]: https://github.com/seabbs/AIandIDVUB/commit/02ca043
+[c2]: https://github.com/seabbs/AIandIDVUB/commit/841b2a7
 
 ## How it was built
 

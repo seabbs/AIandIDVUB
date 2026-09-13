@@ -278,12 +278,12 @@ at a box reading keep the best, branch again."}
 - Prospective, 2025/26 season. Matched or beat the CDC ensembles, and
   ranked first of 43 eligible FluSight, 12 COVID-19 and 4 RSV
   submissions
+- No measure of how far its forecasts sat from the other top models.
+  For influenza it scored 8% better than the hub ensemble
 - Bracher and Funk 2026. The 11% retrospective gain claimed in Aygün et
   al. 2026 came from data revisions leaking into the evaluation
 - 207,500 candidates scored. My guess is the gap in compute and people
   against other teams is huge
-- The hubs, the data, the target and the review were still built by
-  people
 :::
 ::: {.column width="55%"}
 ![](../figures/keynote-sai-arxiv.png){width="100%"
