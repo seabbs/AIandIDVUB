@@ -164,6 +164,18 @@ fig-alt="GitHub issue: Your Wisconsin data looks horribly flawed"}
 :::
 ::::
 
+## Where it mattered
+
+> Probably our most useful contributions from this work were in the UK
+> where we knew the data and its limitations particularly well and
+> interacted directly and frequently with policy makers.
+>
+> *Abbott and Funk, 2022*
+
+::: {.attribution}
+[Abbott and Funk 2022, $R_t$ reflections](https://samabbott.co.uk/posts/2022-03-25-rt-reflections/)
+:::
+
 ## Collaborative forecasting hubs
 
 :::: {.columns}
@@ -215,15 +227,3 @@ Bosse et al.
 :::
 :::
 ::::
-
-## Where it mattered
-
-> Probably our most useful contributions from this work were in the UK
-> where we knew the data and its limitations particularly well and
-> interacted directly and frequently with policy makers.
->
-> *Abbott and Funk, 2022*
-
-::: {.attribution}
-[Abbott and Funk 2022, $R_t$ reflections](https://samabbott.co.uk/posts/2022-03-25-rt-reflections/)
-:::
