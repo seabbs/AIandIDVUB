@@ -112,13 +112,13 @@ correctness, and flow. seabbs replied Done on 3 July and closed it"}
 :::
 ::::
 
-## Seven Enzyme issues in a day
+## Eight Enzyme issues in a day
 
 :::: {.columns}
 ::: {.column width="40%"}
 - **Enzyme** is a Julia automatic differentiation backend. Our models
   need it to run fast
-- **Seven correctness issues** opened by seabbs-bot on one day,
+- **Eight correctness issues** opened by seabbs-bot on one day,
   13 September 2026. Derivatives that are `NaN`, silently zero, or
   wrong at a boundary
 - Each starts "Reviewed by @seabbs before posting"
@@ -129,8 +129,9 @@ correctness, and flow. seabbs replied Done on 3 July and closed it"}
 ::: {.column width="60%"}
 ![](../figures/comms-shot-enzyme.png){width="100%"
 fig-alt="GitHub issue search on EnzymeAD/Enzyme.jl for author seabbs-bot.
-Seven open issues on besselk, logistic, xlogx, beta_inc, gamma_inc,
-xlog1py and the EnzymeRules docs, all opened within four hours"}
+Eight open issues, on a Symmetric matrix product, besselk, logistic,
+xlogx, beta_inc, gamma_inc, xlog1py and the EnzymeRules docs, all opened
+on one day"}
 
 ::: {.attribution}
 [Enzyme.jl issues by seabbs-bot](https://github.com/EnzymeAD/Enzyme.jl/issues?q=is%3Aissue+author%3Aseabbs-bot),
@@ -180,7 +181,7 @@ on [EpiAware](https://epiaware.org) `main`, checked 12 August 2026
   tools. "What is EpiNow2 and who maintains it?"
 - Both said I maintain it. I created and developed it
 - **Opus** named three contributors who are not in the author list, and
-  a function removed in 1.9.0
+  a function removed in 1.8.0
 - **Sonnet** claimed less and got less wrong
 :::
 ::: {.column width="60%"}
@@ -195,7 +196,7 @@ Sophie Meakin, Nikos Bosse, James Azam, [Sam Brand]{.llm-wrong},
 
 **Opus.** "delays are specified through ... `Gamma()`, `LogNormal()`
 and [`fix_dist()`]{.llm-wrong}"
-[renamed in 1.6.0, removed in 1.9.0]{.llm-note}
+[renamed in 1.6.0, removed in 1.8.0]{.llm-note}
 
 **Sonnet.** "It's part of the epiforecasts ecosystem of tools and is
 maintained primarily by Sam Abbott"

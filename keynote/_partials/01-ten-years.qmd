@@ -19,7 +19,7 @@ Bernoulli 1760, after Dietz and Heesterbeek 2002, Math Biosci
 · Fraser et al. 2009, Science
 · WHO notified of Ebola in Guinea, 23 March 2014
 · mpox, WHO, 23 July 2022
-· Bundibugyo virus, [WHO DON602][don602], 17 May 2026
+· Bundibugyo virus, [WHO DON602][don602], 16 May 2026
 :::
 
 ## My last ten years
@@ -47,7 +47,7 @@ Started at LSHTM in January 2020, 4 January 2023 post at
   Exponential growth without further intervention
 - 550,000 cases by 20 January 2015, 1.4 million corrected for
   under-reporting
-- About 21,000 had occurred by mid January
+- About 18,500 had occurred in those two countries by mid January
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-cdc-meltzer2014.png){width="100%"
@@ -60,7 +60,8 @@ cases and daily beds in use in Liberia and Sierra Leone combined, March
 
 ::: {.attribution}
 Meltzer et al. 2014, MMWR 63 Suppl 3
-· CDC 2016, MMWR 65 Suppl 3, on the 21,000
+· WHO Ebola situation report, 14 January 2015, data to 12 January, via
+[ECDC](https://www.ecdc.europa.eu/en/news-events/epidemiological-update-outbreak-ebola-virus-disease-west-africa-15-january-2015)
 · figure: Appendix Figure 2, Meltzer et al. 2014, MMWR 63 Suppl 3,
 public domain, US government work
 :::
@@ -100,8 +101,8 @@ CC BY
 
 :::: {.columns}
 ::: {.column width="40%"}
-- **Case investigation forms** for 4,507 probable and confirmed cases
-  by 14 September 2014
+- **Case investigation forms** for 4,010 of the 4,507 probable and
+  confirmed cases reported by 14 September 2014
 - **Incubation period, serial interval and case fatality** from the
   forms, by ad hoc methods. Park et al. showed in 2024 that these lead
   to biased estimates
@@ -121,7 +122,7 @@ WHO Ebola Response Team 2014, NEJM 371, 1481,
 [doi:10.1056/NEJMoa1411100](https://doi.org/10.1056/NEJMoa1411100)
 · Park et al. 2024, medRxiv,
 [doi:10.1101/2024.01.12.24301247](https://doi.org/10.1101/2024.01.12.24301247)
-· 14,383 cases from CDC 2014, MMWR 63(46), 1130
+· 14,383 cases from CDC 2014, MMWR 63(46), 1064
 :::
 :::
 ::::
@@ -356,8 +357,9 @@ stream, cases, confirmed, deaths and exports, and one for the joint fit,
 which sits inside the spread of the single-stream fits."}
 
 ::: {.attribution}
-McCabe et al., Imperial College London, 18 and 20 May 2026,
-[doi:10.25560/130007](https://doi.org/10.25560/130007)
+McCabe et al., Imperial College London, 18 May 2026,
+[doi:10.25560/130007](https://doi.org/10.25560/130007), and the 20 May
+update, [doi:10.25560/130053](https://doi.org/10.25560/130053)
 · [BVDOutbreakSize][bvd-repo], first commit 19 May 2026
 · figure with data to 7 June 2026
 :::
@@ -371,7 +373,7 @@ McCabe et al., Imperial College London, 18 and 20 May 2026,
 - The streams in the situation reports. Suspected and confirmed cases
   and deaths, laboratory, isolation, recoveries, a digitised onset
   curve, Uganda exports and a genomic bound
-- Updated up to daily. 145 sets of results published since 20 May
+- Updated up to daily. 123 sets of results published since 20 May
 - A one-week-ahead forecast scored against the data that came later
 - No other regularly updated public model of this outbreak that I know
   of
@@ -402,7 +404,7 @@ re-render. Quarto drops hidden slides from the HTML. -->
 - The streams in the situation reports. Suspected and confirmed cases
   and deaths, laboratory, isolation, recoveries, a digitised onset
   curve, Uganda exports and a genomic bound
-- Updated up to daily. 145 sets of results published since 20 May
+- Updated up to daily. 123 sets of results published since 20 May
 - A one-week-ahead forecast scored against the data that came later
 - No other regularly updated public model of this outbreak that I know
   of

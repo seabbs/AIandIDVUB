@@ -190,7 +190,7 @@ README and `docs/src/news.md` of [BVDOutbreakSize][bvd-repo], read
 - SitRep 087. The y-axis grid moved from steps of 20 to 25. Caught only
   because it broke the reporting-triangle invariant on dates that should
   have been stable
-- SitRep 098. A losslessly encoded image read about 7% high against
+- SitRep 098. A losslessly encoded image read about 10% high against
   both neighbours and was excluded
 - Every fix must reproduce every previously committed block unchanged
 :::
@@ -267,7 +267,7 @@ at a box reading keep the best, branch again."}
 :::
 ::::
 
-## Google's tree search topped the CDC forecast hubs
+## Google's tree search topped the CDC forecast hubs {.smaller}
 
 :::: {.columns}
 ::: {.column width="45%"}
@@ -278,8 +278,8 @@ at a box reading keep the best, branch again."}
 - Prospective, 2025/26 season. Matched or beat the CDC ensembles, and
   ranked first of 43 eligible FluSight, 12 COVID-19 and 4 RSV
   submissions
-- Bracher and Funk 2026. The 11% retrospective gain claimed earlier came
-  from data revisions leaking into the evaluation
+- Bracher and Funk 2026. The 11% retrospective gain claimed in Aygün et
+  al. 2026 came from data revisions leaking into the evaluation
 - 207,500 candidates scored. My guess is the gap in compute and people
   against other teams is huge
 - The hubs, the data, the target and the review were still built by
@@ -294,6 +294,7 @@ Brenner, Plomecka, Williams, Reich and Shamsi, submitted 15 May 2026."}
 ::: {.attribution}
 Martinson et al. 2026,
 [arXiv:2605.16238](https://arxiv.org/abs/2605.16238)
+· Aygün et al. 2026, Nature 654, 909
 · Bracher and Funk 2026,
 [arXiv:2608.05883](https://arxiv.org/html/2608.05883)
 · team folders `Google_SAI-*` in the three CDC hubs on GitHub

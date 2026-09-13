@@ -149,7 +149,7 @@ fig-alt="A single bar of 114 claims, 67 marked changed and 47 marked stood"}
 
 ::: {.attribution}
 [seabbs/how-I-llm](https://github.com/seabbs/how-I-llm) commits
-`8c7e834` and `1fceb9a`, August 2026
+`8c7e834` and `1fceb9a`, 30 July 2026
 :::
 :::
 ::::

@@ -42,7 +42,7 @@ CROPS = [
      150, 300, 1535, 918),
     # Enzyme.jl issues by seabbs-bot: the search box and the seven issues.
     ("comms-shot-enzyme-issues", "comms-shot-enzyme",
-     420, 380, 2125, 1220),
+     420, 380, 2125, 1360),
     # The live BVD report: the Limitations heading and first bullets.
     ("comms-shot-bvd-limitations", "comms-shot-bvd-limits",
      560, 735, 1620, 1500),
