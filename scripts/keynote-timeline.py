@@ -115,42 +115,60 @@ def centuries():
 
 # 2. My ten years -----------------------------------------------------------
 
-# (start, end, label, colour, height). Spans are drawn as bars, points as
-# dots. Heights alternate to keep the labels apart.
-TEN = [
-    (2014.2, 2016.0, "Ebola, West Africa\nwatched from a PhD", GREY, 1.0),
-    (2020.0, 2020.2, "Wuhan\nearly estimates", TEAL, -0.9),
-    (2020.25, 2022.25, "$R_t$ dashboard\nand SPI-M-O", TEAL, 1.0),
-    (2020.9, 2021.6, "Variants\nAlpha, Delta", SLATE, -1.9),
-    (2022.4, 2022.9, "mpox\nnowcasting, networks", TEAL, 1.9),
-    (2026.37, 2026.75, "Ebola disease,\nBundibugyo virus\njoint model, live",
-     BRICK, -0.9),
+# Three lanes so nothing overlaps: the outbreaks, the public health bodies
+# the work went to, and the methods. (start, end, label, colour). Points
+# are drawn as dots, spans as bars, labels sit above each.
+LANES = [
+    ("Outbreaks", [
+        (2014.2, 2016.0, "Ebola, West Africa\nwatched from a PhD", GREY),
+        (2020.0, 2020.0, "Wuhan estimates", TEAL),
+        (2020.25, 2022.25, "$R_t$ dashboard", TEAL),
+        (2022.4, 2022.9, "mpox", TEAL),
+        (2026.37, 2026.75, "Ebola disease,\nBundibugyo virus", BRICK),
+    ]),
+    ("Supporting\npublic health", [
+        (2020.25, 2022.25, "SPI-M-O", TEAL),
+        (2022.4, 2023.0, "UKHSA\nnowcasting", TEAL),
+        (2024.1, 2026.75, "CDC, EpiAware.jl", SLATE),
+    ]),
+    ("Methods", [
+        (2020.9, 2021.6, "Variants\nAlpha, Delta", SLATE),
+        (2022.75, 2026.75,
+         "Delays and nowcasting\nepidist, primarycensored,\nbaselinenowcast",
+         TEAL),
+    ]),
 ]
 
 
 def ten_years():
-    fig, ax = plt.subplots(figsize=(14, 4.4))
-    ax.set_xlim(2013.3, 2027.6)
-    ax.set_ylim(-3.0, 2.9)
+    fig, ax = plt.subplots(figsize=(14, 5.2))
+    lo, hi = 2012.2, 2027.8
+    ax.set_xlim(lo, hi)
+    ax.set_ylim(-0.8, 2.85)
     ax.axis("off")
-    ax.plot([2013.3, 2027.6], [0, 0], color=LIGHT, lw=3, zorder=1)
+    ys = [2.0, 1.0, 0.0]
+    for y, (name, items) in zip(ys, LANES):
+        ax.plot([2013.8, hi], [y, y], color=LIGHT, lw=2, zorder=1)
+        ax.text(2013.6, y, name, ha="right", va="center", fontsize=12.5,
+                color=GREY, linespacing=1.15)
+        for start, end, text, colour in items:
+            mid = (start + end) / 2
+            if end > start:
+                ax.plot([start, end], [y, y], color=colour, lw=12,
+                        solid_capstyle="butt", zorder=2)
+            else:
+                ax.scatter([mid], [y], s=220, color=colour, zorder=3)
+            # A point's label sits to its left so it clears the bar after it.
+            point = end == start
+            ax.text(mid - (0.18 if point else 0), y + 0.17, text,
+                    ha="right" if point else "center", va="bottom",
+                    fontsize=11.5, color=colour, linespacing=1.15,
+                    fontweight="bold" if colour != GREY else "normal")
     for year in range(2014, 2027):
-        ax.plot([year, year], [-0.08, 0.08], color=GREY, lw=1.4)
-        ax.text(year, -0.2, str(year), ha="center", va="top", fontsize=12,
+        ax.plot([year, year], [-0.36, -0.28], color=GREY, lw=1.4)
+        ax.text(year, -0.42, str(year), ha="center", va="top", fontsize=12,
                 color=GREY)
-    for start, end, text, colour, h in TEN:
-        mid = (start + end) / 2
-        if end - start > 0.3:
-            ax.plot([start, end], [0, 0], color=colour, lw=9,
-                    solid_capstyle="butt", zorder=2)
-        else:
-            ax.scatter([mid], [0], s=220, color=colour, zorder=3)
-        ax.plot([mid, mid], [0.12 if h > 0 else -0.35, h], color=colour,
-                lw=1.4, zorder=2)
-        ax.text(mid, h + (0.06 if h > 0 else -0.06), text, ha="center",
-                va="bottom" if h > 0 else "top", fontsize=12.5,
-                color=colour, linespacing=1.15,
-                fontweight="bold" if colour != GREY else "normal")
+    ax.plot([2013.8, hi], [-0.32, -0.32], color=LIGHT, lw=2, zorder=1)
     fig.savefig("figures/keynote-timeline-ten-years.png", bbox_inches="tight")
     plt.close(fig)
     print("wrote figures/keynote-timeline-ten-years.png")

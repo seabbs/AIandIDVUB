@@ -25,19 +25,14 @@ Bernoulli 1760, after Dietz and Heesterbeek 2002, Math Biosci
 ## My last ten years
 
 ![](../figures/keynote-timeline-ten-years.png){width="92%" fig-align="center"
-fig-alt="A timeline from 2014 to 2026. A grey bar for Ebola in West
-Africa 2014 to 2016, a teal dot for the Wuhan estimates in January 2020,
-a teal bar for the Rt dashboard and SPI-M-O from 2020 to 2022 with a slate
-segment for variants in 2021, a teal bar for mpox in 2022 and a brick bar
-for the Bundibugyo virus outbreak from May 2026."}
-
-- Ebola, West Africa. Watched from a PhD on tuberculosis vaccination
-- COVID-19. Early Wuhan estimates, then $R_t$, the reproduction number
-  over time, daily for several thousand places. Variant transmissibility
-- mpox. Nowcasting for the UK Health Security Agency (UKHSA) and
-  heavy-tailed sexual contact networks
-- Ebola disease caused by Bundibugyo virus. A joint model of the
-  streams in the situation reports, refit on every push
+fig-alt="A timeline from 2014 to 2026 in three lanes. Outbreaks: a grey
+bar for Ebola in West Africa 2014 to 2016, a teal dot for the Wuhan
+estimates in January 2020, teal bars for the Rt dashboard 2020 to 2022
+and mpox in 2022, and a brick bar for the Bundibugyo virus outbreak from
+May 2026. Supporting public health: SPI-M-O 2020 to 2022, UKHSA
+nowcasting 2022, and CDC with EpiAware.jl from 2024. Methods: variants in
+2021, then delays and nowcasting from late 2022, epidist, primarycensored
+and baselinenowcast."}
 
 ::: {.attribution}
 Started at LSHTM in January 2020, 4 January 2023 post at
@@ -110,9 +105,9 @@ CC BY
 - **Incubation period, serial interval and case fatality** from the
   forms, by ad hoc methods. Park et al. showed in 2024 that these lead
   to biased estimates
+- The models on the following slides lean on delay estimates like these
 - **Their forecast.** More than 20,000 cases by 2 November if control
   did not change. 14,383 had been reported by 11 November
-- The models on the following slides lean on delay estimates like these
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-ebola-delays.png){width="100%"
@@ -145,7 +140,7 @@ WHO Ebola Response Team 2014, NEJM 371, 1481,
   growing list of other countries
 :::
 ::: {.column width="60%"}
-![](../figures/keynote-abbott2020-r0.jpg){height="600px" fig-align="center"
+![](../figures/keynote-abbott2020-r0.jpg){height="760px" fig-align="center"
 fig-alt="A grid of density plots of the reproduction number, rows for
 MERS-like, SARS-like and pre-intervention SARS-like serial intervals,
 columns for outbreak duration in days, ridges for transmission event
