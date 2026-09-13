@@ -98,9 +98,9 @@ read 12 September 2026; the onset reporting triangle fit merged
 - Performance work by agents, reviewed by agents. 19 perf commits, all
   from bot identities. One review found nothing worth shipping. One
   halved the gradient cost with the log density bit-identical
-- Two versions of the model kept in step. The McCabe et al. analogues
-  and the joint model share submodels. Every release refits the
-  analogues against the published estimates
+- The renewal model was built in a pull request on top of the
+  original integral model. Agents kept the two in step until it merged
+  on 9 June 2026
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-agent-2.png){width="100%"
@@ -112,8 +112,8 @@ merge that refits in CI and sends new tasks back to the top."}
 ::: {.attribution}
 [BVDOutbreakSize][bvd-repo]: pull request counts from the GitHub search
 API, 11 September 2026 · `git log --grep perf`, issue #444, pull request
-#656 · analysis page sections *Top-level composers* and *Imperial report
-sense check*, read 12 September 2026
+#656 · the renewal model, pull request
+[#155](https://github.com/epiforecasts/BVDOutbreakSize/pull/155)
 :::
 :::
 ::::

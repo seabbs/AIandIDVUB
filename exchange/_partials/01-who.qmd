@@ -121,8 +121,7 @@ CDC CFA, [Behind the model: nowcasting][cfa], 2026 · MMWR 2024 · Overton
 et al. 2023 · Akilimali et al. 2026, NEJM,
 [doi:10.1056/NEJMc2608070](https://doi.org/10.1056/NEJMc2608070) ·
 [613covid.ca](https://613covid.ca) · Springer 2023, chapter 5 ·
-Mthombothi et al. 2025 · the US state and local work, and which teams
-used what in Pegasus, are Sam's own account
+Mthombothi et al. 2025
 :::
 :::
 ::::
