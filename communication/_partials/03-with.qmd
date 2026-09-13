@@ -124,8 +124,7 @@ much is the speaker and how much is the model.
 
 :::: {.columns}
 ::: {.column width="40%"}
-- **114 claims** pulled from one deck by a second agent, each checked
-  against git and GitHub's application programming interface (API)
+- **114 claims** pulled from one deck by a second agent
 - **67 needed changing**
 - "530 pull requests" was GitHub's latest issue number. The count was
   353. A pull request is a change proposed for review
