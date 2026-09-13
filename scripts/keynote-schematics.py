@@ -439,7 +439,7 @@ def inner_loop(ax, cx, cy, r=1.35, fs=10.5):
             ((cx - r + 0.2, cy + 0.36), (cx - 0.5, cy + r - 0.36))]
     for p, q in arcs:
         arrow(ax, p, q, colour=SLATE, lw=1.8, rad=-0.35)
-    label(ax, cx, cy, "a language\nmodel with\ntools", colour=GREY, fs=9.5,
+    label(ax, cx, cy, "a language\nmodel\nwith tools", colour=GREY, fs=8.5,
           style="italic")
     label(ax, cx - r + 0.1, cy + 0.85, "no, again", colour=SLATE, fs=9.5,
           style="italic", ha="right")
@@ -449,7 +449,7 @@ def inner_loop(ax, cx, cy, r=1.35, fs=10.5):
 def agent_1():
     fig, ax = canvas(11, 4.6)
     box(ax, 0.1, 1.85, 1.9, 0.9, "You,\na prompt", colour=BRICK, fs=12.5)
-    inner_loop(ax, 5.3, 2.3, r=1.3)
+    inner_loop(ax, 5.3, 2.3, r=1.5)
     arrow(ax, (2.0, 2.3), (3.2, 2.3), colour=BRICK, lw=2)
     box(ax, 8.3, 1.75, 1.3, 1.1, "Pull\nrequest", colour=TEAL, fs=11.5)
     arrow(ax, (7.4, 2.3), (8.3, 2.3), colour=TEAL, lw=2)
@@ -472,7 +472,7 @@ def agent_2():
     label(ax, 4.95, 4.25, "one task each", colour=SLATE, fs=10,
           style="italic", ha="left")
     # Middle: the inner loop.
-    inner_loop(ax, 4.6, 2.3, r=1.3, fs=10)
+    inner_loop(ax, 4.6, 2.3, r=1.5, fs=10)
     box(ax, 7.3, 1.75, 1.35, 1.1, "Pull\nrequest", colour=TEAL, fs=11.5)
     arrow(ax, (6.7, 2.3), (7.3, 2.3), colour=TEAL, lw=2)
     # Review agents feed findings back.
