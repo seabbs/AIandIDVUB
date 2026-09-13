@@ -195,8 +195,10 @@ SINCE = [
     ("2024-08", "primarycensored\ncensored delays", -1.75, TEAL),
     ("2025-08", "ModifiedDistributions.jl", 0.45, SLATE),
     ("2026-04", "baselinenowcast", 1.2, TEAL),
-    ("2026-07", "EpiAware, six packages\nComposed, Convolved, Inference,\n"
-     "ADTools, ScoringRules, Turing models", -1.0, SLATE),
+    ("2026-05", "EpiAware, February to July 2026\n"
+     "LoweredDistributions, EpiAwareAgents,\n"
+     "Composed, Convolved, Inference, ADTools,\n"
+     "ScoringRules, PackageTools, Turing models", -1.0, SLATE),
 ]
 
 
