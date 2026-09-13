@@ -42,18 +42,20 @@ Started at LSHTM in January 2020, 4 January 2023 post at
 slides
 :::
 
-## Ebola, West Africa.
+## Ebola, West Africa
+
 :::: {.columns}
 ::: {.column width="40%"}
-- Meltzer et al., CDC, fitted exponential growth without further
-  intervention. 550,000 cases by 20 January 2015, 1.4 million corrected
-  for under-reporting
+- **Meltzer et al., US Centers for Disease Control and Prevention.**
+  Exponential growth without further intervention. 550,000 cases by
+  20 January 2015, 1.4 million corrected for under-reporting
 - About 21,000 had occurred by mid January
-- Camacho, Funk and colleagues estimated $R$, new infections per
-  infected person, by district in Sierra Leone and forecast weekly
-- A semi-mechanistic model. Funk et al. scored the forecasts in 2019
-- Found that they were.... 
-
+- **Camacho, Funk and colleagues.** Estimated $R$, new infections per
+  infected person, by district in Sierra Leone and forecast weekly with
+  a semi-mechanistic model
+- **Funk et al. scored the forecasts in 2019.** Calibrated one and two
+  weeks ahead. Three weeks or more ahead they overestimated, by more the
+  further out they looked
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-funk2019-forecasts-panel.png){width="100%"
@@ -78,12 +80,14 @@ CC BY
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Case investigation forms for 4,507 probable and confirmed cases by
-  14 September 2014
-- Incubation period, serial interval and case fatality from the forms
-- These were estimated using ad-hoc methods which have been since shown due lead to bias (Sang Woo park et al. 2024) TODO get the ref in properly.
-- More than 20,000 cases by 2 November without a change in control TODO: Is this a forecast from there model? Not clear
-- Every model on the following slides leans on delay estimates like these
+- **Case investigation forms** for 4,507 probable and confirmed cases
+  by 14 September 2014
+- **Incubation period, serial interval and case fatality** from the
+  forms, by ad hoc methods. Park et al. showed in 2024 that these lead
+  to biased estimates
+- **Their forecast.** More than 20,000 cases by 2 November if control
+  did not change. WHO had 14,383 reported by 11 November
+- The models on the following slides lean on delay estimates like these
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-ebola-delays.png){width="100%"
@@ -95,6 +99,9 @@ of 70.8 percent."}
 ::: {.attribution}
 WHO Ebola Response Team 2014, NEJM 371, 1481,
 [doi:10.1056/NEJMoa1411100](https://doi.org/10.1056/NEJMoa1411100)
+· Park et al. 2024, medRxiv,
+[doi:10.1101/2024.01.12.24301247](https://doi.org/10.1101/2024.01.12.24301247)
+· 14,383 cases from CDC 2014, MMWR 63(46), 1130
 :::
 :::
 ::::
@@ -103,14 +110,14 @@ WHO Ebola Response Team 2014, NEJM 371, 1481,
 
 :::: {.columns}
 ::: {.column width="40%"}
-- We started on 2019-nCoV on 12 January 2020, with sparse, delayed case
-  reports from China and detected cases elsewhere
-- 3 February. $R_0$ in Wuhan from the size and duration of the outbreak
-  under a range of serial intervals
-- 28 February. Whether isolating cases and their contacts could control
-  new outbreaks, by simulation
-- By March we were estimating $R_t$ for China, Italy, the UK and a growing list of other
-  countries
+- **12 January 2020.** We started on 2019-nCoV, with sparse, delayed
+  case reports from China and detected cases elsewhere
+- **3 February.** $R_0$ in Wuhan from the size and duration of the
+  outbreak under a range of serial intervals
+- **28 February.** Whether isolating cases and their contacts could
+  control new outbreaks, by simulation
+- **By March** we were estimating $R_t$ for China, Italy, the UK and a
+  growing list of other countries
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-abbott2020-r0.jpg){height="600px" fig-align="center"
@@ -139,7 +146,8 @@ EpiNow repository created 15 March 2020
   times a weighted sum of recent infections, with delays to report
 - Weekly to SPI-M-O, the UK government's modelling advisers. Other
   governments used the dashboard directly or through their scientists
-- Software widely used  by researchers and public health agencies worldwide.
+- Software widely used by researchers and public health agencies
+  worldwide
 - In 2022 I wrote: "we sometimes published nonsensical estimates"
 :::
 ::: {.column width="60%"}
@@ -163,13 +171,16 @@ Abbott et al. 2020, Wellcome Open Research,
 
 :::: {.columns}
 ::: {.column width="40%"}
-- **Variants.** Alpha in late 2020, Delta in 2021. The routine model could
-  not estimate their transmissibility on the timeline policy needed
-- So we went back to using the output from model as the input for other simple models.
-- The data changed under us. Tests to hospitalisations in 2021, tests
-  unreliable and sparse by 2022, the ONS survey and sequences arriving
-- Most of the specialised models of 2021 could not take Omicron's
-  immune escape and shorter generation time. Chains again
+- **Variants.** Alpha in late 2020, Delta in 2021. The routine model
+  could not estimate their transmissibility on the timeline policy
+  needed
+- **Chains.** So we went back to using the output of one model as the
+  input to other, simple models
+- **The data changed under us.** Tests to hospitalisations in 2021,
+  tests unreliable and sparse by 2022, the Office for National
+  Statistics survey and sequences arriving
+- **Omicron.** Most of the specialised models of 2021 could not take
+  its immune escape and shorter generation time. Chains again
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-ons-cascade.jpg){width="100%"
@@ -188,16 +199,14 @@ prevalence to incidence to antibodies to $R_t$ fitted as one model
 :::
 ::::
 
-## The tools that came out of it, 2020 to 2026
+## The tools that came out of the pandemic, 2020 to 2021
 
-TODO: No we want tools from the pandemic, then tools after i.e mpox and more cently not all in one like this.
-
-![](../figures/keynote-packages.png){width="94%" fig-align="center"
-fig-alt="A horizontal timeline from 2020 to 2026 with lollipops for
+![](../figures/keynote-packages-pandemic.png){width="94%"
+fig-align="center"
+fig-alt="A horizontal timeline from 2020 to 2022 with lollipops for
 scoringutils, EpiNow and the Rt dashboard, EpiNow2, the European
-COVID-19 Forecast Hub, epinowcast, epidist, EpiAware.jl,
-primarycensored, baselinenowcast and BVDOutbreakSize, each at its first
-commit or repository creation month."}
+COVID-19 Forecast Hub and epinowcast, each at its first commit or
+repository creation month."}
 
 ::: {.attribution}
 First commits from the local clones, repository creation dates from the
@@ -208,12 +217,16 @@ GitHub API, 11 September 2026
 
 :::: {.columns}
 ::: {.column width="40%"}
-- A global outbreak. A PHEIC, WHO's highest alert, on 23 July 2022
-  with more than 16,000 cases in 75 countries This can be more than one bulle point sepp l out pheic in full don't need who highest alert.
-- Endo et al. A few initial cases in a heavy-tailed sexual network gave
-a high risk of a large outbreak. TODO: THat isn't really what he found it was depeletion of high risk leading to turnover. counter arg was behavour change. all agree heavy tailed networks played a role
-  - Existing COVID-19 models lacked the flexibility to adapt. New, relatively simple,
-  single-source models were built instead
+- **A global outbreak.** A public health emergency of international
+  concern on 23 July 2022
+- More than 16,000 cases in 75 countries by then
+- **Endo et al.** A heavy-tailed sexual partnership distribution
+  explained the sustained growth among men who have sex with men
+- **Why it turned over.** Depletion of the high-activity core. The
+  counter-argument was behaviour change. Both sides agreed heavy-tailed
+  networks played a part
+- **Reuse.** Existing COVID-19 models lacked the flexibility to adapt.
+  New, relatively simple, single-source models were built instead
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-endo2022.png){width="88%" fig-align="center"
@@ -227,21 +240,23 @@ network for a thousand initial cases."}
 Endo et al. 2022, Science 378, 90,
 [doi:10.1126/science.add4507](https://doi.org/10.1126/science.add4507),
 figure as used in my JuliaCon 2026 composable deck
+· Murayama, Pearson, Abbott et al. 2024, J Infect Dis,
+[doi:10.1093/infdis/jiad254](https://doi.org/10.1093/infdis/jiad254)
 · WHO Director-General's statement, 23 July 2022
-· third bullet from the composable deck, [samabbott.co.uk/JuliaCon2026][jc]
+· last bullet from the composable deck, [samabbott.co.uk/JuliaCon2026][jc]
 :::
 :::
 ::::
 
-## Nowcasting for UKHSA TODO spell out in full
+## Nowcasting for the UK Health Security Agency
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Nowcasting, estimating what has already happened but has not yet
+- **Nowcasting.** Estimating what has already happened but has not yet
   been reported. Cases by symptom onset arrive late, so the most recent
   days look like a fall
-- Overton, Abbott and colleagues nowcast the England outbreak for
-  UKHSA, the UK Health Security Agency
+- **Overton, Abbott and colleagues** nowcast the England outbreak for
+  UKHSA
 - As I recall it, UKHSA could not install other nowcasting methods, so
   the models were built on standard regression packages
 :::
@@ -261,12 +276,27 @@ CC BY
 :::
 ::::
 
+## The tools since, 2022 to 2026
+
+![](../figures/keynote-packages-since.png){width="94%"
+fig-align="center"
+fig-alt="A horizontal timeline from 2022 to 2026 with lollipops for
+epidist, EpiAware.jl, primarycensored, baselinenowcast and
+BVDOutbreakSize, each at its first commit or repository creation
+month."}
+
+::: {.attribution}
+First commits from the local clones, repository creation dates from the
+GitHub API, 11 September 2026
+:::
+
 ## Ebola disease caused by Bundibugyo virus, DRC, 2026
 
 :::: {.columns}
 ::: {.column width="40%"}
 - WHO alerted on 5 May to a high-mortality illness in Mongbwalu, Ituri.
-  DRC declared its 17th Ebola outbreak on 15 May. A PHEIC on 17 May
+  The Democratic Republic of the Congo declared its 17th Ebola outbreak
+  on 15 May. A PHEIC on 17 May
 - 6,757 confirmed cases and 3,267 deaths in DRC by 7 September. 20
   cases and 2 deaths in Uganda
 - Six provinces and 61 health zones. The largest Ebola disease outbreak

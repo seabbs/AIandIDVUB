@@ -4,10 +4,11 @@
 Run with:
     uv run --with matplotlib scripts/keynote-timeline.py
 
-Writes three figures into figures/:
+Writes four figures into figures/:
     keynote-timeline-centuries.png   outbreak models, Bernoulli 1760 to 2026
     keynote-timeline-ten-years.png   the outbreaks I have worked on, 2014 on
-    keynote-packages.png             software, 2020 to 2026
+    keynote-packages-pandemic.png    software from the pandemic, 2020 to 2021
+    keynote-packages-since.png       software since, 2022 to 2026
 
 Dates come from notes/research-history.md sections 1 to 3. Package dates
 are first commits or repository creation months, from the local clones and
@@ -156,18 +157,23 @@ def ten_years():
 
 # 3. Software ----------------------------------------------------------------
 
-PACKAGES = [
-    ("2020-02", "scoringutils\nforecast scoring", 1.45, TEAL),
+# Two strips: the tools that came out of the pandemic, then the tools since
+# (mpox onwards). (month, label, label height, colour).
+PANDEMIC = [
+    ("2020-02", "scoringutils\nforecast scoring", 1.35, TEAL),
     ("2020-03", "EpiNow and the $R_t$ dashboard\nepiforecasts.io/covid",
-     -1.45, TEAL),
-    ("2020-06", "EpiNow2\non CRAN from Sep 2020", 0.7, TEAL),
-    ("2021-01", "European COVID-19\nForecast Hub, with ECDC", -0.7, SLATE),
+     -1.0, TEAL),
+    ("2020-06", "EpiNow2\non CRAN from Sep 2020", 0.45, TEAL),
+    ("2021-01", "European COVID-19\nForecast Hub, with ECDC", -1.0, SLATE),
     ("2021-10", "epinowcast\nnowcasting", 1.2, TEAL),
-    ("2022-10", "epidist\ndelay estimation", -1.0, TEAL),
-    ("2024-02", "EpiAware.jl\nwith CDC", 1.2, SLATE),
-    ("2024-08", "primarycensored\ncensored delays", -1.0, TEAL),
-    ("2026-04", "baselinenowcast", 1.2, TEAL),
-    ("2026-05", "BVDOutbreakSize\nlive report", -1.0, BRICK),
+]
+
+SINCE = [
+    ("2022-10", "epidist\ndelay estimation", 1.2, TEAL),
+    ("2024-02", "EpiAware.jl\nwith CDC", -1.0, SLATE),
+    ("2024-08", "primarycensored\ncensored delays", 1.2, TEAL),
+    ("2026-04", "baselinenowcast", -1.0, TEAL),
+    ("2026-05", "BVDOutbreakSize\nlive report", 1.2, BRICK),
 ]
 
 
@@ -176,30 +182,35 @@ def ym(s):
     return int(y) + (int(m) - 0.5) / 12
 
 
-def packages():
+def packages(items, years, xlim, out):
+    lo, hi = xlim
     fig, ax = plt.subplots(figsize=(14, 4.6))
-    ax.set_xlim(2019.7, 2027.0)
+    ax.set_xlim(lo, hi)
     ax.set_ylim(-1.9, 1.9)
     ax.axis("off")
-    ax.plot([2019.7, 2027.0], [0, 0], color=LIGHT, lw=3, zorder=1)
-    for year in range(2020, 2027):
+    ax.plot([lo, hi], [0, 0], color=LIGHT, lw=3, zorder=1)
+    for year in years:
         ax.plot([year, year], [-0.08, 0.08], color=GREY, lw=1.5)
         ax.text(year, -0.2, str(year), ha="center", va="top", fontsize=13,
                 color=GREY)
-    for when, name, h, colour in PACKAGES:
+    for when, name, h, colour in items:
         x = ym(when)
-        ax.plot([x, x], [0, h], color=colour, lw=1.6, zorder=2)
+        ax.plot([x, x], [0.1 if h > 0 else -0.35, h], color=colour, lw=1.6,
+                zorder=2)
         ax.scatter([x], [0], s=90, color=colour, zorder=3)
         va = "bottom" if h > 0 else "top"
         y = h + (0.06 if h > 0 else -0.06)
         ax.text(x, y, name, ha="center", va=va, fontsize=12.5, color=colour,
                 linespacing=1.15)
-    fig.savefig("figures/keynote-packages.png", bbox_inches="tight")
+    fig.savefig(out, bbox_inches="tight")
     plt.close(fig)
-    print("wrote figures/keynote-packages.png")
+    print(f"wrote {out}")
 
 
 if __name__ == "__main__":
     centuries()
     ten_years()
-    packages()
+    packages(PANDEMIC, range(2020, 2023), (2019.8, 2022.2),
+             "figures/keynote-packages-pandemic.png")
+    packages(SINCE, range(2022, 2027), (2021.7, 2026.9),
+             "figures/keynote-packages-since.png")
