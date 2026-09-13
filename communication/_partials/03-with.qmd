@@ -79,6 +79,34 @@ so far, and the first workflow steers"}
 :::
 ::::
 
+## These slides were written by an agent
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {style="color: #1f6f8b;"}
+**What it gives me**
+:::
+
+- Fast, and the result looks the part
+- I am dyslexic. Drafting is the part I am glad to hand over
+- More of this got built than I would have built by hand
+:::
+::: {.column width="50%"}
+::: {style="color: #b5432f;"}
+**What it costs**
+:::
+
+- A layer between what I want to say and what gets said
+- The words arrive already formed, so I have to push to get mine back
+- Every steer on the prompts page is me pushing
+:::
+::::
+
+::: {style="font-size: 1.05em; margin-top: 0.7em;"}
+I see the tells in a lot of talks now, and I catch myself wondering how
+much is the speaker and how much is the model.
+:::
+
 ## Checking what it wrote
 
 :::: {.columns}
