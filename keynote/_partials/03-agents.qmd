@@ -103,8 +103,6 @@ these as the ecosystem grows."}
   digitiser recovers the counts from pixel colour and axis tick geometry
 - These are cross-checked again by several agents, and by digitisers
   written in both Python and Julia
-- Onsets also move between reports because reporting is late. That
-  nowcasting problem is in the model
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-bvd-sitrep087-page3.png){width="100%"
