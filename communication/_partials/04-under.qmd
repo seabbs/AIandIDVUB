@@ -87,8 +87,9 @@ and [#438](https://github.com/epiforecasts/BVDOutbreakSize/issues/438) ·
   organisations
 - **Upstream bug reports land well.** Mooncake, DocumenterVitepress and
   AirspeedVelocity each closed theirs
-- **Review requests on colleagues' repositories land less well.** This
-  one got "Done", from me, two days later
+- **Asking colleagues for work lands less well.** The bot opened an
+  issue on a shared course repository asking for a review of every
+  session. Nobody replied. I closed it myself two days later
 - I do not like sending them. I do not love receiving them either
 :::
 ::: {.column width="60%"}
