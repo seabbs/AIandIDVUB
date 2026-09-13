@@ -1,41 +1,5 @@
 # Where AI might plug in
 
-## What even is AI?
-
-- Machine learning (i.e. statistics)
-- Neural networks (i.e. statistics)
-- Physics informed neural networks (i.e. statistics and mathematical
-  modelling)
-- Universal differential equations (i.e. statistics and mathematical
-  modelling)
-- Reinforcement learning
-- Attention based neural networks
-- Large language models
-- My friendly agentic CLI tool (i.e. claude code)
-
-## My view {.center}
-
-::: {style="font-size: 1.25em; margin-top: 0.6em;"}
-Many of these approaches are under-explored and not well integrated with
-the rapidly evolving, noisy, sparse data settings I have worked in.
-I am not aware of any real-world operational use so far, and I am mostly
-not convinced by the evaluations of proposed methods.
-:::
-
-::: {style="font-size: 0.8em; margin-top: 1em; color: #4a5899;"}
-Sam Abbott, September 2026
-:::
-
-## And yet {.center}
-
-::: {style="font-size: 1.6em; margin-top: 0.8em;"}
-I am very excited about their potential.
-:::
-
-::: {style="font-size: 0.8em; margin-top: 1em; color: #4a5899;"}
-Sam Abbott, September 2026
-:::
-
 ## Universal differential equations
 
 :::: {.columns}
