@@ -87,9 +87,9 @@ and [#438](https://github.com/epiforecasts/BVDOutbreakSize/issues/438) ·
   organisations
 - **Upstream bug reports land well.** Mooncake, DocumenterVitepress and
   AirspeedVelocity each closed theirs
-- **Asking colleagues for work lands less well.** The bot opened an
-  issue on a shared course repository asking for a review of every
-  session. Nobody replied. I closed it myself two days later
+- **Asking colleagues for work lands less well.** The bot asked a
+  shared course repository to review every session. Nobody replied.
+  I closed it myself two days later
 - **I do not like sending them.** I may have missed mistakes, and it is
   hard to know whether I am spamming people
 - **I do not like reading them.** It is hard to tell how much effort
@@ -107,6 +107,33 @@ correctness, and flow. seabbs replied Done on 3 July and closed it"}
 [DocumenterVitepress.jl#375](https://github.com/LuxDL/DocumenterVitepress.jl/issues/375),
 [AirspeedVelocity.jl#158](https://github.com/MilesCranmer/AirspeedVelocity.jl/issues/158)
 · `gh search issues --author seabbs-bot`, 12 September 2026
+:::
+:::
+::::
+
+## Seven Enzyme issues in a day
+
+:::: {.columns}
+::: {.column width="40%"}
+- **Enzyme** is a Julia automatic differentiation backend. Our models
+  need it to run fast
+- **Seven correctness issues** opened by seabbs-bot on one day,
+  13 September 2026. Derivatives that are `NaN`, silently zero, or
+  wrong at a boundary
+- Each starts "Reviewed by @seabbs before posting"
+- The maintainer's reply was to open pull requests instead
+- **Some of the fixes, and some of the root causes, are at the edge of
+  my understanding**
+:::
+::: {.column width="60%"}
+![](../figures/comms-shot-enzyme.png){width="100%"
+fig-alt="GitHub issue search on EnzymeAD/Enzyme.jl for author seabbs-bot.
+Seven open issues on besselk, logistic, xlogx, beta_inc, gamma_inc,
+xlog1py and the EnzymeRules docs, all opened within four hours"}
+
+::: {.attribution}
+[Enzyme.jl issues by seabbs-bot](https://github.com/EnzymeAD/Enzyme.jl/issues?q=is%3Aissue+author%3Aseabbs-bot),
+screenshot 13 September 2026
 :::
 :::
 ::::
@@ -141,6 +168,8 @@ Slide from the
 August 2026 · most recent outside commit 3 February 2026 from `git log`
 on [EpiAware](https://epiaware.org) `main`, checked 12 August 2026
 :::
+
+# Getting your information from agents
 
 ## What a language model says about EpiNow2
 

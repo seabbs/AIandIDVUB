@@ -72,6 +72,12 @@ SHOTS = [
         None,
     ),
     (
+        "enzyme-issues",
+        "https://github.com/EnzymeAD/Enzyme.jl/issues"
+        "?q=is%3Aissue+author%3Aseabbs-bot+sort%3Acreated-desc",
+        None,
+    ),
+    (
         "bvd-limitations",
         "https://epiforecasts.io/BVDOutbreakSize/stable/analysis",
         "#Limitations",

@@ -5,10 +5,10 @@
 :::: {.columns}
 ::: {.column width="40%"}
 - **The live report** on the Bundibugyo virus disease outbreak puts its
-  limitations before the methods, in bullets, most consequential first
-- **Use of AI.** The report says the model code and analysis were
-  drafted by a language model, then reviewed and revised under human
-  oversight, and that the named authors are responsible for it
+  limitations before the methods, most consequential first
+- **Use of AI.** The report says a language model drafted the code and
+  analysis, reviewed and revised under human oversight, and that the
+  named authors are responsible
 - **The feedback** is that a list of limitations first reads as
   off-putting
 - How should we warn?

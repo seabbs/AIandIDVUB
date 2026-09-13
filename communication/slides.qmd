@@ -24,6 +24,7 @@ format:
 - **Software is communication**
 - **Communication in the age of AI**
 - **Under AI**
+- **Getting your information from agents**
 :::
 ::: {.column width="32%"}
 ![](../figures/qr-communication.png){width="58%"}
