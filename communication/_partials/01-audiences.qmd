@@ -80,7 +80,7 @@ frozen 30 March 2022, screenshot 12 September 2026 · counts from
 :::
 ::::
 
-## The caveats sat in the captions
+## How we caveated
 
 :::: {.columns}
 ::: {.column width="40%"}
