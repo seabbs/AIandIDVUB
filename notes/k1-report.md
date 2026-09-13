@@ -20,6 +20,6 @@ File: `keynote/_partials/01-ten-years.qmd`. Not committed.
 - `./scripts/lint.sh` reports nothing in this partial. Its failures are all in the other two partials.
 - llmisms greps: the rule-of-three grep hits are author lists and data streams; the colon hit is his quote line. Nothing changed.
 
-## Left alone
+## Follow-up
 
-- The case fatality box in `keynote-ebola-delays.png` clips its text slightly at the right edge. Not in the TODOs; `scripts/keynote-schematics.py` if wanted.
+- The case fatality box in `keynote-ebola-delays.png` clipped its text. Widened the box and moved the percentage to the second line in `scripts/keynote-schematics.py`, regenerated that figure only, re-rendered and checked slide 7 at 1920x1080.
