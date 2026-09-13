@@ -90,7 +90,10 @@ and [#438](https://github.com/epiforecasts/BVDOutbreakSize/issues/438) ·
 - **Asking colleagues for work lands less well.** The bot opened an
   issue on a shared course repository asking for a review of every
   session. Nobody replied. I closed it myself two days later
-- I do not like sending them. I do not love receiving them either
+- **I do not like sending them.** I may have missed mistakes, and it is
+  hard to know whether I am spamming people
+- **I do not like reading them.** It is hard to tell how much effort
+  went in, or whether someone did what I do and asked Claude
 :::
 ::: {.column width="60%"}
 ![](../figures/comms-shot-sismid-30.png){width="100%"
