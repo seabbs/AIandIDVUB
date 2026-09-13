@@ -33,37 +33,6 @@ Archive Network, to mid August 2026
 :::
 ::::
 
-## Defaults are advice
-
-:::: {.columns}
-::: {.column width="40%"}
-- [EpiNow2](https://epiforecasts.io/EpiNow2/) has been on CRAN since
-  1 September 2020
-- **Every argument a user leaves alone is a decision they inherited
-  from us**
-- The generation time and the delays. The prior on $R_t$. The sampler
-  settings
-- The code on the right is the vignette. It is what gets copied
-:::
-::: {.column width="60%"}
-```r
-estimates <- epinow(
-  data = reported_cases,
-  generation_time = gt_opts(example_generation_time),
-  delays = delay_opts(example_incubation_period + reporting_delay),
-  rt = rt_opts(prior = LogNormal(mean = 2, sd = 0.2)),
-  stan = stan_opts(cores = 4)
-)
-```
-
-::: {.attribution}
-[EpiNow2 vignette](https://epiforecasts.io/EpiNow2/articles/EpiNow2.html) ·
-[CRAN archive](https://cran.r-project.org/src/contrib/Archive/EpiNow2/),
-1.1.0 on 1 September 2020
-:::
-:::
-::::
-
 ## epinowcast. Communicating through a community
 
 :::: {.columns}
