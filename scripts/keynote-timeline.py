@@ -47,6 +47,7 @@ DEEP = [
     (1760, "Bernoulli\nsmallpox inoculation", GREY, 0.32),
     (1911, "Ross\nmalaria threshold", GREY, -0.32),
     (1927, "Kermack and\nMcKendrick, SIR", GREY, 0.32),
+    (1988, "HIV/AIDS\nback-calculation", GREY, 1.0),
     (1991, "Anderson and May\nInfectious Diseases\nof Humans", GREY, -1.15),
 ]
 
@@ -64,8 +65,8 @@ def centuries():
     fig, (ax_l, ax_r) = plt.subplots(
         1,
         2,
-        figsize=(14, 4.4),
-        gridspec_kw={"width_ratios": [1.0, 1.6], "wspace": 0.03},
+        figsize=(15.2, 4.4),
+        gridspec_kw={"width_ratios": [1.35, 1.6], "wspace": 0.03},
     )
     for ax in (ax_l, ax_r):
         ax.set_ylim(-2.2, 1.7)

@@ -25,7 +25,7 @@ format:
   with
 - Composable infectious disease modelling. The gap, what we want from
   any approach, two approaches, one replication
-- Where AI might plug in. Universal differential equations,
+- Where AI might plug in. A network in the slots of a composable model,
   physics-informed networks, renewal as a layer, a foundation model
 - Agentic modelling workflows. The workflow, agents building methods
   into software, search over models

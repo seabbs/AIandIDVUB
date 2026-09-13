@@ -4,14 +4,16 @@
 
 ![](../figures/keynote-timeline-centuries.png){width="94%" fig-align="center"
 fig-alt="A timeline from 1760 to 2026. Grey dots for Bernoulli 1760, Ross
-1911, Kermack and McKendrick 1927, Anderson and May 1991, foot and mouth
-2001, H1N1 2009 and Ebola in West Africa 2014. Teal dots for COVID-19
-2020, mpox 2022 and Ebola disease caused by Bundibugyo virus 2026."}
+1911, Kermack and McKendrick 1927, HIV/AIDS back-calculation 1988,
+Anderson and May 1991, foot and mouth 2001, H1N1 2009 and Ebola in West
+Africa 2014. Teal dots for COVID-19 2020, mpox 2022 and Ebola disease
+caused by Bundibugyo virus 2026."}
 
 ::: {.attribution}
 Bernoulli 1760, after Dietz and Heesterbeek 2002, Math Biosci
 · Ross 1911, *The Prevention of Malaria*
 · Kermack and McKendrick 1927, Proc R Soc A
+· Brookmeyer and Gail 1988, JASA
 · Anderson and May 1991, OUP
 · Ferguson, Donnelly and Anderson 2001, Science
 · Fraser et al. 2009, Science
