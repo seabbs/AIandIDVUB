@@ -448,11 +448,9 @@ def inner_loop(ax, cx, cy, r=1.35, fs=10.5):
 
 def agent_1():
     fig, ax = canvas(11, 4.6)
-    box(ax, 0.1, 1.55, 1.9, 1.5, "You\n\nthe task, and\nwhat counts\nas right",
-        colour=BRICK, fs=11.5)
+    box(ax, 0.1, 1.85, 1.9, 0.9, "You,\na prompt", colour=BRICK, fs=12.5)
     inner_loop(ax, 5.3, 2.3, r=1.3)
     arrow(ax, (2.0, 2.3), (3.2, 2.3), colour=BRICK, lw=2)
-    label(ax, 2.6, 2.55, "a prompt", colour=BRICK, fs=10, style="italic")
     box(ax, 8.3, 1.75, 1.3, 1.1, "Pull\nrequest", colour=TEAL, fs=11.5)
     arrow(ax, (7.4, 2.3), (8.3, 2.3), colour=TEAL, lw=2)
     label(ax, 7.85, 2.55, "yes", colour=TEAL, fs=10, style="italic")

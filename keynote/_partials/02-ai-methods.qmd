@@ -143,8 +143,7 @@ Side notes read swap a layer, keep the rest, and add a stream, add a
 layer."}
 
 ::: {.attribution}
-The composable modelling grant, Abbott, Funk et al. 2026
-· Samuel Brand, [github.com/SamuelBrand1/RenewalExamples][brand],
+Samuel Brand, [github.com/SamuelBrand1/RenewalExamples][brand],
 `conv` branch
 · Pervez, Locatello and Gavves 2024, *Mechanistic Neural Networks*
 :::
@@ -164,9 +163,10 @@ The composable modelling grant, Abbott, Funk et al. 2026
   posterior
 - OutbreakFlow, Radev et al. 2021. Generation time, undetected fraction
   and reporting delays for early COVID-19 in Germany
-- Pinotti et al. 2025 fitted an SEIR model to the 2014 Sierra Leone
-  Ebola data by neural posterior estimation. Jang, Candan and Chowell
-  2026 compare it with approximate Bayesian computation
+- Pinotti et al. 2025 fitted an SEIR model, SIR plus an exposed class,
+  to the 2014 Sierra Leone Ebola data by neural posterior estimation.
+  Jang, Candan and Chowell 2026 compare it with approximate Bayesian
+  computation
 :::
 ::: {.column width="58%"}
 ![](../figures/keynote-outbreakflow2021.png){width="100%"

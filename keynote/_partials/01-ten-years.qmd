@@ -16,8 +16,8 @@ Bernoulli 1760, after Dietz and Heesterbeek 2002, Math Biosci
 · Ferguson, Donnelly and Anderson 2001, Science
 · Fraser et al. 2009, Science
 · WHO notified of Ebola in Guinea, 23 March 2014
-· mpox PHEIC 23 July 2022, WHO
-· BVD PHEIC 17 May 2026, [WHO DON602][don602]
+· mpox, WHO, 23 July 2022
+· Bundibugyo virus, [WHO DON602][don602], 17 May 2026
 :::
 
 ## My last ten years
@@ -32,7 +32,8 @@ for the Bundibugyo virus outbreak from May 2026."}
 - Ebola, West Africa. Watched from a PhD on tuberculosis vaccination
 - COVID-19. Early Wuhan estimates, then $R_t$, the reproduction number
   over time, daily for several thousand places. Variant transmissibility
-- mpox. Nowcasting for UKHSA and heavy-tailed sexual contact networks
+- mpox. Nowcasting for the UK Health Security Agency (UKHSA) and
+  heavy-tailed sexual contact networks
 - Ebola disease caused by Bundibugyo virus. A joint model of the
   streams in the situation reports, refit on every push
 
@@ -151,9 +152,9 @@ sizes from 20 to 400. Estimates run from about 1 to 4."}
 ::: {.attribution}
 Figure 2 of Abbott et al. 2020, Wellcome Open Research 5:17,
 [doi:10.12688/wellcomeopenres.15718.1](https://doi.org/10.12688/wellcomeopenres.15718.1),
-CC BY · Hellewell et al. 2020, Lancet Global Health
-· dates from the 4 January 2023 post at [samabbott.co.uk][iisa-post];
-EpiNow repository created 15 March 2020
+CC BY
+· Hellewell et al. 2020, Lancet Global Health
+· the 4 January 2023 post at [samabbott.co.uk][iisa-post]
 :::
 :::
 ::::
@@ -385,9 +386,8 @@ data URL. That inlining left the frame unstyled and lost the anchor. -->
   style="border: 1px solid #d5d8de;"></iframe>
 
 ::: {.attribution}
-[BVDOutbreakSize][bvd], live, the headline estimates on its summary page
-· streams from the repository README · 145 releases, `results-43` on
-20 May to `results-1699` on 9 September 2026, GitHub API, 11 September
+[BVDOutbreakSize][bvd], live
+· release counts from the GitHub API, 11 September 2026
 :::
 :::
 ::::
@@ -417,10 +417,8 @@ confirmed and suspected patients in care, each with black data points
 inside coloured posterior predictive bands."}
 
 ::: {.attribution}
-[BVDOutbreakSize][bvd] release `results-1699`, 9 September 2026, data to
-SitRep 115 of 6 September, the per-stream posterior predictive panel of
-its analysis page · 145 releases, `results-43` on 20 May to
-`results-1699` on 9 September, GitHub API, 11 September
+[BVDOutbreakSize][bvd], release `results-1699`, 9 September 2026
+· release counts from the GitHub API, 11 September 2026
 :::
 :::
 ::::
@@ -468,9 +466,7 @@ August, with the reads for the same week differing by up to a few tens
 of cases between reports."}
 
 ::: {.attribution}
-Figure from `data/onset_curve_scanned.csv` in [BVDOutbreakSize][bvd-repo],
-read 11 September 2026, `scripts/keynote-onset-vintages.py`
-· the suspects stream from the repository README
+[BVDOutbreakSize][bvd-repo], read 11 September 2026
 :::
 :::
 ::::

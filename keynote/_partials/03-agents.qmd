@@ -9,11 +9,10 @@ loops until a check passes
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-agent-1.png){width="100%"
-fig-alt="A brick box on the left, you, the task and what counts as right,
-sends a prompt into a loop of four boxes, read the files and the docs,
-write or change code, run it, check passed. No returns to the top. Yes
-leads to a pull request and a brick box, you, read it, merge or send
-back."}
+fig-alt="A brick box on the left, you, a prompt, feeds a loop of four
+boxes, read the files and the docs, write or change code, run it, check
+passed. No returns to the top. Yes leads to a pull request and a brick
+box, you, read it, merge or send back."}
 :::
 ::::
 
@@ -97,13 +96,15 @@ these as the ecosystem grows."}
 ::: {.column width="40%"}
 - The situation reports from the Institut National de Santé Publique
   (INSP) are French PDFs. Agents read every stream from them
-- Where the INRB-UMIE transcription on GitHub has the same series, the
-  two are cross-checked
+- Where a public transcription has the same series, the two are
+  cross-checked
 - Recent reports get two blind reads
 - Symptom onsets are reported only as a figure. An agent-written
   digitiser recovers the counts from pixel colour and axis tick geometry
-- Onsets also move between reports because reporting is late. That is a
-  nowcasting problem, and it is in the model
+- These are cross-checked again by several agents, and by digitisers
+  written in both Python and Julia
+- Onsets also move between reports because reporting is late. That
+  nowcasting problem is in the model
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-bvd-sitrep087-page3.png){width="100%"
@@ -114,8 +115,8 @@ over 21 days, and a map of cases by health zone."}
 ::: {.attribution}
 INSP SitRep 087, 9 August 2026, page 3,
 [insp.cd](https://insp.cd/ebola-17eme-epidemie/)
-· `README.md`, `data/README.md` and `scripts/README.md` in
-[BVDOutbreakSize][bvd-repo], read 12 September 2026
+· [BVDOutbreakSize][bvd-repo], read 12 September 2026
+· the INRB-UMIE transcription mirror
 :::
 :::
 ::::
@@ -155,10 +156,8 @@ API, 11 September 2026 · `git log --grep perf`, issue #444, pull request
 
 :::: {.columns}
 ::: {.column width="40%"}
-- The first release replicated the McCabe et al. Imperial College report
-  in a few hours
-- Then issues with it were fixed and every stream they had used was
-  fitted, jointly
+- Issues with the McCabe et al. Imperial College report were addressed,
+  and every stream they had used was fitted jointly
 - Going wide. One posterior over the sitrep streams, the Uganda exports
   and a genomic bound
 - Checks on every rebuild, following the Bayesian workflow. Predictive
@@ -184,7 +183,7 @@ README and `docs/src/news.md` of [BVDOutbreakSize][bvd-repo], read
 :::
 ::::
 
-## Digitising from figures, and what went wrong
+## Digitising the onset curve
 
 :::: {.columns}
 ::: {.column width="40%"}
@@ -267,24 +266,21 @@ candidates, add a stream, change the delay prior, and split Rt by
 province. Two are kept and branch again into three each; one child of
 each is kept in teal and the rest are grey, and the kept branches meet
 at a box reading keep the best, branch again."}
-
-::: {.attribution}
-Open `patch model` issues from `seabbs-bot` in [BVDOutbreakSize][bvd-repo],
-11 September 2026, and the forecast scoring in `src/scoring.jl`
-:::
 :::
 ::::
 
-## Google SAI in the CDC hubs
+## Google's tree search topped the CDC forecast hubs
 
 :::: {.columns}
 ::: {.column width="45%"}
 - Martinson et al. 2026. A large language model (LLM) guided tree search
   that writes forecasting code. An ensemble went to the CDC FluSight,
   COVID-19 and respiratory syncytial virus (RSV) hubs
-- Most candidates adapt or recombine models already in the hubs
-- Prospective, 2025/26 season. Matched or beat the CDC ensembles and
-  ranked first among eligible submissions for all three
+- Most candidates adapt or recombine models already in the hubs. 142
+  prompts in three families
+- Prospective, 2025/26 season. Matched or beat the CDC ensembles, and
+  ranked first of 43 eligible FluSight, 12 COVID-19 and 4 RSV
+  submissions
 - Bracher and Funk 2026. The 11% retrospective gain claimed earlier came
   from data revisions leaking into the evaluation
 - 207,500 candidates scored. My guess is the gap in compute and people
@@ -299,13 +295,11 @@ forecasting using autonomous LLM-guided tree search, by Martinson,
 Brenner, Plomecka, Williams, Reich and Shamsi, submitted 15 May 2026."}
 
 ::: {.attribution}
-Martinson, Brenner, Plomecka, Williams, Reich and Shamsi 2026,
-[arXiv:2605.16238](https://arxiv.org/abs/2605.16238), read 13 September
-2026: first of 43 eligible FluSight, 12 COVIDHub and 4 RSVHub
-submissions; 142 prompts in three families · Bracher and Funk 2026,
-*Information leakage from data revisions in retrospective forecasts*,
+Martinson et al. 2026,
+[arXiv:2605.16238](https://arxiv.org/abs/2605.16238)
+· Bracher and Funk 2026,
 [arXiv:2608.05883](https://arxiv.org/html/2608.05883)
-· team folders `Google_SAI-*` in the three hubs on GitHub
+· team folders `Google_SAI-*` in the three CDC hubs on GitHub
 :::
 :::
 ::::
