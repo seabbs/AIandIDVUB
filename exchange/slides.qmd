@@ -21,13 +21,14 @@ format:
 
 :::: {.columns}
 ::: {.column width="68%"}
-- Who I am, what I work on, and who I work with
+- Who I am, what I work on, where the tools get used, and who I work
+  with
 - Composable infectious disease modelling. The gap, what composable
   means, two approaches, one replication
-- Where AI might plug in. A network as a component, renewal as a
-  layer, an outbreak foundation model
+- Where AI might plug in. My view, a network as a component, renewal
+  as a layer, an outbreak foundation model
 - Agentic modelling workflows. The workflow, where the agents sat on
-  the DRC model, search over models
+  the Democratic Republic of the Congo (DRC) model, search over models
 - Recent delays work. `primarycensored`, `epidist`,
   `CensoredDistributions.jl`
 :::

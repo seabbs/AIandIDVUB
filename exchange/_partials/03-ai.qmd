@@ -1,16 +1,35 @@
 # Where AI might plug in
 
+## My view {.center}
+
+::: {style="font-size: 1.25em; margin-top: 0.6em;"}
+Many of these approaches are under-explored and not well integrated with
+the rapidly evolving, noisy, sparse data settings I have worked in.
+I am not aware of any real-world operational use so far, and I am mostly
+not convinced by the evaluations of proposed methods.
+:::
+
+::: {style="font-size: 0.8em; margin-top: 1em; color: #4a5899;"}
+Sam Abbott, September 2026
+:::
+
+::: {.fragment style="font-size: 1.6em; margin-top: 1.2em;"}
+And yet. I am very excited about their potential.
+:::
+
 ## A neural network as a component?
 
 :::: {.columns}
 ::: {.column width="42%"}
-- Universal differential equations and physics-informed networks pair
-  a network with a mechanistic model. Here the renewal process is the
-  mechanism
-- A network in the $R_t$ slot learns what the AR process cannot say.
-  Behaviour, season, policy
-- A network on the observation side fits several data streams from the
-  same latent infections
+- **Universal differential equations (UDEs) and physics-informed neural
+  networks (PINNs).** A network inside a mechanistic model. Here the
+  mechanism is the renewal process
+- **A network in the $R_t$ slot.** It learns what the autoregressive
+  (AR) process cannot say. Behaviour, season, policy
+- **A network on the observation side.** Several data streams fitted
+  from the same latent infections
+- Most exciting where there are many hard to model data sets to fit
+  jointly in an otherwise well understood system
 - No neural network code in any EpiAware package yet
 
 ::: {.attribution}
@@ -39,22 +58,24 @@ parts on
 :::
 ::::
 
-## Renewal as a neural network layer
+## Renewal processes as a neural network layer
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Flux and Lux build models by stacking layers. The renewal equation is
-  a convolution. A convolution is a layer
-- Delays, ascertainment and the likelihood are layers too. The stack is
-  composable by construction, inside the deep learning toolchain
-- Pervez et al. write mechanistic models this way
-- Priors and Hamiltonian Monte Carlo on one side, gradient training on
-  the other. The same layers
+- A specialised form of PINN
+- A renewal process is an autoregressive transformation of $R_t$ and
+  past infections to today's infections
+- It can be thought of as a neural network layer
+- Stacked with other layers. Inputs to $R_t$, an $R_t$ layer,
+  observation layers, and multiple data streams
+- Not seen this used in research yet. Proposed in Samuel Brand's
+  `RenewalExamples` repository
 
 ::: {.attribution}
-Pervez, Locatello and Gavves 2024,
-[arXiv:2402.13077](https://arxiv.org/abs/2402.13077) · Innes 2018,
-[Flux.jl](https://fluxml.ai/) · the 2026 Wellcome Discovery application
+Pervez, Locatello and Gavves 2024, *Mechanistic Neural Networks*,
+[arXiv:2402.13077](https://arxiv.org/abs/2402.13077) ·
+[github.com/SamuelBrand1/RenewalExamples][rex] · the 2026 Wellcome
+Discovery application
 :::
 :::
 ::: {.column width="60%"}
@@ -64,7 +85,7 @@ over s of I_{t minus s} g_s, described as a convolution with a fixed
 kernel scaled by R_t. On the right a stack of six layers: inputs, an R_t
 layer marked learned, then a renewal layer, a delay layer and an
 ascertainment layer marked fixed by the epidemiology, then a negative
-binomial likelihood on cases."}
+binomial likelihood on each stream."}
 
 ::: {.attribution}
 Drawn for this talk, `scripts/exchange-schematics.py`
@@ -72,19 +93,21 @@ Drawn for this talk, `scripts/exchange-schematics.py`
 :::
 ::::
 
-## An outbreak-specific foundation model
+## An outbreak-specific foundation model {.smaller}
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Time series foundation models forecast well a few weeks out on sparse
-  data. Less well at peaks and turning points
-- CAPE pretrains on simulated compartmental epidemics. A model of
+- **Time series foundation models.** Pretrained on many series from
+  other domains. Your series in, a forecast out, no fitting
+- Good a few weeks out on sparse data. Less good at peaks and turning
+  points
+- **CAPE** pretrains on simulated compartmental epidemics. A model of
   outbreaks, but of the final curves
-- Outbreak data change after the fact. On the DRC model the daily
-  suspected stream stopped on 6 August, and in May INSP reclassified
-  suspected cases
-- A model pretrained on data as it was seen at the time, vintage by
-  vintage. A project I would like to be part of
+- **Outbreak data change after the fact.** On the DRC model the daily
+  suspected stream stopped on 6 August. In May INSP, the DRC's public
+  health institute, reclassified suspected cases
+- How do these methods hold up when the data change under them, in
+  prospective settings?
 
 ::: {.attribution}
 Kalahasti et al. 2025, medRxiv · Wang, Li and Perra 2026, medRxiv ·
@@ -104,6 +127,12 @@ every stream, with its date, into a box labelled an outbreak foundation
 model pretrained on outbreaks as they were seen at the time. Right, a
 nowcast and forecast fan on the latest vintage."}
 
+::: {style="font-size: 0.95em; margin-top: 0.3em; color: #4a5899;"}
+"An outbreak-specific foundation model that handles data changing over
+time is a project I would like to be involved in." Sam Abbott,
+September 2026
+:::
+
 ::: {.attribution}
 Drawn for this talk, `scripts/exchange-schematics.py`
 :::
@@ -111,3 +140,4 @@ Drawn for this talk, `scripts/exchange-schematics.py`
 ::::
 
 [bvd]: https://github.com/epiforecasts/BVDOutbreakSize
+[rex]: https://github.com/SamuelBrand1/RenewalExamples

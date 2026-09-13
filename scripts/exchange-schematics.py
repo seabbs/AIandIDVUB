@@ -95,10 +95,10 @@ def renewal_layer():
           "scaled by $R_t$",
           colour=INK, fs=12.5, ha="left")
     label(ax, 0.2, 3.1,
-          "Written as layers, every step has a\n"
-          "gradient. The stack trains with the\n"
-          "deep learning tools, or samples by\n"
-          "Hamiltonian Monte Carlo",
+          "Stacked with other layers. Inputs to\n"
+          "$R_t$, an $R_t$ layer, the renewal layer,\n"
+          "observation layers, and several data\n"
+          "streams at the bottom",
           colour=INK, fs=12.5, ha="left")
     label(ax, 0.2, 1.95,
           "The layers are the same parts as the\n"
@@ -118,7 +118,8 @@ def renewal_layer():
          PALE_TEAL),
         ("ascertainment layer", r"$\times\ p_t$, day of week", TEAL,
          PALE_TEAL),
-        ("likelihood", "negative binomial on cases", BRICK, PALE_BRICK),
+        ("likelihood", "negative binomial on each stream", BRICK,
+         PALE_BRICK),
     ]
     ys = [5.6 - i * 1.08 for i in range(len(layers))]
     for (head, sub, colour, fill), y in zip(layers, ys):

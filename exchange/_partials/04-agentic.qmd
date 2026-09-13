@@ -17,10 +17,11 @@ feedback arrows running backwards from later steps to earlier ones."}
 
 :::: {.columns}
 ::: {.column width="40%"}
-- On [BVDOutbreakSize][bvd] agents wrote the code. The judgements
-  stayed with people
-- They do best with something to check against. A simulation with known
-  parameters, an analytic case, another group's estimate
+- On [BVDOutbreakSize][bvd] agents wrote the code. The model structure
+  and approach were specified by me at a high level
+- The judgements stayed with people
+- Agents do best with something to check against. A simulation with
+  known parameters, an analytic case, another group's estimate
 - 333 of 425 pull requests, the unit of change on GitHub, came from my
   bot account
 
@@ -51,13 +52,17 @@ Drawn for this talk, `scripts/exchange-workflow-split.py`, from the
 
 :::: {.columns}
 ::: {.column width="56%"}
-- Bundibugyo virus disease, DRC. McCabe et al. replicated the day after
-  their report, then a joint model across suspected, confirmed, deaths,
-  exports and bed occupancy
-- Agents read the French PDF situation reports. Two blind reads per
-  vintage of the onset chart
-- SitRep 087 changed the y axis steps from 20 to 25. Caught only by the
-  reporting-triangle invariant
+- **Replication.** The McCabe et al. Imperial report replicated in a few
+  hours, the day after it appeared. Then a joint model across five
+  situation report streams, the Uganda exports and a genomic bound
+- **Data.** Agents read the French PDF situation reports, two blind
+  reads each. Onsets are only a figure, so an agent-written digitiser,
+  cross-checked by a second one in another language
+- **Checks on every rebuild.** Predictive checks per stream, forecasts
+  scored against later data, the replication. That much debugging
+  would not have happened by hand
+- Infrastructure and review were still needed to keep the agents in
+  check
 - Could agents build and check the simulators you learn against?
 
 ::: {.attribution}
@@ -79,19 +84,23 @@ report is at
 :::
 ::::
 
-## Agents that search over models
+## Agents that search over models {.smaller}
 
 :::: {.columns}
-::: {.column width="40%"}
-- Google's 2025/26 entry to the CDC hubs was an LLM-guided tree search
-  over forecasting models. It topped influenza, COVID-19 and RSV,
-  prospectively
-- Bracher and Funk put the earlier 11% retrospective gain down to data
-  revision leakage
-- On the DRC model the search was by hand. Agents wrote each variant
-  and the sensitivity analyses. We chose what to keep
-- With composable parts the nodes are component swaps, and each part
-  brings its own checks
+::: {.column width="50%"}
+- **On the DRC model this was ad hoc.** Agents proposed patches as
+  issues, one branch each. Every release was scored against later data
+  and reviewed against domain knowledge
+- **The systematic version, given a target, is a tree search.** Propose
+  candidate models, fit and score, keep the best, branch again
+- **Google did this for the 2025/26 CDC hubs.** A large language model
+  (LLM) guided tree search that writes forecasting code. It matched or
+  beat the hub ensembles for influenza, COVID-19 and respiratory
+  syncytial virus (RSV), prospectively
+- Bracher and Funk put the earlier claimed 11% retrospective gain down
+  to data revisions leaking into the evaluation
+- It mutates and composes models people built. The hubs, the data, the
+  evaluation target and the review of output were still people's work
 
 ::: {.attribution}
 Martinson, Brenner, Plomecka, Williams, Reich and Shamsi 2026,
@@ -100,7 +109,7 @@ Martinson, Brenner, Plomecka, Williams, Reich and Shamsi 2026,
 [BVDOutbreakSize][bvd] `README.md`
 :::
 :::
-::: {.column width="60%"}
+::: {.column width="50%"}
 ![](../figures/exchange-tree-search.png){width="100%"
 fig-alt="A tree. The root is a task, forecast admissions, scored on
 held-out weeks. Four proposed models below it: ARIMA and a GAM in grey,

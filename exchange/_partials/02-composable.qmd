@@ -4,8 +4,8 @@
 
 :::: {.columns}
 ::: {.column width="42%"}
-- ONS COVID-19 Infection Survey: 4M+ swabs, 150K households, £500M+,
-  April 2020 to March 2023
+- The Office for National Statistics (ONS) COVID-19 Infection
+  Survey. 4M+ swabs, 150K households, £500M+, April 2020 to March 2023
 - External modellers accessed only summarised prevalence, not underlying
   observations
 - Lison et al. found biases at each step. Joint modelling of all steps
@@ -37,6 +37,9 @@ Survey figures from the paper's introduction
 ::: {.column width="40%"}
 Components can be reused across contexts and combined in different
 configurations whilst maintaining statistical rigour.
+
+Abbott et al., *Composable probabilistic models can lower barriers to
+rigorous infectious disease modelling*
 :::
 ::: {.column width="60%"}
 ![](../figures/exchange-composable-structure.png){height="700px"
@@ -94,7 +97,7 @@ read 2026-09-12, with the Mooncake and ADTypes lines dropped
 - Parts carry their own priors
 - A model definition does not know about the data. One definition
   simulates and fits
-- Adding a new application means defining only the novel parts
+- Adding a new application means defining only the new parts
 
 ![](../figures/sam-abbott.jpg){width="21%" fig-alt="Sam Abbott"}
 ![](../figures/exchange-samuel-brand.jpg){width="21%"
@@ -163,8 +166,8 @@ Photos from GitHub, read 2026-08-13 ·
 
 :::: {.columns}
 ::: {.column width="48%"}
-- Reuses ARIMA(2,1,1) from the paper's first case study, swapping the
-  Poisson observation model for `negbin`
+- Reuses the ARIMA(2,1,1) autoregressive prior from the paper's first
+  case study, swapping the Poisson observation model for `negbin`
 - `broadcast_weekly` wraps ARIMA to produce piecewise constant weekly
   $R_t$ values
 - `ascertainment_dayofweek` adds day-of-week reporting effects via

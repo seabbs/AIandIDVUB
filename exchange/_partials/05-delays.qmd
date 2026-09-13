@@ -34,7 +34,7 @@ share a start, so the intervals overlap."}
 ::: {.column width="40%"}
 - The primary event falls somewhere in a window $[0, w_P]$
 - Mix the delay over where in the window it sat, a convolution on the
-  CDF
+  cumulative distribution function (CDF)
 - The secondary event is recorded to the day as well
 - The probability of a daily bin is a difference of the
   primary-censored CDF
@@ -73,7 +73,7 @@ typically more complicated to evaluate.
 ::: {.column width="38%"}
 - A pair enters the data only if the secondary event happened before
   the cutoff $C$
-- Condition on being observed, so divide by the CDF at the horizon
+- Condition on being observed. Divide by the CDF at the horizon
 - Move the cutoff and watch the mean of what you can see. Continuous
   `LogNormal(1.6, 0.6)` delays, every primary event at day zero
 
@@ -203,7 +203,7 @@ v0.2.22 for the JuliaCon 2026 delays talk ·
   adjustment is a wrapper on a `Distributions.jl` object. The stack is
   still a distribution, so Turing takes it as it is
 - Less clear where AI plugs in here. A learned delay distribution?
-  Amortised inference trained on your simulators?
+  Learned or amortised inference trained on your simulators?
 :::
 ::::
 

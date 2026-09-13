@@ -2,15 +2,16 @@
 
 :::: {.columns}
 ::: {.column width="46%"}
-- London School of Hygiene & Tropical Medicine, Centre for the
-  Mathematical Modelling of Infectious Diseases
-- A small group. One small internal grant held as principal
+- **London School of Hygiene & Tropical Medicine.** Centre for the
+  Mathematical Modelling of Infectious Diseases (CMMID)
+- **A small group.** One small internal grant held as principal
   investigator
-- Many collaborators. epiforecasts, CMMID, the epinowcast community,
-  EpiAware, CDC and UKHSA
-- Tools in wide use. The use has not turned into funding
+- **Many collaborators.** epiforecasts, CMMID, the epinowcast community,
+  EpiAware, the US Centers for Disease Control and Prevention (CDC) and
+  the UK Health Security Agency (UKHSA)
+- **Tools in wide use.** The use has not turned into funding
 
-![](../figures/sam-abbott.jpg){width="24%" fig-alt="Sam Abbott"}
+![](../figures/sam-abbott.jpg){width="20%" fig-alt="Sam Abbott"}
 
 ::: {.attribution}
 [github.com/seabbs](https://github.com/seabbs) ·
@@ -38,41 +39,44 @@ the JuliaCon 2026 roadmap deck, `scoringutils` 2026-09-12
 
 ## Three outbreaks, the same problems
 
-- COVID-19, 2020. $R_t$, the number of new infections per infected
+- **COVID-19, 2020.** $R_t$, the number of new infections per infected
   person, daily for thousands of locations. Weekly to SPI-M-O, the
-  UK's modelling advisory group
-- mpox, 2022. Nowcasting for UKHSA. Nowcasting is estimating what has
-  already happened but has not yet been reported
-- Bundibugyo virus disease, DRC, 2026. One joint model across five data
-  streams, refit on every push
-- Each time the methods from the last outbreak were not reusable, the
-  models did not fit the data sources, and the data changed under us
+  UK government's modelling advisers
+- **mpox, 2022.** Nowcasting for UKHSA. Nowcasting is estimating what
+  has already happened but has not yet been reported
+- **Ebola disease caused by Bundibugyo virus, Democratic Republic of
+  the Congo (DRC), 2026.** One joint model across five data streams,
+  refit on every push
+- Each time the methods from the last outbreak were not reusable
+- Each time the models did not fit the data sources that existed, and
+  the data changed under us
 
-![](../figures/exchange-timeline.png){width="62%" fig-align="center"
-fig-alt="A timeline from 1760 to 2026. Small grey ticks for Bernoulli,
-Ross, Kermack and McKendrick, foot and mouth and H1N1, then a grey dot
-for Ebola in West Africa in 2014 labelled watching, and teal dots for
-COVID-19 in 2020 labelled doing it, mpox in 2022 labelled nowcasting,
-and Ebola disease caused by Bundibugyo virus in the DRC in 2026 labelled
-live."}
+![](../figures/exchange-timeline.png){width="72%" fig-align="center"
+fig-alt="A timeline from 1760 to 2026 in two panels with an axis break.
+Grey dots for Bernoulli 1760, Ross 1911, Kermack and McKendrick 1927,
+Anderson and May 1991, foot and mouth 2001, H1N1 2009 and Ebola in West
+Africa 2014. Teal dots, marked work I was part of, for COVID-19 in 2020,
+mpox in 2022 and Ebola disease caused by Bundibugyo virus in 2026."}
 
 ::: {.attribution}
 Abbott et al. 2020, Wellcome Open Research · Overton et al. 2023, PLoS
 Comput Biol · [BVDOutbreakSize][bvd] · dates in
-`notes/research-history.md`, `scripts/keynote-timeline.py`
+`notes/research-history.md`, drawn by `scripts/keynote-timeline.py`
 :::
 
-## Joint models from reusable parts
+## What I work on
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Models that use several data sources at once give better evidence
-  than chains of separate models. Building one during an outbreak is
-  slow, and needs several kinds of expertise
-- So, components that combine into joint models with the uncertainty
-  carried through. Delays first, then infections and observation
-- And a written workflow for adding data sources one at a time, with
-  the feedback loops drawn in
+- **Composable models.** Components that can be reused across contexts
+  and combined into joint models, with the uncertainty carried through
+- **Improving outbreak modelling.** Methods that survive from one
+  outbreak to the next. Models that fit the data sources that exist
+- **A workflow for modelling with multiple data sources.** Data sources
+  added one at a time, with the checks and feedback loops written down
+- Joint models give better evidence than chains of separate models.
+  Building one during an outbreak is slow and needs several kinds of
+  expertise
 - In R and Stan first. In Julia now
 :::
 ::: {.column width="60%"}
@@ -95,14 +99,15 @@ modelling][wf] · [epiaware.org](https://epiaware.org) · Lison et al.
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Consulting time with CDC collaborators, UKHSA, and state and local
-  public health in the US. The aim is to add other countries' public
-  health departments
-- In outbreaks. `epidist` in the DRC response's NEJM correspondence
-  this August. Several teams using the tools in Exercise Pegasus, the
-  UK's 2025 national pandemic exercise
-- Next, tools flexible and extensible enough that a language model can
-  drive them
+- **Consulting.** Time with CDC collaborators, UKHSA, and state and
+  local public health departments in the US
+- The aim is to add other countries' public health departments
+- **In outbreaks.** `epidist` in the DRC response's correspondence in
+  the New England Journal of Medicine this August
+- Several teams used the tools in Exercise Pegasus, the UK's 2025
+  national pandemic exercise
+- **Next.** Tools flexible and extensible enough to be easy for a large
+  language model to use
 :::
 ::: {.column width="60%"}
 ![](../figures/exchange-public-health-use.png){width="100%"
@@ -130,20 +135,24 @@ Mthombothi et al. 2025
 
 :::: {.columns}
 ::: {.column width="46%"}
-- epiforecasts, led by Sebastian Funk at LSHTM. Real-time modelling and
-  evaluating it. `EpiNow2`, `scoringutils`, the European COVID-19
-  Forecast Hub from 2021, now ECDC's RespiCast
+- **epiforecasts.** Led by Sebastian Funk at LSHTM. Real-time modelling
+  and evaluating it
+- `EpiNow2`, `scoringutils`, and the European COVID-19 Forecast Hub
+  from 2021, now RespiCast at the European Centre for Disease
+  Prevention and Control (ECDC)
 - 2020 to 2022, weekly $R_t$ estimates and forecasts to SPI-M-O
-- epinowcast. A forum of over 50 researchers and public health analysts,
-  and a monthly seminar since May 2023, 31 so far
-- Community >> methods or models alone
+- **epinowcast.** A forum of over 50 researchers and public health
+  analysts
+- A monthly seminar since May 2023, 31 so far, organised with Clara
+  Brigitta and Fanny Bergström
+- In 2023 I wrote: "community >> methods or models alone"
 
 ::: {.attribution}
 [github.com/epiforecasts](https://github.com/epiforecasts) ·
 [community.epinowcast.org](https://community.epinowcast.org/) ·
 [epinowcast.org/seminars](https://www.epinowcast.org/seminars), read
-2026-09-11 · 50 from the 2026 Wellcome application · last line from the
-2023 IISA post
+2026-09-11 · 50 from the 2026 Wellcome application · Abbott, [IISA
+2023 post][iisa], 4 January 2023
 :::
 :::
 ::: {.column width="54%"}
@@ -163,3 +172,4 @@ HPRU PPIE kick-off deck, Funk, Abbott and Cori, September 2025 ·
 [bvd]: https://github.com/epiforecasts/BVDOutbreakSize
 [wf]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
 [cfa]: https://www.cdc.gov/cfa-behind-the-model/php/data-research/nowcasting.html
+[iisa]: https://samabbott.co.uk/posts/2023-01-04-iisa-data-models-and-modellers-during-a-global-pandemic/
