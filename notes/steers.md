@@ -323,3 +323,13 @@ as the steering section.
 > its what vlaue are you adding? aand not for the panel it should be part
 > of AI impaxct on ciommuincation should cover people getting info from
 > LLMs what do lLms thinkg about i.e me and i.e my work is it correct etc
+
+## 13 September, on the keynote close
+
+> I want to keep the who gets to do this slide as is not remvoe as the
+> agent suggests
+
+Keep `keynote/_partials/03-agents.qmd` "Who gets to do this" as the closing
+slide, unchanged.
+The abstract line about closing on it stays cut, as he asked earlier.
+No agent should propose moving or cutting this slide again.
