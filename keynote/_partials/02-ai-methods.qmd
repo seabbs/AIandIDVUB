@@ -59,8 +59,6 @@ Table 1 of Kraemer et al. 2025, Nature 638, 623,
   statistical or semi-mechanistic model, as Funk et al. made for Ebola.
   [Philipps et al. 2025][philipps] found noise and limited data degrade
   the fit and the mechanistic parameters lose their meaning
-- Charlotte Holt, epiforecasts PhD student, is using UDEs to try and
-  recover behavioural change in outbreaks and improve forecasts
 - Potentially most exciting where many hard to model data sets are
   fitted jointly to an otherwise well understood system
 :::

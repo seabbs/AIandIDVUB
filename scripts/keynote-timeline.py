@@ -190,9 +190,13 @@ PANDEMIC = [
 SINCE = [
     ("2022-10", "epidist\ndelay estimation", 1.2, TEAL),
     ("2024-02", "EpiAware.jl\nwith CDC", -1.0, SLATE),
-    ("2024-08", "primarycensored\ncensored delays", 1.2, TEAL),
-    ("2026-04", "baselinenowcast", -1.0, TEAL),
-    ("2026-05", "BVDOutbreakSize\nlive report", 1.2, BRICK),
+    ("2024-06", "Reparameterised- and\nCensoredDistributions.jl\n"
+     "first EpiAware packages, June and September", 1.2, SLATE),
+    ("2024-08", "primarycensored\ncensored delays", -1.75, TEAL),
+    ("2025-08", "ModifiedDistributions.jl", 0.45, SLATE),
+    ("2026-04", "baselinenowcast", 1.2, TEAL),
+    ("2026-07", "EpiAware, six packages\nComposed, Convolved, Inference,\n"
+     "ADTools, ScoringRules, Turing models", -1.0, SLATE),
 ]
 
 
@@ -205,7 +209,8 @@ def packages(items, years, xlim, out):
     lo, hi = xlim
     fig, ax = plt.subplots(figsize=(14, 4.6))
     ax.set_xlim(lo, hi)
-    ax.set_ylim(-1.9, 1.9)
+    hs = [h for _, _, h, _ in items]
+    ax.set_ylim(min(hs) - 0.75, max(hs) + 0.7)
     ax.axis("off")
     ax.plot([lo, hi], [0, 0], color=LIGHT, lw=3, zorder=1)
     for year in years:

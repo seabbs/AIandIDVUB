@@ -165,10 +165,12 @@ CC BY
 - `EpiNow2`. A renewal process, where today's infections are $R_t$
   times a weighted sum of recent infections, with delays to report
 - Weekly to SPI-M-O, the UK government's modelling advisers. Other
-  governments used the dashboard directly or through their scientists
-- Software widely used by researchers and public health agencies
-  worldwide
-- In 2022 I wrote: "we sometimes published nonsensical estimates"
+  governments used the dashboard
+
+> Because we did not have the capacity to manually inspect the data and
+> estimates on a daily basis we sometimes published nonsensical estimates.
+>
+> *Abbott and Funk, 2022*
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-example-rt-panel.png){width="100%"
@@ -242,8 +244,7 @@ GitHub API, 11 September 2026
 - **Endo et al.** A heavy-tailed sexual partnership distribution
   explained the sustained growth among men who have sex with men
 - **Why it turned over.** Depletion of the high-activity core. The
-  counter-argument was behaviour change. Both sides agreed heavy-tailed
-  networks played a part
+  counter-argument was behaviour change
 - **Reuse.** Existing COVID-19 models lacked the flexibility to adapt.
   New, relatively simple, single-source models were built instead
 :::
@@ -298,9 +299,10 @@ CC BY
 ![](../figures/keynote-packages-since.png){width="94%"
 fig-align="center"
 fig-alt="A horizontal timeline from 2022 to 2026 with lollipops for
-epidist, EpiAware.jl, primarycensored, baselinenowcast and
-BVDOutbreakSize, each at its first commit or repository creation
-month."}
+epidist, EpiAware.jl, ReparameterisedDistributions.jl, primarycensored,
+CensoredDistributions.jl, ModifiedDistributions.jl, baselinenowcast and
+six EpiAware packages in mid 2026, each at its first commit or
+repository creation month."}
 
 ::: {.attribution}
 First commits from the local clones, repository creation dates from the
@@ -362,14 +364,14 @@ McCabe et al., Imperial College London, 18 and 20 May 2026,
 :::
 ::::
 
-## Refit on every push
+## The live report
 
 :::: {.columns}
 ::: {.column width="40%"}
 - The streams in the situation reports. Suspected and confirmed cases
   and deaths, laboratory, isolation, recoveries, a digitised onset
   curve, Uganda exports and a genomic bound
-- Updated up to daily. 145 releases since 20 May, each with the draws
+- Updated up to daily. 145 sets of results published since 20 May
 - A one-week-ahead forecast scored against the data that came later
 - No other regularly updated public model of this outbreak that I know
   of
@@ -384,7 +386,7 @@ data URL. That inlining left the frame unstyled and lost the anchor. -->
 
 ::: {.attribution}
 [BVDOutbreakSize][bvd], live
-· release counts from the GitHub API, 11 September 2026
+· results counts from the GitHub API, 11 September 2026
 :::
 :::
 ::::
@@ -393,14 +395,14 @@ data URL. That inlining left the frame unstyled and lost the anchor. -->
 Swap the visibility attribute between this slide and the one above, then
 re-render. Quarto drops hidden slides from the HTML. -->
 
-## Refit on every push {visibility="hidden"}
+## The live report {visibility="hidden"}
 
 :::: {.columns}
 ::: {.column width="40%"}
 - The streams in the situation reports. Suspected and confirmed cases
   and deaths, laboratory, isolation, recoveries, a digitised onset
   curve, Uganda exports and a genomic bound
-- Updated up to daily. 145 releases since 20 May, each with the draws
+- Updated up to daily. 145 sets of results published since 20 May
 - A one-week-ahead forecast scored against the data that came later
 - No other regularly updated public model of this outbreak that I know
   of
@@ -415,7 +417,7 @@ inside coloured posterior predictive bands."}
 
 ::: {.attribution}
 [BVDOutbreakSize][bvd], release `results-1699`, 9 September 2026
-· release counts from the GitHub API, 11 September 2026
+· results counts from the GitHub API, 11 September 2026
 :::
 :::
 ::::
@@ -425,10 +427,9 @@ inside coloured posterior predictive bands."}
 :::: {.columns}
 ::: {.column width="40%"}
 - The question first. The estimand decides which streams matter
-- Catalogue the data. What each stream measures, and how late it
-  arrives
-- One process for infections and an observation model per stream.
-  Delays sit inside the joint model
+- Catalogue the data. What each stream measures, and its potential
+  biases
+- One process for infections and an observation model per stream
 - Fit, check against what was known independently, report with a date.
   Then again tomorrow
 :::
@@ -452,7 +453,7 @@ After [A workflow for infectious disease modelling][wf], Abbott et al.
 - Methods not flexible enough to take the data sources that exist
 - The data change under the model. Streams start, stop and get
   redefined. Daily suspects stopped on 6 August this year
-- Evaluation. Knowing which of it worked
+- Evaluation. Knowing what worked
 :::
 ::: {.column width="60%"}
 ![](../figures/keynote-onset-vintages.png){width="100%"
