@@ -32,7 +32,7 @@ stage 8, sensitivity analyses and figures at stage 9."}
 :::
 ::::
 
-## Agents building methods into software
+## Agents building methods into software {.smaller}
 
 :::: {.columns}
 ::: {.column width="42%"}
@@ -51,7 +51,7 @@ distributions and composable Turing models, each with a short
 description and a read the approach link, above the line more approaches
 may join these as the ecosystem grows."}
 
-![](../figures/exchange-epidist-meta-bdbv.png){width="76%"
+![](../figures/exchange-epidist-meta-bdbv.png){width="58%"
 fig-align="center"
 fig-alt="Onset to death delay densities for Bundibugyo virus disease.
 Three fitted curves with credible bands, the meta-analysis model at the

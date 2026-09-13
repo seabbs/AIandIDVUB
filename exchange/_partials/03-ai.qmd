@@ -1,6 +1,6 @@
 # Where AI might plug in
 
-## A neural network in the slots of a composable model
+## A neural network in the slots of a composable model {.smaller}
 
 :::: {.columns}
 ::: {.column width="42%"}
@@ -16,7 +16,6 @@
 - **How does this work with Bayesian modelling?** Priors over weights,
   identifiability against a slot that already flexes, and what the
   posterior then means
-- No neural network code in any EpiAware package yet
 :::
 ::: {.column width="58%"}
 ![](../figures/exchange-nn-component.png){width="100%"
@@ -30,7 +29,7 @@ infections to cases, deaths and wastewater at once."}
 :::
 ::::
 
-## A physics-informed network as the mechanism arrives
+## A physics-informed network as the mechanism arrives {.smaller}
 
 :::: {.columns}
 ::: {.column width="42%"}
@@ -63,7 +62,7 @@ Raissi, Perdikaris and Karniadakis 2019, J Comput Phys,
 :::
 ::::
 
-## Renewal processes as a neural network layer
+## Renewal processes as a neural network layer {.smaller}
 
 :::: {.columns}
 ::: {.column width="40%"}
@@ -97,7 +96,7 @@ binomial likelihood on each stream."}
 :::
 ::::
 
-## An outbreak-specific foundation model
+## An outbreak-specific foundation model {.smaller}
 
 :::: {.columns}
 ::: {.column width="40%"}

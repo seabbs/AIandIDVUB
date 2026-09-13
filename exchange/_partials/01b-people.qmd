@@ -1,10 +1,10 @@
 # Who I work with
 
-## Real-time tools, delays and nowcasting
+## Real-time tools, delays and nowcasting {.smaller}
 
 :::: {.columns}
 ::: {.column width="50%"}
-![](../figures/exchange-people-grid-a.jpg){width="100%"
+![](../figures/exchange-people-grid-a.jpg){width="84%" fig-align="center"
 fig-alt="Six collaborators on real-time tools and hubs: Sebastian Funk,
 Samuel Brand, James Azam, Nikos Bosse, Kath Sherratt and Katelyn
 Gostic."}
@@ -15,7 +15,7 @@ Gostic."}
   live DRC model. Katelyn Gostic is at CDC
 :::
 ::: {.column width="50%"}
-![](../figures/exchange-people-grid-b.jpg){width="100%"
+![](../figures/exchange-people-grid-b.jpg){width="84%" fig-align="center"
 fig-alt="Eight collaborators on delays and nowcasting: Adrian Lison,
 Kaitlyn Johnson, Adam Howes, Carl Pearson, Kelly Charniga, Sang Woo Park,
 Thomas Ward and Christopher Overton, the last four shown as initials

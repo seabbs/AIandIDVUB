@@ -30,7 +30,7 @@ R Archive Network, 13 September 2026
 :::
 ::::
 
-## What I work on
+## What I work on {.smaller}
 
 :::: {.columns}
 ::: {.column width="40%"}
@@ -93,7 +93,7 @@ CDC CFA, [Behind the model: nowcasting][cfa], 2026 · Akilimali et al.
 :::
 ::::
 
-## epiforecasts and the epinowcast community
+## epiforecasts and the epinowcast community {.smaller}
 
 :::: {.columns}
 ::: {.column width="46%"}
