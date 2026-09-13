@@ -4,13 +4,14 @@
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Agent work goes out from a bot account, a second GitHub login, so
+- **A bot account.** Agent work goes out from a second GitHub login, so
   `git log` tells you who did most of it
-- A disclosure line in the Bundibugyo analysis README and on the
+- **A disclosure line** in the Bundibugyo analysis README and on the
   limitations slide of the WHO call about it
-- A prompts page with the brief and the steers
-- My conference bio was drafted by the bot, "who has a very suspiciously
-  high opinion of me, so take it with a pinch of salt"
+- **A prompts page** with the brief and the steers
+- **A bio drafted by the bot.** My conference bio for JuliaCon came from
+  seabbs-bot, "who has a very suspiciously high opinion of me, so take
+  it with a pinch of salt"
 :::
 ::: {.column width="60%"}
 ![](../figures/comms-shot-seabbs-bot.png){height="620px"
@@ -28,15 +29,16 @@ oversight", limitations slide of the
 :::
 ::::
 
-## The steering is the work
+## A published prompt log
 
 :::: {.columns}
 ::: {.column width="40%"}
-- The JuliaCon 2026 site. One brief, then 130 steers by 14 August 2026
-- Mid-build the prompts page counted fifty-three. The number more than
-  doubled before the talks
-- The first draft was close and wrong where it counted
-- Each steer was a call the agent did not make
+- **The JuliaCon 2026 site.** One brief, then 130 steers by 14 August
+  2026
+- Mid-build the prompts page counted 53. The number more than doubled
+  before the talks
+- **This site has one too.** The brief, the steers and the notes these
+  decks were rewritten from
 :::
 ::: {.column width="60%"}
 ![](../figures/comms-shot-juliacon-steers-para.png){width="100%"
@@ -47,7 +49,8 @@ so far, and the first workflow steers"}
 [samabbott.co.uk/JuliaCon2026/prompts.html](https://samabbott.co.uk/JuliaCon2026/prompts.html)
 · 130 counted from `notes/steers.md` in
 [seabbs/JuliaCon2026](https://github.com/seabbs/JuliaCon2026), August
-2026
+2026 ·
+[the prompts page for this site](https://samabbott.co.uk/AIandIDVUB/prompts.html)
 :::
 :::
 ::::
@@ -56,12 +59,13 @@ so far, and the first workflow steers"}
 
 :::: {.columns}
 ::: {.column width="40%"}
-- A second agent workflow pulled 114 claims out of one deck and tested
-  each against git and the GitHub API
-- 67 needed changing
-- "530 pull requests" was GitHub's latest issue number. The count was 353
-- 712 of 1,371 merged bot pull requests carried no review, so "reviewed by
-  me" became "about half"
+- **114 claims** pulled out of one deck by a second agent workflow, each
+  tested against git and the GitHub API
+- **67 needed changing**
+- "530 pull requests" was GitHub's latest issue number. The count was
+  353
+- 712 of 1,371 merged bot pull requests carried no review, so "reviewed
+  by me" became "about half"
 :::
 ::: {.column width="60%"}
 ![](../figures/comms-claims.png){width="100%"
@@ -78,11 +82,11 @@ fig-alt="A single bar of 114 claims, 67 marked changed and 47 marked stood"}
 
 :::: {.columns}
 ::: {.column width="40%"}
-- A GitHub App. It reviews each pull request I or my bot open, and again
-  when either of us asks. A pull request is a proposed change that
-  someone reads before it lands
-- 213 pull requests reviewed since 17 August 2026. Each review ends "Not
-  a human review"
+- **A GitHub App.** It reviews each pull request I or my bot open, and
+  again when either of us asks
+- A pull request is a proposed change that someone reads before it lands
+- **213 pull requests** reviewed since 17 August 2026. Each review ends
+  "Not a human review"
 - I fix what it gets right, say which findings I reject and why, and
   check each against the source myself
 - It has caught real bugs. It has also been wrong from its own truncated

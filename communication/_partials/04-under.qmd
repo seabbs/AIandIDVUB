@@ -6,9 +6,6 @@
 .reveal .llm-wrong {
   color: #b5432f; text-decoration: underline wavy #b5432f;
 }
-.reveal .llm-maybe {
-  color: #8a6d1f; text-decoration: underline dotted #8a6d1f;
-}
 .reveal .llm-ok { color: #1f6f8b; font-weight: 600; }
 .reveal .llm-note {
   color: #b5432f; font-size: 0.85em; font-style: italic;
@@ -23,11 +20,10 @@
 
 :::: {.columns}
 ::: {.column width="40%"}
-- The live Bundibugyo virus disease model. 497 commits, 333 of 425 pull
-  requests from the bot account
-- Four named authors. Who is accountable for a number an agent produced?
-- The people we build for need to be able to trust it, and to see who is
-  behind it
+- **The live Bundibugyo virus disease model.** Four named authors. Most
+  of its 497 commits are from bot identities
+- Who is accountable for a number an agent produced?
+- The people we build for need to see who is behind it
 
 > The model code and analysis were drafted by a language model, then
 > reviewed and revised under human oversight.
@@ -51,9 +47,7 @@ $ git log --format='%an' | sort | uniq -c | sort -rn
 
 ::: {.attribution}
 [epiforecasts/BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize),
-local clone and the GitHub search API, 11 September 2026 · trust line
-from the
-[JuliaCon 2026 roadmap deck](https://samabbott.co.uk/JuliaCon2026/roadmap/slides.html)
+local clone, 11 September 2026 · the disclosure from the report's README
 :::
 :::
 ::::
@@ -62,11 +56,11 @@ from the
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Sebastian Funk's bot opened the issue on 20 July with a diagnosis, and
-  came back the next day with a fitted prototype
-- My bot closed it on 4 August with the commit that fixed it
+- **Sebastian Funk's bot** opened the issue on 20 July with a diagnosis,
+  and came back the next day with a fitted prototype
+- **My bot** closed it on 4 August with the commit that fixed it
 - No person wrote in the thread. The issue before it went the same way
-- sbfnk-bot has opened 11 issues on EpiNow2 this year. One was a
+- **sbfnk-bot** has opened 11 issues on EpiNow2 this year. One was a
   Jacobian error in the $R_t$ prior. It was right
 :::
 ::: {.column width="60%"}
@@ -90,12 +84,12 @@ issues --author sbfnk-bot`, 12 September 2026
 
 :::: {.columns}
 ::: {.column width="40%"}
-- seabbs-bot has opened 91 issues on repositories outside my own
+- **91 issues** opened by seabbs-bot on repositories outside my own
   organisations
-- Upstream bug reports land well. Mooncake, DocumenterVitepress and
+- **Upstream bug reports land well.** Mooncake, DocumenterVitepress and
   AirspeedVelocity each closed theirs
-- Review requests on colleagues' repositories land less well. This one
-  got "Done", from me, two days later
+- **Review requests on colleagues' repositories land less well.** This
+  one got "Done", from me, two days later
 - I do not like sending them. I do not love receiving them either
 :::
 ::: {.column width="60%"}
@@ -155,12 +149,12 @@ on `main`, checked 12 August 2026
 
 :::: {.columns}
 ::: {.column width="40%"}
-- I asked two Claude models, with no tools, "What is EpiNow2 and who
-  maintains it?"
+- **Two large language models**, Claude Opus and Claude Sonnet, with no
+  tools. "What is EpiNow2 and who maintains it?"
 - Both said I maintain it. I created and developed it
-- Opus named three contributors who are not in the author list, and a
-  function removed in 1.9.0
-- Sonnet claimed less and got less wrong
+- **Opus** named three contributors who are not in the author list, and
+  a function removed in 1.9.0
+- **Sonnet** claimed less and got less wrong
 :::
 ::: {.column width="60%"}
 ::: {.llm-answer}
@@ -193,17 +187,19 @@ tools, 12 September 2026, full answers and checks in
 :::: {.columns}
 ::: {.column width="40%"}
 - "Who is Sam Abbott, the infectious disease modeller?"
-- The PhD, the supervisors, the ORCID and the packages were right
-- "Helped run the European Forecast Hub" is a co-authorship
-- Both models had read my email address and said so. To a reader who is
-  not me it would sound right
+- **Right.** The PhD, the supervisors, the ORCID and the packages
+- **Wrong.** "Helped run the European Forecast Hub" is a co-authorship.
+  "Senior Research Fellow" is not my job
+- Both models had read my email address and said so
+- To a reader who is not me it would sound right
 :::
 ::: {.column width="60%"}
 ::: {.llm-answer}
 **Opus.** "PhD at the University of Bristol ... Supervised by Ellen
 Brooks‑Pollock and Hannah Christensen" [right]{.llm-ok}
 
-**Opus.** "latterly a [Senior Research Fellow]{.llm-maybe}"
+**Opus.** "latterly a [Senior Research Fellow]{.llm-wrong}"
+[Assistant Professor]{.llm-note}
 
 **Opus.** "[Helped run]{.llm-wrong} the European COVID‑19 Forecast Hub
 (with Katharine Sherratt, Johannes Bracher, Sebastian Funk)"
